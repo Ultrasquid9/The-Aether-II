@@ -392,6 +392,12 @@ public class AetherIIItemModelData extends AetherIIItemModelProvider {
         // Valkyrie Sprout
         this.itemBlockFlat0(AetherIIBlocks.VALKYRIE_SPROUT.get());
 
+        // Lake
+        this.itemBlockFlat(AetherIIBlocks.LAKE_GRASS.get(), "natural/");
+        this.itemBlockFlat(AetherIIBlocks.LAKE_GRASS_PLANT.get(), "natural/");
+        this.itemBlockFlat(AetherIIBlocks.GLOWING_LAKE_GRASS.get(), "natural/");
+        this.itemBlockFlat(AetherIIBlocks.GLOWING_LAKE_GRASS_PLANT.get(), "natural/");
+
         // Ground Decoration
         this.item(AetherIIBlocks.SKYROOT_TWIG.asItem(), "miscellaneous/");
         this.item(AetherIIBlocks.HOLYSTONE_ROCK.asItem(), "miscellaneous/");

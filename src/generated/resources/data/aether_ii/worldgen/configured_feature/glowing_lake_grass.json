@@ -1,0 +1,30 @@
+{
+  "type": "aether_ii:lake_grass",
+  "config": {
+    "depth": {
+      "type": "minecraft:uniform",
+      "max_inclusive": 6,
+      "min_inclusive": 4
+    },
+    "grass_provider": {
+      "type": "minecraft:simple_state_provider",
+      "state": {
+        "Name": "aether_ii:glowing_lake_grass",
+        "Properties": {
+          "age": "0"
+        }
+      }
+    },
+    "height": {
+      "type": "minecraft:uniform",
+      "max_inclusive": 3,
+      "min_inclusive": 1
+    },
+    "plant_provider": {
+      "type": "minecraft:simple_state_provider",
+      "state": {
+        "Name": "aether_ii:glowing_lake_grass_plant"
+      }
+    }
+  }
+}

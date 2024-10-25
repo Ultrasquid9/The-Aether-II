@@ -243,6 +243,12 @@ public class AetherIIBlockLoot extends AetherIIBlockLootSubProvider {
         this.add(AetherIIBlocks.BRETTL_PLANT.get(), (brettl) -> this.droppingBrettlPlant(brettl, AetherIIItems.BRETTL_CANE.get(), AetherIIItems.BRETTL_GRASS.get()));
         this.add(AetherIIBlocks.BRETTL_PLANT_TIP.get(), (brettl) -> this.droppingBrettlPlantTip(brettl, AetherIIItems.BRETTL_CANE.get(), AetherIIItems.BRETTL_FLOWER.get()));
 
+        // Lake
+        this.dropSelf(AetherIIBlocks.LAKE_GRASS.get());
+        this.dropOther(AetherIIBlocks.LAKE_GRASS_PLANT.get(), AetherIIBlocks.LAKE_GRASS.get());
+        this.dropSelf(AetherIIBlocks.GLOWING_LAKE_GRASS.get());
+        this.dropOther(AetherIIBlocks.GLOWING_LAKE_GRASS_PLANT.get(), AetherIIBlocks.GLOWING_LAKE_GRASS.get());
+
         // Ground Decoration
         this.add(AetherIIBlocks.SKYROOT_TWIG.get(), this::dropTwigs);
         this.add(AetherIIBlocks.HOLYSTONE_ROCK.get(), this::dropRocks);

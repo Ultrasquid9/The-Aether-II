@@ -32,4 +32,5 @@ public class AetherIIFeatures {
     public static DeferredHolder<Feature<?>, Feature<BoulderConfiguration>> BOULDER = FEATURES.register("boulder", () -> new BoulderFeature(BoulderConfiguration.CODEC));
     public static DeferredHolder<Feature<?>, Feature<FallenLogConfiguration>> FALLEN_LOG = FEATURES.register("fallen_log", () -> new FallenLogFeature(FallenLogConfiguration.CODEC));
     public static DeferredHolder<Feature<?>, Feature<MossVinesConfiguration>> MOSS_VINES = FEATURES.register("moss_vines", () -> new MossVinesFeature(MossVinesConfiguration.CODEC));
+    public static DeferredHolder<Feature<?>, Feature<LakeGrassConfiguration>> LAKE_GRASS = FEATURES.register("lake_grass", () -> new LakeGrassFeature(LakeGrassConfiguration.CODEC));
 }
