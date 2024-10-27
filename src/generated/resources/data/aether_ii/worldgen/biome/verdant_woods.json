@@ -45,7 +45,8 @@
       "aether_ii:ore_gravitite",
       "aether_ii:ore_holystone_quartz",
       "aether_ii:ore_corrobonite",
-      "aether_ii:ore_glint"
+      "aether_ii:ore_glint",
+      "aether_ii:disk_bryalinn_moss"
     ],
     [],
     [
@@ -67,7 +68,10 @@
       "aether_ii:exposed_bryalinn_moss_cover",
       "aether_ii:highlands_flower_patch",
       "aether_ii:highfields_flower_patch",
-      "aether_ii:blueberry_bush_patch"
+      "aether_ii:blueberry_bush_patch",
+      "aether_ii:short_lake_grass",
+      "aether_ii:lake_grass",
+      "aether_ii:glowing_lake_grass"
     ],
     [
       "aether_ii:high_storm_aercloud",

@@ -17,6 +17,7 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.valueproviders.ConstantInt;
 import net.minecraft.util.valueproviders.UniformInt;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraft.world.level.levelgen.VerticalAnchor;
 import net.minecraft.world.level.levelgen.blockpredicates.BlockPredicate;
@@ -24,6 +25,7 @@ import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.heightproviders.TrapezoidHeight;
 import net.minecraft.world.level.levelgen.heightproviders.UniformHeight;
 import net.minecraft.world.level.levelgen.placement.*;
+import net.minecraft.world.level.material.Fluids;
 
 import java.util.List;
 
@@ -34,6 +36,7 @@ public class HighlandsPlacedFeatures {
     public static final ResourceKey<PlacedFeature> HOLYSTONE_ROCKS_TUNDRA = createKey("holystone_rocks_tundra");
     public static final ResourceKey<PlacedFeature> MOSSY_HOLYSTONE_BOULDER = createKey("mossy_holystone_boulder");
     public static final ResourceKey<PlacedFeature> MOSSY_HOLYSTONE_BOULDER_TUNDRA = createKey("mossy_holystone_boulder_tundra");
+    public static final ResourceKey<PlacedFeature> UNDERWATER_MOSSY_HOLYSTONE_BOULDER = createKey("underwater_mossy_holystone_boulder");
     public static final ResourceKey<PlacedFeature> ICESTONE_BOULDER = createKey("icestone_boulder");
     public static final ResourceKey<PlacedFeature> FALLEN_SKYROOT_LOG = createKey("fallen_skyroot_log");
     public static final ResourceKey<PlacedFeature> FALLEN_WISPROOT_LOG = createKey("fallen_wisproot_log");
@@ -120,6 +123,8 @@ public class HighlandsPlacedFeatures {
 
 
     // Worldgen
+    public static final ResourceKey<PlacedFeature> DISK_BRYALINN_MOSS = createKey("disk_bryalinn_moss");
+
     public static final ResourceKey<PlacedFeature> COAST_QUICKSOIL = createKey("coast_quicksoil");
     public static final ResourceKey<PlacedFeature> COAST_QUICKSOIL_SPARSE = createKey("coast_quicksoil_sparse");
     public static final ResourceKey<PlacedFeature> COAST_FERROSITE_SAND = createKey("coast_ferrosite_sand");
@@ -223,6 +228,17 @@ public class HighlandsPlacedFeatures {
                 InSquarePlacement.spread(),
                 HeightmapPlacement.onHeightmap(Heightmap.Types.MOTION_BLOCKING_NO_LEAVES),
                 BlockPredicateFilter.forPredicate(BlockPredicate.allOf(BlockPredicate.replaceable(), BlockPredicate.matchesTag(BlockPos.ZERO.below(), AetherIITags.Blocks.BOULDER_SURVIVES_ON))),
+                RandomOffsetPlacement.vertical(UniformInt.of(0, 1)),
+                BiomeFilter.biome()
+        );
+        register(
+                context,
+                UNDERWATER_MOSSY_HOLYSTONE_BOULDER,
+                configuredFeatures.getOrThrow(HighlandsConfiguredFeatures.UNDERWATER_MOSSY_HOLYSTONE_BOULDER),
+                CountPlacement.of(5),
+                InSquarePlacement.spread(),
+                PlacementUtils.HEIGHTMAP_OCEAN_FLOOR,
+                BlockPredicateFilter.forPredicate(BlockPredicate.allOf(BlockPredicate.replaceable(), BlockPredicate.matchesTag(BlockPos.ZERO.below(), AetherIITags.Blocks.BOULDER_SURVIVES_ON), BlockPredicate.matchesBlocks(Blocks.WATER))),
                 RandomOffsetPlacement.vertical(UniformInt.of(0, 1)),
                 BiomeFilter.biome()
         );
@@ -374,17 +390,20 @@ public class HighlandsPlacedFeatures {
         register(context, SHORT_LAKE_GRASS, configuredFeatures.getOrThrow(HighlandsConfiguredFeatures.SHORT_LAKE_GRASS),
                 PlacementUtils.countExtra(125, 0.2F, 25),
                 InSquarePlacement.spread(),
-                PlacementUtils.HEIGHTMAP_TOP_SOLID,
+                PlacementUtils.HEIGHTMAP_OCEAN_FLOOR,
+                BlockPredicateFilter.forPredicate(BlockPredicate.allOf(BlockPredicate.matchesTag(BlockPos.ZERO.below(), AetherIITags.Blocks.LAKE_GRASS_SURVIVES_ON), BlockPredicate.matchesBlocks(Blocks.WATER))),
                 BiomeFilter.biome());
         register(context, LAKE_GRASS, configuredFeatures.getOrThrow(HighlandsConfiguredFeatures.LAKE_GRASS),
                 NoiseBasedCountPlacement.of(175, 10.0, 0.0),
                 InSquarePlacement.spread(),
-                PlacementUtils.HEIGHTMAP_TOP_SOLID,
+                PlacementUtils.HEIGHTMAP_OCEAN_FLOOR,
+                BlockPredicateFilter.forPredicate(BlockPredicate.allOf(BlockPredicate.matchesTag(BlockPos.ZERO.below(), AetherIITags.Blocks.LAKE_GRASS_SURVIVES_ON), BlockPredicate.matchesBlocks(Blocks.WATER))),
                 BiomeFilter.biome());
         register(context, GLOWING_LAKE_GRASS, configuredFeatures.getOrThrow(HighlandsConfiguredFeatures.GLOWING_LAKE_GRASS),
                 NoiseBasedCountPlacement.of(50, 10.0, 0.5),
                 InSquarePlacement.spread(),
-                PlacementUtils.HEIGHTMAP_TOP_SOLID,
+                PlacementUtils.HEIGHTMAP_OCEAN_FLOOR,
+                BlockPredicateFilter.forPredicate(BlockPredicate.allOf(BlockPredicate.matchesTag(BlockPos.ZERO.below(), AetherIITags.Blocks.LAKE_GRASS_SURVIVES_ON), BlockPredicate.matchesBlocks(Blocks.WATER))),
                 BiomeFilter.biome());
 
         register(context, AETHER_GRASS_BONEMEAL, configuredFeatures.getOrThrow(HighlandsConfiguredFeatures.AETHER_GRASS_BONEMEAL), PlacementUtils.isEmpty());
@@ -569,6 +588,14 @@ public class HighlandsPlacedFeatures {
 
     public static void bootstrapWorldgen(BootstrapContext<PlacedFeature> context) {
         HolderGetter<ConfiguredFeature<?, ?>> configuredFeatures = context.lookup(Registries.CONFIGURED_FEATURE);
+
+        register(context, DISK_BRYALINN_MOSS, configuredFeatures.getOrThrow(HighlandsConfiguredFeatures.DISK_BRYALINN_MOSS),
+                CountPlacement.of(6),
+                InSquarePlacement.spread(),
+                PlacementUtils.HEIGHTMAP_OCEAN_FLOOR,
+                BlockPredicateFilter.forPredicate(BlockPredicate.matchesBlocks(Blocks.WATER)),
+                BiomeFilter.biome()
+        );
 
         register(context, COAST_QUICKSOIL, configuredFeatures.getOrThrow(HighlandsConfiguredFeatures.COAST_QUICKSOIL),
                 CountPlacement.of(4),

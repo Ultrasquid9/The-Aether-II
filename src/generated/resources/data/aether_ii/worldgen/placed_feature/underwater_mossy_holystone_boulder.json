@@ -1,21 +1,9 @@
 {
-  "feature": "aether_ii:short_lake_grass",
+  "feature": "aether_ii:underwater_mossy_holystone_boulder",
   "placement": [
     {
       "type": "minecraft:count",
-      "count": {
-        "type": "minecraft:weighted_list",
-        "distribution": [
-          {
-            "data": 125,
-            "weight": 4
-          },
-          {
-            "data": 150,
-            "weight": 1
-          }
-        ]
-      }
+      "count": 5
     },
     {
       "type": "minecraft:in_square"
@@ -30,19 +18,31 @@
         "type": "minecraft:all_of",
         "predicates": [
           {
+            "type": "minecraft:replaceable"
+          },
+          {
             "type": "minecraft:matching_block_tag",
             "offset": [
               0,
               -1,
               0
             ],
-            "tag": "aether_ii:lake_grass_survives_on"
+            "tag": "aether_ii:boulder_survives_on"
           },
           {
             "type": "minecraft:matching_blocks",
             "blocks": "minecraft:water"
           }
         ]
+      }
+    },
+    {
+      "type": "minecraft:random_offset",
+      "xz_spread": 0,
+      "y_spread": {
+        "type": "minecraft:uniform",
+        "max_inclusive": 1,
+        "min_inclusive": 0
       }
     },
     {

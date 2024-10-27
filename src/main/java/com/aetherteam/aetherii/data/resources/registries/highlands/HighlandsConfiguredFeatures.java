@@ -68,7 +68,9 @@ public class HighlandsConfiguredFeatures {
     // Surface
     public static final ResourceKey<ConfiguredFeature<?, ?>> SKYROOT_TWIGS = createKey("skyroot_twigs");
     public static final ResourceKey<ConfiguredFeature<?, ?>> HOLYSTONE_ROCKS = createKey("holystone_rocks");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> UNDERWATER_HOLYSTONE_ROCKS = createKey("underwater_holystone_rocks");
     public static final ResourceKey<ConfiguredFeature<?, ?>> MOSSY_HOLYSTONE_BOULDER = createKey("mossy_holystone_boulder");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> UNDERWATER_MOSSY_HOLYSTONE_BOULDER = createKey("underwater_mossy_holystone_boulder");
     public static final ResourceKey<ConfiguredFeature<?, ?>> ICESTONE_BOULDER = createKey("icestone_boulder");
     public static final ResourceKey<ConfiguredFeature<?, ?>> FALLEN_SKYROOT_LOG = createKey("fallen_skyroot_log");
     public static final ResourceKey<ConfiguredFeature<?, ?>> FALLEN_WISPROOT_LOG = createKey("fallen_wisproot_log");
@@ -209,6 +211,8 @@ public class HighlandsConfiguredFeatures {
     
     
     // Worldgen
+    public static final ResourceKey<ConfiguredFeature<?, ?>> DISK_BRYALINN_MOSS = createKey("disk_bryalinn_moss");
+
     public static final ResourceKey<ConfiguredFeature<?, ?>> COAST_QUICKSOIL = createKey("coast_quicksoil");
     public static final ResourceKey<ConfiguredFeature<?, ?>> COAST_FERROSITE_SAND = createKey("coast_ferrosite_sand");
     public static final ResourceKey<ConfiguredFeature<?, ?>> COAST_ARCTIC_PACKED_ICE = createKey("coast_arctic_packed_ice");
@@ -270,6 +274,13 @@ public class HighlandsConfiguredFeatures {
             }
         }
 
+        SimpleWeightedRandomList.Builder<BlockState> underwaterRocks = new SimpleWeightedRandomList.Builder<>();
+        for (Direction facing : RockBlock.FACING.getPossibleValues()) {
+            for (int amount : RockBlock.AMOUNT.getPossibleValues()) {
+                underwaterRocks.add(AetherIIBlocks.HOLYSTONE_ROCK.get().defaultBlockState().setValue(RockBlock.FACING, facing).setValue(RockBlock.AMOUNT, amount).setValue(RockBlock.WATERLOGGED, true), amount);
+            }
+        }
+
         register(
                 context,
                 SKYROOT_TWIGS,
@@ -294,6 +305,18 @@ public class HighlandsConfiguredFeatures {
                                 BlockPredicate.allOf(BlockPredicate.matchesTag(Vec3i.ZERO.below(), AetherIITags.Blocks.HOLYSTONE_ROCK_SURVIVES_ON), BlockPredicate.ONLY_IN_AIR_PREDICATE))
                 )
         );
+        register(
+                context,
+                UNDERWATER_HOLYSTONE_ROCKS,
+                Feature.RANDOM_PATCH,
+                new RandomPatchConfiguration(
+                        4,
+                        2,
+                        2,
+                        PlacementUtils.filtered(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(new WeightedStateProvider(underwaterRocks)),
+                                BlockPredicate.allOf(BlockPredicate.matchesTag(Vec3i.ZERO.below(), AetherIITags.Blocks.HOLYSTONE_ROCK_SURVIVES_ON), BlockPredicate.matchesBlocks(Blocks.WATER)))
+                )
+        );
         register(context, MOSSY_HOLYSTONE_BOULDER, AetherIIFeatures.BOULDER.get(), new BoulderConfiguration(
                 new WeightedStateProvider(SimpleWeightedRandomList.<BlockState>builder()
                         .add(AetherIIBlocks.MOSSY_HOLYSTONE.get().defaultBlockState(), 4)
@@ -302,6 +325,19 @@ public class HighlandsConfiguredFeatures {
                 0.5F,
                 UniformFloat.of(0.0F, 1.0F),
                 Optional.of(PlacementUtils.inlinePlaced(configuredFeatures.getOrThrow(HOLYSTONE_ROCKS), CountPlacement.of(UniformInt.of(1, 6)))),
+                1.0F));
+        register(context, UNDERWATER_MOSSY_HOLYSTONE_BOULDER, AetherIIFeatures.BOULDER.get(), new BoulderConfiguration(
+                new WeightedStateProvider(SimpleWeightedRandomList.<BlockState>builder()
+                        .add(AetherIIBlocks.MOSSY_HOLYSTONE.get().defaultBlockState(), 5)
+                        .add(AetherIIBlocks.HOLYSTONE.get().defaultBlockState(), 1)
+                        .build()),
+                0.5F,
+                UniformFloat.of(0.0F, 1.25F),
+//                Optional.of(PlacementUtils.inlinePlaced(configuredFeatures.getOrThrow(UNDERWATER_HOLYSTONE_ROCKS), CountPlacement.of(UniformInt.of(1, 6)))),
+                Optional.of(PlacementUtils.inlinePlaced(Feature.RANDOM_SELECTOR, new RandomFeatureConfiguration(
+                        List.of(new WeightedPlacedFeature(PlacementUtils.inlinePlaced(configuredFeatures.getOrThrow(DISK_BRYALINN_MOSS)), 0.4F)),
+                        PlacementUtils.inlinePlaced(configuredFeatures.getOrThrow(UNDERWATER_HOLYSTONE_ROCKS), CountPlacement.of(UniformInt.of(1, 4)))
+                ), CountPlacement.of(UniformInt.of(1, 3)))),
                 1.0F));
         register(context, ICESTONE_BOULDER, AetherIIFeatures.BOULDER.get(), new BoulderConfiguration(
                 new WeightedStateProvider(SimpleWeightedRandomList.<BlockState>builder()
@@ -513,7 +549,7 @@ public class HighlandsConfiguredFeatures {
                                         .add(AetherIIBlocks.LILICHIME.get().defaultBlockState(), 1)
                                         .add(AetherIIBlocks.PLURACIAN.get().defaultBlockState(), 1)
                                         .add(AetherIIBlocks.SATIVAL_SHOOT.get().defaultBlockState(), 1))),
-                                BlockPredicate.allOf(BlockPredicate.matchesTag(Vec3i.ZERO.below(), AetherIITags.Blocks.AETHER_PLANT_SURVIVES_ON), BlockPredicate.replaceable()))
+                                BlockPredicate.allOf(BlockPredicate.matchesTag(Vec3i.ZERO.below(), AetherIITags.Blocks.AETHER_PLANT_SURVIVES_ON), BlockPredicate.replaceable(), BlockPredicate.noFluid()))
         ));
         register(
                 context,
@@ -544,7 +580,7 @@ public class HighlandsConfiguredFeatures {
 
                                                 )
                                         )
-                                ), BlockPredicate.allOf(BlockPredicate.matchesTag(Vec3i.ZERO.below(), AetherIITags.Blocks.AETHER_PLANT_SURVIVES_ON), BlockPredicate.replaceable())
+                                ), BlockPredicate.allOf(BlockPredicate.matchesTag(Vec3i.ZERO.below(), AetherIITags.Blocks.AETHER_PLANT_SURVIVES_ON), BlockPredicate.replaceable(), BlockPredicate.noFluid())
                         )
                 )
         );
@@ -572,7 +608,7 @@ public class HighlandsConfiguredFeatures {
                                                         AetherIIBlocks.PLURACIAN.get().defaultBlockState()
                                                 )
                                         )
-                                ), BlockPredicate.allOf(BlockPredicate.matchesTag(Vec3i.ZERO.below(), AetherIITags.Blocks.AETHER_PLANT_SURVIVES_ON), BlockPredicate.replaceable())
+                                ), BlockPredicate.allOf(BlockPredicate.matchesTag(Vec3i.ZERO.below(), AetherIITags.Blocks.AETHER_PLANT_SURVIVES_ON), BlockPredicate.replaceable(), BlockPredicate.noFluid())
                         )
                 )
         );
@@ -589,7 +625,7 @@ public class HighlandsConfiguredFeatures {
                                         PlacementUtils.filtered(
                                                 AetherIIFeatures.AETHER_FLOWER.get(),
                                                 new SimpleBlockConfiguration(new WeightedStateProvider(holpupea)),
-                                                BlockPredicate.allOf(BlockPredicate.matchesTag(Vec3i.ZERO.below(), AetherIITags.Blocks.AETHER_PLANT_SURVIVES_ON), BlockPredicate.replaceable())
+                                                BlockPredicate.allOf(BlockPredicate.matchesTag(Vec3i.ZERO.below(), AetherIITags.Blocks.AETHER_PLANT_SURVIVES_ON), BlockPredicate.replaceable(), BlockPredicate.noFluid())
                                         )
                                 )), 0.5F)
                 ), PlacementUtils.inlinePlaced(Feature.FLOWER,
@@ -1402,6 +1438,10 @@ public class HighlandsConfiguredFeatures {
     private static void bootstrapWorldgen(BootstrapContext<ConfiguredFeature<?, ?>> context) {
         HolderGetter<ConfiguredFeature<?, ?>> configuredFeatures = context.lookup(Registries.CONFIGURED_FEATURE);
         HolderGetter<DensityFunction> function = context.lookup(Registries.DENSITY_FUNCTION);
+
+        register(context, DISK_BRYALINN_MOSS, Feature.DISK, new DiskConfiguration(
+                RuleBasedBlockStateProvider.simple(AetherIIBlocks.BRYALINN_MOSS_BLOCK.get()), BlockPredicate.matchesTag(AetherIITags.Blocks.UNDERWATER_BRYALINN_REPLACEABLE), UniformInt.of(1, 2), 1
+        ));
 
         register(context, COAST_QUICKSOIL, AetherIIFeatures.COAST.get(), new CoastConfiguration(
                 BlockStateProvider.simple(AetherIIBlocks.QUICKSOIL.get()),

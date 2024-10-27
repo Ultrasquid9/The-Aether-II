@@ -14,7 +14,7 @@
                   "Properties": {
                     "facing": "north",
                     "rock_amount": "1",
-                    "waterlogged": "false"
+                    "waterlogged": "true"
                   }
                 },
                 "weight": 1
@@ -25,7 +25,7 @@
                   "Properties": {
                     "facing": "north",
                     "rock_amount": "2",
-                    "waterlogged": "false"
+                    "waterlogged": "true"
                   }
                 },
                 "weight": 2
@@ -36,7 +36,7 @@
                   "Properties": {
                     "facing": "north",
                     "rock_amount": "3",
-                    "waterlogged": "false"
+                    "waterlogged": "true"
                   }
                 },
                 "weight": 3
@@ -47,7 +47,7 @@
                   "Properties": {
                     "facing": "south",
                     "rock_amount": "1",
-                    "waterlogged": "false"
+                    "waterlogged": "true"
                   }
                 },
                 "weight": 1
@@ -58,7 +58,7 @@
                   "Properties": {
                     "facing": "south",
                     "rock_amount": "2",
-                    "waterlogged": "false"
+                    "waterlogged": "true"
                   }
                 },
                 "weight": 2
@@ -69,7 +69,7 @@
                   "Properties": {
                     "facing": "south",
                     "rock_amount": "3",
-                    "waterlogged": "false"
+                    "waterlogged": "true"
                   }
                 },
                 "weight": 3
@@ -80,7 +80,7 @@
                   "Properties": {
                     "facing": "west",
                     "rock_amount": "1",
-                    "waterlogged": "false"
+                    "waterlogged": "true"
                   }
                 },
                 "weight": 1
@@ -91,7 +91,7 @@
                   "Properties": {
                     "facing": "west",
                     "rock_amount": "2",
-                    "waterlogged": "false"
+                    "waterlogged": "true"
                   }
                 },
                 "weight": 2
@@ -102,7 +102,7 @@
                   "Properties": {
                     "facing": "west",
                     "rock_amount": "3",
-                    "waterlogged": "false"
+                    "waterlogged": "true"
                   }
                 },
                 "weight": 3
@@ -113,7 +113,7 @@
                   "Properties": {
                     "facing": "east",
                     "rock_amount": "1",
-                    "waterlogged": "false"
+                    "waterlogged": "true"
                   }
                 },
                 "weight": 1
@@ -124,7 +124,7 @@
                   "Properties": {
                     "facing": "east",
                     "rock_amount": "2",
-                    "waterlogged": "false"
+                    "waterlogged": "true"
                   }
                 },
                 "weight": 2
@@ -135,7 +135,7 @@
                   "Properties": {
                     "facing": "east",
                     "rock_amount": "3",
-                    "waterlogged": "false"
+                    "waterlogged": "true"
                   }
                 },
                 "weight": 3
@@ -161,7 +161,7 @@
               },
               {
                 "type": "minecraft:matching_blocks",
-                "blocks": "minecraft:air"
+                "blocks": "minecraft:water"
               }
             ]
           }

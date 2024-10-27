@@ -119,16 +119,14 @@ public class HighlandsBiomeBuilders {
         return makeHighfieldsBiome(new BiomeGenerationSettings.Builder(placedFeatures, worldCarvers)
                         .addFeature(GenerationStep.Decoration.RAW_GENERATION, HighlandsPlacedFeatures.COAST_QUICKSOIL)
                         .addFeature(GenerationStep.Decoration.LOCAL_MODIFICATIONS, HighlandsPlacedFeatures.HOLYSTONE_ROCKS)
+                        .addFeature(GenerationStep.Decoration.LOCAL_MODIFICATIONS, HighlandsPlacedFeatures.UNDERWATER_MOSSY_HOLYSTONE_BOULDER)
                         .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, HighlandsPlacedFeatures.SHIMMERING_BASIN_TREES)
                         .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, HighlandsPlacedFeatures.SHIMMERING_BASIN_TREES_SUNKEN)
                         .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, HighlandsPlacedFeatures.GRASS_FIELD)
                         .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, HighlandsPlacedFeatures.VALKYRIE_SPROUT_PATCH)
                         .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, HighlandsPlacedFeatures.HIGHLANDS_BUSH_PATCH_FIELD)
                         .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, HighlandsPlacedFeatures.ORANGE_TREE_PATCH)
-                        .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, HighlandsPlacedFeatures.FALLEN_SKYROOT_LOG)
-                        .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, HighlandsPlacedFeatures.SHORT_LAKE_GRASS)
-                        .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, HighlandsPlacedFeatures.LAKE_GRASS)
-                        .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, HighlandsPlacedFeatures.GLOWING_LAKE_GRASS),
+                        .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, HighlandsPlacedFeatures.FALLEN_SKYROOT_LOG),
                 temperature, downfall);
     }
 
@@ -173,6 +171,7 @@ public class HighlandsBiomeBuilders {
                         .addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, HighlandsPlacedFeatures.ORE_HOLYSTONE_QUARTZ)
                         .addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, HighlandsPlacedFeatures.ORE_CORROBONITE)
                         .addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, HighlandsPlacedFeatures.ORE_GLINT)
+                        .addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, HighlandsPlacedFeatures.DISK_BRYALINN_MOSS)
                         .addFeature(GenerationStep.Decoration.FLUID_SPRINGS, HighlandsPlacedFeatures.WATER_SPRING)
                         .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, HighlandsPlacedFeatures.GRASS_AND_DIRT_FLOOR)
                         .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, HighlandsPlacedFeatures.COARSE_AETHER_DIRT_FLOOR)
@@ -182,6 +181,9 @@ public class HighlandsBiomeBuilders {
                         .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, HighlandsPlacedFeatures.HIGHLANDS_FLOWER_PATCH)
                         .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, HighlandsPlacedFeatures.HIGHFIELDS_FLOWER_PATCH)
                         .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, HighlandsPlacedFeatures.BLUEBERRY_BUSH_PATCH)
+                        .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, HighlandsPlacedFeatures.SHORT_LAKE_GRASS)
+                        .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, HighlandsPlacedFeatures.LAKE_GRASS)
+                        .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, HighlandsPlacedFeatures.GLOWING_LAKE_GRASS)
                         .addFeature(GenerationStep.Decoration.TOP_LAYER_MODIFICATION, HighlandsPlacedFeatures.HIGH_STORM_AERCLOUD)
                         .addFeature(GenerationStep.Decoration.TOP_LAYER_MODIFICATION, HighlandsPlacedFeatures.HIGH_GREEN_AERCLOUD)
                         .addFeature(GenerationStep.Decoration.TOP_LAYER_MODIFICATION, HighlandsPlacedFeatures.HIGH_PURPLE_AERCLOUD)

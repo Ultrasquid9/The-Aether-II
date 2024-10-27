@@ -25,7 +25,8 @@
       "aether_ii:water_pond_underground"
     ],
     [
-      "aether_ii:holystone_rocks"
+      "aether_ii:holystone_rocks",
+      "aether_ii:underwater_mossy_holystone_boulder"
     ],
     [],
     [],
@@ -41,7 +42,8 @@
       "aether_ii:ore_gravitite",
       "aether_ii:ore_holystone_quartz",
       "aether_ii:ore_corrobonite",
-      "aether_ii:ore_glint"
+      "aether_ii:ore_glint",
+      "aether_ii:disk_bryalinn_moss"
     ],
     [],
     [
@@ -55,9 +57,6 @@
       "aether_ii:highlands_bush_patch_field",
       "aether_ii:orange_tree_patch",
       "aether_ii:fallen_skyroot_log",
-      "aether_ii:short_lake_grass",
-      "aether_ii:lake_grass",
-      "aether_ii:glowing_lake_grass",
       "aether_ii:grass_and_dirt_floor",
       "aether_ii:coarse_aether_dirt_floor",
       "aether_ii:coarse_aether_dirt_ceiling",
@@ -65,7 +64,10 @@
       "aether_ii:exposed_bryalinn_moss_cover",
       "aether_ii:highlands_flower_patch",
       "aether_ii:highfields_flower_patch",
-      "aether_ii:blueberry_bush_patch"
+      "aether_ii:blueberry_bush_patch",
+      "aether_ii:short_lake_grass",
+      "aether_ii:lake_grass",
+      "aether_ii:glowing_lake_grass"
     ],
     [
       "aether_ii:high_storm_aercloud",
