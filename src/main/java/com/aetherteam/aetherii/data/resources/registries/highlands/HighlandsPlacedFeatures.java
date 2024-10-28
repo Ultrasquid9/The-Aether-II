@@ -235,7 +235,8 @@ public class HighlandsPlacedFeatures {
                 context,
                 UNDERWATER_MOSSY_HOLYSTONE_BOULDER,
                 configuredFeatures.getOrThrow(HighlandsConfiguredFeatures.UNDERWATER_MOSSY_HOLYSTONE_BOULDER),
-                CountPlacement.of(5),
+                NoiseThresholdCountPlacement.of(-0.2, 4, 2),
+                RarityFilter.onAverageOnceEvery(2),
                 InSquarePlacement.spread(),
                 PlacementUtils.HEIGHTMAP_OCEAN_FLOOR,
                 BlockPredicateFilter.forPredicate(BlockPredicate.allOf(BlockPredicate.replaceable(), BlockPredicate.matchesTag(BlockPos.ZERO.below(), AetherIITags.Blocks.BOULDER_SURVIVES_ON), BlockPredicate.matchesBlocks(Blocks.WATER))),
@@ -590,7 +591,7 @@ public class HighlandsPlacedFeatures {
         HolderGetter<ConfiguredFeature<?, ?>> configuredFeatures = context.lookup(Registries.CONFIGURED_FEATURE);
 
         register(context, DISK_BRYALINN_MOSS, configuredFeatures.getOrThrow(HighlandsConfiguredFeatures.DISK_BRYALINN_MOSS),
-                CountPlacement.of(6),
+                CountPlacement.of(7),
                 InSquarePlacement.spread(),
                 PlacementUtils.HEIGHTMAP_OCEAN_FLOOR,
                 BlockPredicateFilter.forPredicate(BlockPredicate.matchesBlocks(Blocks.WATER)),

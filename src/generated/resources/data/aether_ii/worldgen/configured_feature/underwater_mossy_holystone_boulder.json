@@ -44,7 +44,7 @@
           },
           "features": [
             {
-              "chance": 0.4,
+              "chance": 0.6,
               "feature": {
                 "feature": "aether_ii:disk_bryalinn_moss",
                 "placement": []

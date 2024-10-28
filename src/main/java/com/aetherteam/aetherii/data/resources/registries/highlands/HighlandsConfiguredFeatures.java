@@ -334,7 +334,7 @@ public class HighlandsConfiguredFeatures {
                 0.5F,
                 UniformFloat.of(0.0F, 1.25F),
                 Optional.of(PlacementUtils.inlinePlaced(Feature.RANDOM_SELECTOR, new RandomFeatureConfiguration(
-                        List.of(new WeightedPlacedFeature(PlacementUtils.inlinePlaced(configuredFeatures.getOrThrow(DISK_BRYALINN_MOSS)), 0.4F)),
+                        List.of(new WeightedPlacedFeature(PlacementUtils.inlinePlaced(configuredFeatures.getOrThrow(DISK_BRYALINN_MOSS)), 0.6F)),
                         PlacementUtils.inlinePlaced(configuredFeatures.getOrThrow(UNDERWATER_HOLYSTONE_ROCKS), CountPlacement.of(UniformInt.of(1, 4)))
                 ), CountPlacement.of(UniformInt.of(1, 3)))),
                 1.0F));
