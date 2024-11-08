@@ -66,6 +66,7 @@ public class AetherIIClient {
         neoBus.addListener(AetherIIShaders::registerShaders);
         neoBus.addListener(AetherIIItemDecorators::registerItemDecorators);
         neoBus.addListener(AetherIIClientTooltips::registerClientTooltipComponents);
+        neoBus.addListener(AetherIIClientItemExtensions::registerClientItemExtensions);
     }
 
     public static void registerItemModelProperties() {

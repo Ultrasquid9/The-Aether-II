@@ -10,6 +10,7 @@ import com.aetherteam.aetherii.network.packet.serverbound.ClearItemPacket;
 import com.aetherteam.aetherii.network.packet.serverbound.HeldCurrencyPacket;
 import com.aetherteam.nitrogen.attachment.INBTSynchable;
 import io.wispforest.accessories.AccessoriesInternals;
+import io.wispforest.accessories.networking.AccessoriesNetworking;
 import io.wispforest.accessories.networking.server.NukeAccessories;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
@@ -217,7 +218,7 @@ public class GuidebookEquipmentScreen extends AbstractContainerScreen<GuidebookE
                     if (slot == this.destroyItemSlot && this.destroyItemSlot != null && flag) {
                         for (int j = 0; j < this.getMinecraft().player.inventoryMenu.getItems().size(); ++j) {
                             if (this.nukeCoolDown <= 0) {
-                                AccessoriesInternals.getNetworkHandler().sendToServer(new NukeAccessories());
+                                AccessoriesNetworking.sendToServer(new NukeAccessories());
                                 this.nukeCoolDown = 10;
                             }
                             this.getMinecraft().gameMode.handleCreativeModeItemAdd(ItemStack.EMPTY, j);

@@ -42,9 +42,4 @@ public class ArcticSnowballItem extends SnowballItem implements ThrowableItem {
     public int getUseDuration(ItemStack stack, LivingEntity livingEntity) {
         return 72000;
     }
-
-    @Override
-    public void initializeClient(Consumer<IClientItemExtensions> consumer) {
-        consumer.accept(AetherIIClientItemExtensions.throwable);
-    }
 }

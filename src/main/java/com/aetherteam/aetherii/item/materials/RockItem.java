@@ -57,9 +57,4 @@ public class RockItem extends BlockItem implements ThrowableItem {
     public int getUseDuration(ItemStack pStack, LivingEntity livingEntity) {
         return 72000;
     }
-
-    @Override
-    public void initializeClient(Consumer<IClientItemExtensions> consumer) {
-        consumer.accept(AetherIIClientItemExtensions.throwable);
-    }
 }
