@@ -218,7 +218,7 @@ public class GuidebookEquipmentScreen extends AbstractContainerScreen<GuidebookE
                     if (slot == this.destroyItemSlot && this.destroyItemSlot != null && flag) {
                         for (int j = 0; j < this.getMinecraft().player.inventoryMenu.getItems().size(); ++j) {
                             if (this.nukeCoolDown <= 0) {
-                                AccessoriesNetworking.sendToServer(new NukeAccessories()); 
+                                AccessoriesNetworking.sendToServer(new NukeAccessories());
                                 this.nukeCoolDown = 10;
                             }
                             this.getMinecraft().gameMode.handleCreativeModeItemAdd(ItemStack.EMPTY, j);
