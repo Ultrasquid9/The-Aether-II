@@ -37,8 +37,8 @@ public class AercloudFeature extends Feature<AercloudConfiguration> {
             boolean changeYChance = random.nextInt(7) > 5;
             blockPos = blockPos.offset(random.nextInt(2), (changeYChance ? random.nextInt(3) - 1 : 0), random.nextInt(2) * (positiveZAngle ? 1 : -1));
 
-            for (int x = 0; x < baseWidth + random.nextInt(3); ++x) {
-                for (int y = 0; y < baseHeight + random.nextInt(2); ++y) {
+            for (int y = 0; y < baseHeight + random.nextInt(2); ++y) {
+                for (int x = 0; x < baseWidth + random.nextInt(3); ++x) {
                     for (int z = 0; z < baseWidth + random.nextInt(3); ++z) {
                         BlockPos newPosition = blockPos.offset(x, y, z);
                         if (level.isEmptyBlock(newPosition)) {
