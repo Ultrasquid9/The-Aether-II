@@ -5,9 +5,7 @@ import com.aetherteam.aetherii.api.guidebook.BestiaryEntry;
 import com.aetherteam.aetherii.api.guidebook.EffectsEntry;
 import com.aetherteam.aetherii.api.guidebook.ExplorationEntry;
 import com.aetherteam.aetherii.attachment.AetherIIDataAttachments;
-import com.aetherteam.aetherii.block.AetherIIBlocks;
-import com.aetherteam.aetherii.block.AetherIICauldronInteractions;
-import com.aetherteam.aetherii.block.AetherIIDispenseBehaviors;
+import com.aetherteam.aetherii.block.*;
 import com.aetherteam.aetherii.blockentity.AetherIIBlockEntityTypes;
 import com.aetherteam.aetherii.client.AetherIIClient;
 import com.aetherteam.aetherii.client.AetherIISoundEvents;
@@ -82,6 +80,8 @@ public class AetherII {
         bus.addListener(DataPackRegistryEvent.NewRegistry.class, event -> event.dataPackRegistry(AetherIIMoaFeatherShapes.MOA_FEATHER_SHAPE_REGISTRY_KEY, MoaFeatherShape.DIRECT_CODEC, MoaFeatherShape.DIRECT_CODEC));
 
         DeferredRegister<?>[] registers = {
+                AetherIIFluidTypes.FLUID_TYPES,
+                AetherIIFluids.FLUIDS,
                 AetherIIBlocks.BLOCKS,
                 AetherIIItems.ITEMS,
                 AetherIIEntityTypes.ENTITY_TYPES,

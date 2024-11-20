@@ -1,11 +1,19 @@
 package com.aetherteam.aetherii.client;
 
+import com.aetherteam.aetherii.AetherII;
 import com.aetherteam.aetherii.block.AetherIIBlocks;
+import com.aetherteam.aetherii.block.AetherIIFluidTypes;
 import com.aetherteam.aetherii.item.AetherIIItems;
+import com.mojang.blaze3d.shaders.FogShape;
+import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Axis;
+import net.minecraft.client.Camera;
 import net.minecraft.client.model.HumanoidModel;
+import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.player.LocalPlayer;
+import net.minecraft.client.renderer.FogRenderer;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.util.FastColor;
 import net.minecraft.util.Mth;
@@ -15,9 +23,11 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.component.DyedItemColor;
 import net.neoforged.neoforge.client.event.RegisterClientTooltipComponentFactoriesEvent;
+import net.neoforged.neoforge.client.extensions.common.IClientFluidTypeExtensions;
 import net.neoforged.neoforge.client.extensions.common.IClientItemExtensions;
 import net.neoforged.neoforge.client.extensions.common.RegisterClientExtensionsEvent;
 import org.jetbrains.annotations.Nullable;
+import org.joml.Vector3f;
 
 public class AetherIIClientItemExtensions {
     public static final IClientItemExtensions TAEGORE_HIDE = new IClientItemExtensions() {
@@ -83,5 +93,34 @@ public class AetherIIClientItemExtensions {
         event.registerItem(TAEGORE_HIDE, AetherIIItems.TAEGORE_HIDE_HELMET.get(), AetherIIItems.TAEGORE_HIDE_CHESTPLATE.get(), AetherIIItems.TAEGORE_HIDE_LEGGINGS.get(), AetherIIItems.TAEGORE_HIDE_BOOTS.get(), AetherIIItems.TAEGORE_HIDE_GLOVES.get());
         event.registerItem(BURRUKAI_PELT, AetherIIItems.BURRUKAI_PELT_HELMET.get(), AetherIIItems.BURRUKAI_PELT_CHESTPLATE.get(), AetherIIItems.BURRUKAI_PELT_LEGGINGS.get(), AetherIIItems.BURRUKAI_PELT_BOOTS.get(), AetherIIItems.BURRUKAI_PELT_GLOVES.get());
         event.registerItem(THROWABLE, AetherIIBlocks.HOLYSTONE_ROCK.asItem(), AetherIIItems.SKYROOT_PINECONE.get(), AetherIIItems.ARCTIC_SNOWBALL.get());
+
+
+        event.registerFluidType(new IClientFluidTypeExtensions() {
+            @Override
+            public ResourceLocation getStillTexture() {
+                return ResourceLocation.fromNamespaceAndPath(AetherII.MODID, "fluid/acid_still");
+            }
+
+            @Override
+            public ResourceLocation getFlowingTexture() {
+                return ResourceLocation.fromNamespaceAndPath(AetherII.MODID, "fluid/acid_flow");
+            }
+
+            @Override
+            public ResourceLocation getOverlayTexture() {
+                return ResourceLocation.fromNamespaceAndPath(AetherII.MODID, "fluid/acid_overlay");
+            }
+
+//            @Override
+//            public Vector3f modifyFogColor(Camera camera, float partialTicks, ClientLevel level, int renderDistance, float darkenWorldAmount, Vector3f fluidFogColor) {
+//                return new Vector3f(57 / 255F, 25 / 255F, 80 / 255F);
+//            }
+//
+//            @Override
+//            public void modifyFogRender(Camera camera, FogRenderer.FogMode mode, float renderDistance, float partialTicks, float nearDistance, float farDistance, FogShape shape) {
+//                RenderSystem.setShaderFogStart(0.0F);
+//                RenderSystem.setShaderFogEnd(3.0F);
+//            }
+        }, AetherIIFluidTypes.ACID_TYPE.get());
     }
 }
