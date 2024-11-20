@@ -61,7 +61,8 @@ public class CellingPathNavigation extends GroundPathNavigation {
             DebugPackets.sendPathFindingPacket(this.level, this.mob, this.path, this.maxDistanceToWaypoint);
             if (!this.isDone()) {
                 Vec3 vec31 = this.path.getNextEntityPos(this.mob);
-                this.mob.getMoveControl().setWantedPosition(vec31.x, vec31.y, vec31.z, this.speedModifier);
+                //TODO find why 0.5 block gap has!
+                this.mob.getMoveControl().setWantedPosition(vec31.x - 0.5F, vec31.y, vec31.z - 0.5F, this.speedModifier);
             }
         }
     }
@@ -73,11 +74,11 @@ public class CellingPathNavigation extends GroundPathNavigation {
         Vec3i vec3i = this.path.getNextNodePos();
 
         Direction reverseDirection = this.cellingMonster.getAttachFacing().getOpposite();
-        double widthOffset = this.cellingMonster.getAttachFacing() != Direction.DOWN ? 0.1F : 0.0F;
+        double widthOffset = this.cellingMonster.getAttachFacing() != Direction.DOWN ? 0.2F : 0.0F;
 
-        double d0 = Math.abs(this.mob.getX() - ((double) vec3i.getX() - (widthOffset * reverseDirection.getStepX()) + ((this.mob.getBbWidth() + 1) / 2D))); //Forge: Fix MC-94054
-        double d1 = Math.abs(this.mob.getY() - (double) vec3i.getY()) - (widthOffset * reverseDirection.getStepY());
-        double d2 = Math.abs(this.mob.getZ() - ((double) vec3i.getZ() - (widthOffset * reverseDirection.getStepZ()) + ((this.mob.getBbWidth() + 1) / 2D))); //Forge: Fix MC-94054
+        double d0 = Math.abs(this.mob.getX() - ((double) vec3i.getX() + (widthOffset * reverseDirection.getStepX()) + (this.mob.getBbWidth() + 1) / 2D)); //Forge: Fix MC-94054
+        double d1 = Math.abs(this.mob.getY() - (double) vec3i.getY() + (widthOffset * reverseDirection.getStepY()));
+        double d2 = Math.abs(this.mob.getZ() - ((double) vec3i.getZ() + (widthOffset * reverseDirection.getStepZ()) + (this.mob.getBbWidth() + 1) / 2D)); //Forge: Fix MC-94054
 
         //no cut out
         float fallDistance = this.mob.getMaxFallDistance();
@@ -140,7 +141,7 @@ public class CellingPathNavigation extends GroundPathNavigation {
     @Override
     protected Vec3 getTempMobPos() {
         if (this.cellingMonster.getAttachFacing() != Direction.DOWN) {
-            return new Vec3(this.mob.getX(), (double) this.mob.getY(), this.mob.getZ());
+            return new Vec3(this.mob.getX(), this.mob.getY(), this.mob.getZ());
         }
 
         return super.getTempMobPos();
