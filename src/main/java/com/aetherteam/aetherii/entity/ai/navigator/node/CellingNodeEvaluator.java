@@ -64,7 +64,7 @@ public class CellingNodeEvaluator extends WalkNodeEvaluator {
 
     @Nullable
     public Target getTarget(double p_164662_, double p_164663_, double p_164664_) {
-        return this.getTargetNodeAt(Mth.floor(p_164662_), Mth.floor(p_164663_ + 0.5D), Mth.floor(p_164664_));
+        return this.getTargetNodeAt(Mth.floor(p_164662_), Mth.floor(p_164663_), Mth.floor(p_164664_));
     }
 
     @Override

@@ -75,15 +75,11 @@ public class CellingMoveControl extends MoveControl {
                     this.mob.setYya(d2 > 0.0 ? f1 : -f1);
                 }
 
-                this.mob.setYRot(this.cellingMonster.getAttachFacing().toYRot());
-                this.mob.yBodyRot = this.mob.getYRot();
-                if (Math.abs(d0) > 2.5000003E-7F) {
-                    this.mob.setXxa(d0 > 0.0 ? -f1 : f1);
-                }
+                float f9 = (float) (Mth.atan2(d1, d0) * 180.0F / (float) Math.PI) - 90.0F;
 
-                if (Math.abs(d1) > 2.5000003E-7F) {
-                    this.mob.setZza(d1 > 0.0 ? -f1 : f1);
-                }
+                this.mob.setSpeed((float) (this.speedModifier * this.mob.getAttributeValue(Attributes.MOVEMENT_SPEED)));
+                this.mob.setYRot(this.rotlerp(this.mob.getYRot(), f9, 90.0F));
+
             }
         } else {
             this.mob.setXxa(0.0F);
@@ -100,7 +96,7 @@ public class CellingMoveControl extends MoveControl {
                     && nodeevaluator.getPathType(
                     this.mob, BlockPos.containing(this.mob.getX(), (double) this.mob.getBlockY() + 1, this.mob.getZ())
             )
-                    != PathType.WALKABLE) {
+                    != PathType.OPEN) {
                 return false;
             }
         }
