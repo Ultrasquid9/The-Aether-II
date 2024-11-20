@@ -1,6 +1,7 @@
 package com.aetherteam.aetherii.client;
 
 import com.aetherteam.aetherii.AetherII;
+import com.aetherteam.aetherii.block.AetherIIFluids;
 import com.aetherteam.aetherii.client.event.listeners.*;
 import com.aetherteam.aetherii.client.particle.AetherIIParticleFactories;
 import com.aetherteam.aetherii.client.renderer.AetherIIOverlays;
@@ -15,6 +16,8 @@ import com.aetherteam.aetherii.item.equipment.armor.GlovesItem;
 import com.aetherteam.aetherii.item.equipment.weapons.TieredCrossbowItem;
 import com.aetherteam.nitrogen.event.listeners.TooltipListeners;
 import net.minecraft.ChatFormatting;
+import net.minecraft.client.renderer.ItemBlockRenderTypes;
+import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.item.ClampedItemPropertyFunction;
 import net.minecraft.client.renderer.item.ItemProperties;
 import net.minecraft.core.Holder;
@@ -40,6 +43,9 @@ public class AetherIIClient {
             AetherIIAtlases.registerSkyrootChestAtlases();
             registerItemModelProperties();
             registerTooltipOverrides();
+
+            ItemBlockRenderTypes.setRenderLayer(AetherIIFluids.FLOWING_ACID.get(), RenderType.translucent());
+            ItemBlockRenderTypes.setRenderLayer(AetherIIFluids.ACID.get(), RenderType.translucent());
         });
 
         AetherIIRenderers.registerAccessoryRenderers();

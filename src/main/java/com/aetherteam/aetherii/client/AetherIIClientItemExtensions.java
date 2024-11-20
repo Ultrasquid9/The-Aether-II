@@ -111,7 +111,12 @@ public class AetherIIClientItemExtensions {
                 return ResourceLocation.fromNamespaceAndPath(AetherII.MODID, "fluid/acid_overlay");
             }
 
-//            @Override
+            @Override
+            public int getTintColor() {
+                return 0xFFFFFF00;
+            }
+
+            //            @Override
 //            public Vector3f modifyFogColor(Camera camera, float partialTicks, ClientLevel level, int renderDistance, float darkenWorldAmount, Vector3f fluidFogColor) {
 //                return new Vector3f(57 / 255F, 25 / 255F, 80 / 255F);
 //            }
