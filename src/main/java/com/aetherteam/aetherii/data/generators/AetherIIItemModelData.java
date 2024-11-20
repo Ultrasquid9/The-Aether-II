@@ -231,6 +231,7 @@ public class AetherIIItemModelData extends AetherIIItemModelProvider {
         this.itemBlock(AetherIIBlocks.AGIOSITE.get());
         this.itemBlock(AetherIIBlocks.CRUDE_SCATTERGLASS.get());
         this.itemBlockFlat(AetherIIBlocks.SKY_ROOTS.get(), "natural/");
+        this.itemBlock(AetherIIBlocks.ANGELIC_SHALE.get());
 
         // Highfields
         this.itemBlock(AetherIIBlocks.QUICKSOIL.get());
