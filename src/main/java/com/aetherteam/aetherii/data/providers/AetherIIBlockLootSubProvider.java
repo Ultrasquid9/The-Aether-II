@@ -129,6 +129,26 @@ public abstract class AetherIIBlockLootSubProvider extends NitrogenBlockLootSubP
                                         .when(BonusLevelTableCondition.bonusLevelFlatChance(registrylookup.getOrThrow(Enchantments.FORTUNE), 0.01F, 0.011111112F, 0.0125F, 0.0111111125F, 0.05F))));
     }
 
+    protected LootTable.Builder createSilkTouchOrShearsTable(ItemLike item) {
+        return LootTable.lootTable().withPool(LootPool.lootPool().when(HAS_SHEARS.or(this.hasSilkTouch())).setRolls(ConstantValue.exactly(1.0F)).add(LootItem.lootTableItem(item)));
+    }
+
+    public LootTable.Builder droppingArilumBulbs(Block block, Item drop) {
+        HolderLookup.RegistryLookup<Enchantment> registrylookup = this.registries.lookupOrThrow(Registries.ENCHANTMENT);
+        return LootTable.lootTable()
+                .withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1))
+                        .add(this.applyExplosionDecay(block, LootItem.lootTableItem(drop))
+                                .apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0F, 1.0F)))
+                                .apply(ApplyBonusCount.addOreBonusCount(registrylookup.getOrThrow(Enchantments.FORTUNE))))
+                        .when(MatchTool.toolMatches(ItemPredicate.Builder.item().of(AetherIITags.Items.TOOLS_TROWELS)).invert()))
+                .withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1))
+                .add(this.applyExplosionDecay(block, LootItem.lootTableItem(drop))
+                        .apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 2.0F)))
+                        .apply(ApplyBonusCount.addOreBonusCount(registrylookup.getOrThrow(Enchantments.FORTUNE))))
+                .when(MatchTool.toolMatches(ItemPredicate.Builder.item().of(AetherIITags.Items.TOOLS_TROWELS))))
+                .withPool(LootPool.lootPool().add(LootItem.lootTableItem(block)).when(HAS_SHEARS.or(this.hasSilkTouch())));
+    }
+
     public LootTable.Builder droppingSativalShoot(Block block, Item drop) {
         HolderLookup.RegistryLookup<Enchantment> registrylookup = this.registries.lookupOrThrow(Registries.ENCHANTMENT);
         return LootTable.lootTable().withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1))

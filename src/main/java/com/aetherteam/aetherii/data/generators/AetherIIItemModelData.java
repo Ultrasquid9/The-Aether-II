@@ -122,6 +122,7 @@ public class AetherIIItemModelData extends AetherIIItemModelProvider {
         this.item(AetherIIItems.BRETTL_GRASS.get(), "materials/");
         this.item(AetherIIItems.BRETTL_ROPE.get(), "materials/");
         this.item(AetherIIItems.BRETTL_FLOWER.get(), "materials/");
+        this.item(AetherIIItems.ARILUM_BULBS.get(), "materials/");
         this.item(AetherIIItems.AECHOR_PETAL.get(), "materials/");
         this.item(AetherIIItems.ARCTIC_SNOWBALL.get(), "materials/");
         this.item(AetherIIItems.GREEN_SWET_GEL.get(), "materials/");

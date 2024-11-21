@@ -305,6 +305,7 @@ public class AetherIIBlocks extends AetherIIBlockBuilders {
     public static final DeferredBlock<Block> BRETTL_PLANT_TIP = BLOCKS.register("brettl_plant_tip", () -> new BrettlPlantTipBlock(BlockBehaviour.Properties.of().noCollission().randomTicks().instabreak().sound(SoundType.GRASS).pushReaction(PushReaction.DESTROY)));
 
     // Lake
+    public static final DeferredBlock<Block> ARILUM_SHOOT = BLOCKS.register("arilum_shoot", () -> new ArilumShootBlock(Block.Properties.of().mapColor(MapColor.WATER).noCollission().randomTicks().instabreak().sound(SoundType.WET_GRASS).pushReaction(PushReaction.DESTROY)));
     public static final DeferredBlock<Block> ARILUM = register("arilum", () -> new ArilumBlock(Block.Properties.of().mapColor(MapColor.WATER).noCollission().randomTicks().instabreak().sound(SoundType.WET_GRASS).pushReaction(PushReaction.DESTROY)));
     public static final DeferredBlock<Block> ARILUM_PLANT = register("arilum_plant", () -> new ArilumPlantBlock(Block.Properties.of().mapColor(MapColor.WATER).noCollission().randomTicks().instabreak().sound(SoundType.WET_GRASS).pushReaction(PushReaction.DESTROY)));
     public static final DeferredBlock<Block> BLOOMING_ARILUM = register("blooming_arilum", () -> new BloomingArilumBlock(Block.Properties.of().mapColor(MapColor.WATER).noCollission().randomTicks().instabreak().sound(SoundType.WET_GRASS).pushReaction(PushReaction.DESTROY).lightLevel((block) -> 5)));

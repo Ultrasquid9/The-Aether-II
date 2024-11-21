@@ -231,6 +231,7 @@ public class AetherIIBlockStateData extends AetherIIBlockStateProvider {
         this.brettlPlant(AetherIIBlocks.BRETTL_PLANT_TIP.get());
 
         // Lake
+        this.crossBlock(AetherIIBlocks.ARILUM_SHOOT.get(), "natural/");
         this.crossBlock(AetherIIBlocks.ARILUM.get(), "natural/");
         this.crossBlock(AetherIIBlocks.ARILUM_PLANT.get(), "natural/");
         this.crossBlock(AetherIIBlocks.BLOOMING_ARILUM.get(), "natural/");

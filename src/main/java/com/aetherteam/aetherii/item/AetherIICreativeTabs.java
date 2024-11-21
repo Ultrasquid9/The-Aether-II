@@ -363,6 +363,8 @@ public class AetherIICreativeTabs {
                 output.accept(AetherIIBlocks.BLUEBERRY_BUSH.get());
                 output.accept(AetherIIBlocks.ORANGE_TREE.get());
                 output.accept(AetherIIBlocks.VALKYRIE_SPROUT.get());
+                output.accept(AetherIIBlocks.ARILUM.get());
+                output.accept(AetherIIBlocks.BLOOMING_ARILUM.get());
                 output.accept(AetherIIBlocks.MAGNETIC_SHROOM.get());
                 output.accept(AetherIIBlocks.BRYALINN_MOSS_BLOCK.get());
                 output.accept(AetherIIBlocks.BRYALINN_MOSS_CARPET.get());
@@ -576,6 +578,7 @@ public class AetherIICreativeTabs {
                 output.accept(AetherIIItems.BRETTL_GRASS.get());
                 output.accept(AetherIIItems.BRETTL_ROPE.get());
                 output.accept(AetherIIItems.BRETTL_FLOWER.get());
+                output.accept(AetherIIItems.ARILUM_BULBS.get());
                 output.accept(AetherIIItems.SKYROOT_PINECONE.get());
                 output.accept(AetherIIItems.MOA_FEED.get());
                 output.accept(AetherIIItems.BLUEBERRY_MOA_FEED.get());

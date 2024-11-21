@@ -211,6 +211,7 @@ public class AetherIIItems {
     public static final DeferredItem<Item> BRETTL_GRASS = ITEMS.register("brettl_grass", () -> new Item(new Item.Properties()));
     public static final DeferredItem<Item> BRETTL_ROPE = ITEMS.register("brettl_rope", () -> new Item(new Item.Properties()));
     public static final DeferredItem<Item> BRETTL_FLOWER = ITEMS.register("brettl_flower", () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> ARILUM_BULBS = ITEMS.register("arilum_bulbs", () -> new ItemNameBlockItem(AetherIIBlocks.ARILUM_SHOOT.get(), new Item.Properties()));
     public static final DeferredItem<Item> ARCTIC_SNOWBALL = ITEMS.register("arctic_snowball", () -> new ArcticSnowballItem(new Item.Properties()));
     public static final DeferredItem<Item> GREEN_SWET_GEL = ITEMS.register("green_swet_gel", () -> new SwetGelItem(new Item.Properties()));
     public static final DeferredItem<Item> BLUE_SWET_GEL = ITEMS.register("blue_swet_gel", () -> new SwetGelItem(new Item.Properties()));

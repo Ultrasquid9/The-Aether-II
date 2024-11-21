@@ -394,7 +394,7 @@ public class HighlandsPlacedFeatures {
                 BlockPredicateFilter.forPredicate(BlockPredicate.allOf(BlockPredicate.matchesTag(BlockPos.ZERO.below(), AetherIITags.Blocks.ARILUM_SURVIVES_ON), BlockPredicate.matchesBlocks(Blocks.WATER))),
                 BiomeFilter.biome());
         register(context, ARILUM, configuredFeatures.getOrThrow(HighlandsConfiguredFeatures.ARILUM),
-                NoiseBasedCountPlacement.of(175, 10.0, 0.0),
+                NoiseBasedCountPlacement.of(100, 10.0, 0.0),
                 InSquarePlacement.spread(),
                 PlacementUtils.HEIGHTMAP_OCEAN_FLOOR,
                 BlockPredicateFilter.forPredicate(BlockPredicate.allOf(BlockPredicate.matchesTag(BlockPos.ZERO.below(), AetherIITags.Blocks.ARILUM_SURVIVES_ON), BlockPredicate.matchesBlocks(Blocks.WATER))),
