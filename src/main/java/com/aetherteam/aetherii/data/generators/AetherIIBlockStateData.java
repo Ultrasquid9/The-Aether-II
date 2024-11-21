@@ -482,6 +482,13 @@ public class AetherIIBlockStateData extends AetherIIBlockStateProvider {
         this.block(AetherIIBlocks.ARKENIUM_BLOCK.get(), "construction/");
         this.block(AetherIIBlocks.GRAVITITE_BLOCK.get(), "construction/");
 
+        // Arilum Lantern
+        this.block(AetherIIBlocks.GREEN_ARILUM_LANTERN.get(), "construction/");
+        this.block(AetherIIBlocks.BLUE_ARILUM_LANTERN.get(), "construction/");
+        this.block(AetherIIBlocks.PURPLE_ARILUM_LANTERN.get(), "construction/");
+        this.block(AetherIIBlocks.GOLDEN_ARILUM_LANTERN.get(), "construction/");
+        this.block(AetherIIBlocks.WHITE_ARILUM_LANTERN.get(), "construction/");
+
         // Utility
         this.torchBlock(AetherIIBlocks.AMBROSIUM_TORCH.get(), AetherIIBlocks.AMBROSIUM_WALL_TORCH.get());
         this.skyrootCraftingTable(AetherIIBlocks.SKYROOT_CRAFTING_TABLE.get(), AetherIIBlocks.SKYROOT_PLANKS.get(), "construction/");

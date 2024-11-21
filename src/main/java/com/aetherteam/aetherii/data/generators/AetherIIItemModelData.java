@@ -644,6 +644,13 @@ public class AetherIIItemModelData extends AetherIIItemModelProvider {
         this.itemBlock(AetherIIBlocks.ARKENIUM_BLOCK.get());
         this.itemBlock(AetherIIBlocks.GRAVITITE_BLOCK.get());
 
+        // Arilum Lanterns
+        this.itemBlock(AetherIIBlocks.GREEN_ARILUM_LANTERN.get());
+        this.itemBlock(AetherIIBlocks.BLUE_ARILUM_LANTERN.get());
+        this.itemBlock(AetherIIBlocks.PURPLE_ARILUM_LANTERN.get());
+        this.itemBlock(AetherIIBlocks.GOLDEN_ARILUM_LANTERN.get());
+        this.itemBlock(AetherIIBlocks.WHITE_ARILUM_LANTERN.get());
+
         // Utility
         this.itemBlockFlat(AetherIIBlocks.AMBROSIUM_TORCH.get(), "utility/");
         this.itemBlock(AetherIIBlocks.SKYROOT_CRAFTING_TABLE.get());

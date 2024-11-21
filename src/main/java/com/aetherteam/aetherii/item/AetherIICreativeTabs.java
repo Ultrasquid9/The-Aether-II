@@ -230,6 +230,11 @@ public class AetherIICreativeTabs {
                 output.accept(AetherIIBlocks.ZANITE_BLOCK.get());
                 output.accept(AetherIIBlocks.ARKENIUM_BLOCK.get());
                 output.accept(AetherIIBlocks.GRAVITITE_BLOCK.get());
+                output.accept(AetherIIBlocks.GREEN_ARILUM_LANTERN.get());
+                output.accept(AetherIIBlocks.BLUE_ARILUM_LANTERN.get());
+                output.accept(AetherIIBlocks.PURPLE_ARILUM_LANTERN.get());
+                output.accept(AetherIIBlocks.GOLDEN_ARILUM_LANTERN.get());
+                output.accept(AetherIIBlocks.WHITE_ARILUM_LANTERN.get());
             }).build());
 
     public static final DeferredHolder<CreativeModeTab, CreativeModeTab> AETHER_II_DUNGEON_BLOCKS = CREATIVE_MODE_TABS.register("dungeon_blocks", () -> CreativeModeTab.builder()
