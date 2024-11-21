@@ -674,6 +674,10 @@ public class AetherIILanguageData extends AetherIILanguageProvider {
         this.addItem(AetherIIItems.SKYROOT_AXOLOTL_BUCKET, "Skyroot Bucket of Axolotl");
         this.addItem(AetherIIItems.SKYROOT_TADPOLE_BUCKET, "Skyroot Bucket of Tadpole");
 
+        // Arkenium Canisters
+        this.addItem(AetherIIItems.ARKENIUM_CANISTER, "Arkenium Canister");
+        this.addItem(AetherIIItems.ARKENIUM_ACID_CANISTER, "Arkenium Acid Canister");
+
         // Music Discs
         this.addItem(AetherIIItems.MUSIC_DISC_AETHER_TUNE, "Blue Music Disc");
         this.addItem(AetherIIItems.MUSIC_DISC_ASCENDING_DAWN, "Valkyrie Music Disc");

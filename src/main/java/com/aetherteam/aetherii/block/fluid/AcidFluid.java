@@ -2,6 +2,7 @@ package com.aetherteam.aetherii.block.fluid;
 
 import com.aetherteam.aetherii.block.AetherIIBlocks;
 import com.aetherteam.aetherii.block.AetherIIFluids;
+import com.aetherteam.aetherii.item.AetherIIItems;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ParticleOptions;
@@ -40,17 +41,10 @@ public abstract class AcidFluid extends BaseFlowingFluid {
     }
 
     public Item getBucket() {
-        return Items.WATER_BUCKET;
+        return AetherIIItems.ARKENIUM_ACID_CANISTER.get();
     }
 
     public void animateTick(Level p_230606_, BlockPos p_230607_, FluidState p_230608_, RandomSource p_230609_) {
-        if (!p_230608_.isSource() && !(Boolean)p_230608_.getValue(FALLING)) {
-            if (p_230609_.nextInt(64) == 0) {
-                p_230606_.playLocalSound((double)p_230607_.getX() + 0.5, (double)p_230607_.getY() + 0.5, (double)p_230607_.getZ() + 0.5, SoundEvents.WATER_AMBIENT, SoundSource.BLOCKS, p_230609_.nextFloat() * 0.25F + 0.75F, p_230609_.nextFloat() + 0.5F, false);
-            }
-        } else if (p_230609_.nextInt(10) == 0) {
-            p_230606_.addParticle(ParticleTypes.UNDERWATER, (double)p_230607_.getX() + p_230609_.nextDouble(), (double)p_230607_.getY() + p_230609_.nextDouble(), (double)p_230607_.getZ() + p_230609_.nextDouble(), 0.0, 0.0, 0.0);
-        }
 
     }
 
@@ -60,7 +54,7 @@ public abstract class AcidFluid extends BaseFlowingFluid {
     }
 
     protected boolean canConvertToSource(Level p_256670_) {
-        return p_256670_.getGameRules().getBoolean(GameRules.RULE_WATER_SOURCE_CONVERSION);
+        return false;
     }
 
     protected void beforeDestroyingBlock(LevelAccessor p_76450_, BlockPos p_76451_, BlockState p_76452_) {
@@ -73,7 +67,7 @@ public abstract class AcidFluid extends BaseFlowingFluid {
     }
 
     public BlockState createLegacyBlock(FluidState p_76466_) {
-        return (BlockState) AetherIIBlocks.ACID.get().defaultBlockState().setValue(LiquidBlock.LEVEL, getLegacyLevel(p_76466_));
+        return AetherIIBlocks.ACID.get().defaultBlockState().setValue(LiquidBlock.LEVEL, getLegacyLevel(p_76466_));
     }
 
     public boolean isSame(Fluid p_76456_) {
@@ -121,11 +115,11 @@ public abstract class AcidFluid extends BaseFlowingFluid {
 
         protected void createFluidStateDefinition(StateDefinition.Builder<Fluid, FluidState> p_76476_) {
             super.createFluidStateDefinition(p_76476_);
-            p_76476_.add(new Property[]{LEVEL});
+            p_76476_.add(LEVEL);
         }
 
         public int getAmount(FluidState p_76480_) {
-            return (Integer)p_76480_.getValue(LEVEL);
+            return p_76480_.getValue(LEVEL);
         }
 
         public boolean isSource(FluidState p_76478_) {
