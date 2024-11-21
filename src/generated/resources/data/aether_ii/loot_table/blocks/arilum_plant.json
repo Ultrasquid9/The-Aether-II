@@ -11,11 +11,11 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "aether_ii:lake_grass"
+          "name": "aether_ii:arilum"
         }
       ],
       "rolls": 1.0
     }
   ],
-  "random_sequence": "aether_ii:blocks/lake_grass_plant"
+  "random_sequence": "aether_ii:blocks/arilum_plant"
 }

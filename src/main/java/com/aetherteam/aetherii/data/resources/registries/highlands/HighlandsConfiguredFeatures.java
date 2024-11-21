@@ -96,9 +96,9 @@ public class HighlandsConfiguredFeatures {
     public static final ResourceKey<ConfiguredFeature<?, ?>> ARCTIC_FLOWER_PATCH = createKey("arctic_flower_patch");
     public static final ResourceKey<ConfiguredFeature<?, ?>> MAGNETIC_SHROOM_PATCH = createKey("magnetic_shroom_patch");
 
-    public static final ResourceKey<ConfiguredFeature<?, ?>> SHORT_LAKE_GRASS = createKey("short_lake_grass");
-    public static final ResourceKey<ConfiguredFeature<?, ?>> LAKE_GRASS = createKey("lake_grass");
-    public static final ResourceKey<ConfiguredFeature<?, ?>> GLOWING_LAKE_GRASS = createKey("glowing_lake_grass");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> SHORT_ARILUM = createKey("short_arilum");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> ARILUM = createKey("arilum");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> BLOOMING_ARILUM = createKey("blooming_arilum");
 
     public static final ResourceKey<ConfiguredFeature<?, ?>> AETHER_GRASS_BONEMEAL = createKey("aether_grass_bonemeal");
 
@@ -653,9 +653,9 @@ public class HighlandsConfiguredFeatures {
         );
         register(context, MAGNETIC_SHROOM_PATCH, Feature.RANDOM_PATCH, FeatureUtils.simplePatchConfiguration(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(SimpleStateProvider.simple(AetherIIBlocks.MAGNETIC_SHROOM.get()))));
 
-        register(context, SHORT_LAKE_GRASS, AetherIIFeatures.LAKE_GRASS.get(), new LakeGrassConfiguration(SimpleStateProvider.simple(AetherIIBlocks.LAKE_GRASS.get()), SimpleStateProvider.simple(AetherIIBlocks.LAKE_GRASS_PLANT.get()), UniformInt.of(0, 2), ConstantInt.of(0)));
-        register(context, LAKE_GRASS, AetherIIFeatures.LAKE_GRASS.get(), new LakeGrassConfiguration(SimpleStateProvider.simple(AetherIIBlocks.LAKE_GRASS.get()), SimpleStateProvider.simple(AetherIIBlocks.LAKE_GRASS_PLANT.get()), UniformInt.of(1, 8), ConstantInt.of(0)));
-        register(context, GLOWING_LAKE_GRASS, AetherIIFeatures.LAKE_GRASS.get(), new LakeGrassConfiguration(SimpleStateProvider.simple(AetherIIBlocks.GLOWING_LAKE_GRASS.get()), SimpleStateProvider.simple(AetherIIBlocks.GLOWING_LAKE_GRASS_PLANT.get()), UniformInt.of(1, 3), UniformInt.of(4, 6)));
+        register(context, SHORT_ARILUM, AetherIIFeatures.ARILUM.get(), new ArilumConfiguration(SimpleStateProvider.simple(AetherIIBlocks.ARILUM.get()), SimpleStateProvider.simple(AetherIIBlocks.ARILUM_PLANT.get()), UniformInt.of(0, 2), ConstantInt.of(0)));
+        register(context, ARILUM, AetherIIFeatures.ARILUM.get(), new ArilumConfiguration(SimpleStateProvider.simple(AetherIIBlocks.ARILUM.get()), SimpleStateProvider.simple(AetherIIBlocks.ARILUM_PLANT.get()), UniformInt.of(1, 8), ConstantInt.of(0)));
+        register(context, BLOOMING_ARILUM, AetherIIFeatures.ARILUM.get(), new ArilumConfiguration(SimpleStateProvider.simple(AetherIIBlocks.BLOOMING_ARILUM.get()), SimpleStateProvider.simple(AetherIIBlocks.BLOOMING_ARILUM_PLANT.get()), UniformInt.of(1, 3), UniformInt.of(4, 6)));
 
         register(context, AETHER_GRASS_BONEMEAL, AetherIIFeatures.AETHER_GRASS.get(), new SimpleBlockConfiguration(new WeightedStateProvider(SimpleWeightedRandomList.<BlockState>builder()
                 .add(AetherIIBlocks.AETHER_SHORT_GRASS.get().defaultBlockState(), 1)

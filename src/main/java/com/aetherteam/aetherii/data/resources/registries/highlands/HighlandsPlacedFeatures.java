@@ -25,7 +25,6 @@ import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.heightproviders.TrapezoidHeight;
 import net.minecraft.world.level.levelgen.heightproviders.UniformHeight;
 import net.minecraft.world.level.levelgen.placement.*;
-import net.minecraft.world.level.material.Fluids;
 
 import java.util.List;
 
@@ -62,9 +61,9 @@ public class HighlandsPlacedFeatures {
     public static final ResourceKey<PlacedFeature> MAGNETIC_SHROOM_PATCH = createKey("magnetic_shroom_patch");
     public static final ResourceKey<PlacedFeature> BONUS_MAGNETIC_SHROOM_PATCH = createKey("bonus_magnetic_shroom_patch");
 
-    public static final ResourceKey<PlacedFeature> SHORT_LAKE_GRASS = createKey("short_lake_grass");
-    public static final ResourceKey<PlacedFeature> LAKE_GRASS = createKey("lake_grass");
-    public static final ResourceKey<PlacedFeature> GLOWING_LAKE_GRASS = createKey("glowing_lake_grass");
+    public static final ResourceKey<PlacedFeature> SHORT_ARILUM = createKey("short_arilum");
+    public static final ResourceKey<PlacedFeature> ARILUM = createKey("arilum");
+    public static final ResourceKey<PlacedFeature> BLOOMING_ARILUM = createKey("blooming_arilum");
 
     public static final ResourceKey<PlacedFeature> AETHER_GRASS_BONEMEAL = createKey("aether_grass_bonemeal");
 
@@ -388,23 +387,23 @@ public class HighlandsPlacedFeatures {
                 PlacementUtils.FULL_RANGE,
                 BiomeFilter.biome());
 
-        register(context, SHORT_LAKE_GRASS, configuredFeatures.getOrThrow(HighlandsConfiguredFeatures.SHORT_LAKE_GRASS),
+        register(context, SHORT_ARILUM, configuredFeatures.getOrThrow(HighlandsConfiguredFeatures.SHORT_ARILUM),
                 PlacementUtils.countExtra(125, 0.2F, 25),
                 InSquarePlacement.spread(),
                 PlacementUtils.HEIGHTMAP_OCEAN_FLOOR,
-                BlockPredicateFilter.forPredicate(BlockPredicate.allOf(BlockPredicate.matchesTag(BlockPos.ZERO.below(), AetherIITags.Blocks.LAKE_GRASS_SURVIVES_ON), BlockPredicate.matchesBlocks(Blocks.WATER))),
+                BlockPredicateFilter.forPredicate(BlockPredicate.allOf(BlockPredicate.matchesTag(BlockPos.ZERO.below(), AetherIITags.Blocks.ARILUM_SURVIVES_ON), BlockPredicate.matchesBlocks(Blocks.WATER))),
                 BiomeFilter.biome());
-        register(context, LAKE_GRASS, configuredFeatures.getOrThrow(HighlandsConfiguredFeatures.LAKE_GRASS),
+        register(context, ARILUM, configuredFeatures.getOrThrow(HighlandsConfiguredFeatures.ARILUM),
                 NoiseBasedCountPlacement.of(175, 10.0, 0.0),
                 InSquarePlacement.spread(),
                 PlacementUtils.HEIGHTMAP_OCEAN_FLOOR,
-                BlockPredicateFilter.forPredicate(BlockPredicate.allOf(BlockPredicate.matchesTag(BlockPos.ZERO.below(), AetherIITags.Blocks.LAKE_GRASS_SURVIVES_ON), BlockPredicate.matchesBlocks(Blocks.WATER))),
+                BlockPredicateFilter.forPredicate(BlockPredicate.allOf(BlockPredicate.matchesTag(BlockPos.ZERO.below(), AetherIITags.Blocks.ARILUM_SURVIVES_ON), BlockPredicate.matchesBlocks(Blocks.WATER))),
                 BiomeFilter.biome());
-        register(context, GLOWING_LAKE_GRASS, configuredFeatures.getOrThrow(HighlandsConfiguredFeatures.GLOWING_LAKE_GRASS),
+        register(context, BLOOMING_ARILUM, configuredFeatures.getOrThrow(HighlandsConfiguredFeatures.BLOOMING_ARILUM),
                 NoiseBasedCountPlacement.of(50, 10.0, 0.5),
                 InSquarePlacement.spread(),
                 PlacementUtils.HEIGHTMAP_OCEAN_FLOOR,
-                BlockPredicateFilter.forPredicate(BlockPredicate.allOf(BlockPredicate.matchesTag(BlockPos.ZERO.below(), AetherIITags.Blocks.LAKE_GRASS_SURVIVES_ON), BlockPredicate.matchesBlocks(Blocks.WATER))),
+                BlockPredicateFilter.forPredicate(BlockPredicate.allOf(BlockPredicate.matchesTag(BlockPos.ZERO.below(), AetherIITags.Blocks.ARILUM_SURVIVES_ON), BlockPredicate.matchesBlocks(Blocks.WATER))),
                 BiomeFilter.biome());
 
         register(context, AETHER_GRASS_BONEMEAL, configuredFeatures.getOrThrow(HighlandsConfiguredFeatures.AETHER_GRASS_BONEMEAL), PlacementUtils.isEmpty());

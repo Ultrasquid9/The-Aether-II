@@ -1,11 +1,11 @@
 {
-  "type": "aether_ii:lake_grass",
+  "type": "aether_ii:arilum",
   "config": {
     "depth": 0,
     "grass_provider": {
       "type": "minecraft:simple_state_provider",
       "state": {
-        "Name": "aether_ii:lake_grass",
+        "Name": "aether_ii:arilum",
         "Properties": {
           "age": "0"
         }
@@ -19,7 +19,7 @@
     "plant_provider": {
       "type": "minecraft:simple_state_provider",
       "state": {
-        "Name": "aether_ii:lake_grass_plant"
+        "Name": "aether_ii:arilum_plant"
       }
     }
   }

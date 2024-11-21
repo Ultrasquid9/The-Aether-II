@@ -2,6 +2,6 @@
   "parent": "minecraft:block/cross",
   "render_type": "minecraft:cutout",
   "textures": {
-    "cross": "aether_ii:block/natural/lake_grass"
+    "cross": "aether_ii:block/natural/blooming_arilum_plant"
   }
 }

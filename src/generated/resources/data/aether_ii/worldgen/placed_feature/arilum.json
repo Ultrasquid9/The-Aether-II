@@ -1,11 +1,11 @@
 {
-  "feature": "aether_ii:glowing_lake_grass",
+  "feature": "aether_ii:arilum",
   "placement": [
     {
       "type": "minecraft:noise_based_count",
       "noise_factor": 10.0,
-      "noise_offset": 0.5,
-      "noise_to_count_ratio": 50
+      "noise_offset": 0.0,
+      "noise_to_count_ratio": 175
     },
     {
       "type": "minecraft:in_square"
@@ -26,7 +26,7 @@
               -1,
               0
             ],
-            "tag": "aether_ii:lake_grass_survives_on"
+            "tag": "aether_ii:arilum_survives_on"
           },
           {
             "type": "minecraft:matching_blocks",

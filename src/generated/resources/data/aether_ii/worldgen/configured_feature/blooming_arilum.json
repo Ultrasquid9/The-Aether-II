@@ -1,5 +1,5 @@
 {
-  "type": "aether_ii:lake_grass",
+  "type": "aether_ii:arilum",
   "config": {
     "depth": {
       "type": "minecraft:uniform",
@@ -9,7 +9,7 @@
     "grass_provider": {
       "type": "minecraft:simple_state_provider",
       "state": {
-        "Name": "aether_ii:glowing_lake_grass",
+        "Name": "aether_ii:blooming_arilum",
         "Properties": {
           "age": "0"
         }
@@ -23,7 +23,7 @@
     "plant_provider": {
       "type": "minecraft:simple_state_provider",
       "state": {
-        "Name": "aether_ii:glowing_lake_grass_plant"
+        "Name": "aether_ii:blooming_arilum_plant"
       }
     }
   }

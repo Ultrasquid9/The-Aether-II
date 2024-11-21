@@ -1,6 +1,6 @@
 package com.aetherteam.aetherii.world.feature;
 
-import com.aetherteam.aetherii.world.feature.configuration.LakeGrassConfiguration;
+import com.aetherteam.aetherii.world.feature.configuration.ArilumConfiguration;
 import com.mojang.serialization.Codec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.util.RandomSource;
@@ -12,13 +12,13 @@ import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.FeaturePlaceContext;
 
-public class LakeGrassFeature extends Feature<LakeGrassConfiguration> {
-    public LakeGrassFeature(Codec<LakeGrassConfiguration> codec) {
+public class ArilumFeature extends Feature<ArilumConfiguration> {
+    public ArilumFeature(Codec<ArilumConfiguration> codec) {
         super(codec);
     }
 
     @Override
-    public boolean place(FeaturePlaceContext<LakeGrassConfiguration> context) {
+    public boolean place(FeaturePlaceContext<ArilumConfiguration> context) {
         int i = 0;
         WorldGenLevel level = context.level();
         BlockPos pos = context.origin();

@@ -231,10 +231,10 @@ public class AetherIIBlockStateData extends AetherIIBlockStateProvider {
         this.brettlPlant(AetherIIBlocks.BRETTL_PLANT_TIP.get());
 
         // Lake
-        this.crossBlock(AetherIIBlocks.LAKE_GRASS.get(), "natural/");
-        this.crossBlock(AetherIIBlocks.LAKE_GRASS_PLANT.get(), "natural/");
-        this.crossBlock(AetherIIBlocks.GLOWING_LAKE_GRASS.get(), "natural/");
-        this.crossBlock(AetherIIBlocks.GLOWING_LAKE_GRASS_PLANT.get(), "natural/");
+        this.crossBlock(AetherIIBlocks.ARILUM.get(), "natural/");
+        this.crossBlock(AetherIIBlocks.ARILUM_PLANT.get(), "natural/");
+        this.crossBlock(AetherIIBlocks.BLOOMING_ARILUM.get(), "natural/");
+        this.crossBlock(AetherIIBlocks.BLOOMING_ARILUM_PLANT.get(), "natural/");
 
         // Ground Decoration
         this.twig(AetherIIBlocks.SKYROOT_TWIG.get(), AetherIIBlocks.SKYROOT_LOG.get());

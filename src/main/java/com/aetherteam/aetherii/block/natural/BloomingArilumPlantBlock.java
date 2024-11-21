@@ -4,13 +4,13 @@ import com.aetherteam.aetherii.block.AetherIIBlocks;
 import net.minecraft.world.level.block.GrowingPlantHeadBlock;
 import net.minecraft.world.level.block.KelpPlantBlock;
 
-public class GlowingLakeGrassPlantBlock extends KelpPlantBlock {
-    public GlowingLakeGrassPlantBlock(Properties properties) {
+public class BloomingArilumPlantBlock extends KelpPlantBlock {
+    public BloomingArilumPlantBlock(Properties properties) {
         super(properties);
     }
 
     @Override
     protected GrowingPlantHeadBlock getHeadBlock() {
-        return (GrowingPlantHeadBlock) AetherIIBlocks.GLOWING_LAKE_GRASS.get();
+        return (GrowingPlantHeadBlock) AetherIIBlocks.BLOOMING_ARILUM.get();
     }
 }

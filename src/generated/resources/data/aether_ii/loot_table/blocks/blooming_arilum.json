@@ -11,11 +11,11 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "aether_ii:glowing_lake_grass"
+          "name": "aether_ii:blooming_arilum"
         }
       ],
       "rolls": 1.0
     }
   ],
-  "random_sequence": "aether_ii:blocks/glowing_lake_grass_plant"
+  "random_sequence": "aether_ii:blocks/blooming_arilum"
 }

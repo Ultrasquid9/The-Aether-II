@@ -1,21 +1,11 @@
 {
-  "feature": "aether_ii:short_lake_grass",
+  "feature": "aether_ii:blooming_arilum",
   "placement": [
     {
-      "type": "minecraft:count",
-      "count": {
-        "type": "minecraft:weighted_list",
-        "distribution": [
-          {
-            "data": 125,
-            "weight": 4
-          },
-          {
-            "data": 150,
-            "weight": 1
-          }
-        ]
-      }
+      "type": "minecraft:noise_based_count",
+      "noise_factor": 10.0,
+      "noise_offset": 0.5,
+      "noise_to_count_ratio": 50
     },
     {
       "type": "minecraft:in_square"
@@ -36,7 +26,7 @@
               -1,
               0
             ],
-            "tag": "aether_ii:lake_grass_survives_on"
+            "tag": "aether_ii:arilum_survives_on"
           },
           {
             "type": "minecraft:matching_blocks",
