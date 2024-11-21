@@ -113,7 +113,7 @@ public class AetherIIClientItemExtensions {
 
             @Override
             public int getTintColor() {
-                return 0xFFFFFF00;
+                return 0xFFFFFFFF;
             }
 
             //            @Override
