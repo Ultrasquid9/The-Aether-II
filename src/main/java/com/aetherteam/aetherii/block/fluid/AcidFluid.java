@@ -45,7 +45,9 @@ public abstract class AcidFluid extends BaseFlowingFluid {
     }
 
     public void animateTick(Level p_230606_, BlockPos p_230607_, FluidState p_230608_, RandomSource p_230609_) {
-
+        if (p_230609_.nextInt(1) == 0) {
+            p_230606_.addParticle(ParticleTypes.BUBBLE_POP, (double)p_230607_.getX() + p_230609_.nextDouble(), (double)p_230607_.getY() + p_230609_.nextDouble(), (double)p_230607_.getZ() + p_230609_.nextDouble(), 0.0, 0.15, 0.0);
+        }
     }
 
     @Nullable
