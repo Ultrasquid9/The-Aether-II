@@ -1,7 +1,6 @@
 package com.aetherteam.aetherii.client;
 
 import com.aetherteam.aetherii.inventory.menu.ArkeniumForgeMenu;
-import com.aetherteam.aetherii.item.AetherIIItems;
 import com.aetherteam.aetherii.item.components.AetherIIDataComponents;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.core.Holder;
