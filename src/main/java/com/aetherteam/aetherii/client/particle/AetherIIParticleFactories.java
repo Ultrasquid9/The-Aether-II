@@ -45,6 +45,7 @@ public class AetherIIParticleFactories {
             return splashParticle;
         });
         event.registerSpriteSet(AetherIIParticleTypes.AMBROSIUM.get(), AmbrosiumParticle.Provider::new);
+        event.registerSpriteSet(AetherIIParticleTypes.ACID.get(), AcidParticle.Provider::new);
 
         event.registerSpriteSet(AetherIIParticleTypes.RAIN.get(), spriteSet -> (particle, level, x, y, z, xSpeed, ySpeed, zSpeed) -> {
             WaterDropParticle rainParticle = new WaterDropParticle(level, x, y, z) {
