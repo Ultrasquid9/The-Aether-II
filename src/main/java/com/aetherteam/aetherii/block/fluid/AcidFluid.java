@@ -33,68 +33,81 @@ public abstract class AcidFluid extends BaseFlowingFluid {
         super(properties);
     }
 
+    @Override
+    public void animateTick(Level level, BlockPos pos, FluidState fluidState, RandomSource random) {
+        level.addParticle(AetherIIParticleTypes.ACID.get(), (double) pos.getX() + random.nextDouble(), (double) pos.getY() + random.nextDouble(), (double) pos.getZ() + random.nextDouble(), 0.0, 0.15, 0.0);
+    }
+
+    @Override
+    public boolean canBeReplacedWith(FluidState fluidState, BlockGetter blockState, BlockPos pos, Fluid fluid, Direction direction) {
+        return direction == Direction.DOWN && !fluid.is(FluidTags.WATER); //todo
+    }
+
+    @Override
+    protected void beforeDestroyingBlock(LevelAccessor level, BlockPos pos, BlockState state) {
+        BlockEntity blockentity = state.hasBlockEntity() ? level.getBlockEntity(pos) : null;
+        Block.dropResources(state, level, pos, blockentity);
+    }
+
+    @Override
+    public BlockState createLegacyBlock(FluidState fluidState) {
+        return AetherIIBlocks.ACID.get().defaultBlockState().setValue(LiquidBlock.LEVEL, getLegacyLevel(fluidState));
+    }
+
+    @Override
+    public boolean isSame(Fluid fluid) {
+        return fluid == AetherIIFluids.ACID.get() || fluid == AetherIIFluids.FLOWING_ACID.get();
+    }
+
+    @Override
     public Fluid getFlowing() {
         return AetherIIFluids.FLOWING_ACID.get();
     }
 
+    @Override
     public Fluid getSource() {
         return AetherIIFluids.ACID.get();
     }
 
+    @Override
     public Item getBucket() {
         return AetherIIItems.ARKENIUM_ACID_CANISTER.get();
     }
 
-    public void animateTick(Level p_230606_, BlockPos p_230607_, FluidState p_230608_, RandomSource p_230609_) {
-        if (p_230609_.nextInt(1) == 0) {
-            p_230606_.addParticle(AetherIIParticleTypes.ACID.get(), (double)p_230607_.getX() + p_230609_.nextDouble(), (double)p_230607_.getY() + p_230609_.nextDouble(), (double)p_230607_.getZ() + p_230609_.nextDouble(), 0.0, 0.15, 0.0);
-        }
-    }
-
     @Nullable
+    @Override
     public ParticleOptions getDripParticle() {
         return ParticleTypes.DRIPPING_WATER;
-    }
+    } //todo
 
-    protected boolean canConvertToSource(Level p_256670_) {
+    @Override
+    public Optional<SoundEvent> getPickupSound() {
+        return Optional.of(SoundEvents.BUCKET_FILL);
+    } //todo
+
+    @Override
+    protected boolean canConvertToSource(Level level) {
         return false;
     }
 
-    protected void beforeDestroyingBlock(LevelAccessor p_76450_, BlockPos p_76451_, BlockState p_76452_) {
-        BlockEntity blockentity = p_76452_.hasBlockEntity() ? p_76450_.getBlockEntity(p_76451_) : null;
-        Block.dropResources(p_76452_, p_76450_, p_76451_, blockentity);
-    }
-
-    public int getSlopeFindDistance(LevelReader p_76464_) {
+    @Override
+    public int getSlopeFindDistance(LevelReader level) {
         return 4;
     }
 
-    public BlockState createLegacyBlock(FluidState p_76466_) {
-        return AetherIIBlocks.ACID.get().defaultBlockState().setValue(LiquidBlock.LEVEL, getLegacyLevel(p_76466_));
-    }
-
-    public boolean isSame(Fluid p_76456_) {
-        return p_76456_ == AetherIIFluids.ACID.get() || p_76456_ == AetherIIFluids.FLOWING_ACID.get();
-    }
-
-    public int getDropOff(LevelReader p_76469_) {
+    @Override
+    public int getDropOff(LevelReader level) {
         return 1;
     }
 
-    public int getTickDelay(LevelReader p_76454_) {
+    @Override
+    public int getTickDelay(LevelReader level) {
         return 5;
     }
 
-    public boolean canBeReplacedWith(FluidState p_76458_, BlockGetter p_76459_, BlockPos p_76460_, Fluid p_76461_, Direction p_76462_) {
-        return p_76462_ == Direction.DOWN && !p_76461_.is(FluidTags.WATER);
-    }
-
+    @Override
     protected float getExplosionResistance() {
         return 100.0F;
-    }
-
-    public Optional<SoundEvent> getPickupSound() {
-        return Optional.of(SoundEvents.BUCKET_FILL);
     }
 
     public static class Source extends AcidFluid {
@@ -102,11 +115,11 @@ public abstract class AcidFluid extends BaseFlowingFluid {
             super(properties);
         }
 
-        public int getAmount(FluidState p_76485_) {
+        public int getAmount(FluidState fluidState) {
             return 8;
         }
 
-        public boolean isSource(FluidState p_76483_) {
+        public boolean isSource(FluidState fluidState) {
             return true;
         }
     }
@@ -116,16 +129,16 @@ public abstract class AcidFluid extends BaseFlowingFluid {
             super(properties);
         }
 
-        protected void createFluidStateDefinition(StateDefinition.Builder<Fluid, FluidState> p_76476_) {
-            super.createFluidStateDefinition(p_76476_);
-            p_76476_.add(LEVEL);
+        protected void createFluidStateDefinition(StateDefinition.Builder<Fluid, FluidState> builder) {
+            super.createFluidStateDefinition(builder);
+            builder.add(LEVEL);
         }
 
-        public int getAmount(FluidState p_76480_) {
-            return p_76480_.getValue(LEVEL);
+        public int getAmount(FluidState fluidState) {
+            return fluidState.getValue(LEVEL);
         }
 
-        public boolean isSource(FluidState p_76478_) {
+        public boolean isSource(FluidState fluidState) {
             return false;
         }
     }
