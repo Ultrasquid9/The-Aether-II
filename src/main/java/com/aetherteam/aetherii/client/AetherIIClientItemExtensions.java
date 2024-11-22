@@ -118,8 +118,8 @@ public class AetherIIClientItemExtensions {
 
         @Override
         public void modifyFogRender(Camera camera, FogRenderer.FogMode mode, float renderDistance, float partialTicks, float nearDistance, float farDistance, FogShape shape) {
-            RenderSystem.setShaderFogStart(0.25F);
-            RenderSystem.setShaderFogEnd(1.0F);
+            RenderSystem.setShaderFogStart(0.0F);
+            RenderSystem.setShaderFogEnd(12.0F);
         }
 
         @Override
