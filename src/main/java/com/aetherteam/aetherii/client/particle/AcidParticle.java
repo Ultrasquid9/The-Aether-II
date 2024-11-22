@@ -13,9 +13,9 @@ public class AcidParticle extends TextureSheetParticle {
         super(level, x, y, z);
         this.setSize(0.02F, 0.02F);
         this.quadSize *= this.random.nextFloat() * 0.6F + 0.2F;
-        this.xd = xSpeed * 0.20000000298023224 + (Math.random() * 2.0 - 1.0) * 0.019999999552965164;
-        this.yd = ySpeed * 0.20000000298023224 + (Math.random() * 2.0 - 1.0) * 0.019999999552965164;
-        this.zd = zSpeed * 0.20000000298023224 + (Math.random() * 2.0 - 1.0) * 0.019999999552965164;
+        this.xd = xSpeed * 0.2 + (Math.random() * 2.0 - 1.0) * 0.02;
+        this.yd = ySpeed * 0.2 + (Math.random() * 2.0 - 1.0) * 0.02;
+        this.zd = zSpeed * 0.2 + (Math.random() * 2.0 - 1.0) * 0.02;
         this.lifetime = 8 + level.getRandom().nextInt(4);
         this.sprites = sprites;
         this.setSpriteFromAge(sprites);
@@ -31,9 +31,9 @@ public class AcidParticle extends TextureSheetParticle {
         } else {
             this.yd += 0.002;
             this.move(this.xd, this.yd, this.zd);
-            this.xd *= 0.8500000238418579;
-            this.yd *= 0.8500000238418579;
-            this.zd *= 0.8500000238418579;
+            this.xd *= 0.85;
+            this.yd *= 0.85;
+            this.zd *= 0.85;
             this.setSpriteFromAge(this.sprites);
         }
     }
