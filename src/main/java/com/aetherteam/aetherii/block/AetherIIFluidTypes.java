@@ -17,7 +17,6 @@ public class AetherIIFluidTypes {
 
     public static final DeferredHolder<FluidType, FluidType> ACID_TYPE = FLUID_TYPES.register("acid", () -> new FluidType(FluidType.Properties.create()
                     .descriptionId("block.aether_ii.acid")
-                    .motionScale(0.01)
                     .canExtinguish(false)
                     .supportsBoating(false)
                     .pathType(PathType.DAMAGE_CAUTIOUS)

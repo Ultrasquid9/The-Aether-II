@@ -10,18 +10,15 @@ import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
 import net.minecraft.tags.FluidTags;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.level.*;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.LiquidBlock;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.Property;
 import net.minecraft.world.level.material.*;
 import net.neoforged.neoforge.fluids.BaseFlowingFluid;
 
@@ -34,12 +31,23 @@ public abstract class AcidFluid extends BaseFlowingFluid {
     }
 
     @Override
+    protected void randomTick(Level level, BlockPos pos, FluidState fluidState, RandomSource random) {
+        Direction randomDirection = Direction.getRandom(random);
+        BlockPos offsetPos = pos.offset(randomDirection.getNormal());
+        BlockState offsetState = level.getBlockState(offsetPos);
+        if (offsetState.is(AetherIIBlocks.UNDERSHALE)) {
+            level.setBlock(offsetPos, AetherIIBlocks.ANGELIC_SHALE.get().defaultBlockState(), 3); //todo fizz particle
+        }
+        super.randomTick(level, pos, fluidState, random);
+    }
+
+    @Override
     public void animateTick(Level level, BlockPos pos, FluidState fluidState, RandomSource random) {
         level.addParticle(AetherIIParticleTypes.ACID.get(), (double) pos.getX() + random.nextDouble(), (double) pos.getY() + random.nextDouble(), (double) pos.getZ() + random.nextDouble(), 0.0, 0.15, 0.0);
     }
 
     @Override
-    public boolean canBeReplacedWith(FluidState fluidState, BlockGetter blockState, BlockPos pos, Fluid fluid, Direction direction) {
+    public boolean canBeReplacedWith(FluidState fluidState, BlockGetter level, BlockPos pos, Fluid fluid, Direction direction) {
         return direction == Direction.DOWN && !fluid.is(FluidTags.WATER); //todo
     }
 
@@ -108,6 +116,11 @@ public abstract class AcidFluid extends BaseFlowingFluid {
     @Override
     protected float getExplosionResistance() {
         return 100.0F;
+    }
+
+    @Override
+    protected boolean isRandomlyTicking() {
+        return true;
     }
 
     public static class Source extends AcidFluid {
