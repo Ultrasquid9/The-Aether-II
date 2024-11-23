@@ -222,6 +222,13 @@ public class AetherIIItems {
     public static final DeferredItem<Item> SCATTERGLASS_VIAL = ITEMS.register("scatterglass_vial", () -> new VialItem(new Item.Properties()));
     public static final DeferredItem<Item> CHARGE_CORE = ITEMS.register("charge_core", () -> new TreasureItem(new Item.Properties()));
 
+    // Irradiated Items
+    public static final DeferredItem<Item> IRRADIATED_ARMOR = ITEMS.register("irradiated_armor", () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> IRRADIATED_SWORD = ITEMS.register("irradiated_sword", () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> IRRADIATED_TOOL = ITEMS.register("irradiated_tool", () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> IRRADIATED_CHUNK = ITEMS.register("irradiated_chunk", () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> IRRADIATED_DUST = ITEMS.register("irradiated_dust", () -> new Item(new Item.Properties())); //todo
+
     // Food
     public static final DeferredItem<Item> BLUEBERRY = ITEMS.register("blueberry", () -> new Item(new Item.Properties().food(AetherIIFoods.BLUEBERRY)));
     public static final DeferredItem<Item> ENCHANTED_BLUEBERRY = ITEMS.register("enchanted_blueberry", () -> new Item(new Item.Properties().food(AetherIIFoods.ENCHANTED_BLUEBERRY)));

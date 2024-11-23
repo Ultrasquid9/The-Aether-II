@@ -28,7 +28,7 @@ public class GasBlock extends HalfTransparentBlock implements LiquidBlockContain
 
     @Override
     protected void neighborChanged(BlockState state, Level level, BlockPos pos, Block neighborBlock, BlockPos neighborPos, boolean movedByPiston) {
-        if (level.getBlockState(neighborPos).is(AetherIIBlocks.AMBROSIUM_TORCH)) {
+        if (level.getBlockState(neighborPos).is(AetherIIBlocks.AMBROSIUM_TORCH)) { //todo
             level.explode(null, pos.getX(), pos.getY(), pos.getZ(), 2.0F, Level.ExplosionInteraction.BLOCK);
             level.destroyBlock(pos, false);
         }

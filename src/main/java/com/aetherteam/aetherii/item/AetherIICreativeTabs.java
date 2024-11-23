@@ -478,6 +478,11 @@ public class AetherIICreativeTabs {
                 output.accept(AetherIIItems.ARKENIUM_ACID_CANISTER.get());
                 output.accept(AetherIIItems.ARKENIUM_GAS_CANISTER.get());
                 output.accept(AetherIIItems.MOA_SADDLE.get());
+                output.accept(AetherIIItems.IRRADIATED_ARMOR.get());
+                output.accept(AetherIIItems.IRRADIATED_SWORD.get());
+                output.accept(AetherIIItems.IRRADIATED_TOOL.get());
+                output.accept(AetherIIItems.IRRADIATED_CHUNK.get());
+                output.accept(AetherIIItems.IRRADIATED_DUST.get());
                 output.accept(AetherIIItems.MUSIC_DISC_AETHER_TUNE.get());
                 output.accept(AetherIIItems.MUSIC_DISC_ASCENDING_DAWN.get());
                 output.accept(AetherIIItems.MUSIC_DISC_AERWHALE.get());

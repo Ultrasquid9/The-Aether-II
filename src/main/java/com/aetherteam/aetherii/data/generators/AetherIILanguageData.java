@@ -632,6 +632,13 @@ public class AetherIILanguageData extends AetherIILanguageProvider {
         this.addItem(AetherIIItems.SCATTERGLASS_VIAL, "Scatterglass Vial");
         this.addItem(AetherIIItems.CHARGE_CORE, "Charge Core");
 
+        // Irradiated Items
+        this.addItem(AetherIIItems.IRRADIATED_ARMOR, "Irradiated Armor");
+        this.addItem(AetherIIItems.IRRADIATED_SWORD, "Irradiated Sword");
+        this.addItem(AetherIIItems.IRRADIATED_TOOL, "Irradiated Tool");
+        this.addItem(AetherIIItems.IRRADIATED_CHUNK, "Irradiated Chunk");
+        this.addItem(AetherIIItems.IRRADIATED_DUST, "Irradiated Dust");
+
         // Food
         this.addItem(AetherIIItems.BLUEBERRY, "Blueberry");
         this.addItem(AetherIIItems.ENCHANTED_BLUEBERRY, "Enchanted Blueberry");

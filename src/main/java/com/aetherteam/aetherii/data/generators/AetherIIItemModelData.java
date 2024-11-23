@@ -134,6 +134,13 @@ public class AetherIIItemModelData extends AetherIIItemModelProvider {
         this.item(AetherIIBlocks.MOA_EGG.get().asItem(), "materials/");
         this.item(AetherIIItems.CHARGE_CORE.get(), "materials/");
 
+        // Irradiated Items
+        this.item(AetherIIItems.IRRADIATED_ARMOR.get(), "miscellaneous/");
+        this.item(AetherIIItems.IRRADIATED_SWORD.get(), "miscellaneous/");
+        this.item(AetherIIItems.IRRADIATED_TOOL.get(), "miscellaneous/");
+        this.item(AetherIIItems.IRRADIATED_CHUNK.get(), "miscellaneous/");
+        this.item(AetherIIItems.IRRADIATED_DUST.get(), "miscellaneous/");
+
         // Food
         this.item(AetherIIItems.BLUEBERRY.get(), "consumables/");
         this.item(AetherIIItems.ENCHANTED_BLUEBERRY.get(), "consumables/");
