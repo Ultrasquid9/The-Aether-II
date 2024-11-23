@@ -5,29 +5,31 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.Mirror;
-import net.minecraft.world.level.block.Rotation;
+import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.block.state.properties.DirectionProperty;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
+import net.minecraft.world.level.material.FluidState;
+import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
-public class RockBlock extends Block {
+public class RockBlock extends Block implements SimpleWaterloggedBlock {
     public static final DirectionProperty FACING = BlockStateProperties.HORIZONTAL_FACING;
     public static final IntegerProperty AMOUNT = AetherIIBlockStateProperties.ROCK_AMOUNT;
+    public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
     protected static final VoxelShape SMALL_SHAPE = Block.box(5.0, 0.0, 5.0, 11.0, 3.0, 11.0);
     protected static final VoxelShape LARGE_SHAPE = Block.box(2.0, 0.0, 2.0, 14.0, 3.0, 14.0);
 
     public RockBlock(Properties properties) {
         super(properties);
-        this.registerDefaultState(this.defaultBlockState().setValue(FACING, Direction.NORTH).setValue(AMOUNT, 1));
+        this.registerDefaultState(this.defaultBlockState().setValue(FACING, Direction.NORTH).setValue(AMOUNT, 1).setValue(WATERLOGGED, false));
     }
 
     @Override
@@ -42,7 +44,15 @@ public class RockBlock extends Block {
 
     @Override
     public BlockState updateShape(BlockState state, Direction direction, BlockState facingState, LevelAccessor level, BlockPos pos, BlockPos facingPos) {
+        if (state.getValue(WATERLOGGED)) {
+            level.scheduleTick(pos, Fluids.WATER, Fluids.WATER.getTickDelay(level));
+        }
         return !state.canSurvive(level, pos) ? Blocks.AIR.defaultBlockState() : super.updateShape(state, direction, facingState, level, pos, facingPos);
+    }
+
+    @Override
+    protected FluidState getFluidState(BlockState state) {
+        return state.getValue(WATERLOGGED) ? Fluids.WATER.getSource(false) : super.getFluidState(state);
     }
 
     @Override
@@ -79,11 +89,17 @@ public class RockBlock extends Block {
     @Override
     public BlockState getStateForPlacement(BlockPlaceContext context) {
         BlockState state = context.getLevel().getBlockState(context.getClickedPos());
-        return state.is(this) ? state.setValue(AMOUNT, Math.min(3, state.getValue(AMOUNT) + 1)) : this.defaultBlockState().setValue(FACING, context.getHorizontalDirection().getOpposite());
+        if (state.is(this)) {
+            return state.cycle(AMOUNT);
+        } else {
+            FluidState fluidstate = context.getLevel().getFluidState(context.getClickedPos());
+            boolean flag = fluidstate.getType() == Fluids.WATER;
+            return this.defaultBlockState().setValue(FACING, context.getHorizontalDirection().getOpposite()).setValue(WATERLOGGED, flag);
+        }
     }
 
     @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
-        builder.add(FACING, AMOUNT);
+        builder.add(FACING, AMOUNT, WATERLOGGED);
     }
 }

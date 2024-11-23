@@ -985,7 +985,7 @@ public abstract class AetherIIBlockStateProvider extends NitrogenBlockStateProvi
     public void twig(Block block, Block log) {
         String blockName = this.name(block);
         ResourceLocation texture = this.texture(this.name(log), "natural/");
-        this.getVariantBuilder(block).forAllStates((state) -> {
+        this.getVariantBuilder(block).forAllStatesExcept((state) -> {
             Direction direction = state.getValue(RockBlock.FACING);
             int twigCount = state.getValue(TwigBlock.AMOUNT);
             int offset = 0;
@@ -1028,7 +1028,7 @@ public abstract class AetherIIBlockStateProvider extends NitrogenBlockStateProvi
                         .end();
             }
             return ConfiguredModel.builder().modelFile(model).rotationY(offset).build();
-        });
+        }, BlockStateProperties.WATERLOGGED);
     }
 
     public void rock(Block block, Block stone) {

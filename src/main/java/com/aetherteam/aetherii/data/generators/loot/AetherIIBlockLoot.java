@@ -243,6 +243,13 @@ public class AetherIIBlockLoot extends AetherIIBlockLootSubProvider {
         this.add(AetherIIBlocks.BRETTL_PLANT.get(), (brettl) -> this.droppingBrettlPlant(brettl, AetherIIItems.BRETTL_CANE.get(), AetherIIItems.BRETTL_GRASS.get()));
         this.add(AetherIIBlocks.BRETTL_PLANT_TIP.get(), (brettl) -> this.droppingBrettlPlantTip(brettl, AetherIIItems.BRETTL_CANE.get(), AetherIIItems.BRETTL_FLOWER.get()));
 
+        // Lake
+        this.dropOther(AetherIIBlocks.ARILUM_SHOOT.get(), AetherIIItems.ARILUM_BULBS.get());
+        this.add(AetherIIBlocks.ARILUM.get(), this::createSilkTouchOrShearsTable);
+        this.add(AetherIIBlocks.ARILUM_PLANT.get(), (plant) -> this.createSilkTouchOrShearsTable(AetherIIBlocks.ARILUM.get()));
+        this.add(AetherIIBlocks.BLOOMING_ARILUM.get(), (plant) -> this.droppingArilumBulbs(plant, AetherIIItems.ARILUM_BULBS.get()));
+        this.add(AetherIIBlocks.BLOOMING_ARILUM_PLANT.get(), (plant) -> this.droppingArilumBulbs(AetherIIBlocks.BLOOMING_ARILUM.get(), AetherIIItems.ARILUM_BULBS.get()));
+
         // Ground Decoration
         this.add(AetherIIBlocks.SKYROOT_TWIG.get(), this::dropTwigs);
         this.add(AetherIIBlocks.HOLYSTONE_ROCK.get(), this::dropRocks);
@@ -487,6 +494,13 @@ public class AetherIIBlockLoot extends AetherIIBlockLootSubProvider {
         this.dropSelf(AetherIIBlocks.ZANITE_BLOCK.get());
         this.dropSelf(AetherIIBlocks.ARKENIUM_BLOCK.get());
         this.dropSelf(AetherIIBlocks.GRAVITITE_BLOCK.get());
+
+        // Arilum Lantern
+        this.dropSelf(AetherIIBlocks.GREEN_ARILUM_LANTERN.get());
+        this.dropSelf(AetherIIBlocks.BLUE_ARILUM_LANTERN.get());
+        this.dropSelf(AetherIIBlocks.PURPLE_ARILUM_LANTERN.get());
+        this.dropSelf(AetherIIBlocks.GOLDEN_ARILUM_LANTERN.get());
+        this.dropSelf(AetherIIBlocks.WHITE_ARILUM_LANTERN.get());
 
         // Utility
         this.dropSelf(AetherIIBlocks.AMBROSIUM_TORCH.get());

@@ -13,7 +13,8 @@
                   "Name": "aether_ii:holystone_rock",
                   "Properties": {
                     "facing": "north",
-                    "rock_amount": "1"
+                    "rock_amount": "1",
+                    "waterlogged": "false"
                   }
                 },
                 "weight": 1
@@ -23,7 +24,8 @@
                   "Name": "aether_ii:holystone_rock",
                   "Properties": {
                     "facing": "north",
-                    "rock_amount": "2"
+                    "rock_amount": "2",
+                    "waterlogged": "false"
                   }
                 },
                 "weight": 2
@@ -33,7 +35,8 @@
                   "Name": "aether_ii:holystone_rock",
                   "Properties": {
                     "facing": "north",
-                    "rock_amount": "3"
+                    "rock_amount": "3",
+                    "waterlogged": "false"
                   }
                 },
                 "weight": 3
@@ -43,7 +46,8 @@
                   "Name": "aether_ii:holystone_rock",
                   "Properties": {
                     "facing": "south",
-                    "rock_amount": "1"
+                    "rock_amount": "1",
+                    "waterlogged": "false"
                   }
                 },
                 "weight": 1
@@ -53,7 +57,8 @@
                   "Name": "aether_ii:holystone_rock",
                   "Properties": {
                     "facing": "south",
-                    "rock_amount": "2"
+                    "rock_amount": "2",
+                    "waterlogged": "false"
                   }
                 },
                 "weight": 2
@@ -63,7 +68,8 @@
                   "Name": "aether_ii:holystone_rock",
                   "Properties": {
                     "facing": "south",
-                    "rock_amount": "3"
+                    "rock_amount": "3",
+                    "waterlogged": "false"
                   }
                 },
                 "weight": 3
@@ -73,7 +79,8 @@
                   "Name": "aether_ii:holystone_rock",
                   "Properties": {
                     "facing": "west",
-                    "rock_amount": "1"
+                    "rock_amount": "1",
+                    "waterlogged": "false"
                   }
                 },
                 "weight": 1
@@ -83,7 +90,8 @@
                   "Name": "aether_ii:holystone_rock",
                   "Properties": {
                     "facing": "west",
-                    "rock_amount": "2"
+                    "rock_amount": "2",
+                    "waterlogged": "false"
                   }
                 },
                 "weight": 2
@@ -93,7 +101,8 @@
                   "Name": "aether_ii:holystone_rock",
                   "Properties": {
                     "facing": "west",
-                    "rock_amount": "3"
+                    "rock_amount": "3",
+                    "waterlogged": "false"
                   }
                 },
                 "weight": 3
@@ -103,7 +112,8 @@
                   "Name": "aether_ii:holystone_rock",
                   "Properties": {
                     "facing": "east",
-                    "rock_amount": "1"
+                    "rock_amount": "1",
+                    "waterlogged": "false"
                   }
                 },
                 "weight": 1
@@ -113,7 +123,8 @@
                   "Name": "aether_ii:holystone_rock",
                   "Properties": {
                     "facing": "east",
-                    "rock_amount": "2"
+                    "rock_amount": "2",
+                    "waterlogged": "false"
                   }
                 },
                 "weight": 2
@@ -123,7 +134,8 @@
                   "Name": "aether_ii:holystone_rock",
                   "Properties": {
                     "facing": "east",
-                    "rock_amount": "3"
+                    "rock_amount": "3",
+                    "waterlogged": "false"
                   }
                 },
                 "weight": 3

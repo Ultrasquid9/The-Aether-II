@@ -602,6 +602,13 @@ public class AetherIIRecipeData extends AetherIIRecipeProvider {
         oreBlockStorageRecipesRecipesWithCustomUnpacking(consumer, RecipeCategory.MISC, AetherIIItems.ARKENIUM_PLATES.get(), RecipeCategory.BUILDING_BLOCKS, AetherIIBlocks.ARKENIUM_BLOCK, "arkenium_plate_from_arkenium_block", "arkenium_plate");
         oreBlockStorageRecipesRecipesWithCustomUnpacking(consumer, RecipeCategory.MISC, AetherIIItems.GRAVITITE_PLATE.get(), RecipeCategory.BUILDING_BLOCKS, AetherIIBlocks.GRAVITITE_BLOCK, "gravitite_plate_from_gravitite_block", "gravitite_plate");
 
+        // Arilum Lantern
+        arilumLantern(consumer, AetherIIBlocks.GREEN_ARILUM_LANTERN, AetherIIItems.GREEN_SWET_GEL);
+        arilumLantern(consumer, AetherIIBlocks.BLUE_ARILUM_LANTERN, AetherIIItems.BLUE_SWET_GEL);
+        arilumLantern(consumer, AetherIIBlocks.PURPLE_ARILUM_LANTERN, AetherIIItems.PURPLE_SWET_GEL);
+        arilumLantern(consumer, AetherIIBlocks.GOLDEN_ARILUM_LANTERN, AetherIIItems.GOLDEN_SWET_GEL);
+        arilumLantern(consumer, AetherIIBlocks.WHITE_ARILUM_LANTERN, AetherIIItems.WHITE_SWET_GEL);
+
         // Utility
         ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, AetherIIBlocks.AMBROSIUM_TORCH.get(), 4)
                 .define('A', AetherIIItems.AMBROSIUM_SHARD.get())

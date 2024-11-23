@@ -304,6 +304,13 @@ public class AetherIIBlocks extends AetherIIBlockBuilders {
     public static final DeferredBlock<Block> BRETTL_PLANT = BLOCKS.register("brettl_plant", () -> new BrettlPlantBlock(BlockBehaviour.Properties.of().noCollission().randomTicks().instabreak().sound(SoundType.GRASS).pushReaction(PushReaction.DESTROY)));
     public static final DeferredBlock<Block> BRETTL_PLANT_TIP = BLOCKS.register("brettl_plant_tip", () -> new BrettlPlantTipBlock(BlockBehaviour.Properties.of().noCollission().randomTicks().instabreak().sound(SoundType.GRASS).pushReaction(PushReaction.DESTROY)));
 
+    // Lake
+    public static final DeferredBlock<Block> ARILUM_SHOOT = BLOCKS.register("arilum_shoot", () -> new ArilumShootBlock(Block.Properties.of().mapColor(MapColor.WATER).noCollission().randomTicks().instabreak().sound(SoundType.WET_GRASS).pushReaction(PushReaction.DESTROY)));
+    public static final DeferredBlock<Block> ARILUM = register("arilum", () -> new ArilumBlock(Block.Properties.of().mapColor(MapColor.WATER).noCollission().randomTicks().instabreak().sound(SoundType.WET_GRASS).pushReaction(PushReaction.DESTROY)));
+    public static final DeferredBlock<Block> ARILUM_PLANT = register("arilum_plant", () -> new ArilumPlantBlock(Block.Properties.of().mapColor(MapColor.WATER).noCollission().randomTicks().instabreak().sound(SoundType.WET_GRASS).pushReaction(PushReaction.DESTROY)));
+    public static final DeferredBlock<Block> BLOOMING_ARILUM = register("blooming_arilum", () -> new BloomingArilumBlock(Block.Properties.of().mapColor(MapColor.WATER).noCollission().randomTicks().instabreak().sound(SoundType.WET_GRASS).pushReaction(PushReaction.DESTROY).lightLevel((block) -> 5)));
+    public static final DeferredBlock<Block> BLOOMING_ARILUM_PLANT = register("blooming_arilum_plant", () -> new BloomingArilumPlantBlock(Block.Properties.of().mapColor(MapColor.WATER).noCollission().randomTicks().instabreak().sound(SoundType.WET_GRASS).pushReaction(PushReaction.DESTROY).lightLevel((block) -> 5)));
+
     // Ground Decoration
     public static final DeferredBlock<Block> SKYROOT_TWIG = register("skyroot_twig", () -> new TwigBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BROWN).noOcclusion().noCollission().instabreak().sound(SoundType.WOOD).pushReaction(PushReaction.DESTROY)));
     public static final DeferredBlock<Block> HOLYSTONE_ROCK = register("holystone_rock", () -> new RockBlock(BlockBehaviour.Properties.of().mapColor(MapColor.WOOL).noOcclusion().noCollission().instabreak().sound(SoundType.STONE).pushReaction(PushReaction.DESTROY)));
@@ -548,6 +555,14 @@ public class AetherIIBlocks extends AetherIIBlockBuilders {
     public static final DeferredBlock<Block> ZANITE_BLOCK = register("zanite_block", () -> new Block(Block.Properties.of().mapColor(MapColor.COLOR_PURPLE).instrument(NoteBlockInstrument.BIT).strength(5.0F, 6.0F).requiresCorrectToolForDrops().sound(SoundType.METAL)));
     public static final DeferredBlock<Block> ARKENIUM_BLOCK = register("arkenium_block", () -> new Block(Block.Properties.of().mapColor(MapColor.METAL).instrument(NoteBlockInstrument.PLING).strength(5.0F, 6.0F).requiresCorrectToolForDrops().sound(SoundType.METAL)));
     public static final DeferredBlock<Block> GRAVITITE_BLOCK = register("gravitite_block", () -> new Block(Block.Properties.of().mapColor(MapColor.COLOR_PINK).instrument(NoteBlockInstrument.PLING).strength(5.0F, 6.0F).requiresCorrectToolForDrops().sound(SoundType.METAL)));
+
+    // Arilum Lantern
+    public static final DeferredBlock<Block> GREEN_ARILUM_LANTERN = register("green_arilum_lantern", () -> new Block(Block.Properties.of().mapColor(MapColor.COLOR_LIGHT_GREEN).friction(0.8F).sound(SoundType.SLIME_BLOCK).lightLevel((state) -> 15)));
+    public static final DeferredBlock<Block> BLUE_ARILUM_LANTERN = register("blue_arilum_lantern", () -> new Block(Block.Properties.of().mapColor(MapColor.COLOR_LIGHT_BLUE).friction(0.8F).sound(SoundType.SLIME_BLOCK).lightLevel((state) -> 15)));
+    public static final DeferredBlock<Block> PURPLE_ARILUM_LANTERN = register("purple_arilum_lantern", () -> new Block(Block.Properties.of().mapColor(MapColor.COLOR_MAGENTA).friction(0.8F).sound(SoundType.SLIME_BLOCK).lightLevel((state) -> 15)));
+    public static final DeferredBlock<Block> GOLDEN_ARILUM_LANTERN = register("golden_arilum_lantern", () -> new Block(Block.Properties.of().mapColor(MapColor.COLOR_YELLOW).friction(0.8F).sound(SoundType.SLIME_BLOCK).lightLevel((state) -> 15)));
+    public static final DeferredBlock<Block> WHITE_ARILUM_LANTERN = register("white_arilum_lantern", () -> new Block(Block.Properties.of().mapColor(MapColor.COLOR_LIGHT_GRAY).friction(0.8F).sound(SoundType.SLIME_BLOCK).lightLevel((state) -> 15)));
+
 
     // Utility
     public static final DeferredBlock<Block> AMBROSIUM_TORCH = register("ambrosium_torch", () -> new AmbrosiumTorchBlock(Block.Properties.ofFullCopy(Blocks.TORCH)));

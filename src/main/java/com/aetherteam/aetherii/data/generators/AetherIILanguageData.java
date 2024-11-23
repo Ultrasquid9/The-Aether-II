@@ -231,6 +231,13 @@ public class AetherIILanguageData extends AetherIILanguageProvider {
         this.addBlock(AetherIIBlocks.BRETTL_PLANT, "Brettl Plant");
         this.addBlock(AetherIIBlocks.BRETTL_PLANT_TIP, "Brettl Plant Tip");
 
+        // Lake
+        this.addBlock(AetherIIBlocks.ARILUM_SHOOT, "Arilum");
+        this.addBlock(AetherIIBlocks.ARILUM, "Arilum");
+        this.addBlock(AetherIIBlocks.ARILUM_PLANT, "Arilum");
+        this.addBlock(AetherIIBlocks.BLOOMING_ARILUM, "Blooming Arilum");
+        this.addBlock(AetherIIBlocks.BLOOMING_ARILUM_PLANT, "Blooming Arilum");
+
         // Ground Decoration
         this.addBlock(AetherIIBlocks.SKYROOT_TWIG, "Skyroot Twig");
         this.addBlock(AetherIIBlocks.HOLYSTONE_ROCK, "Holystone Rock");
@@ -476,6 +483,13 @@ public class AetherIILanguageData extends AetherIILanguageProvider {
         this.addBlock(AetherIIBlocks.ARKENIUM_BLOCK, "Block of Arkenium");
         this.addBlock(AetherIIBlocks.GRAVITITE_BLOCK, "Block of Gravitite");
 
+        // Arilum Lantern
+        this.addBlock(AetherIIBlocks.GREEN_ARILUM_LANTERN, "Green Arilum Lantern");
+        this.addBlock(AetherIIBlocks.BLUE_ARILUM_LANTERN, "Blue Arilum Lantern");
+        this.addBlock(AetherIIBlocks.PURPLE_ARILUM_LANTERN, "Purple Arilum Lantern");
+        this.addBlock(AetherIIBlocks.GOLDEN_ARILUM_LANTERN, "Golden Arilum Lantern");
+        this.addBlock(AetherIIBlocks.WHITE_ARILUM_LANTERN, "White Arilum Lantern");
+
         // Utility
         this.addBlock(AetherIIBlocks.AMBROSIUM_TORCH, "Ambrosium Torch");
         this.addBlock(AetherIIBlocks.SKYROOT_CRAFTING_TABLE, "Skyroot Crafting Table");
@@ -622,6 +636,7 @@ public class AetherIILanguageData extends AetherIILanguageProvider {
         this.addItem(AetherIIItems.BRETTL_ROPE, "Brettl Rope");
         this.addItem(AetherIIItems.BRETTL_FLOWER, "Brettl Flower");
         this.addItem(AetherIIItems.AECHOR_PETAL, "Aechor Petal");
+        this.addItem(AetherIIItems.ARILUM_BULBS, "Arilum Bulbs");
         this.addItem(AetherIIItems.ARCTIC_SNOWBALL, "Arctic Snowball");
         this.addItem(AetherIIItems.GREEN_SWET_GEL, "Green Swet Gel");
         this.addItem(AetherIIItems.BLUE_SWET_GEL, "Blue Swet Gel");
