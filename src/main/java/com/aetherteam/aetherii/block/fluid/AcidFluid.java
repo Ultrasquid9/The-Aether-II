@@ -1,5 +1,6 @@
 package com.aetherteam.aetherii.block.fluid;
 
+import com.aetherteam.aetherii.AetherIITags;
 import com.aetherteam.aetherii.block.AetherIIBlocks;
 import com.aetherteam.aetherii.block.AetherIIFluids;
 import com.aetherteam.aetherii.client.particle.AetherIIParticleTypes;
@@ -13,6 +14,7 @@ import net.minecraft.sounds.SoundEvents;
 import net.minecraft.tags.FluidTags;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.*;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.LiquidBlock;
@@ -25,7 +27,7 @@ import net.neoforged.neoforge.fluids.BaseFlowingFluid;
 import javax.annotation.Nullable;
 import java.util.Optional;
 
-public abstract class AcidFluid extends BaseFlowingFluid {
+public abstract class AcidFluid extends BaseFlowingFluid implements CanisterFluid {
     public AcidFluid(Properties properties) {
         super(properties);
     }
@@ -35,9 +37,19 @@ public abstract class AcidFluid extends BaseFlowingFluid {
         Direction randomDirection = Direction.getRandom(random);
         BlockPos offsetPos = pos.offset(randomDirection.getNormal());
         BlockState offsetState = level.getBlockState(offsetPos);
-        if (offsetState.is(AetherIIBlocks.UNDERSHALE)) {
+        if (offsetState.is(AetherIIBlocks.UNDERSHALE)) { //todo recipe system
             level.setBlock(offsetPos, AetherIIBlocks.ANGELIC_SHALE.get().defaultBlockState(), 3); //todo fizz particle
         }
+        if (fluidState.isSource()) {
+            BlockPos belowPos = pos.below();
+            BlockState belowState = level.getBlockState(belowPos);
+            if (!belowState.is(AetherIITags.Blocks.ACID_RESISTANT_BLOCK)) { //todo probably only need one of these in the end
+                if (belowState.is(AetherIITags.Blocks.ACID_DESTROYS_BLOCK)) {
+                    level.destroyBlock(belowPos, true);
+                }
+            }
+        }
+        //todo item damaging
         super.randomTick(level, pos, fluidState, random);
     }
 
@@ -79,6 +91,11 @@ public abstract class AcidFluid extends BaseFlowingFluid {
 
     @Override
     public Item getBucket() {
+        return ItemStack.EMPTY.getItem();
+    }
+
+    @Override
+    public Item getCanister() {
         return AetherIIItems.ARKENIUM_ACID_CANISTER.get();
     }
 
@@ -105,7 +122,7 @@ public abstract class AcidFluid extends BaseFlowingFluid {
 
     @Override
     public int getDropOff(LevelReader level) {
-        return 1;
+        return 3;
     }
 
     @Override

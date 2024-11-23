@@ -2,6 +2,7 @@ package com.aetherteam.aetherii.item;
 
 import com.aetherteam.aetherii.AetherII;
 import com.aetherteam.aetherii.block.AetherIIBlocks;
+import com.aetherteam.aetherii.block.AetherIIFluids;
 import com.aetherteam.aetherii.data.resources.registries.AetherIIJukeboxSongs;
 import com.aetherteam.aetherii.effect.AetherIIEffects;
 import com.aetherteam.aetherii.entity.AetherIIEntityTypes;
@@ -62,10 +63,7 @@ import com.aetherteam.aetherii.item.equipment.weapons.zanite.ZaniteShortswordIte
 import com.aetherteam.aetherii.item.equipment.weapons.zanite.ZaniteSpearItem;
 import com.aetherteam.aetherii.item.materials.*;
 import com.aetherteam.aetherii.item.miscellaneous.*;
-import com.aetherteam.aetherii.item.miscellaneous.bucket.SkyrootBucketItem;
-import com.aetherteam.aetherii.item.miscellaneous.bucket.SkyrootMilkBucketItem;
-import com.aetherteam.aetherii.item.miscellaneous.bucket.SkyrootMobBucketItem;
-import com.aetherteam.aetherii.item.miscellaneous.bucket.SkyrootSolidBucketItem;
+import com.aetherteam.aetherii.item.miscellaneous.bucket.*;
 import io.wispforest.accessories.api.AccessoriesAPI;
 import io.wispforest.accessories.api.Accessory;
 import net.minecraft.core.component.DataComponents;
@@ -267,8 +265,9 @@ public class AetherIIItems {
     public static final DeferredItem<Item> SKYROOT_TADPOLE_BUCKET = ITEMS.register("skyroot_tadpole_bucket", () -> new SkyrootMobBucketItem(EntityType.TADPOLE, Fluids.WATER, SoundEvents.BUCKET_EMPTY_TADPOLE, new Item.Properties().craftRemainder(SKYROOT_BUCKET.get()).stacksTo(1)));
 
     // Arkenium Canisters
-    public static final DeferredItem<Item> ARKENIUM_CANISTER = ITEMS.register("arkenium_canister", () -> new Item(new Item.Properties().stacksTo(16)));
-    public static final DeferredItem<Item> ARKENIUM_ACID_CANISTER = ITEMS.register("arkenium_acid_canister", () -> new Item(new Item.Properties().stacksTo(1)));
+    public static final DeferredItem<Item> ARKENIUM_CANISTER = ITEMS.register("arkenium_canister", () -> new ArkeniumCanisterItem(Fluids.EMPTY, new Item.Properties().stacksTo(16)));
+    public static final DeferredItem<Item> ARKENIUM_ACID_CANISTER = ITEMS.register("arkenium_acid_canister", () -> new ArkeniumCanisterItem(AetherIIFluids.ACID.get(), new Item.Properties().stacksTo(1)));
+    public static final DeferredItem<Item> ARKENIUM_GAS_CANISTER = ITEMS.register("arkenium_gas_canister", () -> new SolidCanisterItem(AetherIIBlocks.GAS.get(), SoundEvents.BUCKET_EMPTY_POWDER_SNOW, new Item.Properties().stacksTo(1))); //todo
 
     // Music Discs
     public static final DeferredItem<Item> MUSIC_DISC_AETHER_TUNE = ITEMS.register("music_disc_aether_tune", () -> new Item(new Item.Properties().stacksTo(1).rarity(Rarity.RARE).jukeboxPlayable(AetherIIJukeboxSongs.AETHER_TUNE)));

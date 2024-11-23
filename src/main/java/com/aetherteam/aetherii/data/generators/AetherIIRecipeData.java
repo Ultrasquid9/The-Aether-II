@@ -836,6 +836,13 @@ public class AetherIIRecipeData extends AetherIIRecipeProvider {
                 .pattern(" # ")
                 .unlockedBy("has_planks", has(AetherIITags.Items.CRAFTS_SKYROOT_TOOLS))
                 .save(consumer);
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, AetherIIItems.ARKENIUM_CANISTER.get(), 1)
+                .define('#', AetherIITags.Items.PLATES_ARKENIUM)
+                .define('S', AetherIIBlocks.SCATTERGLASS.get())
+                .pattern("#S#")
+                .pattern("#S#")
+                .unlockedBy("has_arkenium", has(AetherIITags.Items.PLATES_ARKENIUM))
+                .save(consumer);
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, AetherIIItems.SCATTERGLASS_SHARD.get(), 4)
                 .requires(AetherIIBlocks.CRUDE_SCATTERGLASS)
                 .unlockedBy("has_scatterglass", has(AetherIIBlocks.CRUDE_SCATTERGLASS))

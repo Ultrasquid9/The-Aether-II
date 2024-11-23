@@ -677,6 +677,7 @@ public class AetherIILanguageData extends AetherIILanguageProvider {
         // Arkenium Canisters
         this.addItem(AetherIIItems.ARKENIUM_CANISTER, "Arkenium Canister");
         this.addItem(AetherIIItems.ARKENIUM_ACID_CANISTER, "Arkenium Acid Canister");
+        this.addItem(AetherIIItems.ARKENIUM_GAS_CANISTER, "Arkenium Gas Canister");
 
         // Music Discs
         this.addItem(AetherIIItems.MUSIC_DISC_AETHER_TUNE, "Blue Music Disc");

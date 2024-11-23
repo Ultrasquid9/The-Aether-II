@@ -290,6 +290,7 @@ public class AetherIIItemTagData extends ItemTagsProvider {
                 AetherIIBlocks.IRRADIATED_GREATOAK_LEAVES.asItem(),
                 AetherIIBlocks.IRRADIATED_GREATBOA_LEAVES.asItem()
         );
+        this.tag(AetherIITags.Items.ACID_RESISTANT_ITEM).add(AetherIIBlocks.ARKENIUM_BLOCK.asItem());
 
         // Vanilla
         this.tag(ItemTags.WOOL).add(

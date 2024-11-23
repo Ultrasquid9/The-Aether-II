@@ -32,6 +32,7 @@ public class AetherIIBlockStateData extends AetherIIBlockStateProvider {
         this.translucentBlock(AetherIIBlocks.CRUDE_SCATTERGLASS.get(), "natural/");
         this.roots(AetherIIBlocks.SKY_ROOTS.get());
         this.block(AetherIIBlocks.ANGELIC_SHALE.get(), "natural/");
+        this.translucentInterior(AetherIIBlocks.GAS.get(), "natural/");
 
         // Highfields
         this.block(AetherIIBlocks.QUICKSOIL.get(), "natural/");
@@ -85,12 +86,12 @@ public class AetherIIBlockStateData extends AetherIIBlockStateProvider {
         this.corroboniteCluster(AetherIIBlocks.CORROBONITE_CLUSTER.get());
 
         // Aerclouds
-        this.aercloudAll(AetherIIBlocks.COLD_AERCLOUD.get(), "natural/");
-        this.aercloudAll(AetherIIBlocks.BLUE_AERCLOUD.get(), "natural/");
-        this.aercloudAll(AetherIIBlocks.GOLDEN_AERCLOUD.get(), "natural/");
-        this.aercloudAll(AetherIIBlocks.GREEN_AERCLOUD.get(), "natural/");
+        this.translucentInterior(AetherIIBlocks.COLD_AERCLOUD.get(), "natural/");
+        this.translucentInterior(AetherIIBlocks.BLUE_AERCLOUD.get(), "natural/");
+        this.translucentInterior(AetherIIBlocks.GOLDEN_AERCLOUD.get(), "natural/");
+        this.translucentInterior(AetherIIBlocks.GREEN_AERCLOUD.get(), "natural/");
         this.purpleAercloud(AetherIIBlocks.PURPLE_AERCLOUD.get());
-        this.aercloudAll(AetherIIBlocks.STORM_AERCLOUD.get(), "natural/");
+        this.translucentInterior(AetherIIBlocks.STORM_AERCLOUD.get(), "natural/");
 
         // Moa Nest
         this.block(AetherIIBlocks.WOVEN_SKYROOT_STICKS.get(), "natural/");

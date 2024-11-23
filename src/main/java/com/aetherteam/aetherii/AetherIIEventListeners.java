@@ -28,6 +28,7 @@ import net.minecraft.world.level.portal.DimensionTransition;
 import net.neoforged.bus.api.EventPriority;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.common.ItemAbility;
+import net.neoforged.neoforge.event.entity.living.LivingBreatheEvent;
 import net.neoforged.neoforge.event.entity.living.LivingDamageEvent;
 import net.neoforged.neoforge.event.entity.living.LivingEntityUseItemEvent;
 import net.neoforged.neoforge.event.entity.living.LivingShieldBlockEvent;
@@ -69,6 +70,7 @@ public class AetherIIEventListeners {
         bus.addListener(AetherIIEventListeners::onModifyBlock);
         bus.addListener(AetherIIEventListeners::onAlterGround);
         bus.addListener(AetherIIEventListeners::onBlockFreeze);
+        bus.addListener(AetherIIEventListeners::onBreatheInBlock);
 
         // Item
         bus.addListener(EventPriority.LOW, AetherIIEventListeners::onTooltipCreationLowPriority);
@@ -265,6 +267,13 @@ public class AetherIIEventListeners {
 
         if (cancelled) {
             event.setCanceled(true);
+        }
+    }
+
+    public static void onBreatheInBlock(LivingBreatheEvent event) {
+        LivingEntity entity = event.getEntity();
+        if (!BlockHooks.canBreathe(entity)) {
+            event.setCanBreathe(false);
         }
     }
 

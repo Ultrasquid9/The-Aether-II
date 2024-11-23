@@ -503,19 +503,19 @@ public abstract class AetherIIBlockStateProvider extends NitrogenBlockStateProvi
         }, BlockStateProperties.WATERLOGGED);
     }
 
-    public void aercloudAll(Block block, String location) {
+    public void translucentInterior(Block block, String location) {
         ResourceLocation texture = this.texture(this.name(block), location);
-        this.aercloud(block, texture, texture, texture, texture, texture, texture, texture, texture, texture, texture, texture, texture, texture);
+        this.translucentInterior(block, texture, texture, texture, texture, texture, texture, texture, texture, texture, texture, texture, texture, texture);
     }
 
-    public void aercloud(Block block,
-                         ResourceLocation upInside, ResourceLocation upOutside,
-                         ResourceLocation downOutside, ResourceLocation downInside,
-                         ResourceLocation northOutside, ResourceLocation northInside,
-                         ResourceLocation southInside, ResourceLocation southOutside,
-                         ResourceLocation westOutside, ResourceLocation westInside,
-                         ResourceLocation eastInside, ResourceLocation eastOutside,
-                         ResourceLocation particle) {
+    public void translucentInterior(Block block,
+                                    ResourceLocation upInside, ResourceLocation upOutside,
+                                    ResourceLocation downOutside, ResourceLocation downInside,
+                                    ResourceLocation northOutside, ResourceLocation northInside,
+                                    ResourceLocation southInside, ResourceLocation southOutside,
+                                    ResourceLocation westOutside, ResourceLocation westInside,
+                                    ResourceLocation eastInside, ResourceLocation eastOutside,
+                                    ResourceLocation particle) {
         ModelFile model = this.models().withExistingParent(this.name(block), this.mcLoc("block/block"))
                 .texture("up_inside", upInside)
                 .texture("up_outside", upOutside)

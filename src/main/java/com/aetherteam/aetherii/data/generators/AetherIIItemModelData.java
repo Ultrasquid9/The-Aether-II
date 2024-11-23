@@ -179,6 +179,7 @@ public class AetherIIItemModelData extends AetherIIItemModelProvider {
         // Arkenium Canisters
         this.item(AetherIIItems.ARKENIUM_CANISTER.get(), "miscellaneous/");
         this.item(AetherIIItems.ARKENIUM_ACID_CANISTER.get(), "miscellaneous/");
+        this.item(AetherIIItems.ARKENIUM_GAS_CANISTER.get(), "miscellaneous/");
 
         // Music Discs
         this.item(AetherIIItems.MUSIC_DISC_AETHER_TUNE.get(), "miscellaneous/");
