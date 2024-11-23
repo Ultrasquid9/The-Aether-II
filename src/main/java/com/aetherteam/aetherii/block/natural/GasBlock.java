@@ -20,7 +20,6 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.Optional;
-import java.util.function.BiConsumer;
 
 public class GasBlock extends HalfTransparentBlock implements LiquidBlockContainer, CanisterPickup {
     public GasBlock(Properties properties) {
@@ -29,17 +28,16 @@ public class GasBlock extends HalfTransparentBlock implements LiquidBlockContain
 
     @Override
     protected void neighborChanged(BlockState state, Level level, BlockPos pos, Block neighborBlock, BlockPos neighborPos, boolean movedByPiston) {
-        if (neighborBlock.defaultBlockState().is(AetherIIBlocks.AMBROSIUM_TORCH)) { //todo
-            level.explode(null, pos.getX(), pos.getY(), pos.getZ(), 2, Level.ExplosionInteraction.NONE);
+        if (level.getBlockState(neighborPos).is(AetherIIBlocks.AMBROSIUM_TORCH)) {
+            level.explode(null, pos.getX(), pos.getY(), pos.getZ(), 2.0F, Level.ExplosionInteraction.BLOCK);
             level.destroyBlock(pos, false);
         }
         super.neighborChanged(state, level, pos, neighborBlock, neighborPos, movedByPiston);
     }
 
     @Override
-    protected void onExplosionHit(BlockState state, Level level, BlockPos pos, Explosion explosion, BiConsumer<ItemStack, BlockPos> dropConsumer) {
-        level.explode(null, pos.getX(), pos.getY(), pos.getZ(), 2, Level.ExplosionInteraction.NONE);
-        super.onExplosionHit(state, level, pos, explosion, dropConsumer);
+    public void wasExploded(Level level, BlockPos pos, Explosion explosion) {
+        level.explode(null, pos.getX(), pos.getY(), pos.getZ(), 2.0F, Level.ExplosionInteraction.BLOCK);
     }
 
     @Override
