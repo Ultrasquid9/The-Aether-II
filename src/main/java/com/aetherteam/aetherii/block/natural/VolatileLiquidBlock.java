@@ -5,6 +5,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.LiquidBlock;
@@ -17,6 +18,11 @@ import java.util.Optional;
 public class VolatileLiquidBlock extends LiquidBlock implements CanisterPickup {
     public VolatileLiquidBlock(FlowingFluid fluid, Properties properties) {
         super(fluid, properties);
+    }
+
+    @Override
+    protected void onPlace(BlockState state, Level level, BlockPos pos, BlockState oldState, boolean isMoving) {
+        level.scheduleTick(pos, state.getFluidState().getType(), this.fluid.getTickDelay(level));
     }
 
     @Override

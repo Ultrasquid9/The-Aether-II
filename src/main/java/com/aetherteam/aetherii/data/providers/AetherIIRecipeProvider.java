@@ -5,6 +5,7 @@ import com.aetherteam.aetherii.block.AetherIIBlocks;
 import com.aetherteam.aetherii.item.AetherIIItems;
 import com.aetherteam.aetherii.recipe.builder.AltarEnchantingRecipeBuilder;
 import com.aetherteam.aetherii.recipe.builder.BiomeParameterRecipeBuilder;
+import com.aetherteam.aetherii.recipe.recipes.block.AcidCorrosionRecipe;
 import com.aetherteam.aetherii.recipe.recipes.block.AmbrosiumRecipe;
 import com.aetherteam.aetherii.recipe.recipes.block.IcestoneFreezableRecipe;
 import com.aetherteam.aetherii.recipe.recipes.block.SwetGelRecipe;
@@ -243,5 +244,9 @@ public abstract class AetherIIRecipeProvider extends NitrogenRecipeProvider {
 
     protected BiomeParameterRecipeBuilder icestoneFreezableTag(Block result, Block ingredient, TagKey<Biome> tagKey) {
         return BiomeParameterRecipeBuilder.recipe(BlockStateIngredient.of(ingredient), result, tagKey, IcestoneFreezableRecipe::new);
+    }
+
+    protected BlockStateRecipeBuilder acidCorrosion(Block result, Block ingredient) {
+        return BlockStateRecipeBuilder.recipe(BlockStateIngredient.of(ingredient), result, AcidCorrosionRecipe::new);
     }
 }

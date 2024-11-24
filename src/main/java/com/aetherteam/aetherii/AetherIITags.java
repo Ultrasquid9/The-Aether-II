@@ -35,8 +35,9 @@ public class AetherIITags {
         public static final TagKey<Block> AGIOSITE_DECORATIVE_BLOCKS = tag("agiosite_decorative_blocks");
         public static final TagKey<Block> ICESTONE_DECORATIVE_BLOCKS = tag("icestone_decorative_blocks");
         public static final TagKey<Block> ALLOWED_BUCKET_PICKUP = tag("allowed_bucket_pickup");
-        public static final TagKey<Block> ACID_DESTROYS_BLOCK = tag("acid_destroys_block");
-        public static final TagKey<Block> ACID_RESISTANT_BLOCK = tag("acid_resistant_block");
+        public static final TagKey<Block> ACID_INSTANTLY_DESTROYS = tag("acid_instantly_destroys");
+        public static final TagKey<Block> ACID_QUICKLY_DESTROYS = tag("acid_quickly_destroys");
+        public static final TagKey<Block> ACID_SLOWLY_DESTROYS = tag("acid_slowly_destroys");
         public static final TagKey<Block> TRIGGERS_GAS = tag("triggers_gas");
 
         public static final TagKey<Block> AETHER_PLANT_SURVIVES_ON = tag("aether_plant_survives_on");
@@ -175,6 +176,8 @@ public class AetherIITags {
     }
 
     public static class Fluids {
+        public static final TagKey<Fluid> ACID = tag("acid");
+
         public static final TagKey<Fluid> ALLOWED_BUCKET_PICKUP = tag("allowed_bucket_pickup");
 
         private static TagKey<Fluid> tag(String name) {

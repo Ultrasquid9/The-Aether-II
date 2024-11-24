@@ -1,6 +1,7 @@
 package com.aetherteam.aetherii.recipe.recipes;
 
 import com.aetherteam.aetherii.AetherII;
+import com.aetherteam.aetherii.recipe.recipes.block.AcidCorrosionRecipe;
 import com.aetherteam.aetherii.recipe.recipes.block.AmbrosiumRecipe;
 import com.aetherteam.aetherii.recipe.recipes.block.IcestoneFreezableRecipe;
 import com.aetherteam.aetherii.recipe.recipes.block.SwetGelRecipe;
@@ -15,6 +16,7 @@ public class AetherIIRecipeTypes {
     public static final DeferredRegister<RecipeType<?>> RECIPE_TYPES = DeferredRegister.create(BuiltInRegistries.RECIPE_TYPE, AetherII.MODID);
 
     public static final DeferredHolder<RecipeType<?>, RecipeType<AmbrosiumRecipe>> AMBROSIUM_ENCHANTING = RECIPE_TYPES.register("ambrosium_enchanting", () -> RecipeType.simple(ResourceLocation.fromNamespaceAndPath(AetherII.MODID, "ambrosium_enchanting")));
+    public static final DeferredHolder<RecipeType<?>, RecipeType<AcidCorrosionRecipe>> ACID_CORROSION = RECIPE_TYPES.register("acid_corrosion", () -> RecipeType.simple(ResourceLocation.fromNamespaceAndPath(AetherII.MODID, "acid_corrosion")));
     public static final DeferredHolder<RecipeType<?>, RecipeType<SwetGelRecipe>> SWET_GEL_CONVERSION = RECIPE_TYPES.register("swet_gel_conversion", () -> RecipeType.simple(ResourceLocation.fromNamespaceAndPath(AetherII.MODID, "swet_gel_conversion")));
     public static final DeferredHolder<RecipeType<?>, RecipeType<IcestoneFreezableRecipe>> ICESTONE_FREEZABLE = RECIPE_TYPES.register("icestone_freezable", () -> RecipeType.simple(ResourceLocation.fromNamespaceAndPath(AetherII.MODID, "icestone_freezable")));
 

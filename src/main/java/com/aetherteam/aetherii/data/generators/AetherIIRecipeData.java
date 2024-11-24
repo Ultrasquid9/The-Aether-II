@@ -1099,5 +1099,7 @@ public class AetherIIRecipeData extends AetherIIRecipeProvider {
         this.altarRepairing(RecipeCategory.COMBAT, AetherIIItems.GRAVITITE_LEGGINGS, 8).group("repair_gravitite_armor").save(consumer, "repair_gravitite_leggings");
         this.altarRepairing(RecipeCategory.COMBAT, AetherIIItems.GRAVITITE_BOOTS, 8).group("repair_gravitite_armor").save(consumer, "repair_gravitite_boots");
         this.altarRepairing(RecipeCategory.COMBAT, AetherIIItems.GRAVITITE_GLOVES, 8).group("repair_gravitite_armor").save(consumer, "repair_gravitite_gloves");
+
+        this.acidCorrosion(AetherIIBlocks.ANGELIC_SHALE.get(), AetherIIBlocks.UNDERSHALE.get()).save(consumer, "corrode_undershale_to_angelic_shale");
     }
 }
