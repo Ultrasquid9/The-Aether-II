@@ -37,6 +37,7 @@ public class AetherIITags {
         public static final TagKey<Block> ALLOWED_BUCKET_PICKUP = tag("allowed_bucket_pickup");
         public static final TagKey<Block> ACID_DESTROYS_BLOCK = tag("acid_destroys_block");
         public static final TagKey<Block> ACID_RESISTANT_BLOCK = tag("acid_resistant_block");
+        public static final TagKey<Block> TRIGGERS_GAS = tag("triggers_gas");
 
         public static final TagKey<Block> AETHER_PLANT_SURVIVES_ON = tag("aether_plant_survives_on");
         public static final TagKey<Block> SKYROOT_TWIG_SURVIVES_ON = tag("skyroot_twig_survives_on");

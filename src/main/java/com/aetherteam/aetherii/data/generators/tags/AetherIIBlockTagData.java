@@ -200,6 +200,9 @@ public class AetherIIBlockTagData extends BlockTagsProvider {
                 AetherIIBlocks.HOLYSTONE.get());
         this.tag(AetherIITags.Blocks.ACID_RESISTANT_BLOCK).add(
                 AetherIIBlocks.ARKENIUM_BLOCK.get());
+        this.tag(AetherIITags.Blocks.TRIGGERS_GAS).add(
+                AetherIIBlocks.AMBROSIUM_TORCH.get(),
+                AetherIIBlocks.AMBROSIUM_WALL_TORCH.get());
         this.tag(AetherIITags.Blocks.AETHER_PLANT_SURVIVES_ON).add(
                 AetherIIBlocks.AETHER_GRASS_BLOCK.get(),
                 AetherIIBlocks.ENCHANTED_AETHER_GRASS_BLOCK.get(),

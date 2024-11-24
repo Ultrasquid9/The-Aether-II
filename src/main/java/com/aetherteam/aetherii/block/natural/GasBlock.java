@@ -1,6 +1,6 @@
 package com.aetherteam.aetherii.block.natural;
 
-import com.aetherteam.aetherii.block.AetherIIBlocks;
+import com.aetherteam.aetherii.AetherIITags;
 import com.aetherteam.aetherii.item.AetherIIItems;
 import net.minecraft.core.BlockPos;
 import net.minecraft.sounds.SoundEvent;
@@ -21,15 +21,15 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.Optional;
 
-public class GasBlock extends HalfTransparentBlock implements LiquidBlockContainer, CanisterPickup {
+public class GasBlock extends Block implements LiquidBlockContainer, CanisterPickup {
     public GasBlock(Properties properties) {
         super(properties);
     }
 
     @Override
     protected void neighborChanged(BlockState state, Level level, BlockPos pos, Block neighborBlock, BlockPos neighborPos, boolean movedByPiston) {
-        if (level.getBlockState(neighborPos).is(AetherIIBlocks.AMBROSIUM_TORCH)) { //todo
-            level.explode(null, pos.getX(), pos.getY(), pos.getZ(), 2.0F, Level.ExplosionInteraction.BLOCK);
+        if (level.getBlockState(neighborPos).is(AetherIITags.Blocks.TRIGGERS_GAS)) {
+            level.explode(null, pos.getX(), pos.getY(), pos.getZ(), 1.0F, Level.ExplosionInteraction.BLOCK);
             level.destroyBlock(pos, false);
         }
         super.neighborChanged(state, level, pos, neighborBlock, neighborPos, movedByPiston);
@@ -37,7 +37,7 @@ public class GasBlock extends HalfTransparentBlock implements LiquidBlockContain
 
     @Override
     public void wasExploded(Level level, BlockPos pos, Explosion explosion) {
-        level.explode(null, pos.getX(), pos.getY(), pos.getZ(), 2.0F, Level.ExplosionInteraction.BLOCK);
+        level.explode(null, pos.getX(), pos.getY(), pos.getZ(), 1.0F, Level.ExplosionInteraction.BLOCK);
     }
 
     @Override
