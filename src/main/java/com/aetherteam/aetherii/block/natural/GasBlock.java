@@ -3,6 +3,7 @@ package com.aetherteam.aetherii.block.natural;
 import com.aetherteam.aetherii.AetherIITags;
 import com.aetherteam.aetherii.item.AetherIIItems;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -29,15 +30,27 @@ public class GasBlock extends Block implements LiquidBlockContainer, CanisterPic
     @Override
     protected void neighborChanged(BlockState state, Level level, BlockPos pos, Block neighborBlock, BlockPos neighborPos, boolean movedByPiston) {
         if (level.getBlockState(neighborPos).is(AetherIITags.Blocks.TRIGGERS_GAS) || state.is(AetherIITags.Blocks.TRIGGERS_GAS)) {
-            level.explode(null, pos.getX(), pos.getY(), pos.getZ(), 1.5F, Level.ExplosionInteraction.BLOCK);
             level.destroyBlock(pos, false);
+            level.explode(null, pos.getX(), pos.getY(), pos.getZ(), 1.0F, Level.ExplosionInteraction.BLOCK); //todo custom explosion type for particles and sound and power.
         }
         super.neighborChanged(state, level, pos, neighborBlock, neighborPos, movedByPiston);
     }
 
     @Override
+    protected void onPlace(BlockState state, Level level, BlockPos pos, BlockState oldState, boolean movedByPiston) {
+        for (Direction direction : Direction.values()) {
+            BlockPos offsetPos = pos.offset(direction.getNormal());
+            if (level.getBlockState(offsetPos).is(AetherIITags.Blocks.TRIGGERS_GAS)) {
+                level.destroyBlock(pos, false);
+                level.explode(null, pos.getX(), pos.getY(), pos.getZ(), 1.0F, Level.ExplosionInteraction.BLOCK); //todo custom explosion type for particles and sound and power.
+            }
+        }
+        super.onPlace(state, level, pos, oldState, movedByPiston);
+    }
+
+    @Override
     public void wasExploded(Level level, BlockPos pos, Explosion explosion) {
-        level.explode(null, pos.getX(), pos.getY(), pos.getZ(), 1.5F, Level.ExplosionInteraction.BLOCK);
+        level.explode(null, pos.getX(), pos.getY(), pos.getZ(), 1.0F, Level.ExplosionInteraction.BLOCK);
     }
 
     @Override
