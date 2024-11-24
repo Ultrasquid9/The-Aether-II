@@ -230,6 +230,11 @@ public class AetherIICreativeTabs {
                 output.accept(AetherIIBlocks.ZANITE_BLOCK.get());
                 output.accept(AetherIIBlocks.ARKENIUM_BLOCK.get());
                 output.accept(AetherIIBlocks.GRAVITITE_BLOCK.get());
+                output.accept(AetherIIBlocks.GREEN_ARILUM_LANTERN.get());
+                output.accept(AetherIIBlocks.BLUE_ARILUM_LANTERN.get());
+                output.accept(AetherIIBlocks.PURPLE_ARILUM_LANTERN.get());
+                output.accept(AetherIIBlocks.GOLDEN_ARILUM_LANTERN.get());
+                output.accept(AetherIIBlocks.WHITE_ARILUM_LANTERN.get());
             }).build());
 
     public static final DeferredHolder<CreativeModeTab, CreativeModeTab> AETHER_II_DUNGEON_BLOCKS = CREATIVE_MODE_TABS.register("dungeon_blocks", () -> CreativeModeTab.builder()
@@ -364,6 +369,8 @@ public class AetherIICreativeTabs {
                 output.accept(AetherIIBlocks.BLUEBERRY_BUSH.get());
                 output.accept(AetherIIBlocks.ORANGE_TREE.get());
                 output.accept(AetherIIBlocks.VALKYRIE_SPROUT.get());
+                output.accept(AetherIIBlocks.ARILUM.get());
+                output.accept(AetherIIBlocks.BLOOMING_ARILUM.get());
                 output.accept(AetherIIBlocks.MAGNETIC_SHROOM.get());
                 output.accept(AetherIIBlocks.BRYALINN_MOSS_BLOCK.get());
                 output.accept(AetherIIBlocks.BRYALINN_MOSS_CARPET.get());
@@ -478,6 +485,10 @@ public class AetherIICreativeTabs {
                 output.accept(AetherIIItems.ARKENIUM_CANISTER.get());
                 output.accept(AetherIIItems.ARKENIUM_ACID_CANISTER.get());
                 output.accept(AetherIIItems.ARKENIUM_GAS_CANISTER.get());
+                output.accept(AetherIIItems.COLD_AERCLOUD_GLIDER.get());
+                output.accept(AetherIIItems.GOLDEN_AERCLOUD_GLIDER.get());
+                output.accept(AetherIIItems.BLUE_AERCLOUD_GLIDER.get());
+                output.accept(AetherIIItems.PURPLE_AERCLOUD_GLIDER.get());
                 output.accept(AetherIIItems.MOA_SADDLE.get());
                 output.accept(AetherIIItems.IRRADIATED_ARMOR.get());
                 output.accept(AetherIIItems.IRRADIATED_SWORD.get());
@@ -586,6 +597,7 @@ public class AetherIICreativeTabs {
                 output.accept(AetherIIItems.BRETTL_GRASS.get());
                 output.accept(AetherIIItems.BRETTL_ROPE.get());
                 output.accept(AetherIIItems.BRETTL_FLOWER.get());
+                output.accept(AetherIIItems.ARILUM_BULBS.get());
                 output.accept(AetherIIItems.SKYROOT_PINECONE.get());
                 output.accept(AetherIIItems.MOA_FEED.get());
                 output.accept(AetherIIItems.BLUEBERRY_MOA_FEED.get());

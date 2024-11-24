@@ -19,14 +19,12 @@ import net.minecraft.world.phys.Vec3;
 public class CellingMonster extends Monster {
     private static final EntityDataAccessor<Direction> ATTACHED_FACE = SynchedEntityData.defineId(CellingMonster.class, EntityDataSerializers.DIRECTION);
 
-    private boolean isUpsideDownNavigator;
     public float attachChangeProgress;
     public float prevAttachChangeProgress;
     public Direction prevAttachDir = Direction.DOWN;
 
     protected CellingMonster(EntityType<? extends CellingMonster> p_33002_, Level p_33003_) {
         super(p_33002_, p_33003_);
-        switchNavigator(true);
         this.moveControl = new CellingMoveControl(this);
         this.navigation = new CellingPathNavigation(this, level());
     }
@@ -69,8 +67,8 @@ public class CellingMonster extends Monster {
                 double closestDistance = 100D;
                 for (Direction dir : Direction.values()) {
                     if (dir != Direction.DOWN) {
-                        BlockPos antPos = new BlockPos(Mth.floor(this.getX()), Mth.floor(this.getY()), Mth.floor(this.getZ()));
-                        BlockPos offsetPos = antPos.relative(dir);
+                        BlockPos pos = new BlockPos(Mth.floor(this.getX()), Mth.floor(this.getY()), Mth.floor(this.getZ()));
+                        BlockPos offsetPos = pos.relative(dir);
                         Vec3 offset = Vec3.atCenterOf(offsetPos);
                         if (closestDistance > this.position().distanceTo(offset) && level().loadedAndEntityCanStandOnFace(offsetPos, this, dir.getOpposite())) {
                             closestDistance = this.position().distanceTo(offset);
@@ -95,14 +93,6 @@ public class CellingMonster extends Monster {
             attachChangeProgress = 1F;
         }
         this.prevAttachDir = attachmentFacing;
-        if (!this.level().isClientSide) {
-            if (attachmentFacing != Direction.UP && !this.isUpsideDownNavigator) {
-                switchNavigator(false);
-            }
-            if (attachmentFacing == Direction.DOWN && this.isUpsideDownNavigator) {
-                switchNavigator(true);
-            }
-        }
     }
 
     @Override
@@ -141,15 +131,5 @@ public class CellingMonster extends Monster {
 
     public Direction getAttachFacing() {
         return this.entityData.get(ATTACHED_FACE);
-    }
-
-
-    public void switchNavigator(boolean rightsideUp) {
-
-        if (rightsideUp) {
-            this.isUpsideDownNavigator = false;
-        } else {
-            this.isUpsideDownNavigator = true;
-        }
     }
 }

@@ -122,6 +122,7 @@ public class AetherIIItemModelData extends AetherIIItemModelProvider {
         this.item(AetherIIItems.BRETTL_GRASS.get(), "materials/");
         this.item(AetherIIItems.BRETTL_ROPE.get(), "materials/");
         this.item(AetherIIItems.BRETTL_FLOWER.get(), "materials/");
+        this.item(AetherIIItems.ARILUM_BULBS.get(), "materials/");
         this.item(AetherIIItems.AECHOR_PETAL.get(), "materials/");
         this.item(AetherIIItems.ARCTIC_SNOWBALL.get(), "materials/");
         this.item(AetherIIItems.GREEN_SWET_GEL.get(), "materials/");
@@ -170,6 +171,12 @@ public class AetherIIItemModelData extends AetherIIItemModelProvider {
         this.item(AetherIIItems.ANTIVENOM_VIAL.get(), "consumables/");
         this.item(AetherIIItems.VALKYRIE_TEA.get(), "consumables/");
         this.healingStoneItem(AetherIIItems.HEALING_STONE.get());
+
+        // Gliders
+        this.gliderItem(AetherIIItems.COLD_AERCLOUD_GLIDER.get(), false);
+        this.gliderItem(AetherIIItems.GOLDEN_AERCLOUD_GLIDER.get(), false);
+        this.gliderItem(AetherIIItems.BLUE_AERCLOUD_GLIDER.get(), true);
+        this.gliderItem(AetherIIItems.PURPLE_AERCLOUD_GLIDER.get(), true);
 
         // Skyroot Buckets
         this.item(AetherIIItems.SKYROOT_BUCKET.get(), "miscellaneous/");
@@ -406,6 +413,12 @@ public class AetherIIItemModelData extends AetherIIItemModelProvider {
 
         // Valkyrie Sprout
         this.itemBlockFlat0(AetherIIBlocks.VALKYRIE_SPROUT.get());
+
+        // Lake
+        this.itemBlockFlat(AetherIIBlocks.ARILUM.get(), "natural/");
+        this.itemBlockFlat(AetherIIBlocks.ARILUM_PLANT.get(), "natural/");
+        this.itemBlockFlat(AetherIIBlocks.BLOOMING_ARILUM.get(), "natural/");
+        this.itemBlockFlat(AetherIIBlocks.BLOOMING_ARILUM_PLANT.get(), "natural/");
 
         // Ground Decoration
         this.item(AetherIIBlocks.SKYROOT_TWIG.asItem(), "miscellaneous/");
@@ -651,6 +664,13 @@ public class AetherIIItemModelData extends AetherIIItemModelProvider {
         this.itemBlock(AetherIIBlocks.ZANITE_BLOCK.get());
         this.itemBlock(AetherIIBlocks.ARKENIUM_BLOCK.get());
         this.itemBlock(AetherIIBlocks.GRAVITITE_BLOCK.get());
+
+        // Arilum Lanterns
+        this.itemBlock(AetherIIBlocks.GREEN_ARILUM_LANTERN.get());
+        this.itemBlock(AetherIIBlocks.BLUE_ARILUM_LANTERN.get());
+        this.itemBlock(AetherIIBlocks.PURPLE_ARILUM_LANTERN.get());
+        this.itemBlock(AetherIIBlocks.GOLDEN_ARILUM_LANTERN.get());
+        this.itemBlock(AetherIIBlocks.WHITE_ARILUM_LANTERN.get());
 
         // Utility
         this.itemBlockFlat(AetherIIBlocks.AMBROSIUM_TORCH.get(), "utility/");

@@ -107,6 +107,18 @@ public abstract class AetherIIRecipeProvider extends NitrogenRecipeProvider {
                 .save(consumer);
     }
 
+    protected static void arilumLantern(RecipeOutput consumer, ItemLike result, ItemLike gel) {
+        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, result, 1)
+                .group("arilum_lantern")
+                .define('#', gel)
+                .define('X', AetherIIItems.ARILUM_BULBS)
+                .pattern("#X#")
+                .pattern("XXX")
+                .pattern("#X#")
+                .unlockedBy("has_bulbs", has(AetherIIItems.ARILUM_BULBS))
+                .save(consumer);
+    }
+
     protected ShapedRecipeBuilder makePickaxeWithTag(Supplier<? extends Item> pickaxe, TagKey<Item> material, String has) {
         return this.makePickaxeWithTag(pickaxe, material, Ingredient.of(AetherIITags.Items.RODS_SKYROOT), has);
     }
@@ -182,6 +194,17 @@ public abstract class AetherIIRecipeProvider extends NitrogenRecipeProvider {
                 .pattern("WWW")
                 .pattern(" W ")
                 .unlockedBy(has, has(material));
+    }
+
+    protected void parachute(RecipeOutput consumer, ItemLike result, ItemLike aercloud) {
+        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, result, 1)
+                .define('#', aercloud)
+                .define('X', AetherIITags.Items.RODS_SKYROOT)
+                .pattern("###")
+                .pattern("# #")
+                .pattern("X X")
+                .unlockedBy("has_aercloud", has(aercloud))
+                .save(consumer);
     }
 
     protected final void foodCooking(Supplier<? extends ItemLike> material, Supplier<? extends ItemLike> result, float xp, RecipeOutput consumer) {

@@ -64,6 +64,7 @@ import com.aetherteam.aetherii.item.equipment.weapons.zanite.ZaniteSpearItem;
 import com.aetherteam.aetherii.item.materials.*;
 import com.aetherteam.aetherii.item.miscellaneous.*;
 import com.aetherteam.aetherii.item.miscellaneous.bucket.*;
+import com.aetherteam.aetherii.item.miscellaneous.glider.*;
 import io.wispforest.accessories.api.AccessoriesAPI;
 import io.wispforest.accessories.api.Accessory;
 import net.minecraft.core.component.DataComponents;
@@ -211,6 +212,7 @@ public class AetherIIItems {
     public static final DeferredItem<Item> BRETTL_GRASS = ITEMS.register("brettl_grass", () -> new Item(new Item.Properties()));
     public static final DeferredItem<Item> BRETTL_ROPE = ITEMS.register("brettl_rope", () -> new Item(new Item.Properties()));
     public static final DeferredItem<Item> BRETTL_FLOWER = ITEMS.register("brettl_flower", () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> ARILUM_BULBS = ITEMS.register("arilum_bulbs", () -> new ItemNameBlockItem(AetherIIBlocks.ARILUM_SHOOT.get(), new Item.Properties()));
     public static final DeferredItem<Item> ARCTIC_SNOWBALL = ITEMS.register("arctic_snowball", () -> new ArcticSnowballItem(new Item.Properties()));
     public static final DeferredItem<Item> GREEN_SWET_GEL = ITEMS.register("green_swet_gel", () -> new SwetGelItem(new Item.Properties()));
     public static final DeferredItem<Item> BLUE_SWET_GEL = ITEMS.register("blue_swet_gel", () -> new SwetGelItem(new Item.Properties()));
@@ -258,6 +260,12 @@ public class AetherIIItems {
     public static final DeferredItem<Item> ANTIVENOM_VIAL = ITEMS.register("antivenom_vial", () -> new PreventativeItem(UseAnim.DRINK, 15, () -> AetherIIItems.SCATTERGLASS_VIAL.get().getDefaultInstance(), AetherIIPreventatives.ANTIVENOM_VIAL, new Item.Properties()));
     public static final DeferredItem<Item> VALKYRIE_TEA = ITEMS.register("valkyrie_tea", () -> new TeaItem(UseAnim.DRINK, 15, () -> AetherIIItems.SCATTERGLASS_VIAL.get().getDefaultInstance(), AetherIIEffects.SATURATION_BOOST, new Item.Properties()));
     public static final DeferredItem<Item> HEALING_STONE = ITEMS.register("healing_stone", () -> new HealingStoneItem(new Item.Properties().stacksTo(1).component(AetherIIDataComponents.HEALING_STONE_CHARGES, 0)));
+
+    // Gliders
+    public static final DeferredItem<Item> COLD_AERCLOUD_GLIDER = ITEMS.register("cold_aercloud_glider", () -> new AercloudGliderItem(new Item.Properties().durability(5).setNoRepair()));
+    public static final DeferredItem<Item> GOLDEN_AERCLOUD_GLIDER = ITEMS.register("golden_aercloud_glider", () -> new GoldenAercloudGliderItem(new Item.Properties().durability(30).setNoRepair()));
+    public static final DeferredItem<Item> BLUE_AERCLOUD_GLIDER = ITEMS.register("blue_aercloud_glider", () -> new BlueAercloudGliderItem(new Item.Properties().durability(3).setNoRepair()));
+    public static final DeferredItem<Item> PURPLE_AERCLOUD_GLIDER = ITEMS.register("purple_aercloud_glider", () -> new PurpleAercloudGliderItem(new Item.Properties().durability(3).setNoRepair()));
 
     // Skyroot Buckets
     public static final DeferredItem<Item> SKYROOT_BUCKET = ITEMS.register("skyroot_bucket", () -> new SkyrootBucketItem(Fluids.EMPTY, new Item.Properties().stacksTo(16)));

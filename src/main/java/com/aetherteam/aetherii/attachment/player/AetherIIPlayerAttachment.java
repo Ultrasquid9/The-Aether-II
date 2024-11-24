@@ -6,6 +6,7 @@ import com.aetherteam.aetherii.entity.AetherIIEntityTypes;
 import com.aetherteam.aetherii.entity.passive.Aerbunny;
 import com.aetherteam.aetherii.item.AetherIIItems;
 import com.aetherteam.aetherii.item.consumables.HealingStoneItem;
+import com.aetherteam.aetherii.item.miscellaneous.glider.AercloudGliderItem;
 import com.aetherteam.aetherii.network.packet.AetherIIPlayerSyncPacket;
 import com.aetherteam.aetherii.network.packet.clientbound.RemountAerbunnyPacket;
 import com.aetherteam.nitrogen.attachment.INBTSynchable;
@@ -13,13 +14,17 @@ import com.aetherteam.nitrogen.network.packet.SyncPacket;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.client.player.Input;
+import net.minecraft.core.Holder;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.server.players.PlayerList;
+import net.minecraft.util.ExtraCodecs;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.api.distmarker.OnlyIn;
@@ -27,6 +32,8 @@ import net.neoforged.neoforge.network.PacketDistributor;
 import org.apache.commons.lang3.tuple.Triple;
 
 import javax.annotation.Nullable;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
 import java.util.Optional;
 import java.util.function.Consumer;
@@ -46,18 +53,29 @@ public class AetherIIPlayerAttachment implements INBTSynchable {
     private Aerbunny mountedAerbunny;
     private Optional<CompoundTag> mountedAerbunnyTag = Optional.empty();
 
+    private boolean canRefuelGlide;
+    private int glidingTimer;
+    private Map<Holder<Item>, Boolean> canRefuelAbilities = new HashMap<>(Map.of(
+            AetherIIItems.BLUE_AERCLOUD_GLIDER, false,
+            AetherIIItems.PURPLE_AERCLOUD_GLIDER, false
+    ));
+
     private boolean gravititeHoldingFloatingBlock = false;
     private boolean gravititeJumpUsed = true;
 
     private final Map<String, Triple<Type, Consumer<Object>, Supplier<Object>>> synchableFunctions = Map.ofEntries(
             Map.entry("setMoving", Triple.of(Type.BOOLEAN, (object) -> this.setMoving((boolean) object), this::isMoving)),
-            Map.entry("setJumping", Triple.of(Type.BOOLEAN, (object) -> this.setJumping((boolean) object), this::isJumping))
+            Map.entry("setJumping", Triple.of(Type.BOOLEAN, (object) -> this.setJumping((boolean) object), this::isJumping)),
+            Map.entry("setGlidingTimer", Triple.of(Type.INT, (object) -> this.setGlidingTimer((int) object), this::getGlidingTimer))
     );
 
     public static final Codec<AetherIIPlayerAttachment> CODEC = RecordCodecBuilder.create(instance -> instance.group(
             Codec.BOOL.fieldOf("can_get_portal").forGetter(AetherIIPlayerAttachment::canGetPortal),
             Codec.BOOL.fieldOf("can_spawn_in_aether").forGetter(AetherIIPlayerAttachment::canSpawnInAether),
             CompoundTag.CODEC.optionalFieldOf("mounted_aerbunny").forGetter(AetherIIPlayerAttachment::getMountedAerbunnyTag),
+            Codec.BOOL.fieldOf("can_refuel_glide").forGetter(AetherIIPlayerAttachment::getCanRefuelGlide),
+            Codec.INT.fieldOf("gliding_timer").forGetter(AetherIIPlayerAttachment::getGlidingTimer),
+            ExtraCodecs.strictUnboundedMap(BuiltInRegistries.ITEM.holderByNameCodec(), Codec.BOOL).fieldOf("can_refuel_abilities").forGetter(AetherIIPlayerAttachment::getCanRefuelAbilities),
             Codec.BOOL.fieldOf("gravitite_holding_floating_block").forGetter(AetherIIPlayerAttachment::isGravititeHoldingFloatingBlock),
             Codec.BOOL.fieldOf("gravitite_jump_used").forGetter(AetherIIPlayerAttachment::isGravititeJumpUsed)
     ).apply(instance, AetherIIPlayerAttachment::new));
@@ -65,10 +83,13 @@ public class AetherIIPlayerAttachment implements INBTSynchable {
     private boolean shouldSyncAfterJoin;
     private boolean shouldSyncBetweenClients;
 
-    protected AetherIIPlayerAttachment(boolean canGetPortal, boolean canSpawnInAether, Optional<CompoundTag> mountedAerbunnyTag, boolean gravititeHoldingFloatingBlock, boolean gravititeJumpUsed) {
+    protected AetherIIPlayerAttachment(boolean canGetPortal, boolean canSpawnInAether, Optional<CompoundTag> mountedAerbunnyTag, boolean canRefuelGlide, int glidingTimer, Map<Holder<Item>, Boolean> canRefuelAbilities, boolean gravititeHoldingFloatingBlock, boolean gravititeJumpUsed) {
         this.canGetPortal = canGetPortal;
         this.canSpawnInAether = canSpawnInAether;
         this.mountedAerbunnyTag = mountedAerbunnyTag;
+        this.canRefuelGlide = canRefuelGlide;
+        this.glidingTimer = glidingTimer;
+        this.canRefuelAbilities =  new HashMap<>(canRefuelAbilities);
         this.gravititeHoldingFloatingBlock = gravititeHoldingFloatingBlock;
         this.gravititeJumpUsed = gravititeJumpUsed;
     }
@@ -104,6 +125,7 @@ public class AetherIIPlayerAttachment implements INBTSynchable {
         this.handleAetherPortal(player);
         this.handleHealingStoneHealth(player);
         this.checkToRemoveAerbunny(player);
+        this.resetGlideCheck(player);
     }
 
     private void syncAfterJoin(Player player) {
@@ -189,6 +211,19 @@ public class AetherIIPlayerAttachment implements INBTSynchable {
     private void checkToRemoveAerbunny(Player player) {
         if (this.getMountedAerbunny() != null && (!this.getMountedAerbunny().isAlive() || !player.isAlive())) {
             this.setMountedAerbunny(null);
+        }
+    }
+
+    private void resetGlideCheck(Player player) {
+        if (player.onGround()) {
+            if (!this.getCanRefuelGlide()) {
+                this.setGlidingTimer(AercloudGliderItem.GLIDING_MAX);
+                this.setCanRefuelGlide(true);
+                for (Iterator<Map.Entry<Holder<Item>, Boolean>> iterator = this.getCanRefuelAbilities().entrySet().iterator(); iterator.hasNext(); ) {
+                    Map.Entry<Holder<Item>, Boolean> entry = iterator.next();
+                    this.getCanRefuelAbilities().put(entry.getKey(), true);
+                }
+            }
         }
     }
 
@@ -320,6 +355,26 @@ public class AetherIIPlayerAttachment implements INBTSynchable {
      */
     public Optional<CompoundTag> getMountedAerbunnyTag() {
         return this.mountedAerbunnyTag;
+    }
+
+    public void setCanRefuelGlide(boolean canRefuelGlide) {
+        this.canRefuelGlide = canRefuelGlide;
+    }
+
+    public boolean getCanRefuelGlide() {
+        return this.canRefuelGlide;
+    }
+
+    public void setGlidingTimer(int glidingTimer) {
+        this.glidingTimer = glidingTimer;
+    }
+
+    public int getGlidingTimer() {
+        return this.glidingTimer;
+    }
+
+    public Map<Holder<Item>, Boolean> getCanRefuelAbilities() {
+        return this.canRefuelAbilities;
     }
 
     public void setGravititeHoldingFloatingBlock(boolean gravititeHoldingFloatingBlock) {

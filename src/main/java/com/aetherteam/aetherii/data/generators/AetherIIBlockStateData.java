@@ -232,6 +232,13 @@ public class AetherIIBlockStateData extends AetherIIBlockStateProvider {
         this.brettlPlant(AetherIIBlocks.BRETTL_PLANT.get());
         this.brettlPlant(AetherIIBlocks.BRETTL_PLANT_TIP.get());
 
+        // Lake
+        this.crossBlock(AetherIIBlocks.ARILUM_SHOOT.get(), "natural/");
+        this.crossBlock(AetherIIBlocks.ARILUM.get(), "natural/");
+        this.crossBlock(AetherIIBlocks.ARILUM_PLANT.get(), "natural/");
+        this.crossBlock(AetherIIBlocks.BLOOMING_ARILUM.get(), "natural/");
+        this.crossBlock(AetherIIBlocks.BLOOMING_ARILUM_PLANT.get(), "natural/");
+
         // Ground Decoration
         this.twig(AetherIIBlocks.SKYROOT_TWIG.get(), AetherIIBlocks.SKYROOT_LOG.get());
         this.rock(AetherIIBlocks.HOLYSTONE_ROCK.get(), AetherIIBlocks.HOLYSTONE.get());
@@ -476,6 +483,13 @@ public class AetherIIBlockStateData extends AetherIIBlockStateProvider {
         this.block(AetherIIBlocks.ZANITE_BLOCK.get(), "construction/");
         this.block(AetherIIBlocks.ARKENIUM_BLOCK.get(), "construction/");
         this.block(AetherIIBlocks.GRAVITITE_BLOCK.get(), "construction/");
+
+        // Arilum Lantern
+        this.block(AetherIIBlocks.GREEN_ARILUM_LANTERN.get(), "construction/");
+        this.block(AetherIIBlocks.BLUE_ARILUM_LANTERN.get(), "construction/");
+        this.block(AetherIIBlocks.PURPLE_ARILUM_LANTERN.get(), "construction/");
+        this.block(AetherIIBlocks.GOLDEN_ARILUM_LANTERN.get(), "construction/");
+        this.block(AetherIIBlocks.WHITE_ARILUM_LANTERN.get(), "construction/");
 
         // Utility
         this.torchBlock(AetherIIBlocks.AMBROSIUM_TORCH.get(), AetherIIBlocks.AMBROSIUM_WALL_TORCH.get());

@@ -602,6 +602,13 @@ public class AetherIIRecipeData extends AetherIIRecipeProvider {
         oreBlockStorageRecipesRecipesWithCustomUnpacking(consumer, RecipeCategory.MISC, AetherIIItems.ARKENIUM_PLATES.get(), RecipeCategory.BUILDING_BLOCKS, AetherIIBlocks.ARKENIUM_BLOCK, "arkenium_plate_from_arkenium_block", "arkenium_plate");
         oreBlockStorageRecipesRecipesWithCustomUnpacking(consumer, RecipeCategory.MISC, AetherIIItems.GRAVITITE_PLATE.get(), RecipeCategory.BUILDING_BLOCKS, AetherIIBlocks.GRAVITITE_BLOCK, "gravitite_plate_from_gravitite_block", "gravitite_plate");
 
+        // Arilum Lantern
+        arilumLantern(consumer, AetherIIBlocks.GREEN_ARILUM_LANTERN, AetherIIItems.GREEN_SWET_GEL);
+        arilumLantern(consumer, AetherIIBlocks.BLUE_ARILUM_LANTERN, AetherIIItems.BLUE_SWET_GEL);
+        arilumLantern(consumer, AetherIIBlocks.PURPLE_ARILUM_LANTERN, AetherIIItems.PURPLE_SWET_GEL);
+        arilumLantern(consumer, AetherIIBlocks.GOLDEN_ARILUM_LANTERN, AetherIIItems.GOLDEN_SWET_GEL);
+        arilumLantern(consumer, AetherIIBlocks.WHITE_ARILUM_LANTERN, AetherIIItems.WHITE_SWET_GEL);
+
         // Utility
         ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, AetherIIBlocks.AMBROSIUM_TORCH.get(), 4)
                 .define('A', AetherIIItems.AMBROSIUM_SHARD.get())
@@ -812,6 +819,12 @@ public class AetherIIRecipeData extends AetherIIRecipeProvider {
         this.foodCooking(AetherIIItems.KIRRID_LOIN, AetherIIItems.KIRRID_CUTLET, 0.35F, consumer);
         this.foodCooking(AetherIIItems.RAW_TAEGORE_MEAT, AetherIIItems.TAEGORE_STEAK, 0.35F, consumer);
         this.foodCooking(AetherIIItems.SKYROOT_LIZARD_ON_A_STICK, AetherIIItems.ROASTED_SKYROOT_LIZARD_ON_A_STICK, 0.35F, consumer);
+
+        // Parachutes
+        this.parachute(consumer, AetherIIItems.COLD_AERCLOUD_GLIDER, AetherIIBlocks.COLD_AERCLOUD);
+        this.parachute(consumer, AetherIIItems.GOLDEN_AERCLOUD_GLIDER, AetherIIBlocks.GOLDEN_AERCLOUD);
+        this.parachute(consumer, AetherIIItems.BLUE_AERCLOUD_GLIDER, AetherIIBlocks.BLUE_AERCLOUD);
+        this.parachute(consumer, AetherIIItems.PURPLE_AERCLOUD_GLIDER, AetherIIBlocks.PURPLE_AERCLOUD);
 
         // Materials
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, AetherIIItems.SKYROOT_STICK.get(), 4)
