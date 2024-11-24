@@ -503,20 +503,27 @@ public abstract class AetherIIBlockStateProvider extends NitrogenBlockStateProvi
         }, BlockStateProperties.WATERLOGGED);
     }
 
-    public void translucentInterior(Block block, String location) {
+    public void gas(Block block, String location) {
         ResourceLocation texture = this.texture(this.name(block), location);
-        this.translucentInterior(block, texture, texture, texture, texture, texture, texture, texture, texture, texture, texture, texture, texture, texture);
+        ModelFile model = this.translucentInterior(block, texture, texture, texture, texture, texture, texture, texture, texture, texture, texture, texture, texture, texture).ao(false);
+        this.getVariantBuilder(block).partialState().addModels(new ConfiguredModel(model));
     }
 
-    public void translucentInterior(Block block,
-                                    ResourceLocation upInside, ResourceLocation upOutside,
-                                    ResourceLocation downOutside, ResourceLocation downInside,
-                                    ResourceLocation northOutside, ResourceLocation northInside,
-                                    ResourceLocation southInside, ResourceLocation southOutside,
-                                    ResourceLocation westOutside, ResourceLocation westInside,
-                                    ResourceLocation eastInside, ResourceLocation eastOutside,
-                                    ResourceLocation particle) {
-        ModelFile model = this.models().withExistingParent(this.name(block), this.mcLoc("block/block"))
+    public void translucentInterior(Block block, String location) {
+        ResourceLocation texture = this.texture(this.name(block), location);
+        ModelBuilder<BlockModelBuilder> model = this.translucentInterior(block, texture, texture, texture, texture, texture, texture, texture, texture, texture, texture, texture, texture, texture);
+        this.getVariantBuilder(block).partialState().addModels(new ConfiguredModel(model));
+    }
+
+    public ModelBuilder<BlockModelBuilder> translucentInterior(Block block,
+                                                               ResourceLocation upInside, ResourceLocation upOutside,
+                                                               ResourceLocation downOutside, ResourceLocation downInside,
+                                                               ResourceLocation northOutside, ResourceLocation northInside,
+                                                               ResourceLocation southInside, ResourceLocation southOutside,
+                                                               ResourceLocation westOutside, ResourceLocation westInside,
+                                                               ResourceLocation eastInside, ResourceLocation eastOutside,
+                                                               ResourceLocation particle) {
+        return this.models().withExistingParent(this.name(block), this.mcLoc("block/block"))
                 .texture("up_inside", upInside)
                 .texture("up_outside", upOutside)
                 .texture("down_outside", downOutside)
@@ -555,7 +562,6 @@ public abstract class AetherIIBlockStateProvider extends NitrogenBlockStateProvi
                 .face(Direction.WEST).texture("#east_inside").uvs(16, 0, 0, 16).cullface(Direction.EAST).end()
                 .face(Direction.EAST).texture("#east_outside").uvs(0, 0, 16, 16).cullface(Direction.EAST).end()
                 .end();
-        this.getVariantBuilder(block).partialState().addModels(new ConfiguredModel(model));
     }
 
     public void purpleAercloud(Block block) {

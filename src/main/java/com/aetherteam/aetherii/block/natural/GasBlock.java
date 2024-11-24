@@ -28,8 +28,8 @@ public class GasBlock extends Block implements LiquidBlockContainer, CanisterPic
 
     @Override
     protected void neighborChanged(BlockState state, Level level, BlockPos pos, Block neighborBlock, BlockPos neighborPos, boolean movedByPiston) {
-        if (level.getBlockState(neighborPos).is(AetherIITags.Blocks.TRIGGERS_GAS)) {
-            level.explode(null, pos.getX(), pos.getY(), pos.getZ(), 1.0F, Level.ExplosionInteraction.BLOCK);
+        if (level.getBlockState(neighborPos).is(AetherIITags.Blocks.TRIGGERS_GAS) || state.is(AetherIITags.Blocks.TRIGGERS_GAS)) {
+            level.explode(null, pos.getX(), pos.getY(), pos.getZ(), 1.5F, Level.ExplosionInteraction.BLOCK);
             level.destroyBlock(pos, false);
         }
         super.neighborChanged(state, level, pos, neighborBlock, neighborPos, movedByPiston);
@@ -37,7 +37,7 @@ public class GasBlock extends Block implements LiquidBlockContainer, CanisterPic
 
     @Override
     public void wasExploded(Level level, BlockPos pos, Explosion explosion) {
-        level.explode(null, pos.getX(), pos.getY(), pos.getZ(), 1.0F, Level.ExplosionInteraction.BLOCK);
+        level.explode(null, pos.getX(), pos.getY(), pos.getZ(), 1.5F, Level.ExplosionInteraction.BLOCK);
     }
 
     @Override
