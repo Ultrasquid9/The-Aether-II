@@ -17,6 +17,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.*;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.LiquidBlock;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
@@ -33,19 +34,33 @@ public abstract class AcidFluid extends BaseFlowingFluid implements CanisterFlui
     }
 
     @Override
-    protected void randomTick(Level level, BlockPos pos, FluidState fluidState, RandomSource random) {
-        Direction randomDirection = Direction.getRandom(random);
+    public void tick(Level level, BlockPos pos, FluidState state) { //todo scheduled ticks from placement or neighbor interactions of block?
+        Direction randomDirection = Direction.getRandom(level.getRandom());
         BlockPos offsetPos = pos.offset(randomDirection.getNormal());
         BlockState offsetState = level.getBlockState(offsetPos);
         if (offsetState.is(AetherIIBlocks.UNDERSHALE)) { //todo recipe system
             level.setBlock(offsetPos, AetherIIBlocks.ANGELIC_SHALE.get().defaultBlockState(), 3); //todo fizz particle
         }
-        if (fluidState.isSource()) {
+        super.tick(level, pos, state);
+    }
+
+    @Override
+    protected void randomTick(Level level, BlockPos pos, FluidState fluidState, RandomSource random) {
+        BlockState blockState = level.getBlockState(pos);
+        if (fluidState.isSource() || (fluidState.getType() instanceof Flowing flowing && flowing.getAmount(fluidState) == 8)) {
             BlockPos belowPos = pos.below();
             BlockState belowState = level.getBlockState(belowPos);
-            if (!belowState.is(AetherIITags.Blocks.ACID_RESISTANT_BLOCK)) { //todo probably only need one of these in the end
-                if (belowState.is(AetherIITags.Blocks.ACID_DESTROYS_BLOCK)) {
-                    level.destroyBlock(belowPos, true);
+            if (belowState.isAir()) {
+                if (fluidState.isSource()) {
+                    level.setBlock(pos, Blocks.AIR.defaultBlockState(), 3);
+                    level.setBlock(belowPos, blockState, 3);
+                }
+            } else {
+                if (!belowState.is(AetherIITags.Blocks.ACID_RESISTANT_BLOCK)) { //todo probably only need one of these in the end
+                    if (belowState.is(AetherIITags.Blocks.ACID_DESTROYS_BLOCK)) {
+                        level.destroyBlock(belowPos, true);
+                        level.setBlock(pos, Blocks.AIR.defaultBlockState(), 3);
+                    }
                 }
             }
         }
