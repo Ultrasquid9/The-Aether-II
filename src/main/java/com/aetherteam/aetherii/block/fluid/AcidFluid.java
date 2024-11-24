@@ -50,7 +50,7 @@ public abstract class AcidFluid extends BaseFlowingFluid implements CanisterFlui
         if (fluidState.isSource() || (fluidState.getType() instanceof Flowing flowing && flowing.getAmount(fluidState) == 8)) {  //todo better ticking
             BlockPos belowPos = pos.below();
             BlockState belowState = level.getBlockState(belowPos);
-            if (belowState.isAir()) {
+            if (belowState.isAir() || belowState.is(this.createLegacyBlock(fluidState).getBlock())) {
                 if (fluidState.isSource()) {
                     level.setBlock(pos, Blocks.AIR.defaultBlockState(), 3);
                     level.setBlock(belowPos, blockState, 3);
