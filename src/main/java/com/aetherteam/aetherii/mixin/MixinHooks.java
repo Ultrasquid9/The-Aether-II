@@ -151,7 +151,7 @@ public class MixinHooks {
         return particleOptions;
     }
 
-    public static VertexConsumer getRedFoil(MultiBufferSource bufferSource, RenderType renderType, PoseStack.Pose pose) {
-        return VertexMultiConsumer.create(new SheetedDecalTextureGenerator(bufferSource.getBuffer(AetherIIRenderTypes.GLINT), pose, 0.0078125F), bufferSource.getBuffer(renderType));
+    public static VertexConsumer getRedFoil(MultiBufferSource bufferSource, RenderType renderType) {
+        return VertexMultiConsumer.create(VertexMultiConsumer.create(bufferSource.getBuffer(AetherIIRenderTypes.irradiatedGlint())), bufferSource.getBuffer(renderType));
     }
 }

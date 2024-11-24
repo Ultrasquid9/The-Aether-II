@@ -294,8 +294,13 @@ public class AetherIIItemTagData extends ItemTagsProvider {
                 AetherIIBlocks.IRRADIATED_WISPTOP_LEAVES.asItem(),
                 AetherIIBlocks.IRRADIATED_GREATROOT_LEAVES.asItem(),
                 AetherIIBlocks.IRRADIATED_GREATOAK_LEAVES.asItem(),
-                AetherIIBlocks.IRRADIATED_GREATBOA_LEAVES.asItem()
-        );
+                AetherIIBlocks.IRRADIATED_GREATBOA_LEAVES.asItem());
+        this.tag(AetherIITags.Items.IRRADIATED_ITEM).add(
+                AetherIIItems.IRRADIATED_SWORD.get(),
+                AetherIIItems.IRRADIATED_ARMOR.get(),
+                AetherIIItems.IRRADIATED_TOOL.get(),
+                AetherIIItems.IRRADIATED_CHUNK.get(),
+                AetherIIItems.IRRADIATED_DUST.get());
         this.tag(AetherIITags.Items.ACID_RESISTANT_ITEM).add(AetherIIBlocks.ARKENIUM_BLOCK.asItem());
 
         // Vanilla

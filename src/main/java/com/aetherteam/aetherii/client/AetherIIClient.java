@@ -6,6 +6,7 @@ import com.aetherteam.aetherii.attachment.AetherIIDataAttachments;
 import com.aetherteam.aetherii.client.event.listeners.*;
 import com.aetherteam.aetherii.client.particle.AetherIIParticleFactories;
 import com.aetherteam.aetherii.client.renderer.AetherIIOverlays;
+import com.aetherteam.aetherii.client.renderer.AetherIIRenderTypes;
 import com.aetherteam.aetherii.client.renderer.AetherIIRenderers;
 import com.aetherteam.aetherii.client.renderer.level.AetherIIRenderEffects;
 import com.aetherteam.aetherii.inventory.menu.AetherIIMenuTypes;
@@ -72,6 +73,7 @@ public class AetherIIClient {
         neoBus.addListener(AetherIIItemDecorators::registerItemDecorators);
         neoBus.addListener(AetherIIClientTooltips::registerClientTooltipComponents);
         neoBus.addListener(AetherIIClientItemExtensions::registerClientItemExtensions);
+        neoBus.addListener(AetherIIRenderTypes::registerRenderBuffers);
     }
 
     public static void registerItemModelProperties() {

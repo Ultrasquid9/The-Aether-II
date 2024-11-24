@@ -148,6 +148,7 @@ public class AetherIITags {
         public static final TagKey<Item> SWET_GEL = tag("swet_gel");
         public static final TagKey<Item> GOLDEN_AMBER_HARVESTERS = tag("golden_amber_harvesters");
         public static final TagKey<Item> DOUBLE_DROPS = tag("double_drops");
+        public static final TagKey<Item> IRRADIATED_ITEM = tag("irradiated_item");
         public static final TagKey<Item> ACID_RESISTANT_ITEM = tag("acid_resistant_item");
 
         private static TagKey<Item> tag(String name) {
