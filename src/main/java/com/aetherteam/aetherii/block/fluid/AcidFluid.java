@@ -47,7 +47,7 @@ public abstract class AcidFluid extends BaseFlowingFluid implements CanisterFlui
     @Override
     protected void randomTick(Level level, BlockPos pos, FluidState fluidState, RandomSource random) {
         BlockState blockState = level.getBlockState(pos);
-        if (fluidState.isSource() || (fluidState.getType() instanceof Flowing flowing && flowing.getAmount(fluidState) == 8)) {
+        if (fluidState.isSource() || (fluidState.getType() instanceof Flowing flowing && flowing.getAmount(fluidState) == 8)) {  //todo better ticking
             BlockPos belowPos = pos.below();
             BlockState belowState = level.getBlockState(belowPos);
             if (belowState.isAir()) {
