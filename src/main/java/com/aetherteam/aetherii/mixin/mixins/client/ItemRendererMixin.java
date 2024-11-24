@@ -1,34 +1,20 @@
 package com.aetherteam.aetherii.mixin.mixins.client;
 
-import com.aetherteam.aetherii.AetherII;
-import com.aetherteam.aetherii.client.particle.AetherIIParticleTypes;
-import com.aetherteam.aetherii.client.renderer.AetherIIRenderers;
-import com.aetherteam.aetherii.client.renderer.level.HighlandsSpecialEffects;
 import com.aetherteam.aetherii.item.AetherIIItems;
+import com.aetherteam.aetherii.mixin.MixinHooks;
 import com.llamalad7.mixinextras.sugar.Local;
 import com.llamalad7.mixinextras.sugar.ref.LocalRef;
 import com.mojang.blaze3d.vertex.*;
-import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.renderer.MultiBufferSource;
-import net.minecraft.client.renderer.RenderStateShard;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.ItemRenderer;
 import net.minecraft.client.resources.model.BakedModel;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.particles.ParticleOptions;
-import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.util.RandomSource;
 import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.block.Block;
 import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
-
-import javax.annotation.Nullable;
 
 @Mixin(ItemRenderer.class)
 public class ItemRendererMixin {
@@ -36,12 +22,7 @@ public class ItemRendererMixin {
     private void render(ItemStack itemStack, ItemDisplayContext displayContext, boolean leftHand, PoseStack poseStack, MultiBufferSource bufferSource, int combinedLight, int combinedOverlay, BakedModel p_model, CallbackInfo ci, @Local(ordinal = 1) boolean flag1, @Local RenderType renderType, @Local LocalRef<VertexConsumer> vertexconsumer) {
         if (itemStack.is(AetherIIItems.IRRADIATED_CHUNK.get())) {
             PoseStack.Pose pose = poseStack.last().copy();
-            vertexconsumer.set(getRedFoil(bufferSource, renderType, pose));
+            vertexconsumer.set(MixinHooks.getRedFoil(bufferSource, renderType, pose));
         }
-    }
-
-    @Unique
-    private VertexConsumer getRedFoil(MultiBufferSource bufferSource, RenderType renderType, PoseStack.Pose pose) {
-        return VertexMultiConsumer.create(new SheetedDecalTextureGenerator(bufferSource.getBuffer(AetherIIRenderers.GLINT), pose, 0.0078125F), bufferSource.getBuffer(renderType));
     }
 }

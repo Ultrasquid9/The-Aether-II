@@ -2,10 +2,17 @@ package com.aetherteam.aetherii.mixin;
 
 import com.aetherteam.aetherii.client.AetherIISoundEvents;
 import com.aetherteam.aetherii.client.particle.AetherIIParticleTypes;
+import com.aetherteam.aetherii.client.renderer.AetherIIRenderTypes;
 import com.aetherteam.aetherii.client.renderer.level.HighlandsSpecialEffects;
 import com.aetherteam.aetherii.data.resources.registries.AetherIIDamageTypes;
 import com.aetherteam.aetherii.entity.AetherIIAttributes;
+import com.mojang.blaze3d.vertex.PoseStack;
+import com.mojang.blaze3d.vertex.SheetedDecalTextureGenerator;
+import com.mojang.blaze3d.vertex.VertexConsumer;
+import com.mojang.blaze3d.vertex.VertexMultiConsumer;
 import net.minecraft.client.multiplayer.ClientLevel;
+import net.minecraft.client.renderer.MultiBufferSource;
+import net.minecraft.client.renderer.RenderType;
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
@@ -142,5 +149,9 @@ public class MixinHooks {
             }
         }
         return particleOptions;
+    }
+
+    public static VertexConsumer getRedFoil(MultiBufferSource bufferSource, RenderType renderType, PoseStack.Pose pose) {
+        return VertexMultiConsumer.create(new SheetedDecalTextureGenerator(bufferSource.getBuffer(AetherIIRenderTypes.GLINT), pose, 0.0078125F), bufferSource.getBuffer(renderType));
     }
 }
