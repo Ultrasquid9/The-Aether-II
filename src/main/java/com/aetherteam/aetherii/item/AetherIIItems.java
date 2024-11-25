@@ -229,7 +229,7 @@ public class AetherIIItems {
     public static final DeferredItem<Item> IRRADIATED_SWORD = ITEMS.register("irradiated_sword", () -> new Item(new Item.Properties().stacksTo(1)));
     public static final DeferredItem<Item> IRRADIATED_TOOL = ITEMS.register("irradiated_tool", () -> new Item(new Item.Properties().stacksTo(1)));
     public static final DeferredItem<Item> IRRADIATED_CHUNK = ITEMS.register("irradiated_chunk", () -> new Item(new Item.Properties().stacksTo(1)));
-    public static final DeferredItem<Item> IRRADIATED_DUST = ITEMS.register("irradiated_dust", () -> new Item(new Item.Properties())); //todo
+    public static final DeferredItem<Item> IRRADIATED_DUST = ITEMS.register("irradiated_dust", () -> new IrradiatedDustItem(new Item.Properties()));
 
     // Food
     public static final DeferredItem<Item> BLUEBERRY = ITEMS.register("blueberry", () -> new Item(new Item.Properties().food(AetherIIFoods.BLUEBERRY)));
