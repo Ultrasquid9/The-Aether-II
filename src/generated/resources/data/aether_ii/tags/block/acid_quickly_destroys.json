@@ -1,5 +1,7 @@
 {
   "values": [
-    "aether_ii:skyroot_planks"
+    "#minecraft:dirt",
+    "#minecraft:logs",
+    "#minecraft:planks"
   ]
 }

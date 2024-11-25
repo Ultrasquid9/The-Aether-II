@@ -35,6 +35,7 @@ public class AetherIITags {
         public static final TagKey<Block> AGIOSITE_DECORATIVE_BLOCKS = tag("agiosite_decorative_blocks");
         public static final TagKey<Block> ICESTONE_DECORATIVE_BLOCKS = tag("icestone_decorative_blocks");
         public static final TagKey<Block> ALLOWED_BUCKET_PICKUP = tag("allowed_bucket_pickup");
+        public static final TagKey<Block> ACID_RESISTANT = tag("acid_iresistant");
         public static final TagKey<Block> ACID_INSTANTLY_DESTROYS = tag("acid_instantly_destroys");
         public static final TagKey<Block> ACID_QUICKLY_DESTROYS = tag("acid_quickly_destroys");
         public static final TagKey<Block> ACID_SLOWLY_DESTROYS = tag("acid_slowly_destroys");

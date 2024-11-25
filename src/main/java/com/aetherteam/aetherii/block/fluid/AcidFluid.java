@@ -1,32 +1,34 @@
 package com.aetherteam.aetherii.block.fluid;
 
-import com.aetherteam.aetherii.AetherII;
 import com.aetherteam.aetherii.AetherIITags;
 import com.aetherteam.aetherii.block.AetherIIBlocks;
 import com.aetherteam.aetherii.block.AetherIIFluids;
 import com.aetherteam.aetherii.client.particle.AetherIIParticleTypes;
 import com.aetherteam.aetherii.item.AetherIIItems;
+import com.aetherteam.aetherii.mixin.mixins.client.accessor.LevelRendererAccessor;
+import com.aetherteam.aetherii.network.packet.clientbound.AcidDamageBlockPacket;
+import com.aetherteam.aetherii.network.packet.clientbound.AcidFizzPacket;
+import com.aetherteam.aetherii.network.packet.serverbound.AcidBreakBlockPacket;
 import com.aetherteam.aetherii.recipe.recipes.AetherIIRecipeTypes;
 import com.aetherteam.aetherii.recipe.recipes.block.AcidCorrosionRecipe;
-import com.aetherteam.aetherii.recipe.recipes.block.IcestoneFreezableRecipe;
-import com.aetherteam.nitrogen.recipe.BlockPropertyPair;
-import com.mojang.datafixers.util.Either;
-import com.mojang.datafixers.util.Pair;
+import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.resources.ResourceKey;
+import net.minecraft.server.level.BlockDestructionProgress;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.tags.FluidTags;
-import net.minecraft.tags.TagKey;
+import net.minecraft.util.ParticleUtils;
 import net.minecraft.util.RandomSource;
+import net.minecraft.util.valueproviders.ConstantInt;
+import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.level.*;
-import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.LiquidBlock;
@@ -34,10 +36,13 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.material.*;
+import net.minecraft.world.phys.Vec3;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.api.distmarker.OnlyIn;
 import net.neoforged.neoforge.fluids.BaseFlowingFluid;
+import net.neoforged.neoforge.network.PacketDistributor;
 
 import javax.annotation.Nullable;
-import java.util.Arrays;
 import java.util.Optional;
 
 public abstract class AcidFluid extends BaseFlowingFluid implements CanisterFluid {
@@ -74,8 +79,8 @@ public abstract class AcidFluid extends BaseFlowingFluid implements CanisterFlui
                 if (recipe != null) {
                     BlockState newState = recipe.value().getResultState(offsetState);
                     if (recipe.value().matches(null, level, offsetPos, null, offsetState, newState, AetherIIRecipeTypes.ACID_CORROSION.get())) {
-                        if (!level.isClientSide()) {
-                            recipe.value().convert(level, offsetPos, newState, recipe.value().getFunction());  //todo fizz particle packet
+                        if (recipe.value().convert(level, offsetPos, newState, recipe.value().getFunction())) {
+                            PacketDistributor.sendToPlayersInDimension((ServerLevel) level, new AcidFizzPacket(pos, direction.getOpposite()));
                         }
                     }
                 }
@@ -84,41 +89,62 @@ public abstract class AcidFluid extends BaseFlowingFluid implements CanisterFlui
     }
 
     private void destroyBelow(Level level, BlockPos pos, FluidState fluidState) {
-        if (fluidState.isSource()) {   //todo better ticking
+        if (fluidState.isSource()) {
             BlockPos belowPos = pos.below();
             BlockState belowState = level.getBlockState(belowPos);
-            if (!belowState.isAir() && !belowState.is(this.createLegacyBlock(fluidState).getBlock())) {
+            if (!belowState.isAir() && !belowState.is(this.createLegacyBlock(fluidState).getBlock()) && !belowState.is(AetherIITags.Blocks.ACID_RESISTANT)) {
                 int destroySpeed = 0;
                 if (belowState.is(AetherIITags.Blocks.ACID_INSTANTLY_DESTROYS)) {
-                    destroySpeed = 10;
+                    destroySpeed = 9;
                 } else if (belowState.is(AetherIITags.Blocks.ACID_QUICKLY_DESTROYS)) {
-                    destroySpeed = 5;
+                    destroySpeed = 3;
                 } else if (belowState.is(AetherIITags.Blocks.ACID_SLOWLY_DESTROYS)) {
                     destroySpeed = 1;
                 }
                 if (destroySpeed != 0) {
-                    AetherII.LOGGER.info("1");
-                    level.destroyBlockProgress(belowPos.hashCode(), belowPos, destroySpeed);
-                    level.scheduleTick(pos, this, this.getTickDelay(level));
+                    PacketDistributor.sendToPlayersInDimension((ServerLevel) level, new AcidDamageBlockPacket(belowPos, destroySpeed));
+                    level.scheduleTick(pos, this, this.getTickDelay(level) + 10);
                 }
             }
         }
     }
 
-    @Override
-    protected void randomTick(Level level, BlockPos pos, FluidState fluidState, RandomSource random) {
-        //todo item damaging; use entityInside in the block method and call the fluid code
-        super.randomTick(level, pos, fluidState, random);
+    @OnlyIn(Dist.CLIENT)
+    public void progressivelyDestroyBlock(Level level, BlockPos belowPos, int speed) {
+        int id = belowPos.hashCode();
+        BlockDestructionProgress progress = ((LevelRendererAccessor) Minecraft.getInstance().levelRenderer).aether_ii$getDestroyingBlocks().get(id);
+        if (progress != null) {
+            int destroyProgress = progress.getProgress();
+            level.destroyBlockProgress(belowPos.hashCode(), belowPos, destroyProgress + speed);
+            if (destroyProgress >= 9) {
+                PacketDistributor.sendToServer(new AcidBreakBlockPacket(belowPos));
+            }
+        } else {
+            level.destroyBlockProgress(belowPos.hashCode(), belowPos,  speed);
+        }
+        ParticleUtils.spawnParticlesOnBlockFace(level, belowPos.above(), ParticleTypes.WHITE_SMOKE, UniformInt.of(10, 20), Direction.DOWN, () -> new Vec3(0, 0.5, 0), 0.5);
+    }
+
+    public void fullyDestroyBlock(Level level, BlockPos belowPos) {
+        level.setBlock(belowPos.above(), Blocks.AIR.defaultBlockState(), 3);
+        level.destroyBlock(belowPos, false);
     }
 
     @Override
-    public void animateTick(Level level, BlockPos pos, FluidState fluidState, RandomSource random) { //todo occasional lava-like fizzing
+    public void animateTick(Level level, BlockPos pos, FluidState fluidState, RandomSource random) {
         level.addParticle(AetherIIParticleTypes.ACID.get(), (double) pos.getX() + random.nextDouble(), (double) pos.getY() + random.nextDouble(), (double) pos.getZ() + random.nextDouble(), 0.0, 0.15, 0.0);
+        if (random.nextInt(50) == 0) {
+            BlockPos belowPos = pos.below();
+            BlockState belowState = level.getBlockState(belowPos);
+            if (belowState.isSolid()) {
+                ParticleUtils.spawnParticlesOnBlockFace(level, belowPos.above(), ParticleTypes.WHITE_SMOKE, ConstantInt.of(1), Direction.DOWN, () -> new Vec3(0, 0.5, 0), 0.5);
+            }
+        }
     }
 
     @Override
     public boolean canBeReplacedWith(FluidState fluidState, BlockGetter level, BlockPos pos, Fluid fluid, Direction direction) {
-        return direction == Direction.DOWN && !fluid.is(AetherIITags.Fluids.ACID) && !fluid.is(FluidTags.WATER);
+        return direction == Direction.DOWN && !fluid.is(AetherIITags.Fluids.ACID) && !fluid.is(FluidTags.WATER); //todo water interaction
     }
 
     @Override

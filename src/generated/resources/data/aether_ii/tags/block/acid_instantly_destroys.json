@@ -1,5 +1,6 @@
 {
   "values": [
-    "aether_ii:skyroot_leaves"
+    "#minecraft:leaves",
+    "#aether_ii:aerclouds"
   ]
 }
