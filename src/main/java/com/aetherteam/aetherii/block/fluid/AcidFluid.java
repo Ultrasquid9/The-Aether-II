@@ -1,5 +1,6 @@
 package com.aetherteam.aetherii.block.fluid;
 
+import com.aetherteam.aetherii.AetherII;
 import com.aetherteam.aetherii.AetherIITags;
 import com.aetherteam.aetherii.block.AetherIIBlocks;
 import com.aetherteam.aetherii.block.AetherIIFluids;
@@ -28,6 +29,8 @@ import net.minecraft.util.RandomSource;
 import net.minecraft.util.valueproviders.ConstantInt;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -170,6 +173,17 @@ public abstract class AcidFluid extends BaseFlowingFluid implements CanisterFlui
                                 ItemEntity cleansedItemEntity = new ItemEntity(level, itemEntity.getX(), itemEntity.getY(), itemEntity.getZ(), result);
                                 level.addFreshEntity(cleansedItemEntity);
                             }
+                        }
+                    }
+                }
+            }
+        } else if (entity instanceof LivingEntity livingEntity) {
+            if (entity.tickCount % 50 == 0) {
+                for (ItemStack stack : livingEntity.getAllSlots()) {
+                    if (!stack.is(AetherIITags.Items.ACID_RESISTANT_ITEM)) {
+                        if (!livingEntity.level().isClientSide()) {
+                            EquipmentSlot slot = livingEntity.getEquipmentSlotForItem(stack);
+                            stack.hurtAndBreak(1, livingEntity, slot);
                         }
                     }
                 }
