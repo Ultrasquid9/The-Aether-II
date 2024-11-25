@@ -25,6 +25,8 @@ import net.minecraft.util.ParticleUtils;
 import net.minecraft.util.RandomSource;
 import net.minecraft.util.valueproviders.ConstantInt;
 import net.minecraft.util.valueproviders.UniformInt;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.RecipeHolder;
@@ -138,6 +140,22 @@ public abstract class AcidFluid extends BaseFlowingFluid implements CanisterFlui
             BlockState belowState = level.getBlockState(belowPos);
             if (belowState.isSolid()) {
                 ParticleUtils.spawnParticlesOnBlockFace(level, belowPos.above(), ParticleTypes.WHITE_SMOKE, ConstantInt.of(1), Direction.DOWN, () -> new Vec3(0, 0.5, 0), 0.5);
+            }
+        }
+    }
+
+    public void entityInside(BlockState state, Level level, BlockPos blockPos, Entity entity) {
+        //todo item cleansing
+        RandomSource random = level.getRandom();
+        if (entity instanceof ItemEntity itemEntity && !itemEntity.getItem().is(AetherIITags.Items.ACID_RESISTANT_ITEM)) {
+            itemEntity.lifespan -= 15;
+            if (entity.level().isClientSide()) {
+                for (int i = 0; i < 20; ++i) {
+                    double d0 = random.nextGaussian() * 0.02;
+                    double d1 = random.nextGaussian() * 0.02;
+                    double d2 = random.nextGaussian() * 0.02;
+                    level.addParticle(ParticleTypes.WHITE_SMOKE, itemEntity.getX(), (itemEntity.getY() + itemEntity.getBoundingBox().getYsize()), itemEntity.getZ(), d0, d1, d2);
+                }
             }
         }
     }
