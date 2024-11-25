@@ -4,7 +4,9 @@ import com.aetherteam.aetherii.AetherIITags;
 import com.aetherteam.aetherii.block.AetherIIBlocks;
 import com.aetherteam.aetherii.block.AetherIIFluids;
 import com.aetherteam.aetherii.client.particle.AetherIIParticleTypes;
+import com.aetherteam.aetherii.data.resources.registries.AetherIIDamageTypes;
 import com.aetherteam.aetherii.item.AetherIIItems;
+import com.aetherteam.aetherii.item.equipment.armor.GlovesItem;
 import com.aetherteam.aetherii.mixin.mixins.client.accessor.LevelRendererAccessor;
 import com.aetherteam.aetherii.network.packet.clientbound.AcidDamageBlockPacket;
 import com.aetherteam.aetherii.network.packet.clientbound.AcidFizzPacket;
@@ -13,13 +15,18 @@ import com.aetherteam.aetherii.recipe.input.SingleRecipeInputWithRandom;
 import com.aetherteam.aetherii.recipe.recipes.AetherIIRecipeTypes;
 import com.aetherteam.aetherii.recipe.recipes.block.AcidCorrosionRecipe;
 import com.aetherteam.aetherii.recipe.recipes.item.IrradiationCleansingRecipe;
+import io.wispforest.accessories.api.AccessoriesAPI;
+import io.wispforest.accessories.api.AccessoriesCapability;
+import io.wispforest.accessories.api.slot.SlotEntryReference;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.Holder;
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.BlockDestructionProgress;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.tags.FluidTags;
@@ -31,6 +38,7 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.item.ItemEntity;
+import net.minecraft.world.item.ArmorMaterial;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.RecipeHolder;
@@ -178,12 +186,30 @@ public abstract class AcidFluid extends BaseFlowingFluid implements CanisterFlui
                 }
             }
         } else if (entity instanceof LivingEntity livingEntity) {
-            if (entity.tickCount % 50 == 0) {
-                for (ItemStack stack : livingEntity.getAllSlots()) {
-                    if (!stack.is(AetherIITags.Items.ACID_RESISTANT_ITEM)) {
-                        if (!livingEntity.level().isClientSide()) {
-                            EquipmentSlot slot = livingEntity.getEquipmentSlotForItem(stack);
-                            stack.hurtAndBreak(1, livingEntity, slot);
+            if (entity.tickCount % 20 == 0) {
+                livingEntity.hurt(AetherIIDamageTypes.damageSource(level, AetherIIDamageTypes.ACID), 3.0F);
+
+                if (!livingEntity.level().isClientSide() && livingEntity.level() instanceof ServerLevel serverLevel) {
+                    ItemStack mainhandItem = livingEntity.getMainHandItem();
+                    if (!mainhandItem.is(AetherIITags.Items.ACID_RESISTANT_ITEM)) {
+                        mainhandItem.hurtAndBreak(1, livingEntity, EquipmentSlot.MAINHAND);
+                    }
+
+                    ItemStack offhandItem = livingEntity.getOffhandItem();
+                    if (!offhandItem.is(AetherIITags.Items.ACID_RESISTANT_ITEM)) {
+                        offhandItem.hurtAndBreak(1, livingEntity, EquipmentSlot.OFFHAND);
+                    }
+
+                    AccessoriesCapability accessories = AccessoriesCapability.get(livingEntity);
+                    if (accessories != null) {
+                        SlotEntryReference slotEntryReference = accessories.getFirstEquipped((itemStack) -> itemStack.getItem() instanceof GlovesItem);
+                        if (slotEntryReference != null && slotEntryReference.stack().getItem() instanceof GlovesItem) {
+                            ItemStack gloves = slotEntryReference.stack();
+                            if (!gloves.is(AetherIITags.Items.ACID_RESISTANT_ITEM)) {
+                                if (livingEntity instanceof ServerPlayer serverPlayer) {
+                                    gloves.hurtAndBreak(1, serverLevel, serverPlayer, (item) -> AccessoriesAPI.breakStack(slotEntryReference.reference()));
+                                }
+                            }
                         }
                     }
                 }
