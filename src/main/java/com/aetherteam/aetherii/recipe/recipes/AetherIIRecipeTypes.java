@@ -6,6 +6,7 @@ import com.aetherteam.aetherii.recipe.recipes.block.AmbrosiumRecipe;
 import com.aetherteam.aetherii.recipe.recipes.block.IcestoneFreezableRecipe;
 import com.aetherteam.aetherii.recipe.recipes.block.SwetGelRecipe;
 import com.aetherteam.aetherii.recipe.recipes.item.AltarEnchantingRecipe;
+import com.aetherteam.aetherii.recipe.recipes.item.IrradiationCleansingRecipe;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.crafting.RecipeType;
@@ -21,4 +22,5 @@ public class AetherIIRecipeTypes {
     public static final DeferredHolder<RecipeType<?>, RecipeType<IcestoneFreezableRecipe>> ICESTONE_FREEZABLE = RECIPE_TYPES.register("icestone_freezable", () -> RecipeType.simple(ResourceLocation.fromNamespaceAndPath(AetherII.MODID, "icestone_freezable")));
 
     public static final DeferredHolder<RecipeType<?>, RecipeType<AltarEnchantingRecipe>> ALTAR_ENCHANTING = RECIPE_TYPES.register("altar_enchanting", () -> RecipeType.simple(ResourceLocation.fromNamespaceAndPath(AetherII.MODID, "altar_enchanting")));
+    public static final DeferredHolder<RecipeType<?>, RecipeType<IrradiationCleansingRecipe>> IRRADIATION_CLEANSING = RECIPE_TYPES.register("irradiation_cleansing", () -> RecipeType.simple(ResourceLocation.fromNamespaceAndPath(AetherII.MODID, "irradiation_cleansing")));
 }

@@ -6,6 +6,7 @@ import com.aetherteam.aetherii.recipe.recipes.block.AmbrosiumRecipe;
 import com.aetherteam.aetherii.recipe.recipes.block.IcestoneFreezableRecipe;
 import com.aetherteam.aetherii.recipe.recipes.block.SwetGelRecipe;
 import com.aetherteam.aetherii.recipe.recipes.item.AltarEnchantingRecipe;
+import com.aetherteam.aetherii.recipe.recipes.item.IrradiationCleansingRecipe;
 import com.aetherteam.nitrogen.recipe.serializer.BlockStateRecipeSerializer;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.item.crafting.RecipeSerializer;
@@ -21,4 +22,5 @@ public class AetherIIRecipeSerializers {
     public static final DeferredHolder<RecipeSerializer<?>, BiomeParameterRecipeSerializer<IcestoneFreezableRecipe>> ICESTONE_FREEZABLE = RECIPE_SERIALIZERS.register("icestone_freezable", IcestoneFreezableRecipe.Serializer::new);
 
     public static final DeferredHolder<RecipeSerializer<?>, RecipeSerializer<AltarEnchantingRecipe>> ALTAR_ENCHANTING = RECIPE_SERIALIZERS.register("altar_enchanting", AltarEnchantingRecipe.Serializer::new);
+    public static final DeferredHolder<RecipeSerializer<?>, RecipeSerializer<IrradiationCleansingRecipe>> IRRADIATION_CLEANSING = RECIPE_SERIALIZERS.register("irradiation_cleansing", IrradiationCleansingRecipe.Serializer::new);
 }

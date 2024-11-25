@@ -1,0 +1,43 @@
+{
+  "type": "aether_ii:irradiation_cleansing",
+  "ingredient": {
+    "item": "aether_ii:irradiated_sword"
+  },
+  "results": [
+    {
+      "data": {
+        "count": 1,
+        "id": "aether_ii:skyroot_shortsword"
+      },
+      "weight": 1
+    },
+    {
+      "data": {
+        "count": 1,
+        "id": "aether_ii:holystone_shortsword"
+      },
+      "weight": 1
+    },
+    {
+      "data": {
+        "count": 1,
+        "id": "aether_ii:zanite_shortsword"
+      },
+      "weight": 1
+    },
+    {
+      "data": {
+        "count": 1,
+        "id": "aether_ii:arkenium_shortsword"
+      },
+      "weight": 1
+    },
+    {
+      "data": {
+        "count": 1,
+        "id": "aether_ii:gravitite_shortsword"
+      },
+      "weight": 1
+    }
+  ]
+}

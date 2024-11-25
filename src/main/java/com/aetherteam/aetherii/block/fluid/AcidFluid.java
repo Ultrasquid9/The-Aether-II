@@ -9,8 +9,10 @@ import com.aetherteam.aetherii.mixin.mixins.client.accessor.LevelRendererAccesso
 import com.aetherteam.aetherii.network.packet.clientbound.AcidDamageBlockPacket;
 import com.aetherteam.aetherii.network.packet.clientbound.AcidFizzPacket;
 import com.aetherteam.aetherii.network.packet.serverbound.AcidBreakBlockPacket;
+import com.aetherteam.aetherii.recipe.input.SingleRecipeInputWithRandom;
 import com.aetherteam.aetherii.recipe.recipes.AetherIIRecipeTypes;
 import com.aetherteam.aetherii.recipe.recipes.block.AcidCorrosionRecipe;
+import com.aetherteam.aetherii.recipe.recipes.item.IrradiationCleansingRecipe;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -145,16 +147,31 @@ public abstract class AcidFluid extends BaseFlowingFluid implements CanisterFlui
     }
 
     public void entityInside(BlockState state, Level level, BlockPos blockPos, Entity entity) {
-        //todo item cleansing
         RandomSource random = level.getRandom();
-        if (entity instanceof ItemEntity itemEntity && !itemEntity.getItem().is(AetherIITags.Items.ACID_RESISTANT_ITEM)) {
-            itemEntity.lifespan -= 15;
-            if (entity.level().isClientSide()) {
-                for (int i = 0; i < 20; ++i) {
-                    double d0 = random.nextGaussian() * 0.02;
-                    double d1 = random.nextGaussian() * 0.02;
-                    double d2 = random.nextGaussian() * 0.02;
-                    level.addParticle(ParticleTypes.WHITE_SMOKE, itemEntity.getX(), (itemEntity.getY() + itemEntity.getBoundingBox().getYsize()), itemEntity.getZ(), d0, d1, d2);
+        if (entity instanceof ItemEntity itemEntity) {
+            ItemStack itemStack = itemEntity.getItem().copy();
+            if (!itemStack.is(AetherIITags.Items.ACID_RESISTANT_ITEM)) {
+                itemEntity.lifespan -= 15;
+                if (entity.level().isClientSide()) {
+                    for (int i = 0; i < 2; ++i) {
+                        double d0 = random.nextGaussian() * 0.02;
+                        double d1 = random.nextGaussian() * 0.02;
+                        double d2 = random.nextGaussian() * 0.02;
+                        level.addParticle(ParticleTypes.WHITE_SMOKE, itemEntity.getX(), (itemEntity.getY() + itemEntity.getBoundingBox().getYsize()), itemEntity.getZ(), d0, d1, d2);
+                    }
+                }
+                if (itemEntity.lifespan <= 500) {
+                    for (RecipeHolder<IrradiationCleansingRecipe> recipe : level.getRecipeManager().getAllRecipesFor(AetherIIRecipeTypes.IRRADIATION_CLEANSING.get())) {
+                        if (recipe != null) {
+                            SingleRecipeInputWithRandom input = new SingleRecipeInputWithRandom(itemStack, level.getRandom());
+                            if (recipe.value().matches(input, level)) {
+                                itemEntity.discard();
+                                ItemStack result = recipe.value().assemble(input, level.registryAccess());
+                                ItemEntity cleansedItemEntity = new ItemEntity(level, itemEntity.getX(), itemEntity.getY(), itemEntity.getZ(), result);
+                                level.addFreshEntity(cleansedItemEntity);
+                            }
+                        }
+                    }
                 }
             }
         }
