@@ -296,7 +296,7 @@ public class AetherIIItemTagData extends ItemTagsProvider {
                 AetherIIBlocks.IRRADIATED_GREATOAK_LEAVES.asItem(),
                 AetherIIBlocks.IRRADIATED_GREATBOA_LEAVES.asItem());
         this.tag(AetherIITags.Items.IRRADIATED_ITEM).add(
-                AetherIIItems.IRRADIATED_SWORD.get(),
+                AetherIIItems.IRRADIATED_WEAPON.get(),
                 AetherIIItems.IRRADIATED_ARMOR.get(),
                 AetherIIItems.IRRADIATED_TOOL.get(),
                 AetherIIItems.IRRADIATED_CHUNK.get(),

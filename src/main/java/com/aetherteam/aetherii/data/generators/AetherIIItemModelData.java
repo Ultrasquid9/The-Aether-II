@@ -137,7 +137,7 @@ public class AetherIIItemModelData extends AetherIIItemModelProvider {
 
         // Irradiated Items
         this.item(AetherIIItems.IRRADIATED_ARMOR.get(), "miscellaneous/");
-        this.item(AetherIIItems.IRRADIATED_SWORD.get(), "miscellaneous/");
+        this.item(AetherIIItems.IRRADIATED_WEAPON.get(), "miscellaneous/");
         this.item(AetherIIItems.IRRADIATED_TOOL.get(), "miscellaneous/");
         this.item(AetherIIItems.IRRADIATED_CHUNK.get(), "miscellaneous/");
         this.item(AetherIIItems.IRRADIATED_DUST.get(), "miscellaneous/");

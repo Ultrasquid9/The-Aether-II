@@ -1161,7 +1161,17 @@ public class AetherIIRecipeData extends AetherIIRecipeProvider {
                 .add(AetherIIItems.ZANITE_SHORTSWORD.toStack(), 1)
                 .add(AetherIIItems.ARKENIUM_SHORTSWORD.toStack(), 1)
                 .add(AetherIIItems.GRAVITITE_SHORTSWORD.toStack(), 1)
-                .build(), AetherIIItems.IRRADIATED_SWORD, consumer);
+                .add(AetherIIItems.SKYROOT_SPEAR.toStack(), 1)
+                .add(AetherIIItems.HOLYSTONE_SPEAR.toStack(), 1)
+                .add(AetherIIItems.ZANITE_SPEAR.toStack(), 1)
+                .add(AetherIIItems.ARKENIUM_SPEAR.toStack(), 1)
+                .add(AetherIIItems.GRAVITITE_SPEAR.toStack(), 1)
+                .add(AetherIIItems.SKYROOT_HAMMER.toStack(), 1)
+                .add(AetherIIItems.HOLYSTONE_HAMMER.toStack(), 1)
+                .add(AetherIIItems.ZANITE_HAMMER.toStack(), 1)
+                .add(AetherIIItems.ARKENIUM_HAMMER.toStack(), 1)
+                .add(AetherIIItems.GRAVITITE_HAMMER.toStack(), 1)
+                .build(), AetherIIItems.IRRADIATED_WEAPON, consumer);
         this.irradiationCleansing(RecipeCategory.COMBAT, SimpleWeightedRandomList.<ItemStack>builder()
                 .add(AetherIIItems.SKYROOT_AXE.toStack(), 1)
                 .add(AetherIIItems.HOLYSTONE_AXE.toStack(), 1)

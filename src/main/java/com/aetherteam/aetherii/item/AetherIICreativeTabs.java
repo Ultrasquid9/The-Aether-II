@@ -491,7 +491,7 @@ public class AetherIICreativeTabs {
                 output.accept(AetherIIItems.PURPLE_AERCLOUD_GLIDER.get());
                 output.accept(AetherIIItems.MOA_SADDLE.get());
                 output.accept(AetherIIItems.IRRADIATED_ARMOR.get());
-                output.accept(AetherIIItems.IRRADIATED_SWORD.get());
+                output.accept(AetherIIItems.IRRADIATED_WEAPON.get());
                 output.accept(AetherIIItems.IRRADIATED_TOOL.get());
                 output.accept(AetherIIItems.IRRADIATED_CHUNK.get());
                 output.accept(AetherIIItems.IRRADIATED_DUST.get());

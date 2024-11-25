@@ -1,11 +1,11 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_irradiated_sword": {
+    "has_irradiated_weapon": {
       "conditions": {
         "items": [
           {
-            "items": "aether_ii:irradiated_sword"
+            "items": "aether_ii:irradiated_weapon"
           }
         ]
       },
@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "minecraft:cleanse_irradiated_sword"
+        "recipe": "minecraft:cleanse_irradiated_weapon"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -21,12 +21,12 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_irradiated_sword"
+      "has_irradiated_weapon"
     ]
   ],
   "rewards": {
     "recipes": [
-      "minecraft:cleanse_irradiated_sword"
+      "minecraft:cleanse_irradiated_weapon"
     ]
   }
 }
