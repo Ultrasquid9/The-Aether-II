@@ -3,9 +3,12 @@ package com.aetherteam.aetherii.data.generators;
 import com.aetherteam.aetherii.AetherII;
 import com.aetherteam.aetherii.AetherIITags;
 import com.aetherteam.aetherii.block.AetherIIBlocks;
+import com.aetherteam.aetherii.block.natural.IrradiatedLeavesBlock;
 import com.aetherteam.aetherii.data.providers.AetherIIRecipeProvider;
 import com.aetherteam.aetherii.item.AetherIIItems;
 import com.aetherteam.aetherii.item.components.AetherIIDataComponents;
+import com.aetherteam.nitrogen.recipe.BlockPropertyPair;
+import it.unimi.dsi.fastutil.objects.Reference2ObjectArrayMap;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.component.DataComponentPatch;
 import net.minecraft.data.PackOutput;
@@ -20,6 +23,8 @@ import net.minecraft.world.level.block.Blocks;
 import net.neoforged.neoforge.common.Tags;
 
 import java.util.List;
+import java.util.Map;
+import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
 
 public class AetherIIRecipeData extends AetherIIRecipeProvider {
@@ -324,6 +329,14 @@ public class AetherIIRecipeData extends AetherIIRecipeProvider {
         this.stonecuttingRecipe(consumer, RecipeCategory.DECORATIONS, AetherIIBlocks.MOSSY_HOLYSTONE_WALL.get(), AetherIIBlocks.MOSSY_HOLYSTONE.get());
 
         // Irradiated Holystone
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, AetherIIBlocks.IRRADIATED_HOLYSTONE, 8)
+                .define('/', AetherIIBlocks.HOLYSTONE.get())
+                .define('#', AetherIIItems.IRRADIATED_DUST.get())
+                .pattern("///")
+                .pattern("/#/")
+                .pattern("///")
+                .unlockedBy(getHasName(AetherIIItems.IRRADIATED_DUST.get()), has(AetherIIItems.IRRADIATED_DUST.get()))
+                .save(consumer);
         this.stairs(AetherIIBlocks.IRRADIATED_HOLYSTONE_STAIRS, AetherIIBlocks.IRRADIATED_HOLYSTONE).save(consumer);
         slab(consumer, RecipeCategory.BUILDING_BLOCKS, AetherIIBlocks.IRRADIATED_HOLYSTONE_SLAB.get(), AetherIIBlocks.IRRADIATED_HOLYSTONE.get());
         wall(consumer, RecipeCategory.DECORATIONS, AetherIIBlocks.IRRADIATED_HOLYSTONE_WALL.get(), AetherIIBlocks.IRRADIATED_HOLYSTONE.get());
@@ -1194,5 +1207,63 @@ public class AetherIIRecipeData extends AetherIIRecipeProvider {
                 .add(AetherIIItems.ARKENIUM_TROWEL.toStack(), 1)
                 .add(AetherIIItems.GRAVITITE_TROWEL.toStack(), 1)
                 .build(), AetherIIItems.IRRADIATED_TOOL, consumer);
+
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, AetherIIBlocks.IRRADIATED_SKYROOT_LEAF_PILE, 1).requires(AetherIIBlocks.SKYROOT_LEAF_PILE.get()).requires(AetherIIItems.IRRADIATED_DUST.get())
+                .group("irradiated_leaf_pile").unlockedBy(getHasName(AetherIIItems.IRRADIATED_DUST), has(AetherIIItems.IRRADIATED_DUST)).save(consumer, this.name("skyroot_leaf_pile_irradiation_crafting"));
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, AetherIIBlocks.IRRADIATED_SKYPLANE_LEAF_PILE, 1).requires(AetherIIBlocks.SKYPLANE_LEAF_PILE.get()).requires(AetherIIItems.IRRADIATED_DUST.get())
+                .group("irradiated_leaf_pile").unlockedBy(getHasName(AetherIIItems.IRRADIATED_DUST), has(AetherIIItems.IRRADIATED_DUST)).save(consumer, this.name("skyplane_leaf_pile_irradiation_crafting"));
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, AetherIIBlocks.IRRADIATED_SKYBIRCH_LEAF_PILE, 1).requires(AetherIIBlocks.SKYBIRCH_LEAF_PILE.get()).requires(AetherIIItems.IRRADIATED_DUST.get())
+                .group("irradiated_leaf_pile").unlockedBy(getHasName(AetherIIItems.IRRADIATED_DUST), has(AetherIIItems.IRRADIATED_DUST)).save(consumer, this.name("skybirch_leaf_pile_irradiation_crafting"));
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, AetherIIBlocks.IRRADIATED_SKYPINE_LEAF_PILE, 1).requires(AetherIIBlocks.SKYPINE_LEAF_PILE.get()).requires(AetherIIItems.IRRADIATED_DUST.get())
+                .group("irradiated_leaf_pile").unlockedBy(getHasName(AetherIIItems.IRRADIATED_DUST), has(AetherIIItems.IRRADIATED_DUST)).save(consumer, this.name("skypine_leaf_pile_irradiation_crafting"));
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, AetherIIBlocks.IRRADIATED_WISPROOT_LEAF_PILE, 1).requires(AetherIIBlocks.WISPROOT_LEAF_PILE.get()).requires(AetherIIItems.IRRADIATED_DUST.get())
+                .group("irradiated_leaf_pile").unlockedBy(getHasName(AetherIIItems.IRRADIATED_DUST), has(AetherIIItems.IRRADIATED_DUST)).save(consumer, this.name("wisproot_leaf_pile_irradiation_crafting"));
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, AetherIIBlocks.IRRADIATED_WISPTOP_LEAF_PILE, 1).requires(AetherIIBlocks.WISPTOP_LEAF_PILE.get()).requires(AetherIIItems.IRRADIATED_DUST.get())
+                .group("irradiated_leaf_pile").unlockedBy(getHasName(AetherIIItems.IRRADIATED_DUST), has(AetherIIItems.IRRADIATED_DUST)).save(consumer, this.name("wisptop_leaf_pile_irradiation_crafting"));
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, AetherIIBlocks.IRRADIATED_GREATROOT_LEAF_PILE, 1).requires(AetherIIBlocks.GREATROOT_LEAF_PILE.get()).requires(AetherIIItems.IRRADIATED_DUST.get())
+                .group("irradiated_leaf_pile").unlockedBy(getHasName(AetherIIItems.IRRADIATED_DUST), has(AetherIIItems.IRRADIATED_DUST)).save(consumer, this.name("greatroot_leaf_pile_irradiation_crafting"));
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, AetherIIBlocks.IRRADIATED_GREATOAK_LEAF_PILE, 1).requires(AetherIIBlocks.GREATOAK_LEAF_PILE.get()).requires(AetherIIItems.IRRADIATED_DUST.get())
+                .group("irradiated_leaf_pile").unlockedBy(getHasName(AetherIIItems.IRRADIATED_DUST), has(AetherIIItems.IRRADIATED_DUST)).save(consumer, this.name("greatoak_leaf_pile_irradiation_crafting"));
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, AetherIIBlocks.IRRADIATED_GREATBOA_LEAF_PILE, 1).requires(AetherIIBlocks.GREATBOA_LEAF_PILE.get()).requires(AetherIIItems.IRRADIATED_DUST.get())
+                .group("irradiated_leaf_pile").unlockedBy(getHasName(AetherIIItems.IRRADIATED_DUST), has(AetherIIItems.IRRADIATED_DUST)).save(consumer, this.name("greatboa_leaf_pile_irradiation_crafting"));
+
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, AetherIIBlocks.IRRADIATED_SKYROOT_LEAVES, 1).requires(AetherIIBlocks.SKYROOT_LEAVES.get()).requires(AetherIIItems.IRRADIATED_DUST.get())
+                .group("irradiated_leaves").unlockedBy(getHasName(AetherIIItems.IRRADIATED_DUST), has(AetherIIItems.IRRADIATED_DUST)).save(consumer, this.name("skyroot_leaves_irradiation_crafting"));
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, AetherIIBlocks.IRRADIATED_SKYPLANE_LEAVES, 1).requires(AetherIIBlocks.SKYPLANE_LEAVES.get()).requires(AetherIIItems.IRRADIATED_DUST.get())
+                .group("irradiated_leaves").unlockedBy(getHasName(AetherIIItems.IRRADIATED_DUST), has(AetherIIItems.IRRADIATED_DUST)).save(consumer, this.name("skyplane_leaves_irradiation_crafting"));
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, AetherIIBlocks.IRRADIATED_SKYBIRCH_LEAVES, 1).requires(AetherIIBlocks.SKYBIRCH_LEAVES.get()).requires(AetherIIItems.IRRADIATED_DUST.get())
+                .group("irradiated_leaves").unlockedBy(getHasName(AetherIIItems.IRRADIATED_DUST), has(AetherIIItems.IRRADIATED_DUST)).save(consumer, this.name("skybirch_leaves_irradiation_crafting"));
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, AetherIIBlocks.IRRADIATED_SKYPINE_LEAVES, 1).requires(AetherIIBlocks.SKYPINE_LEAVES.get()).requires(AetherIIItems.IRRADIATED_DUST.get())
+                .group("irradiated_leaves").unlockedBy(getHasName(AetherIIItems.IRRADIATED_DUST), has(AetherIIItems.IRRADIATED_DUST)).save(consumer, this.name("skypine_leaves_irradiation_crafting"));
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, AetherIIBlocks.IRRADIATED_WISPROOT_LEAVES, 1).requires(AetherIIBlocks.WISPROOT_LEAVES.get()).requires(AetherIIItems.IRRADIATED_DUST.get())
+                .group("irradiated_leaves").unlockedBy(getHasName(AetherIIItems.IRRADIATED_DUST), has(AetherIIItems.IRRADIATED_DUST)).save(consumer, this.name("wisproot_leaves_irradiation_crafting"));
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, AetherIIBlocks.IRRADIATED_WISPTOP_LEAVES, 1).requires(AetherIIBlocks.WISPTOP_LEAVES.get()).requires(AetherIIItems.IRRADIATED_DUST.get())
+                .group("irradiated_leaves").unlockedBy(getHasName(AetherIIItems.IRRADIATED_DUST), has(AetherIIItems.IRRADIATED_DUST)).save(consumer, this.name("wisptop_leaves_irradiation_crafting"));
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, AetherIIBlocks.IRRADIATED_GREATROOT_LEAVES, 1).requires(AetherIIBlocks.GREATROOT_LEAVES.get()).requires(AetherIIItems.IRRADIATED_DUST.get())
+                .group("irradiated_leaves").unlockedBy(getHasName(AetherIIItems.IRRADIATED_DUST), has(AetherIIItems.IRRADIATED_DUST)).save(consumer, this.name("greatroot_leaves_irradiation_crafting"));
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, AetherIIBlocks.IRRADIATED_GREATOAK_LEAVES, 1).requires(AetherIIBlocks.GREATOAK_LEAVES.get()).requires(AetherIIItems.IRRADIATED_DUST.get())
+                .group("irradiated_leaves").unlockedBy(getHasName(AetherIIItems.IRRADIATED_DUST), has(AetherIIItems.IRRADIATED_DUST)).save(consumer, this.name("greatoak_leaves_irradiation_crafting"));
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, AetherIIBlocks.IRRADIATED_GREATBOA_LEAVES, 1).requires(AetherIIBlocks.GREATBOA_LEAVES.get()).requires(AetherIIItems.IRRADIATED_DUST.get())
+                .group("irradiated_leaves").unlockedBy(getHasName(AetherIIItems.IRRADIATED_DUST), has(AetherIIItems.IRRADIATED_DUST)).save(consumer, this.name("greatboa_leaves_irradiation_crafting"));
+
+        this.dustIrradiation(AetherIIBlocks.IRRADIATED_SKYROOT_LEAF_PILE.get(), AetherIIBlocks.SKYROOT_LEAF_PILE.get()).save(consumer, "skyroot_leaf_pile_irradiation");
+        this.dustIrradiation(AetherIIBlocks.IRRADIATED_SKYPLANE_LEAF_PILE.get(), AetherIIBlocks.SKYPLANE_LEAF_PILE.get()).save(consumer, "skyplane_leaf_pile_irradiation");
+        this.dustIrradiation(AetherIIBlocks.IRRADIATED_SKYBIRCH_LEAF_PILE.get(), AetherIIBlocks.SKYBIRCH_LEAF_PILE.get()).save(consumer, "skybirch_leaf_pile_irradiation");
+        this.dustIrradiation(AetherIIBlocks.IRRADIATED_SKYPINE_LEAF_PILE.get(), AetherIIBlocks.SKYPINE_LEAF_PILE.get()).save(consumer, "skypine_leaf_pile_irradiation");
+        this.dustIrradiation(AetherIIBlocks.IRRADIATED_WISPROOT_LEAF_PILE.get(), AetherIIBlocks.WISPROOT_LEAF_PILE.get()).save(consumer, "wisproot_leaf_pile_irradiation");
+        this.dustIrradiation(AetherIIBlocks.IRRADIATED_WISPTOP_LEAF_PILE.get(), AetherIIBlocks.WISPTOP_LEAF_PILE.get()).save(consumer, "wisptop_leaf_pile_irradiation");
+        this.dustIrradiation(AetherIIBlocks.IRRADIATED_GREATROOT_LEAF_PILE.get(), AetherIIBlocks.GREATROOT_LEAF_PILE.get()).save(consumer, "greatroot_leaf_pile_irradiation");
+        this.dustIrradiation(AetherIIBlocks.IRRADIATED_GREATOAK_LEAF_PILE.get(), AetherIIBlocks.GREATOAK_LEAF_PILE.get()).save(consumer, "greatoak_leaf_pile_irradiation");
+        this.dustIrradiation(AetherIIBlocks.IRRADIATED_GREATBOA_LEAF_PILE.get(), AetherIIBlocks.GREATBOA_LEAF_PILE.get()).save(consumer, "greatboa_leaf_pile_irradiation");
+
+        this.dustIrradiation(AetherIIBlocks.IRRADIATED_SKYROOT_LEAVES.get(), AetherIIBlocks.SKYROOT_LEAVES.get()).save(consumer, "skyroot_leaves_irradiation");
+        this.dustIrradiation(AetherIIBlocks.IRRADIATED_SKYPLANE_LEAVES.get(), AetherIIBlocks.SKYPLANE_LEAVES.get()).save(consumer, "skyplane_leaves_irradiation");
+        this.dustIrradiation(AetherIIBlocks.IRRADIATED_SKYBIRCH_LEAVES.get(), AetherIIBlocks.SKYBIRCH_LEAVES.get()).save(consumer, "skybirch_leaves_irradiation");
+        this.dustIrradiation(AetherIIBlocks.IRRADIATED_SKYPINE_LEAVES.get(), AetherIIBlocks.SKYPINE_LEAVES.get()).save(consumer, "skypine_leaves_irradiation");
+        this.dustIrradiation(AetherIIBlocks.IRRADIATED_WISPROOT_LEAVES.get(), AetherIIBlocks.WISPROOT_LEAVES.get()).save(consumer, "wisproot_leaves_irradiation");
+        this.dustIrradiation(AetherIIBlocks.IRRADIATED_WISPTOP_LEAVES.get(), AetherIIBlocks.WISPTOP_LEAVES.get()).save(consumer, "wisptop_leaves_irradiation");
+        this.dustIrradiation(AetherIIBlocks.IRRADIATED_GREATROOT_LEAVES.get(), AetherIIBlocks.GREATROOT_LEAVES.get()).save(consumer, "greatroot_leaves_irradiation");
+        this.dustIrradiation(AetherIIBlocks.IRRADIATED_GREATOAK_LEAVES.get(), AetherIIBlocks.GREATOAK_LEAVES.get()).save(consumer, "greatoak_leaves_irradiation");
+        this.dustIrradiation(AetherIIBlocks.IRRADIATED_GREATBOA_LEAVES.get(), AetherIIBlocks.GREATBOA_LEAVES.get()).save(consumer, "greatboa_leaves_irradiation");
     }
 }
