@@ -281,8 +281,8 @@ public class AetherIIItems {
 
     // Arkenium Canisters
     public static final DeferredItem<Item> ARKENIUM_CANISTER = ITEMS.register("arkenium_canister", () -> new ArkeniumCanisterItem(Fluids.EMPTY, new Item.Properties().stacksTo(16)));
-    public static final DeferredItem<Item> ARKENIUM_ACID_CANISTER = ITEMS.register("arkenium_acid_canister", () -> new ArkeniumCanisterItem(AetherIIFluids.ACID.get(), new Item.Properties().stacksTo(1)));
-    public static final DeferredItem<Item> ARKENIUM_GAS_CANISTER = ITEMS.register("arkenium_gas_canister", () -> new SolidCanisterItem(AetherIIBlocks.GAS.get(), SoundEvents.BUCKET_EMPTY_POWDER_SNOW, new Item.Properties().stacksTo(1))); //todo
+    public static final DeferredItem<Item> ARKENIUM_ACID_CANISTER = ITEMS.register("arkenium_acid_canister", () -> new ArkeniumCanisterItem(AetherIIFluids.ACID.get(), new Item.Properties().stacksTo(1).craftRemainder(ARKENIUM_CANISTER.get())));
+    public static final DeferredItem<Item> ARKENIUM_GAS_CANISTER = ITEMS.register("arkenium_gas_canister", () -> new SolidCanisterItem(AetherIIBlocks.GAS.get(), SoundEvents.BUCKET_EMPTY_POWDER_SNOW, new Item.Properties().stacksTo(1).craftRemainder(ARKENIUM_CANISTER.get()))); //todo
 
     // Music Discs
     public static final DeferredItem<Item> MUSIC_DISC_AETHER_TUNE = ITEMS.register("music_disc_aether_tune", () -> new Item(new Item.Properties().stacksTo(1).rarity(Rarity.RARE).jukeboxPlayable(AetherIIJukeboxSongs.AETHER_TUNE)));
