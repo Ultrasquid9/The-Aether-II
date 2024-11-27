@@ -21,7 +21,6 @@ import io.wispforest.accessories.api.slot.SlotEntryReference;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.core.Holder;
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.BlockDestructionProgress;
@@ -38,7 +37,6 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.item.ItemEntity;
-import net.minecraft.world.item.ArmorMaterial;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.RecipeHolder;
@@ -62,6 +60,14 @@ import java.util.Optional;
 public abstract class AcidFluid extends BaseFlowingFluid implements CanisterFluid {
     public AcidFluid(Properties properties) {
         super(properties);
+    }
+
+    @Override
+    protected void randomTick(Level level, BlockPos pos, FluidState state, RandomSource random) {
+        super.randomTick(level, pos, state, random);
+        if (level.getBlockState(pos.above()).isEmpty()) {
+            this.createGas(level, pos);
+        }
     }
 
     @Override
@@ -153,6 +159,17 @@ public abstract class AcidFluid extends BaseFlowingFluid implements CanisterFlui
             if (belowState.isSolid()) {
                 ParticleUtils.spawnParticlesOnBlockFace(level, belowPos.above(), ParticleTypes.WHITE_SMOKE, ConstantInt.of(1), Direction.DOWN, () -> new Vec3(0, 0.5, 0), 0.5);
             }
+        }
+    }
+
+    public void onPlace(BlockState state, Level level, BlockPos pos, BlockState oldState, boolean isMoving) {
+        this.createGas(level, pos);
+    }
+
+    public void createGas(Level level, BlockPos pos) {
+        BlockPos above = pos.above();
+        if (level.getBlockState(above).isEmpty()) {
+            level.setBlock(above, AetherIIBlocks.GAS.get().defaultBlockState(), 3);
         }
     }
 
