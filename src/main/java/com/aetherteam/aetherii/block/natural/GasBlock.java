@@ -1,16 +1,21 @@
 package com.aetherteam.aetherii.block.natural;
 
 import com.aetherteam.aetherii.AetherIITags;
+import com.aetherteam.aetherii.attachment.AetherIIDataAttachments;
 import com.aetherteam.aetherii.block.AetherIIBlocks;
 import com.aetherteam.aetherii.client.particle.AetherIIParticleTypes;
+import com.aetherteam.aetherii.effect.buildup.EffectBuildupPresets;
 import com.aetherteam.aetherii.item.AetherIIItems;
+import com.aetherteam.aetherii.network.packet.clientbound.GasExplosionEffectsPacket;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Vec3i;
-import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.util.RandomSource;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.BlockPlaceContext;
@@ -24,15 +29,19 @@ import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.level.material.Fluid;
 import net.minecraft.world.level.material.FluidState;
+import net.minecraft.world.phys.AABB;
+import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
+import net.neoforged.neoforge.network.PacketDistributor;
 import org.jetbrains.annotations.Nullable;
 import org.joml.Vector3i;
 
 import java.util.List;
 import java.util.Optional;
 import java.util.OptionalInt;
+import java.util.function.BiConsumer;
 
 public class GasBlock extends Block implements LiquidBlockContainer, CanisterPickup {
     private static final int MAX_DISTANCE = 6;
@@ -79,8 +88,7 @@ public class GasBlock extends Block implements LiquidBlockContainer, CanisterPic
     @Override
     protected void neighborChanged(BlockState state, Level level, BlockPos pos, Block neighborBlock, BlockPos neighborPos, boolean movedByPiston) {
         if (level.getBlockState(neighborPos).is(AetherIITags.Blocks.TRIGGERS_GAS) || state.is(AetherIITags.Blocks.TRIGGERS_GAS)) {
-            level.destroyBlock(pos, false);
-            level.explode(null, pos.getX(), pos.getY(), pos.getZ(), 1.0F, Level.ExplosionInteraction.BLOCK); //todo custom explosion type for particles and sound and power.
+            this.explode(level, pos, true);
         }
         super.neighborChanged(state, level, pos, neighborBlock, neighborPos, movedByPiston);
     }
@@ -102,16 +110,38 @@ public class GasBlock extends Block implements LiquidBlockContainer, CanisterPic
         for (Direction direction : Direction.values()) {
             BlockPos offsetPos = pos.offset(direction.getNormal());
             if (level.getBlockState(offsetPos).is(AetherIITags.Blocks.TRIGGERS_GAS)) {
-                level.destroyBlock(pos, false);
-                level.explode(null, pos.getX(), pos.getY(), pos.getZ(), 1.0F, Level.ExplosionInteraction.BLOCK); //todo custom explosion type for particles and sound and power.
+                this.explode(level, pos, true);
             }
         }
         super.onPlace(state, level, pos, oldState, movedByPiston);
     }
 
     @Override
+    protected void onExplosionHit(BlockState state, Level level, BlockPos pos, Explosion explosion, BiConsumer<ItemStack, BlockPos> dropConsumer) {
+        this.onBlockExploded(state, level, pos, explosion);
+    }
+
+    @Override
     public void wasExploded(Level level, BlockPos pos, Explosion explosion) {
-        level.explode(null, pos.getX(), pos.getY(), pos.getZ(), 1.0F, Level.ExplosionInteraction.BLOCK);
+        this.explode(level, pos, true);
+    }
+
+    public void explode(Level level, BlockPos pos, boolean playSound) {
+        level.setBlock(pos, Blocks.AIR.defaultBlockState(), 3);
+        if (level instanceof ServerLevel serverLevel) {
+            PacketDistributor.sendToPlayersInDimension(serverLevel, new GasExplosionEffectsPacket(pos, playSound));
+        }
+        for (Entity entity : level.getEntities(null, AABB.encapsulatingFullBlocks(pos, pos))) {
+            if (entity instanceof LivingEntity livingEntity) {
+                livingEntity.getData(AetherIIDataAttachments.EFFECTS_SYSTEM).addBuildup(EffectBuildupPresets.IMMOLATION, 500);
+            }
+        }
+        for (Direction direction : Direction.values()) {
+            BlockPos offsetPos = pos.relative(direction);
+            if (level.getBlockState(offsetPos).getBlock() instanceof GasBlock gasBlock) {
+                gasBlock.explode(level, offsetPos, level.getRandom().nextInt(20) == 0);
+            }
+        }
     }
 
     @Override

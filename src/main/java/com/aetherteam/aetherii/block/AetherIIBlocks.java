@@ -4,6 +4,7 @@ import com.aetherteam.aetherii.AetherII;
 import com.aetherteam.aetherii.AetherIITags;
 import com.aetherteam.aetherii.block.construction.*;
 import com.aetherteam.aetherii.block.furniture.OutpostCampfireBlock;
+import com.aetherteam.aetherii.block.natural.GasBlock;
 import com.aetherteam.aetherii.block.miscellaneous.FacingPillarBlock;
 import com.aetherteam.aetherii.block.miscellaneous.MoaEggBlock;
 import com.aetherteam.aetherii.block.natural.*;
