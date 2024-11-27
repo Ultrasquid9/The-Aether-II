@@ -2,10 +2,12 @@ package com.aetherteam.aetherii.block.natural;
 
 import com.aetherteam.aetherii.AetherIITags;
 import com.aetherteam.aetherii.block.AetherIIBlocks;
+import com.aetherteam.aetherii.client.particle.AetherIIParticleTypes;
 import com.aetherteam.aetherii.item.AetherIIItems;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Vec3i;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.util.RandomSource;
@@ -33,7 +35,7 @@ import java.util.Optional;
 import java.util.OptionalInt;
 
 public class GasBlock extends Block implements LiquidBlockContainer, CanisterPickup {
-    private static final int MAX_DISTANCE = 5;
+    private static final int MAX_DISTANCE = 6;
     public static final IntegerProperty DISTANCE = IntegerProperty.create("gas_distance", 0, MAX_DISTANCE);
 
     public static final List<BlockPos> AROUND_OFFSETS = BlockPos.betweenClosedStream(-1, -1, -1, 1, 1, 1).map(BlockPos::immutable).filter((e) -> Vector3i.length(e.getX(), e.getY(), e.getZ()) != 0).toList();
@@ -53,6 +55,13 @@ public class GasBlock extends Block implements LiquidBlockContainer, CanisterPic
                     level.setBlock(offsetPos, updateDistance(state, level, offsetPos), 3);
                 }
             }
+        }
+    }
+
+    @Override
+    public void animateTick(BlockState state, Level level, BlockPos pos, RandomSource random) {
+        if (random.nextInt(200) == 0) {
+            level.addParticle(AetherIIParticleTypes.GAS.get(), pos.getX() + random.nextDouble(), pos.getY() + random.nextDouble(), pos.getZ() + random.nextDouble(), 0, 0, 0);
         }
     }
 

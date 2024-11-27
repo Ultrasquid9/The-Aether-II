@@ -44,15 +44,10 @@ public class AcidParticle extends TextureSheetParticle {
     }
 
     @OnlyIn(Dist.CLIENT)
-    public static class Provider implements ParticleProvider<SimpleParticleType> {
-        private final SpriteSet sprites;
-
-        public Provider(SpriteSet sprites) {
-            this.sprites = sprites;
-        }
-
+    public record Provider(SpriteSet sprites) implements ParticleProvider<SimpleParticleType> {
+        @Override
         public Particle createParticle(SimpleParticleType type, ClientLevel level, double x, double y, double z, double xSpeed, double ySpeed, double zSpeed) {
-            return new AcidParticle(level, x, y, z, xSpeed, ySpeed, zSpeed, this.sprites);
+            return new AcidParticle(level, x, y, z, xSpeed, ySpeed, zSpeed, this.sprites());
         }
     }
 }

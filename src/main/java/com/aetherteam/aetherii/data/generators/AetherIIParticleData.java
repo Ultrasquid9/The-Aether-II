@@ -31,6 +31,7 @@ public class AetherIIParticleData extends ParticleDescriptionProvider {
         this.spriteSet(AetherIIParticleTypes.SPLASH.get(), ResourceLocation.fromNamespaceAndPath(AetherII.MODID, "splash"), 4, false);
         this.spriteSet(AetherIIParticleTypes.AMBROSIUM.get(), ResourceLocation.withDefaultNamespace("generic_0"), ResourceLocation.withDefaultNamespace("generic_1"), ResourceLocation.fromNamespaceAndPath(AetherII.MODID, "generic_1_mirrored"));
         this.spriteSet(AetherIIParticleTypes.ACID.get(), ResourceLocation.fromNamespaceAndPath(AetherII.MODID, "acid"), 6, false);
+        this.sprite(AetherIIParticleTypes.GAS.get(), ResourceLocation.withDefaultNamespace("generic_0"));
 
         this.spriteSet(AetherIIParticleTypes.RAIN.get(), ResourceLocation.fromNamespaceAndPath(AetherII.MODID, "splash"), 4, false);
         this.sprite(AetherIIParticleTypes.IRRADIATION.get(), ResourceLocation.withDefaultNamespace("generic_0"));
