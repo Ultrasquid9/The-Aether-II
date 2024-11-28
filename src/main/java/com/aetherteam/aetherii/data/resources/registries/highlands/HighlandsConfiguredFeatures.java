@@ -25,6 +25,7 @@ import net.minecraft.data.worldgen.features.FeatureUtils;
 import net.minecraft.data.worldgen.placement.PlacementUtils;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.BlockTags;
 import net.minecraft.util.InclusiveRange;
 import net.minecraft.util.random.SimpleWeightedRandomList;
 import net.minecraft.util.valueproviders.ConstantInt;
@@ -64,6 +65,7 @@ public class HighlandsConfiguredFeatures {
     public static final RuleTest HOLYSTONE_TEST = new TagMatchTest(AetherIITags.Blocks.HOLYSTONE);
     public static final RuleTest UNDERSHALE_TEST = new BlockMatchTest(AetherIIBlocks.UNDERSHALE.get());
     public static final RuleTest UNDERGROUND_TEST = new TagMatchTest(AetherIITags.Blocks.AETHER_UNDERGROUND_BLOCKS);
+    public static final RuleTest AIR_TEST = new TagMatchTest(BlockTags.AIR);
     
     // Surface
     public static final ResourceKey<ConfiguredFeature<?, ?>> SKYROOT_TWIGS = createKey("skyroot_twigs");
@@ -193,6 +195,8 @@ public class HighlandsConfiguredFeatures {
     public static final ResourceKey<ConfiguredFeature<?, ?>> AMBRELINN_MOSS_VINES = createKey("ambrelinn_moss_vines");
     public static final ResourceKey<ConfiguredFeature<?, ?>> AMBRELINN_MOSS_FLOOR = createKey("ambrelinn_moss_floor");
 
+    public static final ResourceKey<ConfiguredFeature<?, ?>> ACID_POOL = createKey("acid_pool");
+
     public static final ResourceKey<ConfiguredFeature<?, ?>> ORE_SCATTERGLASS = createKey("ore_scatterglass");
     public static final ResourceKey<ConfiguredFeature<?, ?>> ORE_ICESTONE = createKey("ore_icestone");
     public static final ResourceKey<ConfiguredFeature<?, ?>> ORE_ICESTONE_SMALL = createKey("ore_icestone_small");
@@ -207,6 +211,9 @@ public class HighlandsConfiguredFeatures {
     public static final ResourceKey<ConfiguredFeature<?, ?>> ORE_GRAVITITE_BURIED = createKey("ore_gravitite_buried");
     public static final ResourceKey<ConfiguredFeature<?, ?>> ORE_GRAVITITE = createKey("ore_gravitite");
     public static final ResourceKey<ConfiguredFeature<?, ?>> ORE_CORROBONITE = createKey("ore_corrobonite");
+
+    public static final ResourceKey<ConfiguredFeature<?, ?>> ORE_GAS_OPEN = createKey("ore_gas_open");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> ORE_GAS_BURIED = createKey("ore_gas_buried");
     
     
     // Worldgen
@@ -1392,6 +1399,9 @@ public class HighlandsConfiguredFeatures {
                 )
         );
 
+
+        register(context, ACID_POOL, AetherIIFeatures.LAKE.get(), new AetherLakeConfiguration(ConstantInt.of(1), BlockStateProvider.simple(AetherIIBlocks.ACID.get()), BlockStateProvider.simple(AetherIIBlocks.ANGELIC_SHALE.get())));
+
         register(context, ORE_SCATTERGLASS, Feature.ORE, new OreConfiguration(UNDERGROUND_TEST, AetherIIBlocks.CRUDE_SCATTERGLASS.get().defaultBlockState(), 24));
         register(context, ORE_ICESTONE, Feature.ORE, new OreConfiguration(HOLYSTONE_TEST, AetherIIBlocks.ICESTONE.get().defaultBlockState(), 32));
         register(context, ORE_ICESTONE_SMALL, Feature.ORE, new OreConfiguration(HOLYSTONE_TEST, AetherIIBlocks.ICESTONE.get().defaultBlockState(), 16));
@@ -1406,6 +1416,9 @@ public class HighlandsConfiguredFeatures {
         register(context, ORE_GRAVITITE_BURIED, Feature.ORE, new OreConfiguration(gravitite, 3, 0.5F));
         register(context, ORE_GRAVITITE, Feature.ORE, new OreConfiguration(gravitite, 4));
         register(context, ORE_CORROBONITE, AetherIIFeatures.CORROBONITE_ORE.get(), new OreConfiguration(UNDERSHALE_TEST, AetherIIBlocks.CORROBONITE_ORE.get().defaultBlockState(), 4));
+
+        register(context, ORE_GAS_OPEN, Feature.ORE, new OreConfiguration(AIR_TEST, AetherIIBlocks.GAS.get().defaultBlockState(), 64));
+        register(context, ORE_GAS_BURIED, Feature.ORE, new OreConfiguration(UNDERGROUND_TEST, AetherIIBlocks.GAS.get().defaultBlockState(), 16, 1.0F));
     }
 
     private static void bootstrapWorldgen(BootstrapContext<ConfiguredFeature<?, ?>> context) {

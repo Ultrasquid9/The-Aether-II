@@ -127,19 +127,20 @@ public class GasBlock extends Block implements LiquidBlockContainer, CanisterPic
     }
 
     public void explode(Level level, BlockPos pos, boolean playSound) {
-        level.setBlock(pos, Blocks.AIR.defaultBlockState(), 3);
-        if (level instanceof ServerLevel serverLevel) {
-            PacketDistributor.sendToPlayersInDimension(serverLevel, new GasExplosionEffectsPacket(pos, playSound));
-        }
-        for (Entity entity : level.getEntities(null, AABB.encapsulatingFullBlocks(pos, pos))) {
-            if (entity instanceof LivingEntity livingEntity) {
-                livingEntity.getData(AetherIIDataAttachments.EFFECTS_SYSTEM).addBuildup(EffectBuildupPresets.IMMOLATION, 500);
+        if (level.removeBlock(pos, false)) {
+            if (level instanceof ServerLevel serverLevel) {
+                PacketDistributor.sendToPlayersInDimension(serverLevel, new GasExplosionEffectsPacket(pos, playSound));
             }
-        }
-        for (Direction direction : Direction.values()) {
-            BlockPos offsetPos = pos.relative(direction);
-            if (level.getBlockState(offsetPos).getBlock() instanceof GasBlock gasBlock) {
-                gasBlock.explode(level, offsetPos, level.getRandom().nextInt(20) == 0);
+            for (Entity entity : level.getEntities(null, AABB.encapsulatingFullBlocks(pos, pos))) {
+                if (entity instanceof LivingEntity livingEntity) {
+                    livingEntity.getData(AetherIIDataAttachments.EFFECTS_SYSTEM).addBuildup(EffectBuildupPresets.IMMOLATION, 500);
+                }
+            }
+            for (Direction direction : Direction.values()) {
+                BlockPos offsetPos = pos.relative(direction);
+                if (level.getBlockState(offsetPos).getBlock() instanceof GasBlock gasBlock) {
+                    gasBlock.explode(level, offsetPos, level.getRandom().nextInt(20) == 0);
+                }
             }
         }
     }

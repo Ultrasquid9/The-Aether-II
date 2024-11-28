@@ -15,6 +15,7 @@ import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.data.worldgen.placement.PlacementUtils;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.BlockTags;
 import net.minecraft.util.valueproviders.ConstantInt;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.level.block.Blocks;
@@ -105,6 +106,8 @@ public class HighlandsPlacedFeatures {
     public static final ResourceKey<PlacedFeature> SWAMP_BRYALINN_MOSS_COVER = createKey("swamp_bryalinn_moss_cover");
     public static final ResourceKey<PlacedFeature> EXPOSED_SHAYELINN_MOSS_COVER = createKey("exposed_shayelinn_moss_cover");
 
+    public static final ResourceKey<PlacedFeature> ACID_POOL = createKey("acid_pool");
+
     public static final ResourceKey<PlacedFeature> ORE_SCATTERGLASS = createKey("ore_scatterglass");
     public static final ResourceKey<PlacedFeature> ORE_ICESTONE = createKey("ore_icestone");
     public static final ResourceKey<PlacedFeature> ORE_ICESTONE_SMALL = createKey("ore_icestone_small");
@@ -119,6 +122,9 @@ public class HighlandsPlacedFeatures {
     public static final ResourceKey<PlacedFeature> ORE_GRAVITITE_BURIED = createKey("ore_gravitite_buried");
     public static final ResourceKey<PlacedFeature> ORE_GRAVITITE = createKey("ore_gravitite");
     public static final ResourceKey<PlacedFeature> ORE_CORROBONITE = createKey("ore_corrobonite");
+
+    public static final ResourceKey<PlacedFeature> ORE_GAS_OPEN = createKey("ore_gas_open");
+    public static final ResourceKey<PlacedFeature> ORE_GAS_BURIED = createKey("ore_gas_buried");
 
 
     // Worldgen
@@ -557,6 +563,13 @@ public class HighlandsPlacedFeatures {
                 BiomeFilter.biome()
         );
 
+        register(context, ACID_POOL, configuredFeatures.getOrThrow(HighlandsConfiguredFeatures.ACID_POOL),
+                CountPlacement.of(256),
+                HeightRangePlacement.of(TrapezoidHeight.of(VerticalAnchor.aboveBottom(-128), VerticalAnchor.aboveBottom(128))),
+                EnvironmentScanPlacement.scanningFor(Direction.DOWN, BlockPredicate.solid(), BlockPredicate.ONLY_IN_AIR_PREDICATE, 12),
+                BlockPredicateFilter.forPredicate(new SearchPredicate(Direction.UP, BlockPredicate.matchesTag(BlockTags.AIR), 4)),
+                BiomeFilter.biome());
+
         register(context, ORE_SCATTERGLASS, configuredFeatures.getOrThrow(HighlandsConfiguredFeatures.ORE_SCATTERGLASS),
                 NitrogenPlacedFeatureBuilders.commonOrePlacement(8, HeightRangePlacement.uniform(VerticalAnchor.bottom(), VerticalAnchor.top())));
         register(context, ORE_ICESTONE, configuredFeatures.getOrThrow(HighlandsConfiguredFeatures.ORE_ICESTONE),
@@ -584,6 +597,23 @@ public class HighlandsPlacedFeatures {
                 NitrogenPlacedFeatureBuilders.commonOrePlacement(5, HeightRangePlacement.of(TrapezoidHeight.of(VerticalAnchor.bottom(), VerticalAnchor.aboveBottom(72), 20))));
         register(context, ORE_CORROBONITE, configuredFeatures.getOrThrow(HighlandsConfiguredFeatures.ORE_CORROBONITE),
                 NitrogenPlacedFeatureBuilders.commonOrePlacement(3, HeightRangePlacement.of(TrapezoidHeight.of(VerticalAnchor.bottom(), VerticalAnchor.aboveBottom(60), 25))));
+
+        register(context, ORE_GAS_OPEN, configuredFeatures.getOrThrow(HighlandsConfiguredFeatures.ORE_GAS_OPEN),
+                NoiseBasedCountPlacement.of(96, 10, 0.5),
+                InSquarePlacement.spread(),
+                HeightRangePlacement.of(TrapezoidHeight.of(VerticalAnchor.aboveBottom(-128), VerticalAnchor.aboveBottom(128))),
+                EnvironmentScanPlacement.scanningFor(Direction.UP, BlockPredicate.matchesTag(AetherIITags.Blocks.AETHER_UNDERGROUND_BLOCKS), BlockPredicate.ONLY_IN_AIR_PREDICATE, 3),
+                RandomOffsetPlacement.vertical(ConstantInt.of(-2)),
+                BlockPredicateFilter.forPredicate(new SearchPredicate(Direction.UP, BlockPredicate.matchesTag(AetherIITags.Blocks.AETHER_UNDERGROUND_BLOCKS), 3)),
+                BlockPredicateFilter.forPredicate(new SearchPredicate(Direction.DOWN, BlockPredicate.matchesTag(AetherIITags.Blocks.AETHER_UNDERGROUND_BLOCKS), 3)),
+                BiomeFilter.biome()
+        );
+        register(context, ORE_GAS_BURIED, configuredFeatures.getOrThrow(HighlandsConfiguredFeatures.ORE_GAS_BURIED),
+                CountPlacement.of(4),
+                InSquarePlacement.spread(),
+                HeightRangePlacement.of(TrapezoidHeight.of(VerticalAnchor.aboveBottom(-128), VerticalAnchor.aboveBottom(128))),
+                BiomeFilter.biome()
+        );
     }
 
     public static void bootstrapWorldgen(BootstrapContext<PlacedFeature> context) {

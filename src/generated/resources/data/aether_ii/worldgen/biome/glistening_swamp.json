@@ -22,7 +22,8 @@
       "aether_ii:cloudbed"
     ],
     [
-      "aether_ii:water_pond_underground"
+      "aether_ii:water_pond_underground",
+      "aether_ii:acid_pool"
     ],
     [],
     [],
@@ -39,7 +40,9 @@
       "aether_ii:ore_gravitite",
       "aether_ii:ore_holystone_quartz",
       "aether_ii:ore_corrobonite",
-      "aether_ii:ore_glint"
+      "aether_ii:ore_glint",
+      "aether_ii:ore_gas_open",
+      "aether_ii:ore_gas_buried"
     ],
     [],
     [

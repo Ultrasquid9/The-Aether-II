@@ -1,0 +1,21 @@
+{
+  "type": "aether_ii:lake",
+  "config": {
+    "fluid": {
+      "type": "minecraft:simple_state_provider",
+      "state": {
+        "Name": "aether_ii:acid",
+        "Properties": {
+          "level": "0"
+        }
+      }
+    },
+    "shrink_scale": 1,
+    "top": {
+      "type": "minecraft:simple_state_provider",
+      "state": {
+        "Name": "aether_ii:angelic_shale"
+      }
+    }
+  }
+}
