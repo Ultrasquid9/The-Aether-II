@@ -44,7 +44,7 @@ import java.util.OptionalInt;
 import java.util.function.BiConsumer;
 
 public class GasBlock extends Block implements LiquidBlockContainer, CanisterPickup {
-    private static final int MAX_DISTANCE = 6;
+    public static final int MAX_DISTANCE = 6;
     public static final IntegerProperty DISTANCE = IntegerProperty.create("gas_distance", 0, MAX_DISTANCE);
 
     public static final List<BlockPos> AROUND_OFFSETS = BlockPos.betweenClosedStream(-1, -1, -1, 1, 1, 1).map(BlockPos::immutable).filter((e) -> Vector3i.length(e.getX(), e.getY(), e.getZ()) != 0).toList();
@@ -154,7 +154,7 @@ public class GasBlock extends Block implements LiquidBlockContainer, CanisterPic
         return state;
     }
 
-    private static BlockState updateDistance(BlockState state, LevelAccessor level, BlockPos pos) {
+    public static BlockState updateDistance(BlockState state, LevelAccessor level, BlockPos pos) {
         int i = MAX_DISTANCE;
         BlockPos.MutableBlockPos mutablePos = new BlockPos.MutableBlockPos();
         for (Vec3i offset : AROUND_OFFSETS) {

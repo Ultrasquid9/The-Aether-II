@@ -202,6 +202,7 @@ public class HighlandsConfiguredFeatures {
     public static final ResourceKey<ConfiguredFeature<?, ?>> ORE_ICESTONE_SMALL = createKey("ore_icestone_small");
     public static final ResourceKey<ConfiguredFeature<?, ?>> ORE_AGIOSITE = createKey("ore_agiosite");
     public static final ResourceKey<ConfiguredFeature<?, ?>> ORE_AGIOSITE_SMALL = createKey("ore_agiosite_small");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> ORE_ANGELIC_SHALE = createKey("ore_angelic_shale");
 
     public static final ResourceKey<ConfiguredFeature<?, ?>> ORE_HOLYSTONE_QUARTZ = createKey("ore_holystone_quartz");
     public static final ResourceKey<ConfiguredFeature<?, ?>> ORE_AMBROSIUM = createKey("ore_ambrosium");
@@ -1400,13 +1401,14 @@ public class HighlandsConfiguredFeatures {
         );
 
 
-        register(context, ACID_POOL, AetherIIFeatures.LAKE.get(), new AetherLakeConfiguration(ConstantInt.of(1), BlockStateProvider.simple(AetherIIBlocks.ACID.get()), BlockStateProvider.simple(AetherIIBlocks.ANGELIC_SHALE.get())));
+        register(context, ACID_POOL, AetherIIFeatures.ACID_POOL.get(), new AcidPoolConfiguration(1));
 
         register(context, ORE_SCATTERGLASS, Feature.ORE, new OreConfiguration(UNDERGROUND_TEST, AetherIIBlocks.CRUDE_SCATTERGLASS.get().defaultBlockState(), 24));
         register(context, ORE_ICESTONE, Feature.ORE, new OreConfiguration(HOLYSTONE_TEST, AetherIIBlocks.ICESTONE.get().defaultBlockState(), 32));
         register(context, ORE_ICESTONE_SMALL, Feature.ORE, new OreConfiguration(HOLYSTONE_TEST, AetherIIBlocks.ICESTONE.get().defaultBlockState(), 16));
         register(context, ORE_AGIOSITE, Feature.ORE, new OreConfiguration(UNDERSHALE_TEST, AetherIIBlocks.AGIOSITE.get().defaultBlockState(), 64));
         register(context, ORE_AGIOSITE_SMALL, Feature.ORE, new OreConfiguration(UNDERSHALE_TEST, AetherIIBlocks.AGIOSITE.get().defaultBlockState(), 32));
+        register(context, ORE_ANGELIC_SHALE, Feature.ORE, new OreConfiguration(UNDERSHALE_TEST, AetherIIBlocks.ANGELIC_SHALE.get().defaultBlockState(), 64));
 
         register(context, ORE_HOLYSTONE_QUARTZ, Feature.ORE, new OreConfiguration(quartz, 32));
         register(context, ORE_AMBROSIUM, Feature.ORE, new OreConfiguration(ambrosium, 16));

@@ -2,18 +2,20 @@
   "feature": "aether_ii:acid_pool",
   "placement": [
     {
-      "type": "minecraft:count",
-      "count": 256
+      "type": "minecraft:noise_threshold_count",
+      "above_noise": 5,
+      "below_noise": 0,
+      "noise_level": -0.25
     },
     {
       "type": "minecraft:height_range",
       "height": {
         "type": "minecraft:trapezoid",
         "max_inclusive": {
-          "above_bottom": 128
+          "above_bottom": 96
         },
         "min_inclusive": {
-          "above_bottom": -128
+          "above_bottom": -64
         }
       }
     },
@@ -24,9 +26,10 @@
         "blocks": "minecraft:air"
       },
       "direction_of_search": "down",
-      "max_steps": 12,
+      "max_steps": 16,
       "target_condition": {
-        "type": "minecraft:solid"
+        "type": "minecraft:matching_block_tag",
+        "tag": "aether_ii:aether_underground_blocks"
       }
     },
     {
@@ -34,10 +37,95 @@
       "predicate": {
         "type": "aether_ii:search",
         "direction_of_search": "up",
-        "max_steps": 4,
+        "max_steps": 8,
         "target_condition": {
           "type": "minecraft:matching_block_tag",
-          "tag": "minecraft:air"
+          "tag": "aether_ii:aether_underground_blocks"
+        }
+      }
+    },
+    {
+      "type": "minecraft:block_predicate_filter",
+      "predicate": {
+        "type": "aether_ii:search",
+        "direction_of_search": "down",
+        "max_steps": 2,
+        "target_condition": {
+          "type": "minecraft:matching_block_tag",
+          "offset": [
+            0,
+            -1,
+            0
+          ],
+          "tag": "aether_ii:aether_underground_blocks"
+        }
+      }
+    },
+    {
+      "type": "minecraft:block_predicate_filter",
+      "predicate": {
+        "type": "aether_ii:search",
+        "direction_of_search": "down",
+        "max_steps": 2,
+        "target_condition": {
+          "type": "minecraft:matching_block_tag",
+          "offset": [
+            0,
+            -1,
+            -6
+          ],
+          "tag": "aether_ii:aether_underground_blocks"
+        }
+      }
+    },
+    {
+      "type": "minecraft:block_predicate_filter",
+      "predicate": {
+        "type": "aether_ii:search",
+        "direction_of_search": "down",
+        "max_steps": 2,
+        "target_condition": {
+          "type": "minecraft:matching_block_tag",
+          "offset": [
+            6,
+            -1,
+            0
+          ],
+          "tag": "aether_ii:aether_underground_blocks"
+        }
+      }
+    },
+    {
+      "type": "minecraft:block_predicate_filter",
+      "predicate": {
+        "type": "aether_ii:search",
+        "direction_of_search": "down",
+        "max_steps": 2,
+        "target_condition": {
+          "type": "minecraft:matching_block_tag",
+          "offset": [
+            0,
+            -1,
+            6
+          ],
+          "tag": "aether_ii:aether_underground_blocks"
+        }
+      }
+    },
+    {
+      "type": "minecraft:block_predicate_filter",
+      "predicate": {
+        "type": "aether_ii:search",
+        "direction_of_search": "down",
+        "max_steps": 2,
+        "target_condition": {
+          "type": "minecraft:matching_block_tag",
+          "offset": [
+            -6,
+            -1,
+            0
+          ],
+          "tag": "aether_ii:aether_underground_blocks"
         }
       }
     },

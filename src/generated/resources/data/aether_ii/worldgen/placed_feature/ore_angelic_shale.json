@@ -1,0 +1,26 @@
+{
+  "feature": "aether_ii:ore_angelic_shale",
+  "placement": [
+    {
+      "type": "minecraft:noise_threshold_count",
+      "above_noise": 32,
+      "below_noise": 0,
+      "noise_level": -0.35
+    },
+    {
+      "type": "minecraft:height_range",
+      "height": {
+        "type": "minecraft:trapezoid",
+        "max_inclusive": {
+          "above_bottom": 96
+        },
+        "min_inclusive": {
+          "above_bottom": -64
+        }
+      }
+    },
+    {
+      "type": "minecraft:biome"
+    }
+  ]
+}
