@@ -34,4 +34,5 @@ public class AetherIIFeatures {
     public static DeferredHolder<Feature<?>, Feature<MossVinesConfiguration>> MOSS_VINES = FEATURES.register("moss_vines", () -> new MossVinesFeature(MossVinesConfiguration.CODEC));
     public static DeferredHolder<Feature<?>, Feature<ArilumConfiguration>> ARILUM = FEATURES.register("arilum", () -> new ArilumFeature(ArilumConfiguration.CODEC));
     public static DeferredHolder<Feature<?>, Feature<AcidPoolConfiguration>> ACID_POOL = FEATURES.register("acid_pool", () -> new AcidPoolFeature(AcidPoolConfiguration.CODEC));
+    public static DeferredHolder<Feature<?>, Feature<NoneFeatureConfiguration>> GAS = FEATURES.register("gas", () -> new GasFeature(NoneFeatureConfiguration.CODEC));
 }

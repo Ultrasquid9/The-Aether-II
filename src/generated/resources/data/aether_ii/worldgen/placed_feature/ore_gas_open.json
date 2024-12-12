@@ -2,10 +2,8 @@
   "feature": "aether_ii:ore_gas_open",
   "placement": [
     {
-      "type": "minecraft:noise_based_count",
-      "noise_factor": 10.0,
-      "noise_offset": 0.5,
-      "noise_to_count_ratio": 96
+      "type": "minecraft:count",
+      "count": 16
     },
     {
       "type": "minecraft:in_square"
@@ -15,37 +13,26 @@
       "height": {
         "type": "minecraft:trapezoid",
         "max_inclusive": {
-          "above_bottom": 128
+          "above_bottom": 96
         },
         "min_inclusive": {
-          "above_bottom": -128
+          "above_bottom": -64
         }
       }
     },
     {
-      "type": "minecraft:environment_scan",
-      "allowed_search_condition": {
+      "type": "minecraft:block_predicate_filter",
+      "predicate": {
         "type": "minecraft:matching_blocks",
         "blocks": "minecraft:air"
-      },
-      "direction_of_search": "up",
-      "max_steps": 3,
-      "target_condition": {
-        "type": "minecraft:matching_block_tag",
-        "tag": "aether_ii:aether_underground_blocks"
       }
-    },
-    {
-      "type": "minecraft:random_offset",
-      "xz_spread": 0,
-      "y_spread": -2
     },
     {
       "type": "minecraft:block_predicate_filter",
       "predicate": {
         "type": "aether_ii:search",
         "direction_of_search": "up",
-        "max_steps": 3,
+        "max_steps": 4,
         "target_condition": {
           "type": "minecraft:matching_block_tag",
           "tag": "aether_ii:aether_underground_blocks"
@@ -57,7 +44,7 @@
       "predicate": {
         "type": "aether_ii:search",
         "direction_of_search": "down",
-        "max_steps": 3,
+        "max_steps": 4,
         "target_condition": {
           "type": "minecraft:matching_block_tag",
           "tag": "aether_ii:aether_underground_blocks"

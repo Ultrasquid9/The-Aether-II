@@ -610,19 +610,18 @@ public class HighlandsPlacedFeatures {
                 NitrogenPlacedFeatureBuilders.commonOrePlacement(3, HeightRangePlacement.of(TrapezoidHeight.of(VerticalAnchor.bottom(), VerticalAnchor.aboveBottom(60), 25))));
 
         register(context, ORE_GAS_OPEN, configuredFeatures.getOrThrow(HighlandsConfiguredFeatures.ORE_GAS_OPEN),
-                NoiseBasedCountPlacement.of(96, 10, 0.5),
+                CountPlacement.of(16),
                 InSquarePlacement.spread(),
-                HeightRangePlacement.of(TrapezoidHeight.of(VerticalAnchor.aboveBottom(-128), VerticalAnchor.aboveBottom(128))),
-                EnvironmentScanPlacement.scanningFor(Direction.UP, BlockPredicate.matchesTag(AetherIITags.Blocks.AETHER_UNDERGROUND_BLOCKS), BlockPredicate.ONLY_IN_AIR_PREDICATE, 3),
-                RandomOffsetPlacement.vertical(ConstantInt.of(-2)),
-                BlockPredicateFilter.forPredicate(new SearchPredicate(Direction.UP, BlockPredicate.matchesTag(AetherIITags.Blocks.AETHER_UNDERGROUND_BLOCKS), 3)),
-                BlockPredicateFilter.forPredicate(new SearchPredicate(Direction.DOWN, BlockPredicate.matchesTag(AetherIITags.Blocks.AETHER_UNDERGROUND_BLOCKS), 3)),
+                HeightRangePlacement.of(TrapezoidHeight.of(VerticalAnchor.aboveBottom(-64), VerticalAnchor.aboveBottom(96))),
+                BlockPredicateFilter.forPredicate(BlockPredicate.ONLY_IN_AIR_PREDICATE),
+                BlockPredicateFilter.forPredicate(new SearchPredicate(Direction.UP, BlockPredicate.matchesTag(AetherIITags.Blocks.AETHER_UNDERGROUND_BLOCKS), 4)),
+                BlockPredicateFilter.forPredicate(new SearchPredicate(Direction.DOWN, BlockPredicate.matchesTag(AetherIITags.Blocks.AETHER_UNDERGROUND_BLOCKS), 4)),
                 BiomeFilter.biome()
         );
         register(context, ORE_GAS_BURIED, configuredFeatures.getOrThrow(HighlandsConfiguredFeatures.ORE_GAS_BURIED),
                 CountPlacement.of(4),
                 InSquarePlacement.spread(),
-                HeightRangePlacement.of(TrapezoidHeight.of(VerticalAnchor.aboveBottom(-128), VerticalAnchor.aboveBottom(128))),
+                HeightRangePlacement.of(TrapezoidHeight.of(VerticalAnchor.aboveBottom(-96), VerticalAnchor.aboveBottom(128))),
                 BiomeFilter.biome()
         );
     }

@@ -1419,7 +1419,7 @@ public class HighlandsConfiguredFeatures {
         register(context, ORE_GRAVITITE, Feature.ORE, new OreConfiguration(gravitite, 4));
         register(context, ORE_CORROBONITE, AetherIIFeatures.CORROBONITE_ORE.get(), new OreConfiguration(UNDERSHALE_TEST, AetherIIBlocks.CORROBONITE_ORE.get().defaultBlockState(), 4));
 
-        register(context, ORE_GAS_OPEN, Feature.ORE, new OreConfiguration(AIR_TEST, AetherIIBlocks.GAS.get().defaultBlockState(), 64));
+        register(context, ORE_GAS_OPEN, AetherIIFeatures.GAS.get());
         register(context, ORE_GAS_BURIED, Feature.ORE, new OreConfiguration(UNDERGROUND_TEST, AetherIIBlocks.GAS.get().defaultBlockState(), 16, 1.0F));
     }
 
