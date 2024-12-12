@@ -24,16 +24,16 @@ public class AcidPoolFeature extends Feature<AcidPoolConfiguration> {
         RandomSource random = context.random();
         AcidPoolConfiguration config = context.config();
 
-        int count = random.nextInt(4) + 1;
+        int count = config.count().sample(random);
         for (int i = 0; i < count; i++) {
-            this.placePool(pos.offset(random.nextInt(3) - random.nextInt(5), 0, random.nextInt(3) - random.nextInt(5)), level, random, config);
+            this.placePool(pos.offset(config.offset().sample(random), 0, config.offset().sample(random)), level, random, config);
         }
 
         return true;
     }
 
     private void placePool(BlockPos pos, WorldGenLevel level, RandomSource random, AcidPoolConfiguration config) {
-        int radius = 4 + random.nextInt(3);
+        int radius = config.radius().sample(random);
         for (int x = -radius; x < radius; x++) {
             for (int z = -radius; z < radius; z++) {
                 for (int y = -radius; y < radius; y++) {

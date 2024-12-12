@@ -1401,7 +1401,7 @@ public class HighlandsConfiguredFeatures {
         );
 
 
-        register(context, ACID_POOL, AetherIIFeatures.ACID_POOL.get(), new AcidPoolConfiguration(1));
+        register(context, ACID_POOL, AetherIIFeatures.ACID_POOL.get(), new AcidPoolConfiguration(UniformInt.of(1, 4), UniformInt.of(4, 6), UniformInt.of(-4, 2)));
 
         register(context, ORE_SCATTERGLASS, Feature.ORE, new OreConfiguration(UNDERGROUND_TEST, AetherIIBlocks.CRUDE_SCATTERGLASS.get().defaultBlockState(), 24));
         register(context, ORE_ICESTONE, Feature.ORE, new OreConfiguration(HOLYSTONE_TEST, AetherIIBlocks.ICESTONE.get().defaultBlockState(), 32));
