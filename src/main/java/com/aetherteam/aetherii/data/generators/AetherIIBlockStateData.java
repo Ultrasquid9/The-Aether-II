@@ -35,6 +35,7 @@ public class AetherIIBlockStateData extends AetherIIBlockStateProvider {
         this.roots(AetherIIBlocks.SKY_ROOTS.get());
         this.block(AetherIIBlocks.ANGELIC_SHALE.get(), "natural/");
         this.gas(AetherIIBlocks.GAS.get(), "natural/");
+        this.pointedStone(AetherIIBlocks.POINTED_HOLYSTONE.get());
 
         // Highfields
         this.block(AetherIIBlocks.QUICKSOIL.get(), "natural/");

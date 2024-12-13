@@ -14,15 +14,13 @@ import net.minecraft.core.Direction;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.*;
-import net.minecraft.world.level.block.state.properties.BedPart;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.BooleanProperty;
-import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
+import net.minecraft.world.level.block.state.properties.*;
 import net.neoforged.neoforge.client.model.generators.*;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import org.apache.commons.lang3.ArrayUtils;
 
 import java.util.List;
+import java.util.Locale;
 import java.util.stream.IntStream;
 
 public abstract class AetherIIBlockStateProvider extends NitrogenBlockStateProvider {
@@ -154,6 +152,17 @@ public abstract class AetherIIBlockStateProvider extends NitrogenBlockStateProvi
             } else {
                 model = this.models().cross(this.name(block), this.texture(this.name(block), "natural/")).renderType(ResourceLocation.withDefaultNamespace("cutout"));
             }
+            return ConfiguredModel.builder().modelFile(model).build();
+        }, BlockStateProperties.WATERLOGGED);
+    }
+
+    public void pointedStone(Block block) {
+        this.getVariantBuilder(block).forAllStatesExcept((state) -> {
+            DripstoneThickness thickness = state.getValue(PointedDripstoneBlock.THICKNESS);
+            Direction direction = state.getValue(PointedDripstoneBlock.TIP_DIRECTION);
+            ModelFile model = this.models().withExistingParent(this.name(block) + "_" + direction.name().toLowerCase(Locale.ROOT) + "_" + thickness.name().toLowerCase(Locale.ROOT), this.mcLoc("block/pointed_dripstone"))
+                    .texture("cross", this.texture(this.name(block) + "_" + direction.name().toLowerCase(Locale.ROOT) + "_" + thickness.name().toLowerCase(Locale.ROOT), "natural/"))
+                    .renderType(ResourceLocation.withDefaultNamespace("cutout"));
             return ConfiguredModel.builder().modelFile(model).build();
         }, BlockStateProperties.WATERLOGGED);
     }

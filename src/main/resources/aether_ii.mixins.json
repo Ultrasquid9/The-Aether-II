@@ -10,6 +10,7 @@
     "common.ItemCooldownsMixin",
     "common.ItemStackMixin",
     "common.PlayerMixin",
+    "common.PointedDripstoneBlockMixin",
     "common.RandomStateMixin",
     "common.ServerLevelMixin",
     "common.accessor.AbstractArrowAccessor",

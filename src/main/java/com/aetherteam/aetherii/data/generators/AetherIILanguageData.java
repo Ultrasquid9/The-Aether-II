@@ -42,6 +42,7 @@ public class AetherIILanguageData extends AetherIILanguageProvider {
         this.addBlock(AetherIIBlocks.AGIOSITE, "Agiosite");
         this.addBlock(AetherIIBlocks.CRUDE_SCATTERGLASS, "Crude Scatterglass");
         this.addBlock(AetherIIBlocks.SKY_ROOTS, "Sky Roots");
+        this.addBlock(AetherIIBlocks.POINTED_HOLYSTONE, "Pointed Holystone");
 
         // Highfields
         this.addBlock(AetherIIBlocks.QUICKSOIL, "Quicksoil");
