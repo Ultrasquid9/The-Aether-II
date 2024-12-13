@@ -52,7 +52,9 @@
       "aether_ii:ore_holystone_quartz",
       "aether_ii:ore_glint",
       "aether_ii:ore_gas_open",
-      "aether_ii:ore_gas_buried"
+      "aether_ii:ore_gas_buried",
+      "aether_ii:unstable_holystone",
+      "aether_ii:unstable_undershale"
     ],
     [],
     [

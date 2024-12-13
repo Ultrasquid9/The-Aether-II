@@ -14,6 +14,7 @@ import net.minecraft.client.model.HumanoidModel;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.client.renderer.FogRenderer;
+import net.minecraft.core.BlockPos;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.util.FastColor;
@@ -23,13 +24,16 @@ import net.minecraft.world.entity.HumanoidArm;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.component.DyedItemColor;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.state.BlockState;
+import net.neoforged.neoforge.client.extensions.common.IClientBlockExtensions;
 import net.neoforged.neoforge.client.extensions.common.IClientFluidTypeExtensions;
 import net.neoforged.neoforge.client.extensions.common.IClientItemExtensions;
 import net.neoforged.neoforge.client.extensions.common.RegisterClientExtensionsEvent;
 import org.jetbrains.annotations.Nullable;
 import org.joml.Vector3f;
 
-public class AetherIIClientItemExtensions {
+public class AetherIIClientExtensions {
     public static final IClientItemExtensions TAEGORE_HIDE = new IClientItemExtensions() {
         @Override
         public int getDefaultDyeColor(ItemStack stack) {
@@ -100,6 +104,13 @@ public class AetherIIClientItemExtensions {
         }
     };
 
+    public static final IClientBlockExtensions UNSTABLE_BLOCK = new IClientBlockExtensions() {
+        @Override
+        public boolean playBreakSound(BlockState state, Level level, BlockPos pos) {
+            return !level.getBlockState(pos.above()).isAir();
+        }
+    };
+
     public static final IClientFluidTypeExtensions ACID_FLUID = new IClientFluidTypeExtensions() {
         @Override
         public ResourceLocation getStillTexture() {
@@ -143,6 +154,8 @@ public class AetherIIClientItemExtensions {
         event.registerItem(BURRUKAI_PELT, AetherIIItems.BURRUKAI_PELT_HELMET.get(), AetherIIItems.BURRUKAI_PELT_CHESTPLATE.get(), AetherIIItems.BURRUKAI_PELT_LEGGINGS.get(), AetherIIItems.BURRUKAI_PELT_BOOTS.get(), AetherIIItems.BURRUKAI_PELT_GLOVES.get());
         event.registerItem(THROWABLE, AetherIIBlocks.HOLYSTONE_ROCK.asItem(), AetherIIItems.SKYROOT_PINECONE.get(), AetherIIItems.ARCTIC_SNOWBALL.get());
         event.registerItem(GLIDER, AetherIIItems.COLD_AERCLOUD_GLIDER, AetherIIItems.GOLDEN_AERCLOUD_GLIDER, AetherIIItems.BLUE_AERCLOUD_GLIDER, AetherIIItems.PURPLE_AERCLOUD_GLIDER);
+
+        event.registerBlock(UNSTABLE_BLOCK, AetherIIBlocks.UNSTABLE_HOLYSTONE.get(),AetherIIBlocks.UNSTABLE_UNDERSHALE.get());
 
         event.registerFluidType(ACID_FLUID, AetherIIFluidTypes.ACID_TYPE.get());
     }

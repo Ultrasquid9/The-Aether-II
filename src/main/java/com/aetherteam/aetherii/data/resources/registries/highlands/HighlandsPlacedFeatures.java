@@ -106,6 +106,9 @@ public class HighlandsPlacedFeatures {
     public static final ResourceKey<PlacedFeature> SWAMP_BRYALINN_MOSS_COVER = createKey("swamp_bryalinn_moss_cover");
     public static final ResourceKey<PlacedFeature> EXPOSED_SHAYELINN_MOSS_COVER = createKey("exposed_shayelinn_moss_cover");
 
+    public static final ResourceKey<PlacedFeature> UNSTABLE_HOLYSTONE = createKey("unstable_holystone");
+    public static final ResourceKey<PlacedFeature> UNSTABLE_UNDERSHALE = createKey("unstable_undershale");
+
     public static final ResourceKey<PlacedFeature> ACID_POOL = createKey("acid_pool");
 
     public static final ResourceKey<PlacedFeature> ORE_SCATTERGLASS = createKey("ore_scatterglass");
@@ -564,6 +567,19 @@ public class HighlandsPlacedFeatures {
                 BiomeFilter.biome()
         );
 
+        register(context, UNSTABLE_HOLYSTONE, configuredFeatures.getOrThrow(HighlandsConfiguredFeatures.UNSTABLE_HOLYSTONE),
+                CountPlacement.of(6),
+                InSquarePlacement.spread(),
+                HeightRangePlacement.of(UniformHeight.of(VerticalAnchor.aboveBottom(96), VerticalAnchor.top())),
+                BiomeFilter.biome()
+        );
+        register(context, UNSTABLE_UNDERSHALE, configuredFeatures.getOrThrow(HighlandsConfiguredFeatures.UNSTABLE_UNDERSHALE),
+                CountPlacement.of(6),
+                InSquarePlacement.spread(),
+                HeightRangePlacement.of(UniformHeight.of(VerticalAnchor.bottom(), VerticalAnchor.aboveBottom(96))),
+                BiomeFilter.biome()
+        );
+
         register(context, ACID_POOL, configuredFeatures.getOrThrow(HighlandsConfiguredFeatures.ACID_POOL),
                 NoiseThresholdCountPlacement.of(-0.25, 0, 5),
                 HeightRangePlacement.of(TrapezoidHeight.of(VerticalAnchor.aboveBottom(-64), VerticalAnchor.aboveBottom(96))),
@@ -574,7 +590,8 @@ public class HighlandsPlacedFeatures {
                 BlockPredicateFilter.forPredicate(new SearchPredicate(Direction.DOWN, BlockPredicate.matchesTag(BlockPos.ZERO.below().east(6), AetherIITags.Blocks.AETHER_UNDERGROUND_BLOCKS), 2)),
                 BlockPredicateFilter.forPredicate(new SearchPredicate(Direction.DOWN, BlockPredicate.matchesTag(BlockPos.ZERO.below().south(6), AetherIITags.Blocks.AETHER_UNDERGROUND_BLOCKS), 2)),
                 BlockPredicateFilter.forPredicate(new SearchPredicate(Direction.DOWN, BlockPredicate.matchesTag(BlockPos.ZERO.below().west(6), AetherIITags.Blocks.AETHER_UNDERGROUND_BLOCKS), 2)),
-                BiomeFilter.biome());
+                BiomeFilter.biome()
+        );
 
         register(context, ORE_SCATTERGLASS, configuredFeatures.getOrThrow(HighlandsConfiguredFeatures.ORE_SCATTERGLASS),
                 NitrogenPlacedFeatureBuilders.commonOrePlacement(8, HeightRangePlacement.uniform(VerticalAnchor.bottom(), VerticalAnchor.top())));

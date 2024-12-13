@@ -107,6 +107,20 @@ public class AetherIIRecipeData extends AetherIIRecipeProvider {
                 .save(consumer);
 
         // Underground
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, AetherIIBlocks.UNSTABLE_HOLYSTONE, 2)
+                .define('S', AetherIIBlocks.HOLYSTONE)
+                .define('R', AetherIIBlocks.HOLYSTONE_ROCK)
+                .pattern("SR")
+                .pattern("RS")
+                .unlockedBy(getHasName(AetherIIBlocks.HOLYSTONE), has(AetherIIBlocks.HOLYSTONE))
+                .save(consumer);
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, AetherIIBlocks.UNSTABLE_UNDERSHALE, 2)
+                .define('S', AetherIIBlocks.UNDERSHALE)
+                .define('R', AetherIIBlocks.HOLYSTONE_ROCK)
+                .pattern("SR")
+                .pattern("RS")
+                .unlockedBy(getHasName(AetherIIBlocks.UNDERSHALE), has(AetherIIBlocks.UNDERSHALE))
+                .save(consumer);
         twoByTwoPacker(consumer, RecipeCategory.BUILDING_BLOCKS, AetherIIBlocks.CRUDE_SCATTERGLASS, AetherIIItems.SCATTERGLASS_SHARD);
 
         // Highfields

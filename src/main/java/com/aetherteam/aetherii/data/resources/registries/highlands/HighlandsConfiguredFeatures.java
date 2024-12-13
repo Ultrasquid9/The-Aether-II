@@ -28,6 +28,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.util.InclusiveRange;
 import net.minecraft.util.random.SimpleWeightedRandomList;
+import net.minecraft.util.valueproviders.BiasedToBottomInt;
 import net.minecraft.util.valueproviders.ConstantInt;
 import net.minecraft.util.valueproviders.UniformFloat;
 import net.minecraft.util.valueproviders.UniformInt;
@@ -194,6 +195,9 @@ public class HighlandsConfiguredFeatures {
     public static final ResourceKey<ConfiguredFeature<?, ?>> AMBRELINN_MOSS_CARPET = createKey("ambrelinn_moss_carpet");
     public static final ResourceKey<ConfiguredFeature<?, ?>> AMBRELINN_MOSS_VINES = createKey("ambrelinn_moss_vines");
     public static final ResourceKey<ConfiguredFeature<?, ?>> AMBRELINN_MOSS_FLOOR = createKey("ambrelinn_moss_floor");
+
+    public static final ResourceKey<ConfiguredFeature<?, ?>> UNSTABLE_HOLYSTONE = createKey("unstable_holystone");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> UNSTABLE_UNDERSHALE = createKey("unstable_undershale");
 
     public static final ResourceKey<ConfiguredFeature<?, ?>> ACID_POOL = createKey("acid_pool");
 
@@ -1400,6 +1404,40 @@ public class HighlandsConfiguredFeatures {
                 )
         );
 
+        register(
+                context,
+                UNSTABLE_HOLYSTONE,
+                Feature.VEGETATION_PATCH,
+                new VegetationPatchConfiguration(
+                        AetherIITags.Blocks.HOLYSTONE,
+                        BlockStateProvider.simple(AetherIIBlocks.UNSTABLE_HOLYSTONE.get()),
+                        PlacementUtils.inlinePlaced(configuredFeatures.getOrThrow(HOLYSTONE_ROCKS)),
+                        CaveSurface.FLOOR,
+                        UniformInt.of(12, 18),
+                        0.5F,
+                        4,
+                        0.0F,
+                        UniformInt.of(3, 6),
+                        0.5F
+                )
+        );
+        register(
+                context,
+                UNSTABLE_UNDERSHALE,
+                Feature.VEGETATION_PATCH,
+                new VegetationPatchConfiguration(
+                        AetherIITags.Blocks.UNDERSHALE,
+                        BlockStateProvider.simple(AetherIIBlocks.UNSTABLE_UNDERSHALE.get()),
+                        PlacementUtils.inlinePlaced(configuredFeatures.getOrThrow(HOLYSTONE_ROCKS)),
+                        CaveSurface.FLOOR,
+                        UniformInt.of(12, 18),
+                        0.5F,
+                        4,
+                        0.0F,
+                        UniformInt.of(3, 6),
+                        0.5F
+                )
+        );
 
         register(context, ACID_POOL, AetherIIFeatures.ACID_POOL.get(), new AcidPoolConfiguration(UniformInt.of(1, 4), UniformInt.of(4, 6), UniformInt.of(-4, 2)));
 

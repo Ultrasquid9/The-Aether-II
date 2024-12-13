@@ -102,6 +102,7 @@ public class AetherIICreativeTabs {
                 output.accept(AetherIIBlocks.HOLYSTONE_WALL.get());
                 output.accept(AetherIIBlocks.HOLYSTONE_PRESSURE_PLATE.get());
                 output.accept(AetherIIBlocks.HOLYSTONE_BUTTON.get());
+                output.accept(AetherIIBlocks.UNSTABLE_HOLYSTONE.get());
                 output.accept(AetherIIBlocks.MOSSY_HOLYSTONE.get());
                 output.accept(AetherIIBlocks.MOSSY_HOLYSTONE_STAIRS.get());
                 output.accept(AetherIIBlocks.MOSSY_HOLYSTONE_SLAB.get());
@@ -138,6 +139,7 @@ public class AetherIICreativeTabs {
                 output.accept(AetherIIBlocks.UNDERSHALE_STAIRS.get());
                 output.accept(AetherIIBlocks.UNDERSHALE_SLAB.get());
                 output.accept(AetherIIBlocks.UNDERSHALE_WALL.get());
+                output.accept(AetherIIBlocks.UNSTABLE_UNDERSHALE.get());
                 output.accept(AetherIIBlocks.UNDERSHALE_BRICKS.get());
                 output.accept(AetherIIBlocks.UNDERSHALE_BRICK_STAIRS.get());
                 output.accept(AetherIIBlocks.UNDERSHALE_BRICK_SLAB.get());
@@ -267,9 +269,11 @@ public class AetherIICreativeTabs {
                 output.accept(AetherIIBlocks.ARCTIC_SNOW_BLOCK.get());
                 output.accept(AetherIIBlocks.ARCTIC_SNOW.get());
                 output.accept(AetherIIBlocks.HOLYSTONE.get());
+                output.accept(AetherIIBlocks.UNSTABLE_HOLYSTONE.get());
                 output.accept(AetherIIBlocks.MOSSY_HOLYSTONE.get());
                 output.accept(AetherIIBlocks.IRRADIATED_HOLYSTONE.get());
                 output.accept(AetherIIBlocks.UNDERSHALE.get());
+                output.accept(AetherIIBlocks.UNSTABLE_UNDERSHALE.get());
                 output.accept(AetherIIBlocks.ANGELIC_SHALE.get());
                 output.accept(AetherIIBlocks.AGIOSITE.get());
                 output.accept(AetherIIBlocks.FERROSITE.get());

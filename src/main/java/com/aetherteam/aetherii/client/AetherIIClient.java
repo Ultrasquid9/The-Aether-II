@@ -72,7 +72,7 @@ public class AetherIIClient {
         neoBus.addListener(AetherIIShaders::registerShaders);
         neoBus.addListener(AetherIIItemDecorators::registerItemDecorators);
         neoBus.addListener(AetherIIClientTooltips::registerClientTooltipComponents);
-        neoBus.addListener(AetherIIClientItemExtensions::registerClientItemExtensions);
+        neoBus.addListener(AetherIIClientExtensions::registerClientItemExtensions);
         neoBus.addListener(AetherIIRenderTypes::registerRenderBuffers);
     }
 

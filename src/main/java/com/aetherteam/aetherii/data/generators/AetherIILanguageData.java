@@ -36,7 +36,9 @@ public class AetherIILanguageData extends AetherIILanguageProvider {
 
         // Underground
         this.addBlock(AetherIIBlocks.HOLYSTONE, "Holystone");
+        this.addBlock(AetherIIBlocks.UNSTABLE_HOLYSTONE, "Unstable Holystone");
         this.addBlock(AetherIIBlocks.UNDERSHALE, "Undershale");
+        this.addBlock(AetherIIBlocks.UNSTABLE_UNDERSHALE, "Unstable Undershale");
         this.addBlock(AetherIIBlocks.AGIOSITE, "Agiosite");
         this.addBlock(AetherIIBlocks.CRUDE_SCATTERGLASS, "Crude Scatterglass");
         this.addBlock(AetherIIBlocks.SKY_ROOTS, "Sky Roots");

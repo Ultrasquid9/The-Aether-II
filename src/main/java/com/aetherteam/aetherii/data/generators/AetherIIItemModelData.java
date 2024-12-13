@@ -246,7 +246,9 @@ public class AetherIIItemModelData extends AetherIIItemModelProvider {
 
         // Underground
         this.itemBlock(AetherIIBlocks.HOLYSTONE.get());
+        this.itemBlock(AetherIIBlocks.UNSTABLE_HOLYSTONE.get());
         this.itemBlock(AetherIIBlocks.UNDERSHALE.get());
+        this.itemBlock(AetherIIBlocks.UNSTABLE_UNDERSHALE.get());
         this.itemBlock(AetherIIBlocks.AGIOSITE.get());
         this.itemBlock(AetherIIBlocks.CRUDE_SCATTERGLASS.get());
         this.itemBlockFlat(AetherIIBlocks.SKY_ROOTS.get(), "natural/");

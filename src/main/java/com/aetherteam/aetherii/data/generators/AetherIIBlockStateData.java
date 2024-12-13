@@ -27,7 +27,9 @@ public class AetherIIBlockStateData extends AetherIIBlockStateProvider {
 
         // Underground
         this.block(AetherIIBlocks.HOLYSTONE.get(), "natural/");
+        this.block(AetherIIBlocks.UNSTABLE_HOLYSTONE.get(), "natural/");
         this.block(AetherIIBlocks.UNDERSHALE.get(), "natural/");
+        this.block(AetherIIBlocks.UNSTABLE_UNDERSHALE.get(), "natural/");
         this.block(AetherIIBlocks.AGIOSITE.get(), "natural/");
         this.translucentBlock(AetherIIBlocks.CRUDE_SCATTERGLASS.get(), "natural/");
         this.roots(AetherIIBlocks.SKY_ROOTS.get());
