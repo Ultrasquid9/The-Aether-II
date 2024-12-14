@@ -6,7 +6,7 @@
     "targets": [
       {
         "state": {
-          "Name": "aether_ii:angelic_shale"
+          "Name": "aether_ii:ichorite"
         },
         "target": {
           "block": "aether_ii:undershale",

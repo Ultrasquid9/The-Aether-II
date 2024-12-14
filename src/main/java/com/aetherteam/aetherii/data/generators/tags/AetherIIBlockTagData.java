@@ -52,7 +52,7 @@ public class AetherIIBlockTagData extends BlockTagsProvider {
         this.tag(AetherIITags.Blocks.AETHER_UNDERGROUND_BLOCKS).add(
                 AetherIIBlocks.HOLYSTONE.get(),
                 AetherIIBlocks.UNDERSHALE.get(),
-                AetherIIBlocks.ANGELIC_SHALE.get()
+                AetherIIBlocks.ICHORITE.get()
         );
         this.tag(AetherIITags.Blocks.AETHER_CARVER_REPLACEABLES)
                 .add(AetherIIBlocks.ARCTIC_SNOW_BLOCK.get())

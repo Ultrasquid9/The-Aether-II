@@ -3,12 +3,9 @@ package com.aetherteam.aetherii.data.generators;
 import com.aetherteam.aetherii.AetherII;
 import com.aetherteam.aetherii.AetherIITags;
 import com.aetherteam.aetherii.block.AetherIIBlocks;
-import com.aetherteam.aetherii.block.natural.IrradiatedLeavesBlock;
 import com.aetherteam.aetherii.data.providers.AetherIIRecipeProvider;
 import com.aetherteam.aetherii.item.AetherIIItems;
 import com.aetherteam.aetherii.item.components.AetherIIDataComponents;
-import com.aetherteam.nitrogen.recipe.BlockPropertyPair;
-import it.unimi.dsi.fastutil.objects.Reference2ObjectArrayMap;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.component.DataComponentPatch;
 import net.minecraft.data.PackOutput;
@@ -23,8 +20,6 @@ import net.minecraft.world.level.block.Blocks;
 import net.neoforged.neoforge.common.Tags;
 
 import java.util.List;
-import java.util.Map;
-import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
 
 public class AetherIIRecipeData extends AetherIIRecipeProvider {
@@ -123,6 +118,7 @@ public class AetherIIRecipeData extends AetherIIRecipeProvider {
                 .save(consumer);
         twoByTwoPacker(consumer, RecipeCategory.BUILDING_BLOCKS, AetherIIBlocks.CRUDE_SCATTERGLASS, AetherIIItems.SCATTERGLASS_SHARD);
         twoByTwoPacker(consumer, RecipeCategory.BUILDING_BLOCKS, AetherIIBlocks.HOLYSTONE, AetherIIBlocks.POINTED_HOLYSTONE);
+        twoByTwoPacker(consumer, RecipeCategory.BUILDING_BLOCKS, AetherIIBlocks.ICHORITE, AetherIIBlocks.POINTED_ICHORITE);
 
         // Highfields
         ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, AetherIIBlocks.MOSSY_HOLYSTONE.get())
@@ -1129,7 +1125,7 @@ public class AetherIIRecipeData extends AetherIIRecipeProvider {
         this.altarRepairing(RecipeCategory.COMBAT, AetherIIItems.GRAVITITE_BOOTS, 8).group("repair_gravitite_armor").save(consumer, "repair_gravitite_boots");
         this.altarRepairing(RecipeCategory.COMBAT, AetherIIItems.GRAVITITE_GLOVES, 8).group("repair_gravitite_armor").save(consumer, "repair_gravitite_gloves");
 
-        this.acidCorrosion(AetherIIBlocks.ANGELIC_SHALE.get(), AetherIIBlocks.UNDERSHALE.get()).save(consumer, "corrode_undershale_to_angelic_shale");
+        this.acidCorrosion(AetherIIBlocks.ICHORITE.get(), AetherIIBlocks.UNDERSHALE.get()).save(consumer, "corrode_undershale_to_ichorite");
 
         this.irradiationCleansing(RecipeCategory.BUILDING_BLOCKS, SimpleWeightedRandomList.single(AetherIIBlocks.HOLYSTONE.toStack()), AetherIIBlocks.IRRADIATED_HOLYSTONE, consumer);
         this.irradiationCleansing(RecipeCategory.BUILDING_BLOCKS, SimpleWeightedRandomList.single(AetherIIBlocks.HOLYSTONE_STAIRS.toStack()), AetherIIBlocks.IRRADIATED_HOLYSTONE_STAIRS, consumer);

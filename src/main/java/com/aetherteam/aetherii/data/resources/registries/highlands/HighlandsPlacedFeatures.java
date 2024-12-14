@@ -15,7 +15,6 @@ import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.data.worldgen.placement.PlacementUtils;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.tags.BlockTags;
 import net.minecraft.util.valueproviders.ConstantInt;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.level.block.Blocks;
@@ -116,7 +115,7 @@ public class HighlandsPlacedFeatures {
     public static final ResourceKey<PlacedFeature> ORE_ICESTONE_SMALL = createKey("ore_icestone_small");
     public static final ResourceKey<PlacedFeature> ORE_AGIOSITE = createKey("ore_agiosite");
     public static final ResourceKey<PlacedFeature> ORE_AGIOSITE_SMALL = createKey("ore_agiosite_small");
-    public static final ResourceKey<PlacedFeature> ORE_ANGELIC_SHALEE = createKey("ore_angelic_shale");
+    public static final ResourceKey<PlacedFeature> ORE_ICHORITE = createKey("ore_ichorite");
 
     public static final ResourceKey<PlacedFeature> ORE_HOLYSTONE_QUARTZ = createKey("ore_holystone_quartz");
     public static final ResourceKey<PlacedFeature> ORE_AMBROSIUM = createKey("ore_ambrosium");
@@ -603,7 +602,7 @@ public class HighlandsPlacedFeatures {
                 NitrogenPlacedFeatureBuilders.commonOrePlacement(4, HeightRangePlacement.triangle(VerticalAnchor.aboveBottom(-96), VerticalAnchor.aboveBottom(96))));
         register(context, ORE_AGIOSITE_SMALL, configuredFeatures.getOrThrow(HighlandsConfiguredFeatures.ORE_AGIOSITE),
                 NitrogenPlacedFeatureBuilders.commonOrePlacement(3, HeightRangePlacement.of(TrapezoidHeight.of(VerticalAnchor.aboveBottom(-96), VerticalAnchor.aboveBottom(96), 72))));
-        register(context, ORE_ANGELIC_SHALEE, configuredFeatures.getOrThrow(HighlandsConfiguredFeatures.ORE_ANGELIC_SHALE),
+        register(context, ORE_ICHORITE, configuredFeatures.getOrThrow(HighlandsConfiguredFeatures.ORE_ICHORITE),
                 NoiseThresholdCountPlacement.of(-0.35, 0, 32),
                 HeightRangePlacement.of(TrapezoidHeight.of(VerticalAnchor.aboveBottom(-64), VerticalAnchor.aboveBottom(96))),
                 BiomeFilter.biome()

@@ -28,7 +28,6 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.util.InclusiveRange;
 import net.minecraft.util.random.SimpleWeightedRandomList;
-import net.minecraft.util.valueproviders.BiasedToBottomInt;
 import net.minecraft.util.valueproviders.ConstantInt;
 import net.minecraft.util.valueproviders.UniformFloat;
 import net.minecraft.util.valueproviders.UniformInt;
@@ -206,7 +205,7 @@ public class HighlandsConfiguredFeatures {
     public static final ResourceKey<ConfiguredFeature<?, ?>> ORE_ICESTONE_SMALL = createKey("ore_icestone_small");
     public static final ResourceKey<ConfiguredFeature<?, ?>> ORE_AGIOSITE = createKey("ore_agiosite");
     public static final ResourceKey<ConfiguredFeature<?, ?>> ORE_AGIOSITE_SMALL = createKey("ore_agiosite_small");
-    public static final ResourceKey<ConfiguredFeature<?, ?>> ORE_ANGELIC_SHALE = createKey("ore_angelic_shale");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> ORE_ICHORITE = createKey("ore_ichorite");
 
     public static final ResourceKey<ConfiguredFeature<?, ?>> ORE_HOLYSTONE_QUARTZ = createKey("ore_holystone_quartz");
     public static final ResourceKey<ConfiguredFeature<?, ?>> ORE_AMBROSIUM = createKey("ore_ambrosium");
@@ -1446,7 +1445,7 @@ public class HighlandsConfiguredFeatures {
         register(context, ORE_ICESTONE_SMALL, Feature.ORE, new OreConfiguration(HOLYSTONE_TEST, AetherIIBlocks.ICESTONE.get().defaultBlockState(), 16));
         register(context, ORE_AGIOSITE, Feature.ORE, new OreConfiguration(UNDERSHALE_TEST, AetherIIBlocks.AGIOSITE.get().defaultBlockState(), 64));
         register(context, ORE_AGIOSITE_SMALL, Feature.ORE, new OreConfiguration(UNDERSHALE_TEST, AetherIIBlocks.AGIOSITE.get().defaultBlockState(), 32));
-        register(context, ORE_ANGELIC_SHALE, Feature.ORE, new OreConfiguration(UNDERSHALE_TEST, AetherIIBlocks.ANGELIC_SHALE.get().defaultBlockState(), 64));
+        register(context, ORE_ICHORITE, Feature.ORE, new OreConfiguration(UNDERSHALE_TEST, AetherIIBlocks.ICHORITE.get().defaultBlockState(), 64));
 
         register(context, ORE_HOLYSTONE_QUARTZ, Feature.ORE, new OreConfiguration(quartz, 32));
         register(context, ORE_AMBROSIUM, Feature.ORE, new OreConfiguration(ambrosium, 16));

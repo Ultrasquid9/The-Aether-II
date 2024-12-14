@@ -274,7 +274,7 @@ public class AetherIICreativeTabs {
                 output.accept(AetherIIBlocks.IRRADIATED_HOLYSTONE.get());
                 output.accept(AetherIIBlocks.UNDERSHALE.get());
                 output.accept(AetherIIBlocks.UNSTABLE_UNDERSHALE.get());
-                output.accept(AetherIIBlocks.ANGELIC_SHALE.get());
+                output.accept(AetherIIBlocks.ICHORITE.get());
                 output.accept(AetherIIBlocks.AGIOSITE.get());
                 output.accept(AetherIIBlocks.FERROSITE.get());
                 output.accept(AetherIIBlocks.RUSTED_FERROSITE.get());
@@ -391,6 +391,7 @@ public class AetherIICreativeTabs {
                 output.accept(AetherIIBlocks.SKYROOT_TWIG.get());
                 output.accept(AetherIIBlocks.HOLYSTONE_ROCK.get());
                 output.accept(AetherIIBlocks.POINTED_HOLYSTONE.get());
+                output.accept(AetherIIBlocks.POINTED_ICHORITE.get());
                 output.accept(AetherIIBlocks.LARGE_ARCTIC_ICE_CRYSTAL.get());
                 output.accept(AetherIIBlocks.MEDIUM_ARCTIC_ICE_CRYSTAL.get());
                 output.accept(AetherIIBlocks.SMALL_ARCTIC_ICE_CRYSTAL.get());

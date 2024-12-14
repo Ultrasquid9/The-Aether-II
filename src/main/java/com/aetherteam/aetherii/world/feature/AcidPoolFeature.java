@@ -45,7 +45,7 @@ public class AcidPoolFeature extends Feature<AcidPoolConfiguration> {
                         if (y < 0) {
                             if (volume >= radiusSquared) {
                                 if (!level.getBlockState(offsetPos).is(AetherIIBlocks.ACID)) {
-                                    level.setBlock(offsetPos, AetherIIBlocks.ANGELIC_SHALE.get().defaultBlockState(), 3); //todo downwards hanging angelic shale with stalagmites
+                                    level.setBlock(offsetPos, AetherIIBlocks.ICHORITE.get().defaultBlockState(), 3); //todo downwards hanging angelic shale with stalagmites
                                 }
                             } else {
                                 level.setBlock(offsetPos, AetherIIBlocks.ACID.get().defaultBlockState(), 3);
