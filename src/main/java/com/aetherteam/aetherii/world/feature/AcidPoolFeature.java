@@ -5,12 +5,18 @@ import com.aetherteam.aetherii.block.natural.GasBlock;
 import com.aetherteam.aetherii.world.feature.configuration.AcidPoolConfiguration;
 import com.mojang.serialization.Codec;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.util.RandomSource;
+import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.WorldGenLevel;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.PointedDripstoneBlock;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.properties.DripstoneThickness;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.FeaturePlaceContext;
+
+import java.util.function.Consumer;
 
 public class AcidPoolFeature extends Feature<AcidPoolConfiguration> {
     public AcidPoolFeature(Codec<AcidPoolConfiguration> codec) {
@@ -45,7 +51,16 @@ public class AcidPoolFeature extends Feature<AcidPoolConfiguration> {
                         if (y < 0) {
                             if (volume >= radiusSquared) {
                                 if (!level.getBlockState(offsetPos).is(AetherIIBlocks.ACID)) {
-                                    level.setBlock(offsetPos, AetherIIBlocks.ICHORITE.get().defaultBlockState(), 3); //todo downwards hanging angelic shale with stalagmites
+                                    level.setBlock(offsetPos, AetherIIBlocks.ICHORITE.get().defaultBlockState(), 3);
+                                    int limit = 1 + random.nextInt(2) + random.nextInt(5);
+                                    for (int i = 1; i < limit; i++) {
+                                        level.setBlock(offsetPos.below(i), AetherIIBlocks.ICHORITE.get().defaultBlockState(), 3);
+                                        if (i == limit - 1 && random.nextBoolean()) {
+                                            if (!level.getBlockState(offsetPos.below(i + 1)).isSolid()) {
+                                                growPointedIchorite(level, offsetPos.below(i + 1), Direction.DOWN, 1 + random.nextInt(2), false);
+                                            }
+                                        }
+                                    }
                                 }
                             } else {
                                 level.setBlock(offsetPos, AetherIIBlocks.ACID.get().defaultBlockState(), 3);
@@ -71,5 +86,44 @@ public class AcidPoolFeature extends Feature<AcidPoolConfiguration> {
                 }
             }
         }
+    }
+
+    protected static void growPointedIchorite(LevelAccessor level, BlockPos pos, Direction direction, int height, boolean mergeTip) {
+        if (isDripstoneBase(level.getBlockState(pos.relative(direction.getOpposite())))) {
+            BlockPos.MutableBlockPos mutablePos = pos.mutable();
+            buildBaseToTipColumn(direction, height, mergeTip, state -> {
+                if (state.is(AetherIIBlocks.POINTED_ICHORITE.get())) {
+                    state = state.setValue(PointedDripstoneBlock.WATERLOGGED, level.isWaterAt(mutablePos));
+                }
+                level.setBlock(mutablePos, state, 2);
+                mutablePos.move(direction);
+            });
+        }
+    }
+
+    protected static void buildBaseToTipColumn(Direction direction, int height, boolean mergeTip, Consumer<BlockState> blockSetter) {
+        if (height >= 3) {
+            blockSetter.accept(createPointedIchorite(direction, DripstoneThickness.BASE));
+
+            for (int i = 0; i < height - 3; i++) {
+                blockSetter.accept(createPointedIchorite(direction, DripstoneThickness.MIDDLE));
+            }
+        }
+
+        if (height >= 2) {
+            blockSetter.accept(createPointedIchorite(direction, DripstoneThickness.FRUSTUM));
+        }
+
+        if (height >= 1) {
+            blockSetter.accept(createPointedIchorite(direction, mergeTip ? DripstoneThickness.TIP_MERGE : DripstoneThickness.TIP));
+        }
+    }
+
+    private static BlockState createPointedIchorite(Direction direction, DripstoneThickness dripstoneThickness) {
+        return AetherIIBlocks.POINTED_ICHORITE.get().defaultBlockState().setValue(PointedDripstoneBlock.TIP_DIRECTION, direction).setValue(PointedDripstoneBlock.THICKNESS, dripstoneThickness);
+    }
+
+    public static boolean isDripstoneBase(BlockState state) {
+        return state.is(AetherIIBlocks.ICHORITE);
     }
 }
