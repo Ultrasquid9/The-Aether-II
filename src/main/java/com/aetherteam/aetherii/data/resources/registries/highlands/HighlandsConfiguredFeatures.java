@@ -7,6 +7,7 @@ import com.aetherteam.aetherii.block.natural.*;
 import com.aetherteam.aetherii.data.resources.registries.AetherIIDensityFunctions;
 import com.aetherteam.aetherii.world.feature.AetherIIFeatures;
 import com.aetherteam.aetherii.world.feature.configuration.*;
+import com.aetherteam.aetherii.world.feature.modifier.predicate.SearchPredicate;
 import com.aetherteam.aetherii.world.tree.decorator.*;
 import com.aetherteam.aetherii.world.tree.foliage.amberoot.AmberootFoliagePlacer;
 import com.aetherteam.aetherii.world.tree.foliage.amberoot.LargeAmberootFoliagePlacer;
@@ -47,10 +48,7 @@ import net.minecraft.world.level.levelgen.feature.foliageplacers.BlobFoliagePlac
 import net.minecraft.world.level.levelgen.feature.stateproviders.*;
 import net.minecraft.world.level.levelgen.feature.trunkplacers.GiantTrunkPlacer;
 import net.minecraft.world.level.levelgen.feature.trunkplacers.StraightTrunkPlacer;
-import net.minecraft.world.level.levelgen.placement.BlockPredicateFilter;
-import net.minecraft.world.level.levelgen.placement.CaveSurface;
-import net.minecraft.world.level.levelgen.placement.CountPlacement;
-import net.minecraft.world.level.levelgen.placement.RandomOffsetPlacement;
+import net.minecraft.world.level.levelgen.placement.*;
 import net.minecraft.world.level.levelgen.structure.templatesystem.BlockMatchTest;
 import net.minecraft.world.level.levelgen.structure.templatesystem.RuleTest;
 import net.minecraft.world.level.levelgen.structure.templatesystem.TagMatchTest;
@@ -205,7 +203,6 @@ public class HighlandsConfiguredFeatures {
     public static final ResourceKey<ConfiguredFeature<?, ?>> ORE_ICESTONE_SMALL = createKey("ore_icestone_small");
     public static final ResourceKey<ConfiguredFeature<?, ?>> ORE_AGIOSITE = createKey("ore_agiosite");
     public static final ResourceKey<ConfiguredFeature<?, ?>> ORE_AGIOSITE_SMALL = createKey("ore_agiosite_small");
-    public static final ResourceKey<ConfiguredFeature<?, ?>> ORE_ICHORITE = createKey("ore_ichorite");
 
     public static final ResourceKey<ConfiguredFeature<?, ?>> ORE_HOLYSTONE_QUARTZ = createKey("ore_holystone_quartz");
     public static final ResourceKey<ConfiguredFeature<?, ?>> ORE_AMBROSIUM = createKey("ore_ambrosium");
@@ -1438,14 +1435,23 @@ public class HighlandsConfiguredFeatures {
                 )
         );
 
-        register(context, ACID_POOL, AetherIIFeatures.ACID_POOL.get(), new AcidPoolConfiguration(UniformInt.of(1, 4), UniformInt.of(4, 6), UniformInt.of(-4, 2)));
+        register(context, ACID_POOL, Feature.RANDOM_SELECTOR, new RandomFeatureConfiguration(List.of(
+                new WeightedPlacedFeature(PlacementUtils.inlinePlaced(AetherIIFeatures.ACID_POOL.get(), new AcidPoolConfiguration(UniformInt.of(1, 4), UniformInt.of(4, 6), UniformInt.of(-4, 2)),
+                        EnvironmentScanPlacement.scanningFor(Direction.DOWN, BlockPredicate.matchesTag(AetherIITags.Blocks.AETHER_UNDERGROUND_BLOCKS), BlockPredicate.ONLY_IN_AIR_PREDICATE, 16),
+                        BlockPredicateFilter.forPredicate(new SearchPredicate(Direction.UP, BlockPredicate.matchesTag(AetherIITags.Blocks.AETHER_UNDERGROUND_BLOCKS), 8)),
+                        BlockPredicateFilter.forPredicate(new SearchPredicate(Direction.DOWN, BlockPredicate.matchesTag(BlockPos.ZERO.below(), AetherIITags.Blocks.AETHER_UNDERGROUND_BLOCKS), 2)),
+                        BlockPredicateFilter.forPredicate(new SearchPredicate(Direction.DOWN, BlockPredicate.matchesTag(BlockPos.ZERO.below().north(6), AetherIITags.Blocks.AETHER_UNDERGROUND_BLOCKS), 2)),
+                        BlockPredicateFilter.forPredicate(new SearchPredicate(Direction.DOWN, BlockPredicate.matchesTag(BlockPos.ZERO.below().east(6), AetherIITags.Blocks.AETHER_UNDERGROUND_BLOCKS), 2)),
+                        BlockPredicateFilter.forPredicate(new SearchPredicate(Direction.DOWN, BlockPredicate.matchesTag(BlockPos.ZERO.below().south(6), AetherIITags.Blocks.AETHER_UNDERGROUND_BLOCKS), 2)),
+                        BlockPredicateFilter.forPredicate(new SearchPredicate(Direction.DOWN, BlockPredicate.matchesTag(BlockPos.ZERO.below().west(6), AetherIITags.Blocks.AETHER_UNDERGROUND_BLOCKS), 2))), 0.8F)),
+                PlacementUtils.inlinePlaced(Feature.ORE, new OreConfiguration(UNDERSHALE_TEST, AetherIIBlocks.ICHORITE.get().defaultBlockState(), 64))
+        ));
 
         register(context, ORE_SCATTERGLASS, Feature.ORE, new OreConfiguration(UNDERGROUND_TEST, AetherIIBlocks.CRUDE_SCATTERGLASS.get().defaultBlockState(), 24));
         register(context, ORE_ICESTONE, Feature.ORE, new OreConfiguration(HOLYSTONE_TEST, AetherIIBlocks.ICESTONE.get().defaultBlockState(), 32));
         register(context, ORE_ICESTONE_SMALL, Feature.ORE, new OreConfiguration(HOLYSTONE_TEST, AetherIIBlocks.ICESTONE.get().defaultBlockState(), 16));
         register(context, ORE_AGIOSITE, Feature.ORE, new OreConfiguration(UNDERSHALE_TEST, AetherIIBlocks.AGIOSITE.get().defaultBlockState(), 64));
         register(context, ORE_AGIOSITE_SMALL, Feature.ORE, new OreConfiguration(UNDERSHALE_TEST, AetherIIBlocks.AGIOSITE.get().defaultBlockState(), 32));
-        register(context, ORE_ICHORITE, Feature.ORE, new OreConfiguration(UNDERSHALE_TEST, AetherIIBlocks.ICHORITE.get().defaultBlockState(), 64));
 
         register(context, ORE_HOLYSTONE_QUARTZ, Feature.ORE, new OreConfiguration(quartz, 32));
         register(context, ORE_AMBROSIUM, Feature.ORE, new OreConfiguration(ambrosium, 16));

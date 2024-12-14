@@ -115,7 +115,6 @@ public class HighlandsPlacedFeatures {
     public static final ResourceKey<PlacedFeature> ORE_ICESTONE_SMALL = createKey("ore_icestone_small");
     public static final ResourceKey<PlacedFeature> ORE_AGIOSITE = createKey("ore_agiosite");
     public static final ResourceKey<PlacedFeature> ORE_AGIOSITE_SMALL = createKey("ore_agiosite_small");
-    public static final ResourceKey<PlacedFeature> ORE_ICHORITE = createKey("ore_ichorite");
 
     public static final ResourceKey<PlacedFeature> ORE_HOLYSTONE_QUARTZ = createKey("ore_holystone_quartz");
     public static final ResourceKey<PlacedFeature> ORE_AMBROSIUM = createKey("ore_ambrosium");
@@ -580,15 +579,8 @@ public class HighlandsPlacedFeatures {
         );
 
         register(context, ACID_POOL, configuredFeatures.getOrThrow(HighlandsConfiguredFeatures.ACID_POOL),
-                NoiseThresholdCountPlacement.of(-0.25, 0, 5),
+                PlacementUtils.countExtra(4, 0.35F, 8),
                 HeightRangePlacement.of(TrapezoidHeight.of(VerticalAnchor.aboveBottom(-64), VerticalAnchor.aboveBottom(96))),
-                EnvironmentScanPlacement.scanningFor(Direction.DOWN, BlockPredicate.matchesTag(AetherIITags.Blocks.AETHER_UNDERGROUND_BLOCKS), BlockPredicate.ONLY_IN_AIR_PREDICATE, 16),
-                BlockPredicateFilter.forPredicate(new SearchPredicate(Direction.UP, BlockPredicate.matchesTag(AetherIITags.Blocks.AETHER_UNDERGROUND_BLOCKS), 8)),
-                BlockPredicateFilter.forPredicate(new SearchPredicate(Direction.DOWN, BlockPredicate.matchesTag(BlockPos.ZERO.below(), AetherIITags.Blocks.AETHER_UNDERGROUND_BLOCKS), 2)),
-                BlockPredicateFilter.forPredicate(new SearchPredicate(Direction.DOWN, BlockPredicate.matchesTag(BlockPos.ZERO.below().north(6), AetherIITags.Blocks.AETHER_UNDERGROUND_BLOCKS), 2)),
-                BlockPredicateFilter.forPredicate(new SearchPredicate(Direction.DOWN, BlockPredicate.matchesTag(BlockPos.ZERO.below().east(6), AetherIITags.Blocks.AETHER_UNDERGROUND_BLOCKS), 2)),
-                BlockPredicateFilter.forPredicate(new SearchPredicate(Direction.DOWN, BlockPredicate.matchesTag(BlockPos.ZERO.below().south(6), AetherIITags.Blocks.AETHER_UNDERGROUND_BLOCKS), 2)),
-                BlockPredicateFilter.forPredicate(new SearchPredicate(Direction.DOWN, BlockPredicate.matchesTag(BlockPos.ZERO.below().west(6), AetherIITags.Blocks.AETHER_UNDERGROUND_BLOCKS), 2)),
                 BiomeFilter.biome()
         );
 
@@ -602,11 +594,6 @@ public class HighlandsPlacedFeatures {
                 NitrogenPlacedFeatureBuilders.commonOrePlacement(4, HeightRangePlacement.triangle(VerticalAnchor.aboveBottom(-96), VerticalAnchor.aboveBottom(96))));
         register(context, ORE_AGIOSITE_SMALL, configuredFeatures.getOrThrow(HighlandsConfiguredFeatures.ORE_AGIOSITE),
                 NitrogenPlacedFeatureBuilders.commonOrePlacement(3, HeightRangePlacement.of(TrapezoidHeight.of(VerticalAnchor.aboveBottom(-96), VerticalAnchor.aboveBottom(96), 72))));
-        register(context, ORE_ICHORITE, configuredFeatures.getOrThrow(HighlandsConfiguredFeatures.ORE_ICHORITE),
-                NoiseThresholdCountPlacement.of(-0.35, 0, 32),
-                HeightRangePlacement.of(TrapezoidHeight.of(VerticalAnchor.aboveBottom(-64), VerticalAnchor.aboveBottom(96))),
-                BiomeFilter.biome()
-        );
 
         register(context, ORE_HOLYSTONE_QUARTZ, configuredFeatures.getOrThrow(HighlandsConfiguredFeatures.ORE_HOLYSTONE_QUARTZ),
                 NitrogenPlacedFeatureBuilders.commonOrePlacement(1, HeightRangePlacement.uniform(VerticalAnchor.aboveBottom(128), VerticalAnchor.top())));
