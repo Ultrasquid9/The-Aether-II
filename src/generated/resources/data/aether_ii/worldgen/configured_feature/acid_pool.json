@@ -20,11 +20,16 @@
           ]
         }
       },
-      "placement": []
+      "placement": [
+        {
+          "type": "minecraft:count",
+          "count": 4
+        }
+      ]
     },
     "features": [
       {
-        "chance": 0.75,
+        "chance": 0.8,
         "feature": {
           "feature": {
             "type": "aether_ii:acid_pool",

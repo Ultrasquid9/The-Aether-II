@@ -579,7 +579,7 @@ public class HighlandsPlacedFeatures {
         );
 
         register(context, ACID_POOL, configuredFeatures.getOrThrow(HighlandsConfiguredFeatures.ACID_POOL),
-                PlacementUtils.countExtra(4, 0.35F, 8),
+                CountPlacement.of(8),
                 HeightRangePlacement.of(TrapezoidHeight.of(VerticalAnchor.aboveBottom(-64), VerticalAnchor.aboveBottom(96))),
                 BiomeFilter.biome()
         );
