@@ -1,6 +1,7 @@
 package com.aetherteam.aetherii.block;
 
 import com.aetherteam.aetherii.AetherII;
+import com.aetherteam.aetherii.client.particle.AetherIIParticleTypes;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.level.block.Blocks;
@@ -24,8 +25,7 @@ public class AetherIIFluidTypes {
 //                    .sound(SoundActions.BUCKET_FILL, SoundEvents.BUCKET_FILL_LAVA)
 //                    .sound(SoundActions.BUCKET_EMPTY, SoundEvents.BUCKET_EMPTY_LAVA)
                     .lightLevel(8)
-//                  .addDripstoneDripping(PointedDripstoneBlock.WATER_TRANSFER_PROBABILITY_PER_RANDOM_TICK, ParticleTypes.DRIPPING_DRIPSTONE_WATER, Blocks.WATER_CAULDRON, SoundEvents.POINTED_DRIPSTONE_DRIP_WATER_INTO_CAULDRON)) {
-
+                    .addDripstoneDripping(0.0F, AetherIIParticleTypes.DRIPPING_DRIPSTONE_ACID.get(), Blocks.CAULDRON, SoundEvents.EMPTY)
             )
     );
 }

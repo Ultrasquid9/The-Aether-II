@@ -278,8 +278,8 @@ public abstract class AcidFluid extends BaseFlowingFluid implements CanisterFlui
     @Nullable
     @Override
     public ParticleOptions getDripParticle() {
-        return ParticleTypes.DRIPPING_WATER;
-    } //todo
+        return AetherIIParticleTypes.DRIPPING_ACID.get();
+    }
 
     @Override
     public Optional<SoundEvent> getPickupSound() {
