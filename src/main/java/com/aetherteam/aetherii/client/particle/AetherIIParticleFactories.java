@@ -1,8 +1,11 @@
 package com.aetherteam.aetherii.client.particle;
 
+import com.aetherteam.aetherii.AetherIITags;
 import com.aetherteam.aetherii.block.AetherIIFluids;
+import com.aetherteam.aetherii.block.fluid.AcidFluid;
 import com.aetherteam.aetherii.client.AetherIIClient;
 import net.minecraft.client.particle.*;
+import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.world.level.material.Fluids;
 import net.neoforged.neoforge.client.event.RegisterParticleProvidersEvent;
@@ -65,7 +68,18 @@ public class AetherIIParticleFactories {
             return particle;
         });
         event.registerSprite(AetherIIParticleTypes.FALLING_DRIPSTONE_ACID.get(), (particleType, level, x, y, z, xSpeed, ySpeed, zSpeed) -> {
-            DripParticle particle = new DripParticle.DripstoneFallAndLandParticle(level, x, y, z, AetherIIFluids.ACID.get(), ParticleTypes.WHITE_SMOKE);
+            DripParticle particle = new DripParticle.DripstoneFallAndLandParticle(level, x, y, z, AetherIIFluids.ACID.get(), ParticleTypes.WHITE_SMOKE) {
+                @Override
+                protected void postMoveUpdate() {
+                    if (this.onGround) {
+                        BlockPos pos = BlockPos.containing(this.getPos()).below();
+                        if (this.level.getBlockState(pos).isSolid() && !this.level.getBlockState(pos).is(AetherIITags.Blocks.ACID_RESISTANT)) {
+                            AcidFluid.progressivelyDestroyBlock(this.level, pos, 3, true);
+                        }
+                    }
+                    super.postMoveUpdate();
+                }
+            };
             particle.setColor(0.65F, 0.9F, 0.6F);
             return particle;
         });

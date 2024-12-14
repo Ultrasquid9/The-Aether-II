@@ -122,7 +122,7 @@ public abstract class AcidFluid extends BaseFlowingFluid implements CanisterFlui
                     destroySpeed = 1;
                 }
                 if (destroySpeed != 0) {
-                    PacketDistributor.sendToPlayersInDimension((ServerLevel) level, new AcidDamageBlockPacket(belowPos, destroySpeed));
+                    PacketDistributor.sendToPlayersInDimension((ServerLevel) level, new AcidDamageBlockPacket(belowPos, destroySpeed, false));
                     level.scheduleTick(pos, this, this.getTickDelay(level) + 10);
                 }
             }
@@ -130,14 +130,14 @@ public abstract class AcidFluid extends BaseFlowingFluid implements CanisterFlui
     }
 
     @OnlyIn(Dist.CLIENT)
-    public void progressivelyDestroyBlock(Level level, BlockPos belowPos, int speed) {
+    public static void progressivelyDestroyBlock(Level level, BlockPos belowPos, int speed, boolean drop) {
         int id = belowPos.hashCode();
         BlockDestructionProgress progress = ((LevelRendererAccessor) Minecraft.getInstance().levelRenderer).aether_ii$getDestroyingBlocks().get(id);
         if (progress != null) {
             int destroyProgress = progress.getProgress();
             level.destroyBlockProgress(belowPos.hashCode(), belowPos, destroyProgress + speed);
             if (destroyProgress >= 9) {
-                PacketDistributor.sendToServer(new AcidBreakBlockPacket(belowPos));
+                PacketDistributor.sendToServer(new AcidBreakBlockPacket(belowPos, drop));
             }
         } else {
             level.destroyBlockProgress(belowPos.hashCode(), belowPos,  speed);
@@ -145,9 +145,9 @@ public abstract class AcidFluid extends BaseFlowingFluid implements CanisterFlui
         ParticleUtils.spawnParticlesOnBlockFace(level, belowPos.above(), ParticleTypes.WHITE_SMOKE, UniformInt.of(10, 20), Direction.DOWN, () -> new Vec3(0, 0.5, 0), 0.5);
     }
 
-    public void fullyDestroyBlock(Level level, BlockPos belowPos) {
+    public static void fullyDestroyBlock(Level level, BlockPos belowPos, boolean drop) {
         level.setBlock(belowPos.above(), Blocks.AIR.defaultBlockState(), 3);
-        level.destroyBlock(belowPos, false);
+        level.destroyBlock(belowPos, drop);
     }
 
     @Override

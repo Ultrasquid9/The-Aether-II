@@ -197,7 +197,7 @@ public class AetherIIBlockTagData extends BlockTagsProvider {
         );
         this.tag(AetherIITags.Blocks.ALLOWED_BUCKET_PICKUP).add(
                 Blocks.POWDER_SNOW);
-        this.tag(AetherIITags.Blocks.ACID_RESISTANT).add(AetherIIBlocks.UNDERSHALE.get());
+        this.tag(AetherIITags.Blocks.ACID_RESISTANT).add(AetherIIBlocks.UNDERSHALE.get(), AetherIIBlocks.ICHORITE.get(), AetherIIBlocks.ARKENIUM_BLOCK.get());
         this.tag(AetherIITags.Blocks.ACID_INSTANTLY_DESTROYS).addTags(BlockTags.LEAVES, AetherIITags.Blocks.AERCLOUDS);
         this.tag(AetherIITags.Blocks.ACID_QUICKLY_DESTROYS).addTags(BlockTags.DIRT, BlockTags.LOGS, BlockTags.PLANKS);
         this.tag(AetherIITags.Blocks.ACID_SLOWLY_DESTROYS).addTags(AetherIITags.Blocks.HOLYSTONE, Tags.Blocks.STONES);

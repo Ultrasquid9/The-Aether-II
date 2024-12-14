@@ -301,7 +301,7 @@ public class AetherIIItemTagData extends ItemTagsProvider {
                 AetherIIItems.IRRADIATED_TOOL.get(),
                 AetherIIItems.IRRADIATED_CHUNK.get(),
                 AetherIIItems.IRRADIATED_DUST.get());
-        this.tag(AetherIITags.Items.ACID_RESISTANT_ITEM).add(AetherIIBlocks.ARKENIUM_BLOCK.asItem());
+        this.tag(AetherIITags.Items.ACID_RESISTANT_ITEM).add(AetherIIBlocks.ARKENIUM_BLOCK.asItem()); //todo more arkenium items and possibly reinforced items
 
         // Vanilla
         this.tag(ItemTags.WOOL).add(

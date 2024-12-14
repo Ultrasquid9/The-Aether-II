@@ -9,10 +9,9 @@ import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.level.material.FluidState;
 import net.neoforged.neoforge.network.handling.IPayloadContext;
 
-public record AcidDamageBlockPacket(BlockPos pos, int destroySpeed) implements CustomPacketPayload {
+public record AcidDamageBlockPacket(BlockPos pos, int destroySpeed, boolean drop) implements CustomPacketPayload {
     public static final Type<AcidDamageBlockPacket> TYPE = new Type<>(ResourceLocation.fromNamespaceAndPath(AetherII.MODID, "acid_damage_block"));
 
     public static final StreamCodec<RegistryFriendlyByteBuf, AcidDamageBlockPacket> STREAM_CODEC = StreamCodec.composite(
@@ -20,6 +19,8 @@ public record AcidDamageBlockPacket(BlockPos pos, int destroySpeed) implements C
             AcidDamageBlockPacket::pos,
             ByteBufCodecs.INT,
             AcidDamageBlockPacket::destroySpeed,
+            ByteBufCodecs.BOOL,
+            AcidDamageBlockPacket::drop,
             AcidDamageBlockPacket::new);
 
     @Override
@@ -29,10 +30,7 @@ public record AcidDamageBlockPacket(BlockPos pos, int destroySpeed) implements C
 
     public static void execute(AcidDamageBlockPacket payload, IPayloadContext context) {
         if (Minecraft.getInstance().player != null && Minecraft.getInstance().level != null) {
-            FluidState fluidState = Minecraft.getInstance().level.getFluidState(payload.pos().above());
-            if (fluidState.getType() instanceof AcidFluid acidFluid) {
-                acidFluid.progressivelyDestroyBlock(Minecraft.getInstance().level, payload.pos(), payload.destroySpeed());
-            }
+            AcidFluid.progressivelyDestroyBlock(Minecraft.getInstance().level, payload.pos(), payload.destroySpeed(), payload.drop());
         }
     }
 }
