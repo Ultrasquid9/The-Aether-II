@@ -80,6 +80,7 @@ public class AetherIIBlockLoot extends AetherIIBlockLootSubProvider {
 
         // Irradiated
         this.dropSelf(AetherIIBlocks.IRRADIATED_HOLYSTONE.get());
+        this.add(AetherIIBlocks.IRRADIATED_DUST_BLOCK.get(), this::droppingIrradiatedDustLoot);
         this.dropSelf(AetherIIBlocks.AMBRELINN_MOSS_BLOCK.get());
         this.dropSelf(AetherIIBlocks.AMBRELINN_MOSS_CARPET.get());
         this.add(AetherIIBlocks.AMBRELINN_MOSS_VINES.get(), BlockLootSubProvider::createShearsOnlyDrop);

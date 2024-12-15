@@ -77,6 +77,7 @@ public class AetherIILanguageData extends AetherIILanguageProvider {
 
         // Irradiated
         this.addBlock(AetherIIBlocks.IRRADIATED_HOLYSTONE, "Irradiated Holystone");
+        this.addBlock(AetherIIBlocks.IRRADIATED_DUST_BLOCK, "Irradiated Dust Block");
         this.addBlock(AetherIIBlocks.AMBRELINN_MOSS_BLOCK, "Ambrelinn Moss Block");
         this.addBlock(AetherIIBlocks.AMBRELINN_MOSS_CARPET, "Ambrelinn Moss Carpet");
         this.addBlock(AetherIIBlocks.AMBRELINN_MOSS_VINES, "Ambrelinn Moss Vines");

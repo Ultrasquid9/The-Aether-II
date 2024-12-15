@@ -69,6 +69,7 @@ public class AetherIIBlockStateData extends AetherIIBlockStateProvider {
 
         // Irradiated
         this.block(AetherIIBlocks.IRRADIATED_HOLYSTONE.get(), "natural/");
+        this.block(AetherIIBlocks.IRRADIATED_DUST_BLOCK.get(), "natural/");
         this.block(AetherIIBlocks.AMBRELINN_MOSS_BLOCK.get(), "natural/");
         this.carpet(AetherIIBlocks.AMBRELINN_MOSS_CARPET.get(), AetherIIBlocks.AMBRELINN_MOSS_BLOCK.get(), "natural/");
         this.ambrelinnMossVines(AetherIIBlocks.AMBRELINN_MOSS_VINES.get());

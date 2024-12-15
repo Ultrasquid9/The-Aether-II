@@ -287,6 +287,7 @@ public class AetherIIItemModelData extends AetherIIItemModelProvider {
 
         // Irradiated
         this.itemBlock(AetherIIBlocks.IRRADIATED_HOLYSTONE.get());
+        this.itemBlock(AetherIIBlocks.IRRADIATED_DUST_BLOCK.get());
         this.itemBlock(AetherIIBlocks.AMBRELINN_MOSS_BLOCK.get());
         this.itemBlock(AetherIIBlocks.AMBRELINN_MOSS_CARPET.get());
         this.itemBlockFlat(AetherIIBlocks.AMBRELINN_MOSS_VINES.get(), "natural/");
