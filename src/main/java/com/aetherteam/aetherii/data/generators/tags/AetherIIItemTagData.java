@@ -301,7 +301,27 @@ public class AetherIIItemTagData extends ItemTagsProvider {
                 AetherIIItems.IRRADIATED_TOOL.get(),
                 AetherIIItems.IRRADIATED_CHUNK.get(),
                 AetherIIItems.IRRADIATED_DUST.get());
-        this.tag(AetherIITags.Items.ACID_RESISTANT_ITEM).add(AetherIIBlocks.ARKENIUM_BLOCK.asItem()); //todo more arkenium items and possibly reinforced items
+        this.tag(AetherIITags.Items.ACID_RESISTANT_ITEM).add(
+                AetherIIBlocks.ARKENIUM_BLOCK.asItem(),
+                AetherIIItems.ARKENIUM_SHORTSWORD.get(),
+                AetherIIItems.ARKENIUM_SPEAR.get(),
+                AetherIIItems.ARKENIUM_HAMMER.get(),
+                AetherIIItems.ARKENIUM_PICKAXE.get(),
+                AetherIIItems.ARKENIUM_AXE.get(),
+                AetherIIItems.ARKENIUM_SHOVEL.get(),
+                AetherIIItems.ARKENIUM_TROWEL.get(),
+                AetherIIItems.ARKENIUM_SHIELD.get(),
+                AetherIIItems.ARKENIUM_CROSSBOW.get(),
+                AetherIIItems.ARKENIUM_SHEARS.get(),
+                AetherIIItems.ARKENIUM_HELMET.get(),
+                AetherIIItems.ARKENIUM_CHESTPLATE.get(),
+                AetherIIItems.ARKENIUM_LEGGINGS.get(),
+                AetherIIItems.ARKENIUM_BOOTS.get(),
+                AetherIIItems.ARKENIUM_GLOVES.get(),
+                AetherIIItems.ARKENIUM_CANISTER.get(),
+                AetherIIItems.ARKENIUM_ACID_CANISTER.get(),
+                AetherIIItems.ARKENIUM_GAS_CANISTER.get(),
+                AetherIIItems.ARKENIUM_PLATES.get());
 
         // Vanilla
         this.tag(ItemTags.WOOL).add(

@@ -2,10 +2,12 @@ package com.aetherteam.aetherii;
 
 import com.aetherteam.aetherii.attachment.AetherIIDataAttachments;
 import com.aetherteam.aetherii.block.AetherIIBlocks;
+import com.aetherteam.aetherii.data.resources.registries.AetherIIDamageTypes;
 import com.aetherteam.aetherii.event.FreezeEvent;
 import com.aetherteam.aetherii.event.hooks.BlockHooks;
 import com.aetherteam.aetherii.event.hooks.PlayerHooks;
 import com.aetherteam.aetherii.item.AetherIIItems;
+import com.aetherteam.aetherii.item.components.AetherIIDataComponents;
 import net.minecraft.advancements.AdvancementHolder;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -14,6 +16,7 @@ import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.food.FoodProperties;
@@ -28,10 +31,7 @@ import net.minecraft.world.level.portal.DimensionTransition;
 import net.neoforged.bus.api.EventPriority;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.common.ItemAbility;
-import net.neoforged.neoforge.event.entity.living.LivingBreatheEvent;
-import net.neoforged.neoforge.event.entity.living.LivingDamageEvent;
-import net.neoforged.neoforge.event.entity.living.LivingEntityUseItemEvent;
-import net.neoforged.neoforge.event.entity.living.LivingShieldBlockEvent;
+import net.neoforged.neoforge.event.entity.living.*;
 import net.neoforged.neoforge.event.entity.player.*;
 import net.neoforged.neoforge.event.level.AlterGroundEvent;
 import net.neoforged.neoforge.event.level.BlockEvent;
@@ -39,7 +39,9 @@ import net.neoforged.neoforge.event.level.SleepFinishedTimeEvent;
 import net.neoforged.neoforge.event.tick.EntityTickEvent;
 import net.neoforged.neoforge.event.tick.PlayerTickEvent;
 
+import java.util.EnumMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 public class AetherIIEventListeners {
@@ -56,6 +58,7 @@ public class AetherIIEventListeners {
         bus.addListener(AetherIIEventListeners::onPlayerCriticalHitAttack);
         bus.addListener(AetherIIEventListeners::onPlayerAdvancementProgression);
         bus.addListener(AetherIIEventListeners::onPlayersFinishSleeping);
+        bus.addListener(AetherIIEventListeners::onArmorDamaged);
 
         // Entity
         bus.addListener(AetherIIEventListeners::onEntityPostTick);
@@ -180,6 +183,20 @@ public class AetherIIEventListeners {
         long newTime = event.getNewTime();
 
         PlayerHooks.resetAetherDayAndWeather(level, newTime);
+    }
+
+    public static void onArmorDamaged(ArmorHurtEvent event) {
+        LivingEntity livingEntity = event.getEntity();
+        Map<EquipmentSlot, ArmorHurtEvent.ArmorEntry> armorEntries = event.getArmorMap();
+
+        if (livingEntity.getLastDamageSource().is(AetherIIDamageTypes.ACID)) {
+            for (Map.Entry<EquipmentSlot, ArmorHurtEvent.ArmorEntry> entry : armorEntries.entrySet()) {
+                ArmorHurtEvent.ArmorEntry armor = entry.getValue();
+                if (armor.armorItemStack.has(AetherIIDataComponents.REINFORCEMENT_TIER)) {
+                    event.setNewDamage(entry.getKey(), 0.0F);
+                }
+            }
+        }
     }
 
     public static void onEntityPostTick(EntityTickEvent.Post event) {

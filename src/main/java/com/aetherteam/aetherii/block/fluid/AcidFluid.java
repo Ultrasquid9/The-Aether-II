@@ -6,6 +6,7 @@ import com.aetherteam.aetherii.block.AetherIIFluids;
 import com.aetherteam.aetherii.client.particle.AetherIIParticleTypes;
 import com.aetherteam.aetherii.data.resources.registries.AetherIIDamageTypes;
 import com.aetherteam.aetherii.item.AetherIIItems;
+import com.aetherteam.aetherii.item.components.AetherIIDataComponents;
 import com.aetherteam.aetherii.item.equipment.armor.GlovesItem;
 import com.aetherteam.aetherii.mixin.mixins.client.accessor.LevelRendererAccessor;
 import com.aetherteam.aetherii.network.packet.clientbound.AcidDamageBlockPacket;
@@ -177,7 +178,7 @@ public abstract class AcidFluid extends BaseFlowingFluid implements CanisterFlui
         RandomSource random = level.getRandom();
         if (entity instanceof ItemEntity itemEntity) {
             ItemStack itemStack = itemEntity.getItem().copy();
-            if (!itemStack.is(AetherIITags.Items.ACID_RESISTANT_ITEM)) {
+            if (!itemStack.is(AetherIITags.Items.ACID_RESISTANT_ITEM) && !itemStack.has(AetherIIDataComponents.REINFORCEMENT_TIER)) {
                 itemEntity.lifespan -= 15;
                 if (entity.level().isClientSide()) {
                     for (int i = 0; i < 2; ++i) {
@@ -208,12 +209,12 @@ public abstract class AcidFluid extends BaseFlowingFluid implements CanisterFlui
 
                 if (!livingEntity.level().isClientSide() && livingEntity.level() instanceof ServerLevel serverLevel) {
                     ItemStack mainhandItem = livingEntity.getMainHandItem();
-                    if (!mainhandItem.is(AetherIITags.Items.ACID_RESISTANT_ITEM)) {
+                    if (!mainhandItem.is(AetherIITags.Items.ACID_RESISTANT_ITEM) && !mainhandItem.has(AetherIIDataComponents.REINFORCEMENT_TIER)) {
                         mainhandItem.hurtAndBreak(1, livingEntity, EquipmentSlot.MAINHAND);
                     }
 
                     ItemStack offhandItem = livingEntity.getOffhandItem();
-                    if (!offhandItem.is(AetherIITags.Items.ACID_RESISTANT_ITEM)) {
+                    if (!offhandItem.is(AetherIITags.Items.ACID_RESISTANT_ITEM) && !offhandItem.has(AetherIIDataComponents.REINFORCEMENT_TIER)) {
                         offhandItem.hurtAndBreak(1, livingEntity, EquipmentSlot.OFFHAND);
                     }
 
@@ -222,7 +223,7 @@ public abstract class AcidFluid extends BaseFlowingFluid implements CanisterFlui
                         SlotEntryReference slotEntryReference = accessories.getFirstEquipped((itemStack) -> itemStack.getItem() instanceof GlovesItem);
                         if (slotEntryReference != null && slotEntryReference.stack().getItem() instanceof GlovesItem) {
                             ItemStack gloves = slotEntryReference.stack();
-                            if (!gloves.is(AetherIITags.Items.ACID_RESISTANT_ITEM)) {
+                            if (!gloves.is(AetherIITags.Items.ACID_RESISTANT_ITEM) && !gloves.has(AetherIIDataComponents.REINFORCEMENT_TIER)) {
                                 if (livingEntity instanceof ServerPlayer serverPlayer) {
                                     gloves.hurtAndBreak(1, serverLevel, serverPlayer, (item) -> AccessoriesAPI.breakStack(slotEntryReference.reference()));
                                 }
