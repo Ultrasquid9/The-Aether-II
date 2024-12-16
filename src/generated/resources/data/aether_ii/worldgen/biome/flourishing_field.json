@@ -52,7 +52,9 @@
       "aether_ii:unstable_holystone",
       "aether_ii:unstable_undershale"
     ],
-    [],
+    [
+      "aether_ii:pointed_holystone"
+    ],
     [
       "aether_ii:water_spring"
     ],

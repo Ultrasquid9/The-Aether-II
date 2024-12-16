@@ -15,6 +15,7 @@ import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.data.worldgen.placement.PlacementUtils;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.util.valueproviders.ClampedNormalInt;
 import net.minecraft.util.valueproviders.ConstantInt;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.level.block.Blocks;
@@ -101,6 +102,7 @@ public class HighlandsPlacedFeatures {
     public static final ResourceKey<PlacedFeature> COARSE_AETHER_DIRT_FROSTED_CEILING = createKey("coarse_aether_dirt_frosted_ceiling");
     public static final ResourceKey<PlacedFeature> COARSE_AETHER_DIRT_OVERHANG = createKey("coarse_aether_dirt_overhang");
     public static final ResourceKey<PlacedFeature> ICE_OVERHANG = createKey("ice_overhang");
+    public static final ResourceKey<PlacedFeature> POINTED_HOLYSTONE = createKey("pointed_holystone");
     public static final ResourceKey<PlacedFeature> EXPOSED_BRYALINN_MOSS_COVER = createKey("exposed_bryalinn_moss_cover");
     public static final ResourceKey<PlacedFeature> SWAMP_BRYALINN_MOSS_COVER = createKey("swamp_bryalinn_moss_cover");
     public static final ResourceKey<PlacedFeature> EXPOSED_SHAYELINN_MOSS_COVER = createKey("exposed_shayelinn_moss_cover");
@@ -535,6 +537,16 @@ public class HighlandsPlacedFeatures {
                 BlockPredicateFilter.forPredicate(new ScanPredicate(Direction.DOWN, BlockPredicate.ONLY_IN_AIR_OR_WATER_PREDICATE, 8)),
                 BiomeFilter.biome()
         );
+        register(context, POINTED_HOLYSTONE, configuredFeatures.getOrThrow(HighlandsConfiguredFeatures.POINTED_HOLYSTONE),
+                CountPlacement.of(UniformInt.of(192, 256)),
+                InSquarePlacement.spread(),
+                PlacementUtils.RANGE_BOTTOM_TO_MAX_TERRAIN_HEIGHT,
+                RarityFilter.onAverageOnceEvery(75),
+                CountPlacement.of(UniformInt.of(3, 15)),
+                RandomOffsetPlacement.of(ClampedNormalInt.of(0.0F, 3.0F, -10, 10), ClampedNormalInt.of(0.0F, 0.6F, -2, 2)),
+                SurfaceRelativeThresholdFilter.of(Heightmap.Types.OCEAN_FLOOR_WG, Integer.MIN_VALUE, -4),
+                BiomeFilter.biome()
+        );
         register(context, EXPOSED_BRYALINN_MOSS_COVER, configuredFeatures.getOrThrow(HighlandsConfiguredFeatures.BRYALINN_MOSS_FLOOR),
                 NoiseBasedCountPlacement.of(35, 50, 0.0),
                 InSquarePlacement.spread(),
@@ -581,6 +593,7 @@ public class HighlandsPlacedFeatures {
         register(context, ACID_POOL, configuredFeatures.getOrThrow(HighlandsConfiguredFeatures.ACID_POOL),
                 CountPlacement.of(8),
                 HeightRangePlacement.of(TrapezoidHeight.of(VerticalAnchor.aboveBottom(-64), VerticalAnchor.aboveBottom(96))),
+                SurfaceRelativeThresholdFilter.of(Heightmap.Types.OCEAN_FLOOR_WG, Integer.MIN_VALUE, -4),
                 BiomeFilter.biome()
         );
 
@@ -619,12 +632,14 @@ public class HighlandsPlacedFeatures {
                 BlockPredicateFilter.forPredicate(BlockPredicate.ONLY_IN_AIR_PREDICATE),
                 BlockPredicateFilter.forPredicate(new SearchPredicate(Direction.UP, BlockPredicate.matchesTag(AetherIITags.Blocks.AETHER_UNDERGROUND_BLOCKS), 4)),
                 BlockPredicateFilter.forPredicate(new SearchPredicate(Direction.DOWN, BlockPredicate.matchesTag(AetherIITags.Blocks.AETHER_UNDERGROUND_BLOCKS), 4)),
+                SurfaceRelativeThresholdFilter.of(Heightmap.Types.OCEAN_FLOOR_WG, Integer.MIN_VALUE, -4),
                 BiomeFilter.biome()
         );
         register(context, ORE_GAS_BURIED, configuredFeatures.getOrThrow(HighlandsConfiguredFeatures.ORE_GAS_BURIED),
                 CountPlacement.of(4),
                 InSquarePlacement.spread(),
                 HeightRangePlacement.of(TrapezoidHeight.of(VerticalAnchor.aboveBottom(-96), VerticalAnchor.aboveBottom(128))),
+                SurfaceRelativeThresholdFilter.of(Heightmap.Types.OCEAN_FLOOR_WG, Integer.MIN_VALUE, -4),
                 BiomeFilter.biome()
         );
     }
