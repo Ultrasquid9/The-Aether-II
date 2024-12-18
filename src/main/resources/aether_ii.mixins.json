@@ -31,6 +31,7 @@
     "client.BlockRenderDispatcherMixin",
     "client.ClientLevelMixin",
     "client.ItemRendererMixin",
+    "client.LevelRendererMixin",
     "client.LiquidBlockRendererMixin",
     "client.ReceivingLevelScreenMixin",
     "client.accessor.DeathScreenAccessor",
