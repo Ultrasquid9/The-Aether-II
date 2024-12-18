@@ -157,6 +157,8 @@ public class HighlandsPlacedFeatures {
     public static final ResourceKey<PlacedFeature> FREEZE_TOP_LAYER_ARCTIC = createKey("freeze_top_layer_arctic");
     public static final ResourceKey<PlacedFeature> FREEZE_TOP_LAYER_TUNDRA = createKey("freeze_top_layer_tundra");
 
+    public static final ResourceKey<PlacedFeature> CRATER = createKey("crater");
+
     public static final ResourceKey<PlacedFeature> CLOUDBED = createKey("cloudbed");
 
 
@@ -743,6 +745,20 @@ public class HighlandsPlacedFeatures {
 
         register(context, FREEZE_TOP_LAYER_ARCTIC, configuredFeatures.getOrThrow(HighlandsConfiguredFeatures.FREEZE_TOP_LAYER_ARCTIC), BiomeFilter.biome());
         register(context, FREEZE_TOP_LAYER_TUNDRA, configuredFeatures.getOrThrow(HighlandsConfiguredFeatures.FREEZE_TOP_LAYER_TUNDRA), BiomeFilter.biome());
+
+        register(context, CRATER, configuredFeatures.getOrThrow(HighlandsConfiguredFeatures.CRATER),
+                RarityFilter.onAverageOnceEvery(3),
+                InSquarePlacement.spread(),
+                HeightRangePlacement.uniform(VerticalAnchor.absolute(96), VerticalAnchor.top()),
+                HeightmapPlacement.onHeightmap(Heightmap.Types.MOTION_BLOCKING_NO_LEAVES),
+                BlockPredicateFilter.forPredicate(BlockPredicate.matchesTag(BlockPos.ZERO.below(), AetherIITags.Blocks.AETHER_DIRT)),
+                BlockPredicateFilter.forPredicate(BlockPredicate.matchesTag(BlockPos.ZERO.below().north(3), AetherIITags.Blocks.AETHER_DIRT)),
+                BlockPredicateFilter.forPredicate(BlockPredicate.matchesTag(BlockPos.ZERO.below().east(3), AetherIITags.Blocks.AETHER_DIRT)),
+                BlockPredicateFilter.forPredicate(BlockPredicate.matchesTag(BlockPos.ZERO.below().south(3), AetherIITags.Blocks.AETHER_DIRT)),
+                BlockPredicateFilter.forPredicate(BlockPredicate.matchesTag(BlockPos.ZERO.below().west(3), AetherIITags.Blocks.AETHER_DIRT)),
+                RandomOffsetPlacement.vertical(UniformInt.of(-2, 0)),
+                BiomeFilter.biome()
+        );
 
         register(context, CLOUDBED, configuredFeatures.getOrThrow(HighlandsConfiguredFeatures.CLOUDBED), BiomeFilter.biome());
     }

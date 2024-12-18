@@ -469,7 +469,10 @@ public class HighlandsBiomeBuilders {
     }
 
     public static Biome battlegroundWastesBiome(HolderGetter<PlacedFeature> placedFeatures, HolderGetter<ConfiguredWorldCarver<?>> worldCarvers, float temperature, float downfall) {
-        return makeIrradiatedBiome(new BiomeGenerationSettings.Builder(placedFeatures, worldCarvers).addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, HighlandsPlacedFeatures.BATTLEGROUND_WASTES_TREES), temperature, downfall);
+        return makeIrradiatedBiome(new BiomeGenerationSettings.Builder(placedFeatures, worldCarvers)
+                        .addFeature(GenerationStep.Decoration.LOCAL_MODIFICATIONS, HighlandsPlacedFeatures.CRATER)
+                        .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, HighlandsPlacedFeatures.BATTLEGROUND_WASTES_TREES),
+                temperature, downfall);
     }
 
     public static Biome makeIrradiatedBiome(BiomeGenerationSettings.Builder builder, float temperature, float downfall) {

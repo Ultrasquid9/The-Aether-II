@@ -36,4 +36,5 @@ public class AetherIIFeatures {
     public static DeferredHolder<Feature<?>, Feature<AcidPoolConfiguration>> ACID_POOL = FEATURES.register("acid_pool", () -> new AcidPoolFeature(AcidPoolConfiguration.CODEC));
     public static DeferredHolder<Feature<?>, Feature<NoneFeatureConfiguration>> GAS = FEATURES.register("gas", () -> new GasFeature(NoneFeatureConfiguration.CODEC));
     public static DeferredHolder<Feature<?>, Feature<PointedStoneConfiguration>> POINTED_STONE = FEATURES.register("pointed_stone", () -> new PointedStoneFeature(PointedStoneConfiguration.CODEC));
+    public static DeferredHolder<Feature<?>, Feature<NoneFeatureConfiguration>> CRATER = FEATURES.register("crater", () -> new CraterFeature(NoneFeatureConfiguration.CODEC));
 }
