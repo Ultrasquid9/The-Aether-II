@@ -16,7 +16,9 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public class LevelRendererMixin {
 	@Shadow @Final private RenderBuffers renderBuffers;
 
-	@Inject(method = "renderLevel", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/renderer/RenderBuffers;crumblingBufferSource()Lnet/minecraft/client/renderer/MultiBufferSource$BufferSource;"))
+	// Injects after buffersource.endBatch(Sheets.chestSheet()), and before this.renderBuffers.crumblingBufferSource().endBatch()
+	// If you have MinecraftModDev IJ plugin, it will link you to the wrong invocation of crumblingBufferSource()
+	@Inject(method = "renderLevel", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/renderer/RenderBuffers;crumblingBufferSource()Lnet/minecraft/client/renderer/MultiBufferSource$BufferSource;", ordinal = 2, shift = At.Shift.BEFORE))
 	private void endRedFoilBatch(DeltaTracker deltaTracker, boolean renderBlockOutline, Camera camera, GameRenderer gameRenderer, LightTexture lightTexture, Matrix4f frustumMatrix, Matrix4f projectionMatrix, CallbackInfo ci) {
 		MultiBufferSource.BufferSource bufferSource = this.renderBuffers.bufferSource();
 
