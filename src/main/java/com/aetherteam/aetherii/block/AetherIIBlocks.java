@@ -565,12 +565,12 @@ public class AetherIIBlocks extends AetherIIBlockBuilders {
     public static final DeferredBlock<Block> ARKENIUM_BLOCK = register("arkenium_block", () -> new Block(Block.Properties.of().mapColor(MapColor.METAL).instrument(NoteBlockInstrument.PLING).strength(5.0F, 6.0F).requiresCorrectToolForDrops().sound(SoundType.METAL)));
     public static final DeferredBlock<Block> GRAVITITE_BLOCK = register("gravitite_block", () -> new Block(Block.Properties.of().mapColor(MapColor.COLOR_PINK).instrument(NoteBlockInstrument.PLING).strength(5.0F, 6.0F).requiresCorrectToolForDrops().sound(SoundType.METAL)));
 
-    // Arilum Lantern
-    public static final DeferredBlock<Block> GREEN_ARILUM_LANTERN = register("green_arilum_lantern", () -> new Block(Block.Properties.of().mapColor(MapColor.COLOR_LIGHT_GREEN).friction(0.8F).sound(SoundType.SLIME_BLOCK).lightLevel((state) -> 15)));
-    public static final DeferredBlock<Block> BLUE_ARILUM_LANTERN = register("blue_arilum_lantern", () -> new Block(Block.Properties.of().mapColor(MapColor.COLOR_LIGHT_BLUE).friction(0.8F).sound(SoundType.SLIME_BLOCK).lightLevel((state) -> 15)));
-    public static final DeferredBlock<Block> PURPLE_ARILUM_LANTERN = register("purple_arilum_lantern", () -> new Block(Block.Properties.of().mapColor(MapColor.COLOR_MAGENTA).friction(0.8F).sound(SoundType.SLIME_BLOCK).lightLevel((state) -> 15)));
-    public static final DeferredBlock<Block> GOLDEN_ARILUM_LANTERN = register("golden_arilum_lantern", () -> new Block(Block.Properties.of().mapColor(MapColor.COLOR_YELLOW).friction(0.8F).sound(SoundType.SLIME_BLOCK).lightLevel((state) -> 15)));
-    public static final DeferredBlock<Block> WHITE_ARILUM_LANTERN = register("white_arilum_lantern", () -> new Block(Block.Properties.of().mapColor(MapColor.COLOR_LIGHT_GRAY).friction(0.8F).sound(SoundType.SLIME_BLOCK).lightLevel((state) -> 15)));
+    // Arilum Lantern //TODO make method
+    public static final DeferredBlock<Block> GREEN_ARILUM_LANTERN = register("green_arilum_lantern", () -> new Block(Block.Properties.of().mapColor(MapColor.COLOR_LIGHT_GREEN).friction(0.8F).sound(SoundType.FROGLIGHT).lightLevel((state) -> 15)));
+    public static final DeferredBlock<Block> BLUE_ARILUM_LANTERN = register("blue_arilum_lantern", () -> new Block(Block.Properties.of().mapColor(MapColor.COLOR_LIGHT_BLUE).friction(0.8F).sound(SoundType.FROGLIGHT).lightLevel((state) -> 15)));
+    public static final DeferredBlock<Block> PURPLE_ARILUM_LANTERN = register("purple_arilum_lantern", () -> new Block(Block.Properties.of().mapColor(MapColor.COLOR_MAGENTA).friction(0.8F).sound(SoundType.FROGLIGHT).lightLevel((state) -> 15)));
+    public static final DeferredBlock<Block> GOLDEN_ARILUM_LANTERN = register("golden_arilum_lantern", () -> new Block(Block.Properties.of().mapColor(MapColor.COLOR_YELLOW).friction(0.8F).sound(SoundType.FROGLIGHT).lightLevel((state) -> 15)));
+    public static final DeferredBlock<Block> WHITE_ARILUM_LANTERN = register("white_arilum_lantern", () -> new Block(Block.Properties.of().mapColor(MapColor.COLOR_LIGHT_GRAY).friction(0.8F).sound(SoundType.FROGLIGHT).lightLevel((state) -> 15)));
 
 
     // Utility
@@ -601,7 +601,7 @@ public class AetherIIBlocks extends AetherIIBlockBuilders {
     public static final DeferredBlock<WallHangingSignBlock> WISPROOT_WALL_HANGING_SIGN = BLOCKS.register("wisproot_wall_hanging_sign", () -> new WallHangingSignBlock(AetherIIWoodTypes.WISPROOT, BlockBehaviour.Properties.of().mapColor(Blocks.OAK_LOG.defaultMapColor()).forceSolidOn().instrument(NoteBlockInstrument.BASS).noCollission().strength(1.0F).ignitedByLava()));
 
     // Moa Egg
-    public static final DeferredBlock<Block> MOA_EGG = register("moa_egg", () -> new MoaEggBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLUE).strength(0.5F).sound(SoundType.METAL).noOcclusion()));
+    public static final DeferredBlock<Block> MOA_EGG = BLOCKS.register("moa_egg", () -> new MoaEggBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLUE).strength(0.5F).sound(SoundType.METAL).noOcclusion()));
 
     // Bookshelves
     public static final DeferredBlock<Block> SKYROOT_BOOKSHELF = register("skyroot_bookshelf", () -> new BookshelfBlock(Block.Properties.ofFullCopy(Blocks.BOOKSHELF)));

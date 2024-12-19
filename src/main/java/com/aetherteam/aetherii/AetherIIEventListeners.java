@@ -19,8 +19,6 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.food.FoodProperties;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
@@ -32,6 +30,7 @@ import net.neoforged.bus.api.EventPriority;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.common.ItemAbility;
 import net.neoforged.neoforge.event.entity.living.*;
+import net.neoforged.neoforge.event.entity.EntityMountEvent;
 import net.neoforged.neoforge.event.entity.player.*;
 import net.neoforged.neoforge.event.level.AlterGroundEvent;
 import net.neoforged.neoforge.event.level.BlockEvent;
@@ -39,7 +38,6 @@ import net.neoforged.neoforge.event.level.SleepFinishedTimeEvent;
 import net.neoforged.neoforge.event.tick.EntityTickEvent;
 import net.neoforged.neoforge.event.tick.PlayerTickEvent;
 
-import java.util.EnumMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -59,6 +57,7 @@ public class AetherIIEventListeners {
         bus.addListener(AetherIIEventListeners::onPlayerAdvancementProgression);
         bus.addListener(AetherIIEventListeners::onPlayersFinishSleeping);
         bus.addListener(AetherIIEventListeners::onArmorDamaged);
+        bus.addListener(AetherIIEventListeners::onPlayerMount);
 
         // Entity
         bus.addListener(AetherIIEventListeners::onEntityPostTick);
@@ -197,6 +196,13 @@ public class AetherIIEventListeners {
                 }
             }
         }
+    }
+
+    public static void onPlayerMount(EntityMountEvent event) {
+        Entity riderEntity = event.getEntityMounting();
+        Entity mountEntity = event.getEntityBeingMounted();
+        boolean isDismounting = event.isDismounting();
+        event.setCanceled(PlayerHooks.dismountPrevention(riderEntity, mountEntity, isDismounting));
     }
 
     public static void onEntityPostTick(EntityTickEvent.Post event) {
