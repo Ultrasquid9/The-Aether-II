@@ -5,7 +5,9 @@ import com.aetherteam.aetherii.block.AetherIIBlocks;
 import com.aetherteam.aetherii.data.resources.registries.AetherIIJukeboxSongs;
 import com.aetherteam.aetherii.effect.AetherIIEffects;
 import com.aetherteam.aetherii.entity.AetherIIEntityTypes;
+import com.aetherteam.aetherii.entity.passive.Moa;
 import com.aetherteam.aetherii.item.components.AetherIIDataComponents;
+import com.aetherteam.aetherii.item.components.MoaEggType;
 import com.aetherteam.aetherii.item.consumables.CurativeItem;
 import com.aetherteam.aetherii.item.consumables.HealingStoneItem;
 import com.aetherteam.aetherii.item.consumables.PreventativeItem;
@@ -225,6 +227,8 @@ public class AetherIIItems {
     public static final DeferredItem<Item> GOLDEN_SWET_GEL = ITEMS.register("golden_swet_gel", () -> new SwetGelItem(new Item.Properties()));
     public static final DeferredItem<Item> WHITE_SWET_GEL = ITEMS.register("white_swet_gel", () -> new SwetGelItem(new Item.Properties()));
     public static final DeferredItem<Item> SWET_SUGAR = ITEMS.register("swet_sugar", () -> new Item(new Item.Properties()));
+    public static final DeferredItem<Item> MOA_FEATHER = ITEMS.register("moa_feather", () -> new MoaFeatherItem(new Item.Properties().component(AetherIIDataComponents.FEATHER_COLOR.get(), Moa.FeatherColor.BLUE)));
+    public static final DeferredItem<Item> COCKATRICE_FEATHER = ITEMS.register("cockatrice_feather", () -> new Item(new Item.Properties()));
 
     public static final DeferredItem<Item> SCATTERGLASS_VIAL = ITEMS.register("scatterglass_vial", () -> new VialItem(new Item.Properties()));
     public static final DeferredItem<Item> CHARGE_CORE = ITEMS.register("charge_core", () -> new TreasureItem(new Item.Properties()));
@@ -309,6 +313,7 @@ public class AetherIIItems {
     public static final DeferredItem<SpawnEggItem> SKEPHID_SPAWN_EGG = ITEMS.register("skephid_spawn_egg", () -> new DeferredSpawnEggItem(AetherIIEntityTypes.SKEPHID, 0x7D96AB, 0xF7CC94, new Item.Properties()));
 
     // Misc
+    public static final DeferredItem<Item> MOA_EGG = ITEMS.register("moa_egg", () -> new MoaEggItem(new Item.Properties().stacksTo(1).component(AetherIIDataComponents.MOA_EGG_TYPE.get(), MoaEggType.defaultType())));
     public static final DeferredItem<Item> MOA_FEED = ITEMS.register("moa_feed", () -> new Item(new Item.Properties()));
     public static final DeferredItem<Item> BLUEBERRY_MOA_FEED = ITEMS.register("blueberry_moa_feed", () -> new Item(new Item.Properties()));
     public static final DeferredItem<Item> ENCHANTED_MOA_FEED = ITEMS.register("enchanted_moa_feed", () -> new Item(new Item.Properties()));

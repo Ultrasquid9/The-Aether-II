@@ -9,6 +9,7 @@ import com.aetherteam.aetherii.data.resources.registries.highlands.HighlandsBiom
 import com.aetherteam.aetherii.effect.AetherIIEffects;
 import com.aetherteam.aetherii.entity.AetherIIAttributes;
 import com.aetherteam.aetherii.entity.AetherIIEntityTypes;
+import com.aetherteam.aetherii.entity.passive.Moa;
 import com.aetherteam.aetherii.inventory.menu.AetherIIMenuTypes;
 import com.aetherteam.aetherii.item.AetherIICreativeTabs;
 import com.aetherteam.aetherii.item.AetherIIItems;
@@ -517,9 +518,6 @@ public class AetherIILanguageData extends AetherIILanguageProvider {
         // Furniture
         this.addBlock(AetherIIBlocks.OUTPOST_CAMPFIRE, "Outpost Campfire");
 
-        //Egg
-        this.addBlock(AetherIIBlocks.MOA_EGG, "Moa Egg");
-
 
         // Items
         // Tools
@@ -644,6 +642,8 @@ public class AetherIILanguageData extends AetherIILanguageProvider {
         this.addItem(AetherIIItems.GOLDEN_SWET_GEL, "Golden Swet Gel");
         this.addItem(AetherIIItems.WHITE_SWET_GEL, "White Swet Gel");
         this.addItem(AetherIIItems.SWET_SUGAR, "Swet Sugar");
+        this.addItem(AetherIIItems.MOA_FEATHER, "Moa Feather");
+        this.addItem(AetherIIItems.COCKATRICE_FEATHER, "Cockatrice Feather");
         this.addItem(AetherIIItems.SCATTERGLASS_VIAL, "Scatterglass Vial");
         this.addItem(AetherIIItems.CHARGE_CORE, "Charge Core");
 
@@ -727,6 +727,7 @@ public class AetherIILanguageData extends AetherIILanguageProvider {
         this.addItem(AetherIIItems.SKEPHID_SPAWN_EGG, "Skephid Spawn Egg");
 
         // Misc
+        this.addItem(AetherIIItems.MOA_EGG, "Moa Egg");
         this.addItem(AetherIIItems.MOA_FEED, "Moa Feed");
         this.addItem(AetherIIItems.BLUEBERRY_MOA_FEED, "Blueberry Moa Feed");
         this.addItem(AetherIIItems.ENCHANTED_MOA_FEED, "Enchanted Moa Feed");
@@ -857,6 +858,44 @@ public class AetherIILanguageData extends AetherIILanguageProvider {
         this.addItemTooltip("currency.description", "Converts to Currency:");
         this.addItemTooltip("currency.amount", "%s Glint");
         this.addItemTooltip("healing_stone.charges", "%s/5 Charges");
+
+        // Moa Egg Tooltips
+        this.addItemTooltip("moa_egg.keratin", "%s Keratin");
+        this.addItemTooltip("moa_egg.eyes", "%s Eyes");
+        this.addItemTooltip("moa_egg.feathers", "%1$s %2$s Feathers");
+
+        this.addKeratinColor(Moa.KeratinColor.BLUE, "Blue");
+        this.addKeratinColor(Moa.KeratinColor.BROWN, "Brown");
+        this.addKeratinColor(Moa.KeratinColor.GREEN, "Green");
+        this.addKeratinColor(Moa.KeratinColor.GRAY, "Gray");
+        this.addKeratinColor(Moa.KeratinColor.RED, "Red");
+
+        this.addEyeColor(Moa.EyeColor.BLUE, "Blue");
+        this.addEyeColor(Moa.EyeColor.GREEN, "Green");
+        this.addEyeColor(Moa.EyeColor.YELLOW, "Yellow");
+
+        this.addFeatherColor(Moa.FeatherColor.BLACK, "Black");
+        this.addFeatherColor(Moa.FeatherColor.BLOOMING_RED, "Blooming Red");
+        this.addFeatherColor(Moa.FeatherColor.BLUE, "Blue");
+        this.addFeatherColor(Moa.FeatherColor.BROWN, "Brown");
+        this.addFeatherColor(Moa.FeatherColor.CLASSIC_BLACK, "Classic Black");
+        this.addFeatherColor(Moa.FeatherColor.CYAN, "Cyan");
+        this.addFeatherColor(Moa.FeatherColor.GRAY, "Gray");
+        this.addFeatherColor(Moa.FeatherColor.GREEN, "Green");
+        this.addFeatherColor(Moa.FeatherColor.LIGHT_BLUE, "Light Blue");
+        this.addFeatherColor(Moa.FeatherColor.LIGHT_GRAY, "Light Gray");
+        this.addFeatherColor(Moa.FeatherColor.LIME, "Lime");
+        this.addFeatherColor(Moa.FeatherColor.MAGENTA, "Magenta");
+        this.addFeatherColor(Moa.FeatherColor.ORANGE, "Orange");
+        this.addFeatherColor(Moa.FeatherColor.PINK, "Pink");
+        this.addFeatherColor(Moa.FeatherColor.PURPLE, "Purple");
+        this.addFeatherColor(Moa.FeatherColor.RED, "Red");
+        this.addFeatherColor(Moa.FeatherColor.WHITE, "White");
+        this.addFeatherColor(Moa.FeatherColor.YELLOW, "Yellow");
+
+        this.addFeatherShape(Moa.FeatherShape.CURVED, "Curved");
+        this.addFeatherShape(Moa.FeatherShape.FLAT, "Flat");
+        this.addFeatherShape(Moa.FeatherShape.POINTED, "Pointed");
 
 
         // Accessory Slots
