@@ -303,6 +303,8 @@ public class AetherIIItemTagData extends ItemTagsProvider {
                 AetherIIItems.IRRADIATED_DUST.get());
         this.tag(AetherIITags.Items.ACID_RESISTANT_ITEM).add(
                 AetherIIBlocks.ARKENIUM_BLOCK.asItem(),
+                AetherIIBlocks.ARKENIUM_DOOR.asItem(),
+                AetherIIBlocks.ARKENIUM_TRAPDOOR.asItem(),
                 AetherIIItems.ARKENIUM_SHORTSWORD.get(),
                 AetherIIItems.ARKENIUM_SPEAR.get(),
                 AetherIIItems.ARKENIUM_HAMMER.get(),
