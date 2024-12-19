@@ -137,6 +137,8 @@ public class GasBlock extends Block implements CanisterPickup {
                 BlockPos offsetPos = pos.relative(direction);
                 if (level.getBlockState(offsetPos).getBlock() instanceof GasBlock gasBlock) {
                     gasBlock.explode(level, offsetPos, level.getRandom().nextInt(20) == 0);
+                } else if (level.getBlockState(offsetPos).is(AetherIITags.Blocks.TRIGGERS_GAS)) {
+                    level.destroyBlock(offsetPos, true);
                 }
             }
         }
