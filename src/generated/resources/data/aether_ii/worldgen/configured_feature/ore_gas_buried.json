@@ -8,7 +8,8 @@
         "state": {
           "Name": "aether_ii:gas",
           "Properties": {
-            "gas_distance": "0"
+            "gas_horizontal_distance": "0",
+            "gas_vertical_distance": "0"
           }
         },
         "target": {

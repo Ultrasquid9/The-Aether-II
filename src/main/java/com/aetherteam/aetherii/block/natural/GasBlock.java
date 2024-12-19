@@ -40,8 +40,10 @@ import java.util.OptionalInt;
 import java.util.function.BiConsumer;
 
 public class GasBlock extends Block implements CanisterPickup {
-    public static final int MAX_DISTANCE = 2;
-    public static final IntegerProperty DISTANCE = IntegerProperty.create("gas_distance", 0, MAX_DISTANCE);
+    public static final int MAX_HORIZONTAL_DISTANCE = 2;
+    public static final int MAX_VERTICAL_DISTANCE = 3;
+    public static final IntegerProperty HORIZONTAL_DISTANCE = IntegerProperty.create("gas_horizontal_distance", 0, MAX_HORIZONTAL_DISTANCE);
+    public static final IntegerProperty VERTICAL_DISTANCE = IntegerProperty.create("gas_vertical_distance", 0, MAX_VERTICAL_DISTANCE);
 
     public static final List<BlockPos> PLACEMENT_OFFSETS = BlockPos.betweenClosedStream(-1, 0, -1, 1, 1, 1).map(BlockPos::immutable).filter((e) -> Vector3i.length(e.getX(), e.getY(), e.getZ()) != 0).toList();
     public static final List<BlockPos> AROUND_OFFSETS = BlockPos.betweenClosedStream(-1, -1, -1, 1, 1, 1).map(BlockPos::immutable).filter((e) -> Vector3i.length(e.getX(), e.getY(), e.getZ()) != 0).toList();
@@ -54,7 +56,7 @@ public class GasBlock extends Block implements CanisterPickup {
     @Override
     protected void tick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
         level.setBlock(pos, updateDistance(state, level, pos), 3);
-        if (state.getValue(DISTANCE) < MAX_DISTANCE) {
+        if (state.getValue(HORIZONTAL_DISTANCE) < MAX_HORIZONTAL_DISTANCE && state.getValue(VERTICAL_DISTANCE) < MAX_VERTICAL_DISTANCE) {
             for (Vec3i offset : PLACEMENT_OFFSETS) {
                 BlockPos offsetPos = pos.offset(offset);
                 if (level.getBlockState(offsetPos).isEmpty()) {
@@ -98,7 +100,7 @@ public class GasBlock extends Block implements CanisterPickup {
 
     @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
-        builder.add(DISTANCE);
+        builder.add(HORIZONTAL_DISTANCE).add(VERTICAL_DISTANCE);
     }
 
     @Override
@@ -146,35 +148,46 @@ public class GasBlock extends Block implements CanisterPickup {
 
     @Override
     protected BlockState updateShape(BlockState state, Direction facing, BlockState facingState, LevelAccessor level, BlockPos currentPos, BlockPos facingPos) {
-        int i = getDistanceAt(facingState) + 1;
-        if (i != 1 || state.getValue(DISTANCE) != i) {
-            level.scheduleTick(currentPos, this, 10);
+        if (facing.getAxis().isHorizontal()) {
+            int i = getDistanceAt(facingState, HORIZONTAL_DISTANCE, MAX_HORIZONTAL_DISTANCE) + 1;
+            if (i != 1 || state.getValue(HORIZONTAL_DISTANCE) != i) {
+                level.scheduleTick(currentPos, this, 10);
+            }
+        } else if (facing.getAxis().isVertical()) {
+            int j = getDistanceAt(facingState, VERTICAL_DISTANCE, MAX_VERTICAL_DISTANCE) + 1;
+            if (j != 1 || state.getValue(VERTICAL_DISTANCE) != j) {
+                level.scheduleTick(currentPos, this, 10);
+            }
         }
         return state;
     }
 
     public static BlockState updateDistance(BlockState state, LevelAccessor level, BlockPos pos) {
-        int i = MAX_DISTANCE;
+        int i = MAX_HORIZONTAL_DISTANCE;
+        int j = MAX_VERTICAL_DISTANCE;
         BlockPos.MutableBlockPos mutablePos = new BlockPos.MutableBlockPos();
         for (Vec3i offset : AROUND_OFFSETS) {
             mutablePos.setWithOffset(pos, offset);
-            i = Math.min(i, getDistanceAt(level.getBlockState(mutablePos)) + 1);
-            if (i == 1) {
-                break;
+            if (offset.getY() == 0) { // Check blocks next to this.
+                i = Math.min(i, getDistanceAt(level.getBlockState(mutablePos), HORIZONTAL_DISTANCE, MAX_HORIZONTAL_DISTANCE) + 1);
+                j = Math.min(j, getDistanceAt(level.getBlockState(mutablePos), VERTICAL_DISTANCE, MAX_VERTICAL_DISTANCE));
+            } else if (offset.getX() == 0 && offset.getZ() == 0) {  // Check blocks above or below this.
+                i = Math.min(i, getDistanceAt(level.getBlockState(mutablePos), HORIZONTAL_DISTANCE, MAX_HORIZONTAL_DISTANCE));
+                j = Math.min(j, getDistanceAt(level.getBlockState(mutablePos), VERTICAL_DISTANCE, MAX_VERTICAL_DISTANCE) + 1);
             }
         }
-        return state.setValue(DISTANCE, i);
+        return state.setValue(HORIZONTAL_DISTANCE, i).setValue(VERTICAL_DISTANCE, j);
     }
 
-    private static int getDistanceAt(BlockState neighbor) {
-        return getOptionalDistanceAt(neighbor).orElse(MAX_DISTANCE);
+    private static int getDistanceAt(BlockState neighbor, IntegerProperty property, int max) {
+        return getOptionalDistanceAt(neighbor, property).orElse(max);
     }
 
-    public static OptionalInt getOptionalDistanceAt(BlockState state) {
+    public static OptionalInt getOptionalDistanceAt(BlockState state, IntegerProperty property) {
         if (state.is(AetherIIBlocks.ACID)) {
             return OptionalInt.of(0);
         } else {
-            return state.hasProperty(DISTANCE) ? OptionalInt.of(state.getValue(DISTANCE)) : OptionalInt.empty();
+            return state.hasProperty(property) ? OptionalInt.of(state.getValue(property)) : OptionalInt.empty();
         }
     }
 

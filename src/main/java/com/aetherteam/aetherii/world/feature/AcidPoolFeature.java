@@ -70,11 +70,11 @@ public class AcidPoolFeature extends Feature<AcidPoolConfiguration> {
                         }
                     }
                 }
-                for (int y = 0; y < GasBlock.MAX_DISTANCE; y++) {
+                for (int y = 0; y < GasBlock.MAX_VERTICAL_DISTANCE; y++) {
                     BlockPos offsetPos = pos.offset(x, y, z);
                     if (level.getBlockState(offsetPos).isAir()) {
                         BlockState gasState = GasBlock.updateDistance(AetherIIBlocks.GAS.get().defaultBlockState(), level, offsetPos);
-                        if (gasState.getValue(GasBlock.DISTANCE) < GasBlock.MAX_DISTANCE) {
+                        if (gasState.getValue(GasBlock.HORIZONTAL_DISTANCE) < GasBlock.MAX_HORIZONTAL_DISTANCE && gasState.getValue(GasBlock.VERTICAL_DISTANCE) < GasBlock.MAX_VERTICAL_DISTANCE) {
                             level.setBlock(offsetPos, GasBlock.updateDistance(gasState, level, offsetPos), 3);
                         }
                         if (!level.getBlockState(offsetPos.above()).isAir()) {
