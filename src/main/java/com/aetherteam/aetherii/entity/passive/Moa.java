@@ -13,7 +13,6 @@ import com.aetherteam.aetherii.item.components.MoaEggType;
 import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.Dynamic;
-import io.netty.buffer.ByteBuf;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
@@ -49,8 +48,8 @@ import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.pathfinder.PathType;
 import net.minecraft.world.phys.Vec3;
-import org.jetbrains.annotations.Nullable;
 
+import java.util.Arrays;
 import java.util.Locale;
 import java.util.Optional;
 import java.util.UUID;
@@ -957,16 +956,16 @@ public class Moa extends MountableAnimal {
         if (tag.contains("IsBaby")) {
             this.setBaby(tag.getBoolean("IsBaby"));
         }
-        if (tag.contains("FeatherShape")) {
+        if (tag.contains("FeatherShape") && Arrays.stream(FeatherShape.values()).map(FeatherShape::getSerializedName).anyMatch((s) -> s.equals(tag.getString("FeatherShape")))) {
             this.setFeatherShape(tag.getString("FeatherShape"));
         }
-        if (tag.contains("KeratinColor")) {
+        if (tag.contains("KeratinColor") && Arrays.stream(KeratinColor.values()).map(KeratinColor::getSerializedName).anyMatch((s) -> s.equals(tag.getString("KeratinColor")))) {
             this.setKeratinColor(tag.getString("KeratinColor"));
         }
-        if (tag.contains("EyeColor")) {
+        if (tag.contains("EyeColor") && Arrays.stream(EyeColor.values()).map(EyeColor::getSerializedName).anyMatch((s) -> s.equals(tag.getString("EyeColor")))) {
             this.setEyeColor(tag.getString("EyeColor"));
         }
-        if (tag.contains("FeatherColor")) {
+        if (tag.contains("FeatherColor") && Arrays.stream(FeatherColor.values()).map(FeatherColor::getSerializedName).anyMatch((s) -> s.equals(tag.getString("FeatherColor")))) {
             this.setFeatherColor(tag.getString("FeatherColor"));
         }
         if (tag.hasUUID("Rider")) {
