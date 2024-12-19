@@ -12,6 +12,7 @@
     "common.ItemStackMixin",
     "common.ModelBuilderMixin",
     "common.PlayerMixin",
+    "common.PointedDripstoneBlockMixin",
     "common.RandomStateMixin",
     "common.ServerLevelMixin",
     "common.accessor.AbstractArrowAccessor",
@@ -25,11 +26,14 @@
     "common.accessor.MobEffectInstanceAccessor",
     "common.accessor.PerlinNoiseAccessor",
     "common.accessor.PlayerAccessor",
+    "common.accessor.SaplingBlockAccessor",
     "common.accessor.ServerGamePacketListenerImplAccessor"
   ],
   "client": [
     "client.BlockRenderDispatcherMixin",
     "client.ClientLevelMixin",
+    "client.ItemRendererMixin",
+    "client.LevelRendererMixin",
     "client.LiquidBlockRendererMixin",
     "client.ReceivingLevelScreenMixin",
     "client.accessor.DeathScreenAccessor",

@@ -37,10 +37,15 @@ public class AetherIILanguageData extends AetherIILanguageProvider {
 
         // Underground
         this.addBlock(AetherIIBlocks.HOLYSTONE, "Holystone");
+        this.addBlock(AetherIIBlocks.UNSTABLE_HOLYSTONE, "Unstable Holystone");
         this.addBlock(AetherIIBlocks.UNDERSHALE, "Undershale");
+        this.addBlock(AetherIIBlocks.UNSTABLE_UNDERSHALE, "Unstable Undershale");
         this.addBlock(AetherIIBlocks.AGIOSITE, "Agiosite");
         this.addBlock(AetherIIBlocks.CRUDE_SCATTERGLASS, "Crude Scatterglass");
         this.addBlock(AetherIIBlocks.SKY_ROOTS, "Sky Roots");
+        this.addBlock(AetherIIBlocks.ICHORITE, "Ichorite");
+        this.addBlock(AetherIIBlocks.POINTED_HOLYSTONE, "Pointed Holystone");
+        this.addBlock(AetherIIBlocks.POINTED_ICHORITE, "Pointed Ichorite");
 
         // Highfields
         this.addBlock(AetherIIBlocks.QUICKSOIL, "Quicksoil");
@@ -73,6 +78,7 @@ public class AetherIILanguageData extends AetherIILanguageProvider {
 
         // Irradiated
         this.addBlock(AetherIIBlocks.IRRADIATED_HOLYSTONE, "Irradiated Holystone");
+        this.addBlock(AetherIIBlocks.IRRADIATED_DUST_BLOCK, "Irradiated Dust Block");
         this.addBlock(AetherIIBlocks.AMBRELINN_MOSS_BLOCK, "Ambrelinn Moss Block");
         this.addBlock(AetherIIBlocks.AMBRELINN_MOSS_CARPET, "Ambrelinn Moss Carpet");
         this.addBlock(AetherIIBlocks.AMBRELINN_MOSS_VINES, "Ambrelinn Moss Vines");
@@ -647,6 +653,13 @@ public class AetherIILanguageData extends AetherIILanguageProvider {
         this.addItem(AetherIIItems.SCATTERGLASS_VIAL, "Scatterglass Vial");
         this.addItem(AetherIIItems.CHARGE_CORE, "Charge Core");
 
+        // Irradiated Items
+        this.addItem(AetherIIItems.IRRADIATED_ARMOR, "Irradiated Armor");
+        this.addItem(AetherIIItems.IRRADIATED_WEAPON, "Irradiated Weapon");
+        this.addItem(AetherIIItems.IRRADIATED_TOOL, "Irradiated Tool");
+        this.addItem(AetherIIItems.IRRADIATED_CHUNK, "Irradiated Chunk");
+        this.addItem(AetherIIItems.IRRADIATED_DUST, "Irradiated Dust");
+
         // Food
         this.addItem(AetherIIItems.BLUEBERRY, "Blueberry");
         this.addItem(AetherIIItems.ENCHANTED_BLUEBERRY, "Enchanted Blueberry");
@@ -694,6 +707,11 @@ public class AetherIILanguageData extends AetherIILanguageProvider {
         this.addItem(AetherIIItems.SKYROOT_TROPICAL_FISH_BUCKET, "Skyroot Bucket of Tropical Fish");
         this.addItem(AetherIIItems.SKYROOT_AXOLOTL_BUCKET, "Skyroot Bucket of Axolotl");
         this.addItem(AetherIIItems.SKYROOT_TADPOLE_BUCKET, "Skyroot Bucket of Tadpole");
+
+        // Arkenium Canisters
+        this.addItem(AetherIIItems.ARKENIUM_CANISTER, "Arkenium Canister");
+        this.addItem(AetherIIItems.ARKENIUM_ACID_CANISTER, "Arkenium Acid Canister");
+        this.addItem(AetherIIItems.ARKENIUM_GAS_CANISTER, "Arkenium Gas Canister");
 
         // Music Discs
         this.addItem(AetherIIItems.MUSIC_DISC_AETHER_TUNE, "Blue Music Disc");

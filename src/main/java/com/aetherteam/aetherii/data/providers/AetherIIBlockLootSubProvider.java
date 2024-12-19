@@ -50,6 +50,17 @@ public abstract class AetherIIBlockLootSubProvider extends NitrogenBlockLootSubP
 
     public static final BooleanProperty GROWN = AetherIIBlockStateProperties.BRETTL_GROWN;
 
+    protected LootTable.Builder droppingIrradiatedDustLoot(Block block) {
+        return LootTable.lootTable()
+                .withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F)).when(this.hasSilkTouch()).add(LootItem.lootTableItem(block)))
+                .withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F)).when(this.hasSilkTouch().invert())
+                        .add(LootItem.lootTableItem(AetherIIItems.IRRADIATED_WEAPON.get()))
+                        .add(LootItem.lootTableItem(AetherIIItems.IRRADIATED_TOOL.get()))
+                        .add(LootItem.lootTableItem(AetherIIItems.IRRADIATED_ARMOR.get()))
+                        .add(LootItem.lootTableItem(AetherIIItems.IRRADIATED_CHUNK.get()))
+                );
+    }
+
     protected LootTable.Builder createSkyRootsDrops(Block block) {
         return this.createSilkTouchOrShearsDispatchTable(block, this.applyExplosionCondition(block, LootItem.lootTableItem(AetherIIItems.SKYROOT_STICK.get()).apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0F, 1.0F)))))
                 .withPool(

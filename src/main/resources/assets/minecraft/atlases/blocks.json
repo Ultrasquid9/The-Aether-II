@@ -12,8 +12,8 @@
     },
     {
       "type": "directory",
-      "source": "entity/tiles/furniture",
-      "prefix": "entity/tiles/furniture/"
+      "source": "fluid",
+      "prefix": "fluid/"
     },
     {
       "type": "paletted_permutations",

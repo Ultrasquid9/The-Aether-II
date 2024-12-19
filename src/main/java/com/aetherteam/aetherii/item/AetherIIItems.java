@@ -2,6 +2,7 @@ package com.aetherteam.aetherii.item;
 
 import com.aetherteam.aetherii.AetherII;
 import com.aetherteam.aetherii.block.AetherIIBlocks;
+import com.aetherteam.aetherii.block.AetherIIFluids;
 import com.aetherteam.aetherii.data.resources.registries.AetherIIJukeboxSongs;
 import com.aetherteam.aetherii.effect.AetherIIEffects;
 import com.aetherteam.aetherii.entity.AetherIIEntityTypes;
@@ -64,14 +65,8 @@ import com.aetherteam.aetherii.item.equipment.weapons.zanite.ZaniteShortswordIte
 import com.aetherteam.aetherii.item.equipment.weapons.zanite.ZaniteSpearItem;
 import com.aetherteam.aetherii.item.materials.*;
 import com.aetherteam.aetherii.item.miscellaneous.*;
-import com.aetherteam.aetherii.item.miscellaneous.bucket.SkyrootBucketItem;
-import com.aetherteam.aetherii.item.miscellaneous.bucket.SkyrootMilkBucketItem;
-import com.aetherteam.aetherii.item.miscellaneous.bucket.SkyrootMobBucketItem;
-import com.aetherteam.aetherii.item.miscellaneous.bucket.SkyrootSolidBucketItem;
-import com.aetherteam.aetherii.item.miscellaneous.glider.AercloudGliderItem;
-import com.aetherteam.aetherii.item.miscellaneous.glider.BlueAercloudGliderItem;
-import com.aetherteam.aetherii.item.miscellaneous.glider.GoldenAercloudGliderItem;
-import com.aetherteam.aetherii.item.miscellaneous.glider.PurpleAercloudGliderItem;
+import com.aetherteam.aetherii.item.miscellaneous.bucket.*;
+import com.aetherteam.aetherii.item.miscellaneous.glider.*;
 import io.wispforest.accessories.api.AccessoriesAPI;
 import io.wispforest.accessories.api.Accessory;
 import net.minecraft.core.component.DataComponents;
@@ -233,6 +228,13 @@ public class AetherIIItems {
     public static final DeferredItem<Item> SCATTERGLASS_VIAL = ITEMS.register("scatterglass_vial", () -> new VialItem(new Item.Properties()));
     public static final DeferredItem<Item> CHARGE_CORE = ITEMS.register("charge_core", () -> new TreasureItem(new Item.Properties()));
 
+    // Irradiated Items
+    public static final DeferredItem<Item> IRRADIATED_ARMOR = ITEMS.register("irradiated_armor", () -> new Item(new Item.Properties().stacksTo(1)));
+    public static final DeferredItem<Item> IRRADIATED_WEAPON = ITEMS.register("irradiated_weapon", () -> new Item(new Item.Properties().stacksTo(1)));
+    public static final DeferredItem<Item> IRRADIATED_TOOL = ITEMS.register("irradiated_tool", () -> new Item(new Item.Properties().stacksTo(1)));
+    public static final DeferredItem<Item> IRRADIATED_CHUNK = ITEMS.register("irradiated_chunk", () -> new Item(new Item.Properties().stacksTo(1)));
+    public static final DeferredItem<Item> IRRADIATED_DUST = ITEMS.register("irradiated_dust", () -> new IrradiatedDustItem(new Item.Properties()));
+
     // Food
     public static final DeferredItem<Item> BLUEBERRY = ITEMS.register("blueberry", () -> new Item(new Item.Properties().food(AetherIIFoods.BLUEBERRY)));
     public static final DeferredItem<Item> ENCHANTED_BLUEBERRY = ITEMS.register("enchanted_blueberry", () -> new Item(new Item.Properties().food(AetherIIFoods.ENCHANTED_BLUEBERRY)));
@@ -280,6 +282,11 @@ public class AetherIIItems {
     public static final DeferredItem<Item> SKYROOT_TROPICAL_FISH_BUCKET = ITEMS.register("skyroot_tropical_fish_bucket", () -> new SkyrootMobBucketItem(EntityType.TROPICAL_FISH, Fluids.WATER, SoundEvents.BUCKET_EMPTY_FISH, new Item.Properties().craftRemainder(SKYROOT_BUCKET.get()).stacksTo(1)));
     public static final DeferredItem<Item> SKYROOT_AXOLOTL_BUCKET = ITEMS.register("skyroot_axolotl_bucket", () -> new SkyrootMobBucketItem(EntityType.AXOLOTL, Fluids.WATER, SoundEvents.BUCKET_EMPTY_AXOLOTL, new Item.Properties().craftRemainder(SKYROOT_BUCKET.get()).stacksTo(1)));
     public static final DeferredItem<Item> SKYROOT_TADPOLE_BUCKET = ITEMS.register("skyroot_tadpole_bucket", () -> new SkyrootMobBucketItem(EntityType.TADPOLE, Fluids.WATER, SoundEvents.BUCKET_EMPTY_TADPOLE, new Item.Properties().craftRemainder(SKYROOT_BUCKET.get()).stacksTo(1)));
+
+    // Arkenium Canisters
+    public static final DeferredItem<Item> ARKENIUM_CANISTER = ITEMS.register("arkenium_canister", () -> new ArkeniumCanisterItem(Fluids.EMPTY, new Item.Properties().stacksTo(16)));
+    public static final DeferredItem<Item> ARKENIUM_ACID_CANISTER = ITEMS.register("arkenium_acid_canister", () -> new ArkeniumCanisterItem(AetherIIFluids.ACID.get(), new Item.Properties().stacksTo(1).craftRemainder(ARKENIUM_CANISTER.get())));
+    public static final DeferredItem<Item> ARKENIUM_GAS_CANISTER = ITEMS.register("arkenium_gas_canister", () -> new SolidCanisterItem(AetherIIBlocks.GAS.get(), SoundEvents.BUCKET_EMPTY_POWDER_SNOW, new Item.Properties().stacksTo(1).craftRemainder(ARKENIUM_CANISTER.get()))); //todo
 
     // Music Discs
     public static final DeferredItem<Item> MUSIC_DISC_AETHER_TUNE = ITEMS.register("music_disc_aether_tune", () -> new Item(new Item.Properties().stacksTo(1).rarity(Rarity.RARE).jukeboxPlayable(AetherIIJukeboxSongs.AETHER_TUNE)));
