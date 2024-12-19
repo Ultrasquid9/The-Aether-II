@@ -66,7 +66,7 @@ public abstract class AcidFluid extends BaseFlowingFluid implements CanisterFlui
     @Override
     protected void randomTick(Level level, BlockPos pos, FluidState state, RandomSource random) {
         super.randomTick(level, pos, state, random);
-        if (level.getBlockState(pos.above()).isEmpty()) {
+        if (level.getBlockState(pos.above()).isEmpty() && state.isSource()) {
             this.createGas(level, pos);
         }
     }
@@ -161,10 +161,6 @@ public abstract class AcidFluid extends BaseFlowingFluid implements CanisterFlui
                 ParticleUtils.spawnParticlesOnBlockFace(level, belowPos.above(), ParticleTypes.WHITE_SMOKE, ConstantInt.of(1), Direction.DOWN, () -> new Vec3(0, 0.5, 0), 0.5);
             }
         }
-    }
-
-    public void onPlace(BlockState state, Level level, BlockPos pos, BlockState oldState, boolean isMoving) {
-        this.createGas(level, pos);
     }
 
     public void createGas(Level level, BlockPos pos) {
