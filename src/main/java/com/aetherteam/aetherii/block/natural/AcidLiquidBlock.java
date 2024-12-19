@@ -14,9 +14,6 @@ public class AcidLiquidBlock extends VolatileLiquidBlock {
 
     @Override
     protected void onPlace(BlockState state, Level level, BlockPos pos, BlockState oldState, boolean isMoving) {
-        if (this.fluid instanceof AcidFluid acidFluid) {
-            acidFluid.onPlace(state, level, pos, oldState, isMoving);
-        }
         level.scheduleTick(pos, state.getFluidState().getType(), this.fluid.getTickDelay(level));
     }
 
