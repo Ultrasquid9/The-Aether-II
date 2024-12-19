@@ -580,13 +580,13 @@ public class HighlandsPlacedFeatures {
         );
 
         register(context, UNSTABLE_HOLYSTONE, configuredFeatures.getOrThrow(HighlandsConfiguredFeatures.UNSTABLE_HOLYSTONE),
-                CountPlacement.of(6),
+                CountPlacement.of(3),
                 InSquarePlacement.spread(),
                 HeightRangePlacement.of(UniformHeight.of(VerticalAnchor.aboveBottom(96), VerticalAnchor.top())),
                 BiomeFilter.biome()
         );
         register(context, UNSTABLE_UNDERSHALE, configuredFeatures.getOrThrow(HighlandsConfiguredFeatures.UNSTABLE_UNDERSHALE),
-                CountPlacement.of(3),
+                CountPlacement.of(1),
                 InSquarePlacement.spread(),
                 HeightRangePlacement.of(UniformHeight.of(VerticalAnchor.bottom(), VerticalAnchor.aboveBottom(96))),
                 BiomeFilter.biome()
