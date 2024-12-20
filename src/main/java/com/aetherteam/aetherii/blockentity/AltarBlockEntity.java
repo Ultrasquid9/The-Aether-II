@@ -129,7 +129,7 @@ public class AltarBlockEntity extends BaseContainerBlockEntity implements Worldl
         tag.put("RecipesUsed", recipesUsedTag);
     }
 
-    public static void serverTick(Level level, BlockPos pos, BlockState state, AltarBlockEntity blockEntity) {
+    public static void serverTick(ServerLevel level, BlockPos pos, BlockState state, AltarBlockEntity blockEntity) {
         boolean changed = false;
 
         RecipeHolder<AltarEnchantingRecipe> recipeHolder = blockEntity.quickCheck.getRecipeFor(new SingleRecipeInput(blockEntity.getItem(0)), level).orElse(null);

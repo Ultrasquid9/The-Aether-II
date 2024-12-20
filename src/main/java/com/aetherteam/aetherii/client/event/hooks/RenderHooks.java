@@ -175,7 +175,7 @@ public class RenderHooks {
                     blue *= (float) Math.clamp(f * 1.25F, 0.2F * 1.25F, 1.0F);
                 }
 
-                double d0 = (camera.getPosition().y() - (double) clientLevel.getMinBuildHeight()) * worldInfo.getClearColorScale();
+                double d0 = (camera.getPosition().y() - (double) clientLevel.getMinY()) * worldInfo.getClearColorScale();
                 if (d0 < 1.0 && type != FogType.LAVA && type != FogType.POWDER_SNOW) {
                     if (d0 < 0.0) {
                         d0 = 0.0;

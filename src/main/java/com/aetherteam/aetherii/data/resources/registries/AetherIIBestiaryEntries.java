@@ -164,7 +164,7 @@ public class AetherIIBestiaryEntries {
     }
 
     public static Registry<BestiaryEntry> getRegistry(RegistryAccess registryAccess) {
-        return registryAccess.registryOrThrow(AetherIIBestiaryEntries.BESTIARY_ENTRY_REGISTRY_KEY);
+        return registryAccess.lookupOrThrow(AetherIIBestiaryEntries.BESTIARY_ENTRY_REGISTRY_KEY);
     }
 
     public static Map<EntityType<?>, TagKey<Item>> getFedEntityTypes() {

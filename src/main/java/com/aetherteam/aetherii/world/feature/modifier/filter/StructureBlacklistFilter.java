@@ -26,8 +26,8 @@ public class StructureBlacklistFilter extends PlacementFilter {
             return false;
         }
         StructureManager structureManager = context.getLevel().getLevel().structureManager();
-        Registry<Structure> configuredStructureFeatureRegistry = context.getLevel().registryAccess().registryOrThrow(Registries.STRUCTURE);
-        for (Holder<Structure> structure : configuredStructureFeatureRegistry.getOrCreateTag(AetherIITags.Structures.STRUCTURE_BLACKLIST_FILTER)) {
+        Registry<Structure> configuredStructureFeatureRegistry = context.getLevel().registryAccess().lookupOrThrow(Registries.STRUCTURE);
+        for (Holder<Structure> structure : configuredStructureFeatureRegistry.getTagOrEmpty(AetherIITags.Structures.STRUCTURE_BLACKLIST_FILTER)) {
             if (structureManager.getStructureAt(pos, structure.value()).isValid()) {
                 return false;
             }

@@ -5,7 +5,7 @@ import com.aetherteam.aetherii.attachment.AetherIIDataAttachments;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResultHolder;
+import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.MoverType;
 import net.minecraft.world.entity.ai.attributes.AttributeInstance;
@@ -13,7 +13,7 @@ import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.UseAnim;
+import net.minecraft.world.item.ItemUseAnimation;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
 import net.neoforged.api.distmarker.Dist;
@@ -27,7 +27,7 @@ public class AercloudGliderItem extends Item {
     }
 
     @Override
-    public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
+    public InteractionResult use(Level level, Player player, InteractionHand hand) {
         ItemStack stack = player.getItemInHand(hand);
         if (!player.onGround() && player.getData(AetherIIDataAttachments.PLAYER).getGlidingTimer() > 0) {
             player.startUsingItem(hand);
@@ -37,7 +37,7 @@ public class AercloudGliderItem extends Item {
             }
             return super.use(level, player, hand);
         } else {
-            return InteractionResultHolder.fail(stack);
+            return InteractionResult.FAIL;
         }
     }
 
@@ -120,8 +120,8 @@ public class AercloudGliderItem extends Item {
     }
 
     @Override
-    public UseAnim getUseAnimation(ItemStack p_41452_) {
-        return UseAnim.CUSTOM;
+    public ItemUseAnimation getUseAnimation(ItemStack p_41452_) {
+        return ItemUseAnimation.CUSTOM;
     }
 
     @OnlyIn(Dist.CLIENT)
@@ -162,7 +162,7 @@ public class AercloudGliderItem extends Item {
     }
 
     private void setCooldowns(Player player, int cooldown) {
-        player.level().registryAccess().registryOrThrow(Registries.ITEM).getTagOrEmpty(AetherIITags.Items.TOOLS_GLIDERS).forEach((item) -> player.getCooldowns().addCooldown(item.value(), cooldown)); //todo
+        player.level().registryAccess().lookupOrThrow(Registries.ITEM).getTagOrEmpty(AetherIITags.Items.TOOLS_GLIDERS).forEach((item) -> player.getCooldowns().addCooldown(item.value().getDefaultInstance(), cooldown)); //todo
     }
 
     protected void onParachuteOpen(Level level, Player player, InteractionHand hand, ItemStack stack) {

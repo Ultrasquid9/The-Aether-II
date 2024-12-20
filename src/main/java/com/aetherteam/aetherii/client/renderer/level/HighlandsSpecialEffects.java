@@ -608,7 +608,7 @@ public class HighlandsSpecialEffects extends DimensionSpecialEffects {
                 int k = randomsource.nextInt(21) - 10;
                 int l = randomsource.nextInt(21) - 10;
                 BlockPos blockpos2 = level.getHeightmapPos(Heightmap.Types.MOTION_BLOCKING, blockpos.offset(k, 0, l));
-                if (blockpos2.getY() > level.getMinBuildHeight() && blockpos2.getY() <= blockpos.getY() + 10 && blockpos2.getY() >= blockpos.getY() - 10) {
+                if (blockpos2.getY() > level.getMinY() && blockpos2.getY() <= blockpos.getY() + 10 && blockpos2.getY() >= blockpos.getY() - 10) {
                     Biome biome = level.getBiome(blockpos2).value();
                     if (biome.getPrecipitationAt(blockpos2) == Biome.Precipitation.RAIN) {
                         blockpos1 = blockpos2.below();

@@ -20,6 +20,6 @@ public class AetherIIExplorationEntries {
     }
 
     public static Registry<ExplorationEntry> getRegistry(RegistryAccess registryAccess) {
-        return registryAccess.registryOrThrow(AetherIIExplorationEntries.EXPLORATION_ENTRY_REGISTRY_KEY);
+        return registryAccess.lookupOrThrow(AetherIIExplorationEntries.EXPLORATION_ENTRY_REGISTRY_KEY);
     }
 }

@@ -27,7 +27,7 @@ public record EffectBuildupRemovePacket(int entityId, Holder<MobEffect> mobEffec
 
     public static EffectBuildupRemovePacket decode(RegistryFriendlyByteBuf buf) {
         int entityId = buf.readInt();
-        Holder.Reference<MobEffect> mobEffect = BuiltInRegistries.MOB_EFFECT.getHolderOrThrow(buf.readResourceKey(BuiltInRegistries.MOB_EFFECT.key()));
+        Holder.Reference<MobEffect> mobEffect = BuiltInRegistries.MOB_EFFECT.getOrThrow(buf.readResourceKey(BuiltInRegistries.MOB_EFFECT.key()));
         return new EffectBuildupRemovePacket(entityId, mobEffect);
     }
 

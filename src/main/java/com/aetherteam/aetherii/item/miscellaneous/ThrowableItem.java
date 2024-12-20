@@ -28,7 +28,7 @@ public interface ThrowableItem {
             player.awardStat(Stats.ITEM_USED.get(stack.getItem()));
             if (!player.getAbilities().instabuild) {
                 stack.shrink(1);
-                player.getCooldowns().addCooldown(stack.getItem(), 10);
+                player.getCooldowns().addCooldown(stack, 10);
             }
         }
     }

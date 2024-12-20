@@ -34,7 +34,7 @@ public abstract class DiscoverySection<T> {
 
     protected void constructEntries() {
         this.entries.clear();
-        this.registryAccess.registryOrThrow(this.registryKey).iterator().forEachRemaining(this.entries::add);
+        this.registryAccess.lookupOrThrow(this.registryKey).iterator().forEachRemaining(this.entries::add);
     }
 
     public abstract void renderBg(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTick);

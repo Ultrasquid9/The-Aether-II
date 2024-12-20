@@ -171,7 +171,7 @@ public class PlayerHooks {
                         CriteriaTriggers.FILLED_BUCKET.trigger((ServerPlayer) player, bucketStack);
                     }
                     target.discard();
-                    interactionResult = Optional.of(InteractionResult.sidedSuccess(level.isClientSide()));
+                    interactionResult = Optional.of(InteractionResult.SUCCESS);
                 } else {
                     interactionResult = Optional.of(InteractionResult.FAIL);
                 }

@@ -34,7 +34,7 @@ public record EffectBuildupSetPacket(int entityId, Map<Holder<MobEffect>, Effect
     public static EffectBuildupSetPacket decode(RegistryFriendlyByteBuf buf) {
         int entityId = buf.readInt();
         Map<Holder<MobEffect>, EffectBuildupInstance> activeBuildups = buf.readMap(
-                (innerBuf) -> BuiltInRegistries.MOB_EFFECT.getHolderOrThrow(innerBuf.readResourceKey(BuiltInRegistries.MOB_EFFECT.key())),
+                (innerBuf) -> BuiltInRegistries.MOB_EFFECT.getOrThrow(innerBuf.readResourceKey(BuiltInRegistries.MOB_EFFECT.key())),
                 (innerBuf) -> EffectBuildupInstance.load(innerBuf.readNbt()));
         return new EffectBuildupSetPacket(entityId, activeBuildups);
     }

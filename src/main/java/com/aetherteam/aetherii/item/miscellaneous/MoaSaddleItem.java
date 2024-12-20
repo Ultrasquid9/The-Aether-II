@@ -27,7 +27,7 @@ public class MoaSaddleItem extends Item {
                 target.level().gameEvent(target, GameEvent.EQUIP, target.position());
             }
 
-            return InteractionResult.sidedSuccess(player.level().isClientSide);
+            return InteractionResult.SUCCESS;
         }
 
         return InteractionResult.PASS;

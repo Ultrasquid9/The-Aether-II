@@ -7,15 +7,15 @@ import net.minecraft.world.entity.EquipmentSlotGroup;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.ShieldItem;
-import net.minecraft.world.item.Tier;
+import net.minecraft.world.item.ToolMaterial;
 import net.minecraft.world.item.component.ItemAttributeModifiers;
 
 public class TieredShieldItem extends ShieldItem {
     public static final ResourceLocation BASE_SHIELD_STAMINA_REDUCTION_ID = ResourceLocation.fromNamespaceAndPath(AetherII.MODID, "base_shield_stamina_reduction");
 
-    private final Tier tier;
+    private final ToolMaterial tier;
 
-    public TieredShieldItem(Tier tier, Properties properties) {
+    public TieredShieldItem(ToolMaterial tier, Properties properties) {
         super(properties.durability(tier.getUses()));
         this.tier = tier;
     }
@@ -30,7 +30,7 @@ public class TieredShieldItem extends ShieldItem {
                 .build();
     }
 
-    public Tier getTier() {
+    public ToolMaterial getTier() {
         return this.tier;
     }
 

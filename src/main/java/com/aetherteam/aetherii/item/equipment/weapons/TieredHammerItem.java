@@ -14,7 +14,7 @@ import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Tier;
+import net.minecraft.world.item.ToolMaterial;
 import net.minecraft.world.item.TieredItem;
 import net.minecraft.world.item.component.ItemAttributeModifiers;
 import net.minecraft.world.item.component.Tool;
@@ -28,7 +28,7 @@ import java.util.List;
 public class TieredHammerItem extends TieredItem {
     public static final ResourceLocation BASE_SHOCK_RANGE_ID = ResourceLocation.fromNamespaceAndPath(AetherII.MODID, "base_shock_range");
 
-    public TieredHammerItem(Tier tier, Item.Properties properties) {
+    public TieredHammerItem(ToolMaterial tier, Item.Properties properties) {
         super(tier, properties.component(DataComponents.TOOL, createToolProperties()));
     }
 
@@ -36,11 +36,11 @@ public class TieredHammerItem extends TieredItem {
         return new Tool(List.of(Tool.Rule.overrideSpeed(Tags.Blocks.GLASS_BLOCKS, 15.0F), Tool.Rule.overrideSpeed(Tags.Blocks.GLASS_PANES, 15.0F)), 1.0F, 2);
     }
 
-    public static ItemAttributeModifiers createAttributes(Tier pTier, int pAttackDamage, float pAttackSpeed) {
+    public static ItemAttributeModifiers createAttributes(ToolMaterial pTier, int pAttackDamage, float pAttackSpeed) {
         return createAttributes(pTier, (float) pAttackDamage, pAttackSpeed);
     }
 
-    public static ItemAttributeModifiers createAttributes(Tier p_330371_, float p_331976_, float p_332104_) {
+    public static ItemAttributeModifiers createAttributes(ToolMaterial p_330371_, float p_331976_, float p_332104_) {
         return ItemAttributeModifiers.builder()
                 .add(Attributes.ATTACK_DAMAGE, new AttributeModifier(BASE_ATTACK_DAMAGE_ID, p_331976_ + p_330371_.getAttackDamageBonus(), AttributeModifier.Operation.ADD_VALUE), EquipmentSlotGroup.MAINHAND)
                 .add(Attributes.ATTACK_SPEED, new AttributeModifier(BASE_ATTACK_SPEED_ID, p_332104_, AttributeModifier.Operation.ADD_VALUE), EquipmentSlotGroup.MAINHAND)

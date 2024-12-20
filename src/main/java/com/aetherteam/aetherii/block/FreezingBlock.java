@@ -96,7 +96,7 @@ public interface FreezingBlock extends FreezingBehavior<BlockState> {
      */
     static void cacheRecipes(Level level) {
         if (FreezingBlock.cachedBlocks.isEmpty()) {
-            for (RecipeHolder<IcestoneFreezableRecipe> recipe : level.getRecipeManager().getAllRecipesFor(AetherIIRecipeTypes.ICESTONE_FREEZABLE.get())) {
+            for (RecipeHolder<IcestoneFreezableRecipe> recipe : level.recipeAccess().propertySet(AetherIIRecipeTypes.ICESTONE_FREEZABLE.get())) {
                 IcestoneFreezableRecipe freezableRecipe = recipe.value();
                 BlockPropertyPair[] pairs = freezableRecipe.getIngredient().getPairs();
                 Optional<Either<ResourceKey<Biome>, TagKey<Biome>>> biome = freezableRecipe.getBiome();

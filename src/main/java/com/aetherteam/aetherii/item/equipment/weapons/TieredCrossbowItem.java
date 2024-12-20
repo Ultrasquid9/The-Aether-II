@@ -13,7 +13,7 @@ import net.minecraft.sounds.SoundSource;
 import net.minecraft.stats.Stats;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResultHolder;
+import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
@@ -37,17 +37,17 @@ import java.util.function.Predicate;
 
 public class TieredCrossbowItem extends CrossbowItem {
     public static final Predicate<ItemStack> BOLT_ONLY = stack -> stack.is(AetherIIItems.SCATTERGLASS_BOLT);
-    private final Tier tier;
+    private final ToolMaterial tier;
     private final int chargeTime;
     private boolean startSoundPlayed = false;
     private boolean midLoadSoundPlayed = false;
     private static final CrossbowItem.ChargingSounds DEFAULT_SOUNDS = new CrossbowItem.ChargingSounds(Optional.of(SoundEvents.CROSSBOW_LOADING_START), Optional.of(SoundEvents.CROSSBOW_LOADING_MIDDLE), Optional.of(SoundEvents.CROSSBOW_LOADING_END));
 
-    public TieredCrossbowItem(Tier tier, Properties properties) {
+    public TieredCrossbowItem(ToolMaterial tier, Properties properties) {
         this(tier, 25, properties);
     }
 
-    public TieredCrossbowItem(Tier tier, int chargeTime, Properties properties) {
+    public TieredCrossbowItem(ToolMaterial tier, int chargeTime, Properties properties) {
         super(properties.durability(tier.getUses()));
         this.tier = tier;
         this.chargeTime = chargeTime;
@@ -69,12 +69,12 @@ public class TieredCrossbowItem extends CrossbowItem {
     }
 
     @Override
-    public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
+    public InteractionResult use(Level level, Player player, InteractionHand hand) {
         ItemStack stack = player.getItemInHand(hand);
         ChargedProjectiles chargedProjectiles = stack.get(DataComponents.CHARGED_PROJECTILES);
         if (chargedProjectiles != null && !chargedProjectiles.isEmpty()) {
             this.performShooting(level, player, hand, stack, this.getCrossbowShootingPower(chargedProjectiles), 1.0F, null);
-            return InteractionResultHolder.consume(stack);
+            return InteractionResult.consume(stack);
         } else if (!player.getProjectile(stack).isEmpty()) {
             this.startSoundPlayed = false;
             this.midLoadSoundPlayed = false;
@@ -84,9 +84,9 @@ public class TieredCrossbowItem extends CrossbowItem {
                 stack.set(AetherIIDataComponents.CROSSBOW_SPECIAL, false);
             }
             player.startUsingItem(hand);
-            return InteractionResultHolder.consume(stack);
+            return InteractionResult.consume(stack);
         } else {
-            return InteractionResultHolder.fail(stack);
+            return InteractionResult.fail(stack);
         }
     }
 
@@ -284,8 +284,8 @@ public class TieredCrossbowItem extends CrossbowItem {
      * Returns the action that specifies what animation to play when the item is being used.
      */
     @Override
-    public UseAnim getUseAnimation(ItemStack stack) {
-        return UseAnim.CROSSBOW;
+    public ItemUseAnimation getUseAnimation(ItemStack stack) {
+        return ItemUseAnimation.CROSSBOW;
     }
 
     private CrossbowItem.ChargingSounds getChargingSounds(ItemStack stack) {
@@ -301,7 +301,7 @@ public class TieredCrossbowItem extends CrossbowItem {
         }
     }
 
-    public Tier getTier() {
+    public ToolMaterial getTier() {
         return this.tier;
     }
 

@@ -26,8 +26,8 @@ public class UndergroundSpawningChecks {
                 generator.getBaseColumn(maxX, maxZ, heightAccessor, randomState)
         };
         int roomHeight = checkTemplateHeight(templateManager, checkedTemplate, random);
-        int height = heightAccessor.getMinBuildHeight();
-        int maxHeight = heightAccessor.getMaxBuildHeight() - belowTop;
+        int height = heightAccessor.getMinY();
+        int maxHeight = heightAccessor.getMaxY() - belowTop;
         int thickness = roomHeight + additionalThickness;
         int currentThickness = 0;
         for (int y = height + aboveBottom; y <= maxHeight; y++) {

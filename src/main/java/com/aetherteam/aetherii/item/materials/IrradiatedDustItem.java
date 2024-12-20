@@ -38,7 +38,7 @@ public class IrradiatedDustItem extends Item implements ItemUseConversion<Irradi
                 context.getPlayer().gameEvent(GameEvent.ITEM_INTERACT_FINISH);
                 level.levelEvent(1505, blockpos, 15);
             }
-            return InteractionResult.sidedSuccess(level.isClientSide);
+            return InteractionResult.SUCCESS;
         } else {
 //            RandomSource random = level.getRandom();
             InteractionResult result = this.convertBlock(AetherIIRecipeTypes.DUST_IRRADIATION.get(), context);

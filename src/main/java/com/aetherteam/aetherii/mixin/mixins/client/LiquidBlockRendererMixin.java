@@ -23,7 +23,7 @@ public class LiquidBlockRendererMixin {
     private void customVertex(LiquidBlockRenderer instance, VertexConsumer consumer, float x, float y, float z, float r, float g, float b, float a, float u, float v, int light, Operation<Void> original,
                               @Local(argsOnly = true) LocalRef<BlockAndTintGetter> level, @Local(argsOnly = true) LocalRef<BlockPos> pos, @Local(argsOnly = true) LocalRef<FluidState> fluidState) {
         boolean aetherEffects = level.get() instanceof RenderChunkRegion renderChunkRegion && ((RenderChunkRegionAccessor) renderChunkRegion).aether_ii$getLevel() instanceof ClientLevel clientLevel && clientLevel.effects() instanceof HighlandsSpecialEffects;
-        if (!aetherEffects || !this.vertex(consumer, x, y, z, r, g, b, a, u, v, light, pos.get().getY(), level.get().getMinBuildHeight())) {
+        if (!aetherEffects || !this.vertex(consumer, x, y, z, r, g, b, a, u, v, light, pos.get().getY(), level.get().getMinY())) {
             original.call(instance, consumer, x, y, z, r, g, b, a, u, v, light);
         }
     }

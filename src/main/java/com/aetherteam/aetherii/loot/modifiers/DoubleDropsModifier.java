@@ -36,12 +36,12 @@ public class DoubleDropsModifier extends LootModifier {
         ObjectArrayList<ItemStack> newStacks = new ObjectArrayList<>(lootStacks);
 
         // Tools
-        BlockState targetState = context.getParamOrNull(LootContextParams.BLOCK_STATE);
-        ItemStack tool = context.getParamOrNull(LootContextParams.TOOL);
+        BlockState targetState = context.getOptionalParameter(LootContextParams.BLOCK_STATE);
+        ItemStack tool = context.getOptionalParameter(LootContextParams.TOOL);
 
         // Weapons
-        Entity targetEntity = context.getParamOrNull(LootContextParams.THIS_ENTITY);
-        Entity attacker = context.getParamOrNull(LootContextParams.DIRECT_ATTACKING_ENTITY);
+        Entity targetEntity = context.getOptionalParameter(LootContextParams.THIS_ENTITY);
+        Entity attacker = context.getOptionalParameter(LootContextParams.DIRECT_ATTACKING_ENTITY);
 
         if (targetState != null) {
             if (tool != null && tool.getItem() instanceof SkyrootTool && tool.getItem() instanceof TieredItem tieredItem) {

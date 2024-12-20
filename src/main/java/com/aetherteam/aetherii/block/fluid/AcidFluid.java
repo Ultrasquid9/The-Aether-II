@@ -94,9 +94,9 @@ public abstract class AcidFluid extends BaseFlowingFluid implements CanisterFlui
 
     private void corrodeNeighbors(Level level, BlockPos pos) {
         for (Direction direction : Direction.values()) {
-            BlockPos offsetPos = pos.offset(direction.getNormal());
+            BlockPos offsetPos = pos.offset(direction.getUnitVec3i());
             BlockState offsetState = level.getBlockState(offsetPos);
-            for (RecipeHolder<AcidCorrosionRecipe> recipe : level.getRecipeManager().getAllRecipesFor(AetherIIRecipeTypes.ACID_CORROSION.get())) {
+            for (RecipeHolder<AcidCorrosionRecipe> recipe : level.recipeAccess().propertySet(AetherIIRecipeTypes.ACID_CORROSION.get())) {
                 if (recipe != null) {
                     BlockState newState = recipe.value().getResultState(offsetState);
                     if (recipe.value().matches(null, level, offsetPos, null, offsetState, newState, AetherIIRecipeTypes.ACID_CORROSION.get())) {
@@ -185,7 +185,7 @@ public abstract class AcidFluid extends BaseFlowingFluid implements CanisterFlui
                     }
                 }
                 if (itemEntity.lifespan <= 500) {
-                    for (RecipeHolder<IrradiationCleansingRecipe> recipe : level.getRecipeManager().getAllRecipesFor(AetherIIRecipeTypes.IRRADIATION_CLEANSING.get())) {
+                    for (RecipeHolder<IrradiationCleansingRecipe> recipe : level.recipeAccess().propertySet(AetherIIRecipeTypes.IRRADIATION_CLEANSING.get())) {
                         if (recipe != null) {
                             SingleRecipeInputWithRandom input = new SingleRecipeInputWithRandom(itemStack, level.getRandom());
                             if (recipe.value().matches(input, level)) {

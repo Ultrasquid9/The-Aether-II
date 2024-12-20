@@ -131,7 +131,7 @@ public class KirridNodeEvaluator extends WalkNodeEvaluator { //todo: 1.21 portin
     private Node tryFindFirstNonWaterBelow(int x, int y, int z, @Nullable Node node) {
         y--;
 
-        while (y > this.mob.level().getMinBuildHeight()) {
+        while (y > this.mob.level().getMinY()) {
             PathType pathtype = this.getCachedPathType(x, y, z);
             if (pathtype != PathType.WATER) {
                 return node;
@@ -145,7 +145,7 @@ public class KirridNodeEvaluator extends WalkNodeEvaluator { //todo: 1.21 portin
     }
 
     private Node tryFindFirstGroundNodeBelow(int x, int y, int z) {
-        for (int i = y - 1; i >= this.mob.level().getMinBuildHeight(); i--) {
+        for (int i = y - 1; i >= this.mob.level().getMinY(); i--) {
             if (y - i > this.mob.getMaxFallDistance()) {
                 return this.getBlockedNode(x, i, z);
             }

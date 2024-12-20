@@ -3,13 +3,13 @@ package com.aetherteam.aetherii.item.equipment;
 import com.aetherteam.aetherii.AetherIITags;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.TagKey;
-import net.minecraft.world.item.Tier;
+import net.minecraft.world.item.ToolMaterial;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.block.Block;
 
 import java.util.function.Supplier;
 
-public enum AetherIIItemTiers implements Tier { //todo
+public enum AetherIIItemTiers implements ToolMaterial { //todo
     SKYROOT(BlockTags.INCORRECT_FOR_WOODEN_TOOL, 59, 2.0F, 0.0F, 15, () -> Ingredient.of(AetherIITags.Items.SKYROOT_REPAIRING)),
     HOLYSTONE(BlockTags.INCORRECT_FOR_STONE_TOOL, 131, 4.0F, 1.0F, 5, () -> Ingredient.of(AetherIITags.Items.HOLYSTONE_REPAIRING)),
     ZANITE(BlockTags.INCORRECT_FOR_IRON_TOOL, 250, 6.0F, 2.0F, 14, () -> Ingredient.of(AetherIITags.Items.ZANITE_REPAIRING)),

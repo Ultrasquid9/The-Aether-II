@@ -8,7 +8,7 @@ import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.stats.Stats;
 import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResultHolder;
+import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.Level;
@@ -25,13 +25,13 @@ public class ArkeniumCanisterItem extends BucketItem {
         super(content, properties);
     }
 
-    public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
+    public InteractionResult use(Level level, Player player, InteractionHand hand) {
         ItemStack itemstack = player.getItemInHand(hand);
         BlockHitResult blockhitresult = getPlayerPOVHitResult(level, player, this.content == Fluids.EMPTY ? net.minecraft.world.level.ClipContext.Fluid.SOURCE_ONLY : net.minecraft.world.level.ClipContext.Fluid.NONE);
         if (blockhitresult.getType() == HitResult.Type.MISS) {
-            return InteractionResultHolder.pass(itemstack);
+            return InteractionResult.PASS;
         } else if (blockhitresult.getType() != HitResult.Type.BLOCK) {
-            return InteractionResultHolder.pass(itemstack);
+            return InteractionResult.PASS;
         } else {
             BlockPos blockpos = blockhitresult.getBlockPos();
             Direction direction = blockhitresult.getDirection();
@@ -55,11 +55,11 @@ public class ArkeniumCanisterItem extends BucketItem {
                                 CriteriaTriggers.FILLED_BUCKET.trigger((ServerPlayer)player, itemstack3);
                             }
 
-                            return InteractionResultHolder.sidedSuccess(itemstack2, level.isClientSide());
+                            return InteractionResult.SUCCESS.heldItemTransformedTo(itemstack2);
                         }
                     }
 
-                    return InteractionResultHolder.fail(itemstack);
+                    return InteractionResult.FAIL;
                 } else {
                     blockstate1 = level.getBlockState(blockpos);
                     BlockPos blockpos2 = this.canBlockContainFluid(player, level, blockpos, blockstate1) ? blockpos : blockpos1;
@@ -71,13 +71,13 @@ public class ArkeniumCanisterItem extends BucketItem {
 
                         player.awardStat(Stats.ITEM_USED.get(this));
                         itemstack3 = ItemUtils.createFilledResult(itemstack, player, getEmptySuccessItem(itemstack, player));
-                        return InteractionResultHolder.sidedSuccess(itemstack3, level.isClientSide());
+                        return InteractionResult.SUCCESS.heldItemTransformedTo(itemstack3);
                     } else {
-                        return InteractionResultHolder.fail(itemstack);
+                        return InteractionResult.FAIL;
                     }
                 }
             } else {
-                return InteractionResultHolder.fail(itemstack);
+                return InteractionResult.FAIL;
             }
         }
     }

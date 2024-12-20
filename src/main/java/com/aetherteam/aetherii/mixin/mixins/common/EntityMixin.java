@@ -28,6 +28,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 import javax.annotation.Nullable;
 import java.util.List;
+import java.util.Set;
 
 @Mixin(Entity.class)
 public class EntityMixin {
@@ -85,7 +86,7 @@ public class EntityMixin {
                 ProfilerFiller profiler = Profiler.get();
                 profiler.push("aether_fall");
                 entity.setPortalCooldown();
-                TeleportTransition transition = new TeleportTransition(destination, new Vec3(entity.getX(), destination.getMaxBuildHeight(), entity.getZ()), entity.getDeltaMovement(), entity.getYRot(), entity.getXRot(), false, TeleportTransition.DO_NOTHING);
+                TeleportTransition transition = new TeleportTransition(destination, new Vec3(entity.getX(), destination.getMaxY(), entity.getZ()), entity.getDeltaMovement(), entity.getYRot(), entity.getXRot(), Set.of(), TeleportTransition.DO_NOTHING);
                 Entity target = entity.teleport(transition);
                 profiler.pop();
                 // Check for passengers.

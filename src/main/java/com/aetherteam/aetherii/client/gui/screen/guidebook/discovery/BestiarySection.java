@@ -280,7 +280,7 @@ public class BestiarySection extends DiscoverySection<BestiaryEntry> {
 
                         Optional<TagKey<Item>> food = this.getSelectedEntry().food();
                         if (food.isPresent()) {
-                            Registry<Item> itemRegistry = this.registryAccess.registryOrThrow(Registries.ITEM);
+                            Registry<Item> itemRegistry = this.registryAccess.lookupOrThrow(Registries.ITEM);
                             List<Holder<Item>> tag = new ArrayList<>(ImmutableList.copyOf(itemRegistry.getTagOrEmpty(food.get())));
                             if (this.currentFoods.isEmpty()) {
                                 this.currentFoods.addAll(tag);

@@ -5,6 +5,7 @@ import com.aetherteam.aetherii.entity.passive.SkyrootLizard;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.world.entity.EntitySpawnReason;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.storage.loot.LootContext;
 import net.minecraft.world.level.storage.loot.functions.LootItemConditionalFunction;
@@ -34,9 +35,9 @@ public class SpawnSkyrootLizard extends LootItemConditionalFunction {
     @Override
     protected ItemStack run(ItemStack stack, LootContext context) {
         ServerLevel serverLevel = context.getLevel();
-        Vec3 originVec = context.getParamOrNull(LootContextParams.ORIGIN);
+        Vec3 originVec = context.getOptionalParameter(LootContextParams.ORIGIN);
         if (originVec != null) {
-            SkyrootLizard lizard = AetherIIEntityTypes.SKYROOT_LIZARD.get().create(serverLevel.getLevel());
+            SkyrootLizard lizard = AetherIIEntityTypes.SKYROOT_LIZARD.get().create(serverLevel.getLevel(), EntitySpawnReason.TRIGGERED);
             assert lizard != null;
             lizard.setPos(originVec.x + 0.5, originVec.y + 0.5, originVec.z + 0.5);
             serverLevel.getLevel().addFreshEntity(lizard);

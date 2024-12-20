@@ -14,7 +14,7 @@ public class GravititeAxeItem extends AxeItem implements GravititeTool {
     @Override
     public InteractionResult useOn(UseOnContext context) {
         if (this.levitateBlock(context)) {
-            return InteractionResult.sidedSuccess(context.getLevel().isClientSide());
+            return InteractionResult.SUCCESS;
         } else {
             return super.useOn(context);
         }

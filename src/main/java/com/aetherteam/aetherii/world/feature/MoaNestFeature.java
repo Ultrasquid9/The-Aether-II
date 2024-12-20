@@ -10,6 +10,7 @@ import com.mojang.serialization.Codec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.util.RandomSource;
+import net.minecraft.world.entity.EntitySpawnReason;
 import net.minecraft.world.level.WorldGenLevel;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
@@ -44,7 +45,7 @@ public class MoaNestFeature extends Feature<MoaNestConfiguration> {
         this.setBlock(level, pos, AetherIIBlocks.MOA_EGG.get().defaultBlockState().setValue(MoaEggBlock.KERATIN, keratinColor).setValue(MoaEggBlock.EYES, eyeColor).setValue(MoaEggBlock.FEATHERS, featherColor).setValue(MoaEggBlock.FEATHER_SHAPE, featherShape).setValue(MoaEggBlock.WILD, true));
         if (config.spawnMoas()) {
             for (int i = 0; i < 2; i++) {
-                Moa moa = AetherIIEntityTypes.MOA.get().create(level.getLevel());
+                Moa moa = AetherIIEntityTypes.MOA.get().create(level.getLevel(), EntitySpawnReason.CHUNK_GENERATION);
                 assert moa != null;
                 moa.setPos(pos.getCenter().add(i, 0, i));
                 MoaAi.initMoaHomeMemories(moa, level.getRandom());

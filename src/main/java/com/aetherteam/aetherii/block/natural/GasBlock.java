@@ -107,7 +107,7 @@ public class GasBlock extends Block implements CanisterPickup {
     protected void onPlace(BlockState state, Level level, BlockPos pos, BlockState oldState, boolean movedByPiston) {
         level.scheduleTick(pos, this, 10);
         for (Direction direction : Direction.values()) {
-            BlockPos offsetPos = pos.offset(direction.getNormal());
+            BlockPos offsetPos = pos.offset(direction.getUnitVec3i());
             if (level.getBlockState(offsetPos).is(AetherIITags.Blocks.TRIGGERS_GAS)) {
                 this.explode(level, pos, true);
             }
@@ -116,12 +116,12 @@ public class GasBlock extends Block implements CanisterPickup {
     }
 
     @Override
-    protected void onExplosionHit(BlockState state, Level level, BlockPos pos, Explosion explosion, BiConsumer<ItemStack, BlockPos> dropConsumer) {
+    protected void onExplosionHit(BlockState state, ServerLevel level, BlockPos pos, Explosion explosion, BiConsumer<ItemStack, BlockPos> dropConsumer) {
         this.onBlockExploded(state, level, pos, explosion);
     }
 
     @Override
-    public void wasExploded(Level level, BlockPos pos, Explosion explosion) {
+    public void wasExploded(ServerLevel level, BlockPos pos, Explosion explosion) {
         this.explode(level, pos, true);
     }
 

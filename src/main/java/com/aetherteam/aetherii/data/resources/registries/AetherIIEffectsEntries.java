@@ -20,6 +20,6 @@ public class AetherIIEffectsEntries {
     }
 
     public static Registry<EffectsEntry> getRegistry(RegistryAccess registryAccess) {
-        return registryAccess.registryOrThrow(AetherIIEffectsEntries.EFFECTS_ENTRY_REGISTRY_KEY);
+        return registryAccess.lookupOrThrow(AetherIIEffectsEntries.EFFECTS_ENTRY_REGISTRY_KEY);
     }
 }

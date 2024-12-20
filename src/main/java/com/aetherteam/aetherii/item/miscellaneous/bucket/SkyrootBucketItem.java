@@ -11,7 +11,7 @@ import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.stats.Stats;
 import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResultHolder;
+import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.BucketItem;
 import net.minecraft.world.item.Item;
@@ -47,13 +47,13 @@ public class SkyrootBucketItem extends BucketItem {
      * @param hand   The {@link InteractionHand} in which the item is being used.
      */
     @Override
-    public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
+    public InteractionResult use(Level level, Player player, InteractionHand hand) {
         ItemStack heldStack = player.getItemInHand(hand);
         BlockHitResult blockhitResult = getPlayerPOVHitResult(level, player, this.content == Fluids.EMPTY ? ClipContext.Fluid.SOURCE_ONLY : ClipContext.Fluid.NONE);
         if (blockhitResult.getType() == HitResult.Type.MISS) {
-            return InteractionResultHolder.pass(heldStack);
+            return InteractionResult.PASS;
         } else if (blockhitResult.getType() != HitResult.Type.BLOCK) {
-            return InteractionResultHolder.pass(heldStack);
+            return InteractionResult.PASS;
         } else {
             BlockPos blockPos = blockhitResult.getBlockPos();
             Direction direction = blockhitResult.getDirection();
@@ -73,10 +73,10 @@ public class SkyrootBucketItem extends BucketItem {
                             if (!level.isClientSide()) {
                                 CriteriaTriggers.FILLED_BUCKET.trigger((ServerPlayer) player, bucketStack);
                             }
-                            return InteractionResultHolder.sidedSuccess(resultStack, level.isClientSide());
+                            return InteractionResult.SUCCESS.heldItemTransformedTo(resultStack);
                         }
                     }
-                    return InteractionResultHolder.fail(heldStack);
+                    return InteractionResult.FAIL;
                 } else {
                     BlockState blockState = level.getBlockState(blockPos);
                     BlockPos newPos = this.canBlockContainFluid(player, level, blockPos, blockState) ? blockPos : relativePos;
@@ -87,13 +87,13 @@ public class SkyrootBucketItem extends BucketItem {
                         }
                         player.awardStat(Stats.ITEM_USED.get(this));
                         ItemStack resultStack = ItemUtils.createFilledResult(heldStack, player, getEmptySuccessItem(heldStack, player));
-                        return InteractionResultHolder.sidedSuccess(resultStack, level.isClientSide());
+                        return InteractionResult.SUCCESS.heldItemTransformedTo(resultStack);
                     } else {
-                        return InteractionResultHolder.fail(heldStack);
+                        return InteractionResult.FAIL;
                     }
                 }
             } else {
-                return InteractionResultHolder.fail(heldStack);
+                return InteractionResult.FAIL;
             }
         }
     }

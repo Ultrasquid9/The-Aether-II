@@ -63,7 +63,7 @@ public class FerrositePillarFeature extends Feature<FerrositePillarConfiguration
                 random,
                 true);
 
-        ConfiguredFeature<?, ?> turf = Objects.requireNonNull(level.registryAccess().registryOrThrow(Registries.CONFIGURED_FEATURE).getHolder(HighlandsConfiguredFeatures.FERROSITE_PILLAR_TURF).orElse(null)).value();
+        ConfiguredFeature<?, ?> turf = Objects.requireNonNull(level.registryAccess().lookupOrThrow(Registries.CONFIGURED_FEATURE).get(HighlandsConfiguredFeatures.FERROSITE_PILLAR_TURF).orElse(null)).value();
         turf.place(level, chunk, random, new BlockPos(pos.getX(), pos.getY() + height + (int) radius, pos.getZ()));
 
         distributeSidePillars(context, pos, random, radius, baseHeight, additionalHeight, 1);
@@ -109,7 +109,7 @@ public class FerrositePillarFeature extends Feature<FerrositePillarConfiguration
                 random,
                 true);
 
-        ConfiguredFeature<?, ?> turf = Objects.requireNonNull(level.registryAccess().registryOrThrow(Registries.CONFIGURED_FEATURE).getHolder(HighlandsConfiguredFeatures.FERROSITE_PILLAR_TURF).orElse(null)).value();
+        ConfiguredFeature<?, ?> turf = Objects.requireNonNull(level.registryAccess().lookupOrThrow(Registries.CONFIGURED_FEATURE).get(HighlandsConfiguredFeatures.FERROSITE_PILLAR_TURF).orElse(null)).value();
         turf.place(level, chunk, random, new BlockPos(pos.getX(), pos.getY() + (int) radius, pos.getZ()));
     }
 

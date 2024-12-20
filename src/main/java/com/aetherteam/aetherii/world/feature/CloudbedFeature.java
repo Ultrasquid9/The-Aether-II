@@ -55,7 +55,7 @@ public class CloudbedFeature extends Feature<CloudbedConfiguration> {
                     // Floor these values and then place the blocks
                     BlockState state = config.block().getState(context.random(), new BlockPos(xCoord, config.yLevel(), zCoord));
                     for (int i = Mth.floor(-blocksDown); i <= Mth.floor(blocksUp); i++) {
-                        int y = Mth.clamp(config.yLevel() + i, context.level().getMinBuildHeight(), context.level().getMaxBuildHeight());
+                        int y = Mth.clamp(config.yLevel() + i, context.level().getMinY(), context.level().getMaxY());
                         BlockPos pos = new BlockPos(xCoord, y, zCoord);
                         if (config.predicate().test(context.level(), pos)) {
                             this.setBlock(context.level(), pos, state);

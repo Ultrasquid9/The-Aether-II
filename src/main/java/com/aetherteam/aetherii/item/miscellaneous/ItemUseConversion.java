@@ -20,7 +20,7 @@ public interface ItemUseConversion<R extends MatchEventRecipe & BlockStateRecipe
         ItemStack heldItem = context.getItemInHand();
         BlockState oldBlockState = level.getBlockState(pos);
 
-        for (RecipeHolder<T> recipe : level.getRecipeManager().getAllRecipesFor(recipeType)) { // Gets the list of recipes existing for a RecipeType.
+        for (RecipeHolder<T> recipe : level.recipeAccess().propertySet(recipeType)) { // Gets the list of recipes existing for a RecipeType.
             if (recipe != null) {
                 BlockState newState = recipe.value().getResultState(oldBlockState); // Gets the result BlockState and gives it the properties of the old BlockState
                 if (recipe.value().matches(player, level, pos, heldItem, oldBlockState, newState, recipeType)) { // Checks if the recipe is actually for the oldState and if it hasn't been cancelled with an event.
@@ -41,7 +41,7 @@ public interface ItemUseConversion<R extends MatchEventRecipe & BlockStateRecipe
     default <T extends R> boolean convertBlockWithoutContext(RecipeType<T> recipeType, Level level, BlockPos pos, ItemStack stack) {
         if (!level.isClientSide()) {
             BlockState oldBlockState = level.getBlockState(pos);
-            for (RecipeHolder<T> recipe : level.getRecipeManager().getAllRecipesFor(recipeType)) {
+            for (RecipeHolder<T> recipe : level.recipeAccess().propertySet(recipeType)) {
                 if (recipe != null) {
                     BlockState newState = recipe.value().getResultState(oldBlockState);
                     if (recipe.value().matches(null, level, pos, null, oldBlockState, newState, recipeType)) {

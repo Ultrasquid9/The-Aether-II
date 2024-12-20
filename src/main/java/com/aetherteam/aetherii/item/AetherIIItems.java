@@ -80,7 +80,6 @@ import net.minecraft.world.item.*;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.material.Fluids;
 import net.neoforged.bus.api.IEventBus;
-import net.neoforged.neoforge.common.DeferredSpawnEggItem;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
@@ -258,11 +257,11 @@ public class AetherIIItems {
 
     // Consumables
     public static final DeferredItem<Item> WATER_VIAL = ITEMS.register("water_vial", () -> new WaterVialItem(new Item.Properties().stacksTo(8)));
-    public static final DeferredItem<Item> BANDAGE = ITEMS.register("bandage", () -> new PreventativeItem(UseAnim.BOW, 15, AetherIIPreventatives.BANDAGE, new Item.Properties()));
-    public static final DeferredItem<Item> SPLINT = ITEMS.register("splint", () -> new CurativeItem(UseAnim.BOW, 15, AetherIIEffectCures.SPLINT, new Item.Properties()));
-    public static final DeferredItem<Item> ANTITOXIN_VIAL = ITEMS.register("antitoxin_vial", () -> new PreventativeItem(UseAnim.DRINK, 15, () -> AetherIIItems.SCATTERGLASS_VIAL.get().getDefaultInstance(), AetherIIPreventatives.ANTITOXIN_VIAL, new Item.Properties().stacksTo(8)));
-    public static final DeferredItem<Item> ANTIVENOM_VIAL = ITEMS.register("antivenom_vial", () -> new PreventativeItem(UseAnim.DRINK, 15, () -> AetherIIItems.SCATTERGLASS_VIAL.get().getDefaultInstance(), AetherIIPreventatives.ANTIVENOM_VIAL, new Item.Properties().stacksTo(8)));
-    public static final DeferredItem<Item> VALKYRIE_TEA = ITEMS.register("valkyrie_tea", () -> new TeaItem(UseAnim.DRINK, 15, () -> AetherIIItems.SCATTERGLASS_VIAL.get().getDefaultInstance(), AetherIIEffects.SATURATION_BOOST, new Item.Properties().stacksTo(8)));
+    public static final DeferredItem<Item> BANDAGE = ITEMS.register("bandage", () -> new PreventativeItem(ItemUseAnimation.BOW, 15, AetherIIPreventatives.BANDAGE, new Item.Properties()));
+    public static final DeferredItem<Item> SPLINT = ITEMS.register("splint", () -> new CurativeItem(ItemUseAnimation.BOW, 15, AetherIIEffectCures.SPLINT, new Item.Properties()));
+    public static final DeferredItem<Item> ANTITOXIN_VIAL = ITEMS.register("antitoxin_vial", () -> new PreventativeItem(ItemUseAnimation.DRINK, 15, () -> AetherIIItems.SCATTERGLASS_VIAL.get().getDefaultInstance(), AetherIIPreventatives.ANTITOXIN_VIAL, new Item.Properties().stacksTo(8)));
+    public static final DeferredItem<Item> ANTIVENOM_VIAL = ITEMS.register("antivenom_vial", () -> new PreventativeItem(ItemUseAnimation.DRINK, 15, () -> AetherIIItems.SCATTERGLASS_VIAL.get().getDefaultInstance(), AetherIIPreventatives.ANTIVENOM_VIAL, new Item.Properties().stacksTo(8)));
+    public static final DeferredItem<Item> VALKYRIE_TEA = ITEMS.register("valkyrie_tea", () -> new TeaItem(ItemUseAnimation.DRINK, 15, () -> AetherIIItems.SCATTERGLASS_VIAL.get().getDefaultInstance(), AetherIIEffects.SATURATION_BOOST, new Item.Properties().stacksTo(8)));
     public static final DeferredItem<Item> HEALING_STONE = ITEMS.register("healing_stone", () -> new HealingStoneItem(new Item.Properties().stacksTo(1).component(AetherIIDataComponents.HEALING_STONE_CHARGES, 0)));
 
     // Gliders
@@ -297,10 +296,10 @@ public class AetherIIItems {
     public static final DeferredItem<Item> RECORDING_892 = ITEMS.register("recording_892", () -> new Item(new Item.Properties().stacksTo(1).rarity(Rarity.RARE).jukeboxPlayable(AetherIIJukeboxSongs.RECORDING_892)));
 
     // Spawn Eggs
-    public static final DeferredItem<SpawnEggItem> FLYING_COW_SPAWN_EGG = ITEMS.register("flying_cow_spawn_egg", () -> new DeferredSpawnEggItem(AetherIIEntityTypes.FLYING_COW, 0xC2C2C2, 0xFFDD61, new Item.Properties()));
-    public static final DeferredItem<SpawnEggItem> SHEEPUFF_SPAWN_EGG = ITEMS.register("sheepuff_spawn_egg", () -> new DeferredSpawnEggItem(AetherIIEntityTypes.SHEEPUFF, 0xE8F0F8, 0xA6D4FF, new Item.Properties()));
-    public static final DeferredItem<SpawnEggItem> PHYG_SPAWN_EGG = ITEMS.register("phyg_spawn_egg", () -> new DeferredSpawnEggItem(AetherIIEntityTypes.PHYG, 0xF7A6B1, 0xFFDD61, new Item.Properties()));
-    public static final DeferredItem<SpawnEggItem> AERBUNNY_SPAWN_EGG = ITEMS.register("aerbunny_spawn_egg", () -> new DeferredSpawnEggItem(AetherIIEntityTypes.AERBUNNY, 0xE8F7FF, 0xFFD6F9, new Item.Properties()));
+    public static final DeferredItem<SpawnEggItem> FLYING_COW_SPAWN_EGG = ITEMS.register("flying_cow_spawn_egg", () -> new SpawnEggItem(AetherIIEntityTypes.FLYING_COW.get(), 0xC2C2C2, 0xFFDD61, new Item.Properties()));
+    public static final DeferredItem<SpawnEggItem> SHEEPUFF_SPAWN_EGG = ITEMS.register("sheepuff_spawn_egg", () -> new SpawnEggItem(AetherIIEntityTypes.SHEEPUFF.get(), 0xE8F0F8, 0xA6D4FF, new Item.Properties()));
+    public static final DeferredItem<SpawnEggItem> PHYG_SPAWN_EGG = ITEMS.register("phyg_spawn_egg", () -> new SpawnEggItem(AetherIIEntityTypes.PHYG.get(), 0xF7A6B1, 0xFFDD61, new Item.Properties()));
+    public static final DeferredItem<SpawnEggItem> AERBUNNY_SPAWN_EGG = ITEMS.register("aerbunny_spawn_egg", () -> new SpawnEggItem(AetherIIEntityTypes.AERBUNNY.get(), 0xE8F7FF, 0xFFD6F9, new Item.Properties()));
     public static final DeferredItem<SpawnEggItem> HIGHFIELDS_TAEGORE_SPAWN_EGG = ITEMS.register("highfields_taegore_spawn_egg", () -> new BiomeMobSpawnEggItem(AetherIIEntityTypes.HIGHFIELDS_TAEGORE, "highfields", 0xB2CCF2, 0xFFDE96, new Item.Properties()));
     public static final DeferredItem<SpawnEggItem> MAGNETIC_TAEGORE_SPAWN_EGG = ITEMS.register("magnetic_taegore_spawn_egg", () -> new BiomeMobSpawnEggItem(AetherIIEntityTypes.MAGNETIC_TAEGORE, "magnetic", 0x9DC2BE, 0xDBAD88, new Item.Properties()));
     public static final DeferredItem<SpawnEggItem> ARCTIC_TAEGORE_SPAWN_EGG = ITEMS.register("arctic_taegore_spawn_egg", () -> new BiomeMobSpawnEggItem(AetherIIEntityTypes.ARCTIC_TAEGORE, "arctic", 0x797D97, 0xDEDEDE, new Item.Properties()));
@@ -310,14 +309,14 @@ public class AetherIIItems {
     public static final DeferredItem<SpawnEggItem> HIGHFIELDS_KIRRID_SPAWN_EGG = ITEMS.register("highfields_kirrid_spawn_egg", () -> new BiomeMobSpawnEggItem(AetherIIEntityTypes.HIGHFIELDS_KIRRID, "highfields", 0xADA896, 0xFFD787, new Item.Properties()));
     public static final DeferredItem<SpawnEggItem> MAGNETIC_KIRRID_SPAWN_EGG = ITEMS.register("magnetic_kirrid_spawn_egg", () -> new BiomeMobSpawnEggItem(AetherIIEntityTypes.MAGNETIC_KIRRID, "magnetic", 0x8788AF, 0xB1E0DC, new Item.Properties()));
     public static final DeferredItem<SpawnEggItem> ARCTIC_KIRRID_SPAWN_EGG = ITEMS.register("arctic_kirrid_spawn_egg", () -> new BiomeMobSpawnEggItem(AetherIIEntityTypes.ARCTIC_KIRRID, "arctic", 0xC3C1BE, 0xAD9078, new Item.Properties()));
-    public static final DeferredItem<SpawnEggItem> MOA_SPAWN_EGG = ITEMS.register("moa_spawn_egg", () -> new DeferredSpawnEggItem(AetherIIEntityTypes.MOA, 0x91B2DB, 0xE8FCFF, new Item.Properties()));
-    public static final DeferredItem<SpawnEggItem> SKYROOT_LIZARD_SPAWN_EGG = ITEMS.register("skyroot_lizard_spawn_egg", () -> new DeferredSpawnEggItem(AetherIIEntityTypes.SKYROOT_LIZARD, 0x595844, 0xD1F79E, new Item.Properties()));
-    public static final DeferredItem<SpawnEggItem> AECHOR_PLANT_SPAWN_EGG = ITEMS.register("aechor_plant_spawn_egg", () -> new DeferredSpawnEggItem(AetherIIEntityTypes.AECHOR_PLANT, 0xCF95E2, 0x7477AB, new Item.Properties()));
-    public static final DeferredItem<SpawnEggItem> ZEPHYR_SPAWN_EGG = ITEMS.register("zephyr_spawn_egg", () -> new DeferredSpawnEggItem(AetherIIEntityTypes.ZEPHYR, 0xDEE6E7, 0xC4EFFF, new Item.Properties()));
-    public static final DeferredItem<SpawnEggItem> TEMPEST_SPAWN_EGG = ITEMS.register("tempest_spawn_egg", () -> new DeferredSpawnEggItem(AetherIIEntityTypes.TEMPEST, 0x676A7A, 0xDEEDFF, new Item.Properties()));
-    public static final DeferredItem<SpawnEggItem> COCKATRICE_SPAWN_EGG = ITEMS.register("cockatrice_spawn_egg", () -> new DeferredSpawnEggItem(AetherIIEntityTypes.COCKATRICE, 0x8363A6, 0xB8FFC3, new Item.Properties()));
-    public static final DeferredItem<SpawnEggItem> SWET_SPAWN_EGG = ITEMS.register("swet_spawn_egg", () -> new DeferredSpawnEggItem(AetherIIEntityTypes.SWET, 0xC3E3EF, 0xA2D0CC, new Item.Properties()));
-    public static final DeferredItem<SpawnEggItem> SKEPHID_SPAWN_EGG = ITEMS.register("skephid_spawn_egg", () -> new DeferredSpawnEggItem(AetherIIEntityTypes.SKEPHID, 0x7D96AB, 0xF7CC94, new Item.Properties()));
+    public static final DeferredItem<SpawnEggItem> MOA_SPAWN_EGG = ITEMS.register("moa_spawn_egg", () -> new SpawnEggItem(AetherIIEntityTypes.MOA.get(), 0x91B2DB, 0xE8FCFF, new Item.Properties()));
+    public static final DeferredItem<SpawnEggItem> SKYROOT_LIZARD_SPAWN_EGG = ITEMS.register("skyroot_lizard_spawn_egg", () -> new SpawnEggItem(AetherIIEntityTypes.SKYROOT_LIZARD.get(), 0x595844, 0xD1F79E, new Item.Properties()));
+    public static final DeferredItem<SpawnEggItem> AECHOR_PLANT_SPAWN_EGG = ITEMS.register("aechor_plant_spawn_egg", () -> new SpawnEggItem(AetherIIEntityTypes.AECHOR_PLANT.get(), 0xCF95E2, 0x7477AB, new Item.Properties()));
+    public static final DeferredItem<SpawnEggItem> ZEPHYR_SPAWN_EGG = ITEMS.register("zephyr_spawn_egg", () -> new SpawnEggItem(AetherIIEntityTypes.ZEPHYR.get(), 0xDEE6E7, 0xC4EFFF, new Item.Properties()));
+    public static final DeferredItem<SpawnEggItem> TEMPEST_SPAWN_EGG = ITEMS.register("tempest_spawn_egg", () -> new SpawnEggItem(AetherIIEntityTypes.TEMPEST.get(), 0x676A7A, 0xDEEDFF, new Item.Properties()));
+    public static final DeferredItem<SpawnEggItem> COCKATRICE_SPAWN_EGG = ITEMS.register("cockatrice_spawn_egg", () -> new SpawnEggItem(AetherIIEntityTypes.COCKATRICE.get(), 0x8363A6, 0xB8FFC3, new Item.Properties()));
+    public static final DeferredItem<SpawnEggItem> SWET_SPAWN_EGG = ITEMS.register("swet_spawn_egg", () -> new SpawnEggItem(AetherIIEntityTypes.SWET.get(), 0xC3E3EF, 0xA2D0CC, new Item.Properties()));
+    public static final DeferredItem<SpawnEggItem> SKEPHID_SPAWN_EGG = ITEMS.register("skephid_spawn_egg", () -> new SpawnEggItem(AetherIIEntityTypes.SKEPHID.get(), 0x7D96AB, 0xF7CC94, new Item.Properties()));
 
     // Misc
     public static final DeferredItem<Item> MOA_EGG = ITEMS.register("moa_egg", () -> new MoaEggItem(new Item.Properties().stacksTo(1).component(AetherIIDataComponents.MOA_EGG_TYPE.get(), MoaEggType.defaultType())));

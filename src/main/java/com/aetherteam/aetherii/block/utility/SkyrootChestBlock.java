@@ -15,7 +15,7 @@ import java.util.function.Supplier;
 
 public class SkyrootChestBlock extends ChestBlock {
     public SkyrootChestBlock(BlockBehaviour.Properties properties, Supplier<BlockEntityType<? extends ChestBlockEntity>> blockEntityType) {
-        super(properties, blockEntityType);
+        super(blockEntityType, properties);
         this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH).setValue(TYPE, ChestType.SINGLE).setValue(WATERLOGGED, false));
     }
 

@@ -93,7 +93,7 @@ public class GuidebookDiscoveryAttachment {
     }
 
     private void trackBestiaryEntries(ServerPlayer serverPlayer, RegistryAccess registryAccess, AdvancementHolder advancement) {
-        Registry<BestiaryEntry> bestiaryEntries = registryAccess.registryOrThrow(AetherIIBestiaryEntries.BESTIARY_ENTRY_REGISTRY_KEY);
+        Registry<BestiaryEntry> bestiaryEntries = registryAccess.lookupOrThrow(AetherIIBestiaryEntries.BESTIARY_ENTRY_REGISTRY_KEY);
         for (Holder.Reference<BestiaryEntry> entry : bestiaryEntries.holders().toList()) {
             if (advancement.id().equals(entry.value().observationAdvancement())) {
                 this.observedBestiaryEntries.add(entry);
