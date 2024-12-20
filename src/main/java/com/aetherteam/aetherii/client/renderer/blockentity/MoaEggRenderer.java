@@ -36,6 +36,7 @@ public class MoaEggRenderer implements BlockEntityRenderer<MoaEggBlockEntity> {
         if (blockEntity.getBlockState().getBlock() instanceof MoaEggBlock) {
             poseStack.translate(0.5F, 1.5F, 0.5F);
             poseStack.mulPose(Axis.XN.rotationDegrees(180F));
+            
             if (blockEntity.getBlockState().getValue(MoaEggBlock.HATCH) > 0) {
                 poseStack.mulPose(Axis.YP.rotationDegrees((float) (Math.cos((double) blockEntity.tickCount * 3.25) * Math.PI * 0.4F * blockEntity.getBlockState().getValue(MoaEggBlock.HATCH))));
             }
