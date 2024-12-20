@@ -30,7 +30,7 @@ public record AcidDamageBlockPacket(BlockPos pos, int destroySpeed, boolean drop
 
     public static void execute(AcidDamageBlockPacket payload, IPayloadContext context) {
         if (Minecraft.getInstance().player != null && Minecraft.getInstance().level != null) {
-            AcidFluid.progressivelyDestroyBlock(Minecraft.getInstance().level, payload.pos(), payload.destroySpeed(), payload.drop());
+            AcidFluid.progressivelyDestroyBlock(context.player().level(), payload.pos(), payload.destroySpeed(), payload.drop());
         }
     }
 }
