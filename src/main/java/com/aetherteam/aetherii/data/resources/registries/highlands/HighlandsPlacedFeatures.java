@@ -137,6 +137,7 @@ public class HighlandsPlacedFeatures {
     public static final ResourceKey<PlacedFeature> COAST_QUICKSOIL = createKey("coast_quicksoil");
     public static final ResourceKey<PlacedFeature> COAST_QUICKSOIL_SPARSE = createKey("coast_quicksoil_sparse");
     public static final ResourceKey<PlacedFeature> COAST_FERROSITE_SAND = createKey("coast_ferrosite_sand");
+    public static final ResourceKey<PlacedFeature> COAST_FERROSITE_PILLAR = createKey("coast_ferrosite_pillar");
     public static final ResourceKey<PlacedFeature> COAST_ARCTIC_PACKED_ICE = createKey("coast_arctic_packed_ice");
 
     public static final ResourceKey<PlacedFeature> WATER_POND = createKey("water_pond");
@@ -673,6 +674,12 @@ public class HighlandsPlacedFeatures {
                 CountPlacement.of(4),
                 HeightRangePlacement.triangle(VerticalAnchor.absolute(112), VerticalAnchor.absolute(156)),
                 EnvironmentScanPlacement.scanningFor(Direction.UP, BlockPredicate.hasSturdyFace(Direction.DOWN), BlockPredicate.ONLY_IN_AIR_PREDICATE, 5),
+                BiomeFilter.biome()
+        );
+        register(context, COAST_FERROSITE_PILLAR, configuredFeatures.getOrThrow(HighlandsConfiguredFeatures.COAST_FERROSITE_PILLAR),
+                CountPlacement.of(18),
+                HeightRangePlacement.triangle(VerticalAnchor.absolute(144), VerticalAnchor.absolute(256)),
+                EnvironmentScanPlacement.scanningFor(Direction.UP, BlockPredicate.hasSturdyFace(Direction.DOWN), BlockPredicate.ONLY_IN_AIR_PREDICATE, 16), //TODO find out why it isn't working
                 BiomeFilter.biome()
         );
         register(context, COAST_ARCTIC_PACKED_ICE, configuredFeatures.getOrThrow(HighlandsConfiguredFeatures.COAST_ARCTIC_PACKED_ICE),

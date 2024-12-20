@@ -36,7 +36,6 @@ public class AetherIIDensityFunctions extends AetherIIDensityFunctionBuilders {
                 1.0D // smear scale multiplier, capped at 8
         ));
 
-        context.register(CONTINENTAL_ISLANDS, buildContinentalIslands(function));
         context.register(SHATTERED_ISLANDS, buildShatteredIslands(function));
         context.register(FINAL_ISLANDS, buildFinalIslands(function));
 
@@ -72,6 +71,7 @@ public class AetherIIDensityFunctions extends AetherIIDensityFunctionBuilders {
         context.register(COASTS_HIGHFIELDS, buildCoastNoise(function, 5.0D));
         context.register(COASTS_MAGNETIC, buildCoastNoise(function,9.0D));
         context.register(COASTS_ARCTIC, buildCoastNoise(function,3.0D));
+        context.register(COASTS_FERROSITE_PILLAR, buildCoastNoise(function,7.0D));
 
         context.register(SNOW_NOISE, DensityFunctions.add(
                 DensityFunctions.mul(new PerlinNoiseFunction(new NormalNoise.NoiseParameters(0, 0.75F, 0.5F, 0.25F, 1.0F), 0.05D, 0.0D, 42), DensityFunctions.constant(1.0D)),

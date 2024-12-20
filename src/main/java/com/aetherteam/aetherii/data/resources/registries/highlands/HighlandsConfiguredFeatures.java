@@ -223,6 +223,7 @@ public class HighlandsConfiguredFeatures {
 
     public static final ResourceKey<ConfiguredFeature<?, ?>> COAST_QUICKSOIL = createKey("coast_quicksoil");
     public static final ResourceKey<ConfiguredFeature<?, ?>> COAST_FERROSITE_SAND = createKey("coast_ferrosite_sand");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> COAST_FERROSITE_PILLAR = createKey("coast_ferrosite_pillar");
     public static final ResourceKey<ConfiguredFeature<?, ?>> COAST_ARCTIC_PACKED_ICE = createKey("coast_arctic_packed_ice");
 
     public static final ResourceKey<ConfiguredFeature<?, ?>> WATER_POND = createKey("water_pond");
@@ -529,8 +530,8 @@ public class HighlandsConfiguredFeatures {
                         PlacementUtils.filtered(AetherIIFeatures.AETHER_FLOWER.get(), new SimpleBlockConfiguration(new WeightedStateProvider(SimpleWeightedRandomList.<BlockState>builder()
                                         .add(AetherIIBlocks.HESPEROSE.get().defaultBlockState(), 1)
                                         .add(AetherIIBlocks.TARABLOOM.get().defaultBlockState(), 1)
-                                        .add(AetherIIBlocks.POASPROUT.get().defaultBlockState(), 1)
-                                        .add(AetherIIBlocks.LILICHIME.get().defaultBlockState(), 1)
+                                        .add(AetherIIBlocks.POASPROUT.get().defaultBlockState(), 2)
+                                        .add(AetherIIBlocks.LILICHIME.get().defaultBlockState(), 2)
                                         .add(AetherIIBlocks.PLURACIAN.get().defaultBlockState(), 1)
                                         .add(AetherIIBlocks.SATIVAL_SHOOT.get().defaultBlockState(), 1))),
                                 BlockPredicate.allOf(BlockPredicate.matchesTag(Vec3i.ZERO.below(), AetherIITags.Blocks.AETHER_PLANT_SURVIVES_ON), BlockPredicate.replaceable(), BlockPredicate.noFluid()))
@@ -554,14 +555,8 @@ public class HighlandsConfiguredFeatures {
                                                 new NormalNoise.NoiseParameters(-1, 1.0),
                                                 1.0F,
                                                 List.of(
-//                                                        AetherIIBlocks.RED_CLOUDWOOL.get().defaultBlockState(),
-//                                                        AetherIIBlocks.ORANGE_CLOUDWOOL.get().defaultBlockState(),
                                                         AetherIIBlocks.HESPEROSE.get().defaultBlockState(),
                                                         AetherIIBlocks.TARABLOOM.get().defaultBlockState()
-//                                                        AetherIIBlocks.GREEN_CLOUDWOOL.get().defaultBlockState(),
-//                                                        AetherIIBlocks.CYAN_CLOUDWOOL.get().defaultBlockState(),
-//                                                        AetherIIBlocks.BLUE_CLOUDWOOL.get().defaultBlockState()
-
                                                 )
                                         )
                                 ), BlockPredicate.allOf(BlockPredicate.matchesTag(Vec3i.ZERO.below(), AetherIITags.Blocks.AETHER_PLANT_SURVIVES_ON), BlockPredicate.replaceable(), BlockPredicate.noFluid())
@@ -813,9 +808,9 @@ public class HighlandsConfiguredFeatures {
         register(context, TREES_BIOME_FLOURISHING_FIELD, Feature.RANDOM_SELECTOR, new RandomFeatureConfiguration(List.of(
                 new WeightedPlacedFeature(PlacementUtils.inlinePlaced(configuredFeatures.getOrThrow(SKYROOT), PlacementUtils.filteredByBlockSurvival(AetherIIBlocks.SKYROOT_SAPLING.get())), 0.1F),
                 new WeightedPlacedFeature(PlacementUtils.inlinePlaced(configuredFeatures.getOrThrow(LARGE_SKYROOT), PlacementUtils.filteredByBlockSurvival(AetherIIBlocks.SKYROOT_SAPLING.get())), 0.3F),
-                new WeightedPlacedFeature(PlacementUtils.inlinePlaced(configuredFeatures.getOrThrow(SHORT_SKYPLANE), PlacementUtils.filteredByBlockSurvival(AetherIIBlocks.SKYPLANE_SAPLING.get())), 0.025F),
+                new WeightedPlacedFeature(PlacementUtils.inlinePlaced(configuredFeatures.getOrThrow(SHORT_SKYPLANE), PlacementUtils.filteredByBlockSurvival(AetherIIBlocks.SKYPLANE_SAPLING.get())), 0.01F),
                 new WeightedPlacedFeature(PlacementUtils.inlinePlaced(configuredFeatures.getOrThrow(WISPROOT), PlacementUtils.filteredByBlockSurvival(AetherIIBlocks.WISPROOT_SAPLING.get())), 0.2F),
-                new WeightedPlacedFeature(PlacementUtils.inlinePlaced(configuredFeatures.getOrThrow(SHORT_GREATOAK), PlacementUtils.filteredByBlockSurvival(AetherIIBlocks.GREATOAK_SAPLING.get())), 0.0075F),
+                new WeightedPlacedFeature(PlacementUtils.inlinePlaced(configuredFeatures.getOrThrow(SHORT_GREATOAK), PlacementUtils.filteredByBlockSurvival(AetherIIBlocks.GREATOAK_SAPLING.get())), 0.005F),
                 new WeightedPlacedFeature(PlacementUtils.inlinePlaced(configuredFeatures.getOrThrow(TREES_AMBEROOT_SPARSE), PlacementUtils.filteredByBlockSurvival(AetherIIBlocks.AMBEROOT_SAPLING.get())), 0.1F)
         ), PlacementUtils.inlinePlaced(configuredFeatures.getOrThrow(SHORT_SKYROOT), PlacementUtils.filteredByBlockSurvival(AetherIIBlocks.SKYROOT_SAPLING.get()))));
         register(context, TREES_BIOME_VERDANT_WOODS, Feature.RANDOM_SELECTOR, new RandomFeatureConfiguration(List.of(
@@ -1530,6 +1525,28 @@ public class HighlandsConfiguredFeatures {
                 Optional.empty(),
                 0.0F,
                 AetherIITags.Blocks.FERROSITE_COAST_GENERATES_ON
+        ));
+        register(context, COAST_FERROSITE_PILLAR, AetherIIFeatures.COAST.get(), new CoastConfiguration(
+                new NoiseProvider(
+                        99L,
+                        new NormalNoise.NoiseParameters(-3, 1.0, 0.25, 0.0, 0.0),
+                        1.0F,
+                        List.of(
+                                Blocks.AIR.defaultBlockState(),
+                                AetherIIBlocks.FERROSITE_SAND.get().defaultBlockState(),
+                                AetherIIBlocks.FERROSITE_SAND.get().defaultBlockState(),
+                                Blocks.AIR.defaultBlockState(),
+                                AetherIIBlocks.FERROSITE_SAND.get().defaultBlockState(),
+                                AetherIIBlocks.FERROSITE_SAND.get().defaultBlockState(),
+                                Blocks.AIR.defaultBlockState()
+                        )
+                ),
+                16.35F,
+                AetherIIDensityFunctions.getFunction(function, AetherIIDensityFunctions.COASTS_FERROSITE_PILLAR),
+                UniformInt.of(112, 156),
+                Optional.empty(),
+                0.0F,
+                AetherIITags.Blocks.FERROSITE_PILLAR_COAST_GENERATES_ON
         ));
         register(context, COAST_ARCTIC_PACKED_ICE, AetherIIFeatures.COAST.get(), new CoastConfiguration(
                 BlockStateProvider.simple(AetherIIBlocks.ARCTIC_PACKED_ICE.get()),
