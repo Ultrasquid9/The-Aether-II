@@ -586,17 +586,17 @@ public class AetherIIBlocks extends AetherIIBlockBuilders {
     public static final DeferredBlock<BedBlock> SKYROOT_BED = register("skyroot_bed", () -> new SkyrootBedBlock(DyeColor.WHITE, Block.Properties.ofFullCopy(Blocks.WHITE_BED)));
 
     public static final DeferredBlock<StandingSignBlock> SKYROOT_SIGN = register("skyroot_sign", () -> new StandingSignBlock(AetherIIWoodTypes.SKYROOT, Block.Properties.of().mapColor(MapColor.SAND).forceSolidOn().ignitedByLava().instrument(NoteBlockInstrument.BASS).noCollission().strength(1.0F).sound(SoundType.WOOD)));
-    public static final DeferredBlock<WallSignBlock> SKYROOT_WALL_SIGN = BLOCKS.register("skyroot_wall_sign", () -> new WallSignBlock(AetherIIWoodTypes.SKYROOT, Block.Properties.of().mapColor(MapColor.SAND).forceSolidOn().ignitedByLava().instrument(NoteBlockInstrument.BASS).noCollission().strength(1.0F).sound(SoundType.WOOD).lootFrom(SKYROOT_SIGN)));
+    public static final DeferredBlock<WallSignBlock> SKYROOT_WALL_SIGN = BLOCKS.register("skyroot_wall_sign", () -> new WallSignBlock(AetherIIWoodTypes.SKYROOT, Block.Properties.of().mapColor(MapColor.SAND).forceSolidOn().ignitedByLava().instrument(NoteBlockInstrument.BASS).noCollission().strength(1.0F).sound(SoundType.WOOD)));
     public static final DeferredBlock<CeilingHangingSignBlock> SKYROOT_HANGING_SIGN = register("skyroot_hanging_sign", () -> new CeilingHangingSignBlock(AetherIIWoodTypes.SKYROOT, BlockBehaviour.Properties.of().mapColor(Blocks.OAK_LOG.defaultMapColor()).forceSolidOn().instrument(NoteBlockInstrument.BASS).noCollission().strength(1.0F).ignitedByLava()));
     public static final DeferredBlock<WallHangingSignBlock> SKYROOT_WALL_HANGING_SIGN = BLOCKS.register("skyroot_wall_hanging_sign", () -> new WallHangingSignBlock(AetherIIWoodTypes.SKYROOT, BlockBehaviour.Properties.of().mapColor(Blocks.OAK_LOG.defaultMapColor()).forceSolidOn().instrument(NoteBlockInstrument.BASS).noCollission().strength(1.0F).ignitedByLava()));
 
     public static final DeferredBlock<StandingSignBlock> GREATROOT_SIGN = register("greatroot_sign", () -> new StandingSignBlock(AetherIIWoodTypes.GREATROOT, Block.Properties.of().mapColor(MapColor.SAND).forceSolidOn().ignitedByLava().instrument(NoteBlockInstrument.BASS).noCollission().strength(1.0F).sound(SoundType.WOOD)));
-    public static final DeferredBlock<WallSignBlock> GREATROOT_WALL_SIGN = BLOCKS.register("greatroot_wall_sign", () -> new WallSignBlock(AetherIIWoodTypes.GREATROOT, Block.Properties.of().mapColor(MapColor.SAND).forceSolidOn().ignitedByLava().instrument(NoteBlockInstrument.BASS).noCollission().strength(1.0F).sound(SoundType.WOOD).lootFrom(GREATROOT_SIGN)));
+    public static final DeferredBlock<WallSignBlock> GREATROOT_WALL_SIGN = BLOCKS.register("greatroot_wall_sign", () -> new WallSignBlock(AetherIIWoodTypes.GREATROOT, Block.Properties.of().mapColor(MapColor.SAND).forceSolidOn().ignitedByLava().instrument(NoteBlockInstrument.BASS).noCollission().strength(1.0F).sound(SoundType.WOOD)));
     public static final DeferredBlock<CeilingHangingSignBlock> GREATROOT_HANGING_SIGN = register("greatroot_hanging_sign", () -> new CeilingHangingSignBlock(AetherIIWoodTypes.GREATROOT, BlockBehaviour.Properties.of().mapColor(Blocks.OAK_LOG.defaultMapColor()).forceSolidOn().instrument(NoteBlockInstrument.BASS).noCollission().strength(1.0F).ignitedByLava()));
     public static final DeferredBlock<WallHangingSignBlock> GREATROOT_WALL_HANGING_SIGN = BLOCKS.register("greatroot_wall_hanging_sign", () -> new WallHangingSignBlock(AetherIIWoodTypes.GREATROOT, BlockBehaviour.Properties.of().mapColor(Blocks.OAK_LOG.defaultMapColor()).forceSolidOn().instrument(NoteBlockInstrument.BASS).noCollission().strength(1.0F).ignitedByLava()));
 
     public static final DeferredBlock<StandingSignBlock> WISPROOT_SIGN = register("wisproot_sign", () -> new StandingSignBlock(AetherIIWoodTypes.WISPROOT, Block.Properties.of().mapColor(MapColor.SAND).forceSolidOn().ignitedByLava().instrument(NoteBlockInstrument.BASS).noCollission().strength(1.0F).sound(SoundType.WOOD)));
-    public static final DeferredBlock<WallSignBlock> WISPROOT_WALL_SIGN = BLOCKS.register("wisproot_wall_sign", () -> new WallSignBlock(AetherIIWoodTypes.WISPROOT, Block.Properties.of().mapColor(MapColor.SAND).forceSolidOn().ignitedByLava().instrument(NoteBlockInstrument.BASS).noCollission().strength(1.0F).sound(SoundType.WOOD).lootFrom(GREATROOT_SIGN)));
+    public static final DeferredBlock<WallSignBlock> WISPROOT_WALL_SIGN = BLOCKS.register("wisproot_wall_sign", () -> new WallSignBlock(AetherIIWoodTypes.WISPROOT, Block.Properties.of().mapColor(MapColor.SAND).forceSolidOn().ignitedByLava().instrument(NoteBlockInstrument.BASS).noCollission().strength(1.0F).sound(SoundType.WOOD)));
     public static final DeferredBlock<CeilingHangingSignBlock> WISPROOT_HANGING_SIGN = register("wisproot_hanging_sign", () -> new CeilingHangingSignBlock(AetherIIWoodTypes.WISPROOT, BlockBehaviour.Properties.of().mapColor(Blocks.OAK_LOG.defaultMapColor()).forceSolidOn().instrument(NoteBlockInstrument.BASS).noCollission().strength(1.0F).ignitedByLava()));
     public static final DeferredBlock<WallHangingSignBlock> WISPROOT_WALL_HANGING_SIGN = BLOCKS.register("wisproot_wall_hanging_sign", () -> new WallHangingSignBlock(AetherIIWoodTypes.WISPROOT, BlockBehaviour.Properties.of().mapColor(Blocks.OAK_LOG.defaultMapColor()).forceSolidOn().instrument(NoteBlockInstrument.BASS).noCollission().strength(1.0F).ignitedByLava()));
 
@@ -626,21 +626,21 @@ public class AetherIIBlocks extends AetherIIBlockBuilders {
             if (block == HOLYSTONE_ROCK) {
                 return new RockItem(HOLYSTONE_ROCK.get(), new Item.Properties());
             } else if (block == AMBROSIUM_TORCH) {
-                return new StandingAndWallBlockItem(AMBROSIUM_TORCH.get(), AMBROSIUM_WALL_TORCH.get(), new Item.Properties(), Direction.DOWN);
+                return new StandingAndWallBlockItem(AMBROSIUM_TORCH.get(), AMBROSIUM_WALL_TORCH.get(), Direction.DOWN, new Item.Properties());
             } else if (block == SKYROOT_CHEST) {
                 return new EntityBlockItem(block.get(), SkyrootChestBlockEntity::new, new Item.Properties());
             } else if (block == SKYROOT_BED) {
                 return new EntityBlockItem(block.get(), SkyrootBedBlockEntity::new, new Item.Properties().stacksTo(1));
             } else if (block == SKYROOT_SIGN) {
-                return new SignItem(new Item.Properties().stacksTo(16), SKYROOT_SIGN.get(), SKYROOT_WALL_SIGN.get());
+                return new SignItem(SKYROOT_SIGN.get(), SKYROOT_WALL_SIGN.get(), new Item.Properties().stacksTo(16));
             } else if (block == SKYROOT_HANGING_SIGN) {
                 return new HangingSignItem(SKYROOT_HANGING_SIGN.get(), SKYROOT_WALL_HANGING_SIGN.get(), new Item.Properties().stacksTo(16));
             } else if (block == GREATROOT_SIGN) {
-                return new SignItem(new Item.Properties().stacksTo(16), GREATROOT_SIGN.get(), GREATROOT_WALL_SIGN.get());
+                return new SignItem(GREATROOT_SIGN.get(), GREATROOT_WALL_SIGN.get(), new Item.Properties().stacksTo(16));
             } else if (block == GREATROOT_HANGING_SIGN) {
                 return new HangingSignItem(GREATROOT_HANGING_SIGN.get(), GREATROOT_WALL_HANGING_SIGN.get(), new Item.Properties().stacksTo(16));
             } else if (block == WISPROOT_SIGN) {
-                return new SignItem(new Item.Properties().stacksTo(16), WISPROOT_SIGN.get(), WISPROOT_WALL_SIGN.get());
+                return new SignItem(WISPROOT_SIGN.get(), WISPROOT_WALL_SIGN.get(), new Item.Properties().stacksTo(16));
             } else if (block == WISPROOT_HANGING_SIGN) {
                 return new HangingSignItem(WISPROOT_HANGING_SIGN.get(), WISPROOT_WALL_HANGING_SIGN.get(), new Item.Properties().stacksTo(16));
             } else if (block == OUTPOST_CAMPFIRE) {
