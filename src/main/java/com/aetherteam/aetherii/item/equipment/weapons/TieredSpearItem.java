@@ -15,7 +15,6 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.ToolMaterial;
-import net.minecraft.world.item.TieredItem;
 import net.minecraft.world.item.component.ItemAttributeModifiers;
 import net.minecraft.world.item.component.Tool;
 import net.minecraft.world.level.Level;
@@ -24,12 +23,12 @@ import net.neoforged.neoforge.common.ItemAbility;
 
 import java.util.List;
 
-public class TieredSpearItem extends TieredItem {
+public class TieredSpearItem extends Item {
     public static final ResourceLocation BASE_STAB_RADIUS_ID = ResourceLocation.fromNamespaceAndPath(AetherII.MODID, "base_stab_radius");
     public static final ResourceLocation BASE_STAB_DISTANCE_ID = ResourceLocation.fromNamespaceAndPath(AetherII.MODID, "base_stab_distance");
 
-    public TieredSpearItem(ToolMaterial tier, Item.Properties properties) {
-        super(tier, properties.component(DataComponents.TOOL, createToolProperties()));
+    public TieredSpearItem(Item.Properties properties) {
+        super(properties.component(DataComponents.TOOL, createToolProperties()));
     }
 
     public static Tool createToolProperties() {
@@ -42,7 +41,7 @@ public class TieredSpearItem extends TieredItem {
 
     public static ItemAttributeModifiers createAttributes(ToolMaterial p_330371_, float p_331976_, float p_332104_) {
         return ItemAttributeModifiers.builder()
-                .add(Attributes.ATTACK_DAMAGE, new AttributeModifier(BASE_ATTACK_DAMAGE_ID, p_331976_ + p_330371_.getAttackDamageBonus(), AttributeModifier.Operation.ADD_VALUE), EquipmentSlotGroup.MAINHAND)
+                .add(Attributes.ATTACK_DAMAGE, new AttributeModifier(BASE_ATTACK_DAMAGE_ID, p_331976_ + p_330371_.attackDamageBonus(), AttributeModifier.Operation.ADD_VALUE), EquipmentSlotGroup.MAINHAND)
                 .add(Attributes.ATTACK_SPEED, new AttributeModifier(BASE_ATTACK_SPEED_ID, p_332104_, AttributeModifier.Operation.ADD_VALUE), EquipmentSlotGroup.MAINHAND)
                 .add(AetherIIAttributes.STAB_RADIUS, new AttributeModifier(BASE_STAB_RADIUS_ID, 1.5, AttributeModifier.Operation.ADD_VALUE), EquipmentSlotGroup.MAINHAND)
                 .add(AetherIIAttributes.STAB_DISTANCE, new AttributeModifier(BASE_STAB_DISTANCE_ID, 5.0, AttributeModifier.Operation.ADD_VALUE), EquipmentSlotGroup.MAINHAND)

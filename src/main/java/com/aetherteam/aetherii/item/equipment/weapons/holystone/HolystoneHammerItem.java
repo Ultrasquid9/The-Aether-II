@@ -9,7 +9,7 @@ import net.minecraft.world.item.ItemStack;
 
 public class HolystoneHammerItem extends TieredHammerItem implements HolystoneWeapon {
     public HolystoneHammerItem() {
-        super(AetherIIItemTiers.HOLYSTONE, new Properties().attributes(AetherIIDamageStats.merge(TieredHammerItem.createAttributes(AetherIIItemTiers.HOLYSTONE, 3, -2.4F), AetherIIDamageStats.HOLYSTONE_HAMMER)));
+        super(new Properties().attributes(AetherIIDamageStats.merge(TieredHammerItem.createAttributes(AetherIIItemTiers.HOLYSTONE, 3, -2.4F), AetherIIDamageStats.HOLYSTONE_HAMMER)));
     }
 
     @Override

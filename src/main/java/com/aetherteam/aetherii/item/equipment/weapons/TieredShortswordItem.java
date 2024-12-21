@@ -17,18 +17,18 @@ import net.neoforged.neoforge.common.ItemAbility;
 public class TieredShortswordItem extends SwordItem {
     public static final ResourceLocation BASE_SWEEP_RANGE_ID = ResourceLocation.fromNamespaceAndPath(AetherII.MODID, "base_sweep_range");
 
-    public TieredShortswordItem(ToolMaterial tier, Item.Properties properties) {
-        super(tier, properties);
+    public TieredShortswordItem(Item.Properties properties) {
+        super(properties);
     }
 
-    public static ItemAttributeModifiers createAttributes(ToolMaterial pTier, int pAttackDamage, float pAttackSpeed) {
-        return createAttributes(pTier, (float) pAttackDamage, pAttackSpeed);
+    public static ItemAttributeModifiers createAttributes(ToolMaterial toolMaterial, int attackDamage, float attackSpeed) {
+        return createAttributes(toolMaterial, (float) attackDamage, attackSpeed);
     }
 
-    public static ItemAttributeModifiers createAttributes(ToolMaterial p_330371_, float p_331976_, float p_332104_) {
+    public static ItemAttributeModifiers createAttributes(ToolMaterial toolMaterial, float attackDamage, float attackSpeed) {
         return ItemAttributeModifiers.builder()
-                .add(Attributes.ATTACK_DAMAGE, new AttributeModifier(BASE_ATTACK_DAMAGE_ID, p_331976_ + p_330371_.getAttackDamageBonus(), AttributeModifier.Operation.ADD_VALUE), EquipmentSlotGroup.MAINHAND)
-                .add(Attributes.ATTACK_SPEED, new AttributeModifier(BASE_ATTACK_SPEED_ID, p_332104_, AttributeModifier.Operation.ADD_VALUE), EquipmentSlotGroup.MAINHAND)
+                .add(Attributes.ATTACK_DAMAGE, new AttributeModifier(BASE_ATTACK_DAMAGE_ID, attackDamage + toolMaterial.attackDamageBonus(), AttributeModifier.Operation.ADD_VALUE), EquipmentSlotGroup.MAINHAND)
+                .add(Attributes.ATTACK_SPEED, new AttributeModifier(BASE_ATTACK_SPEED_ID, attackSpeed, AttributeModifier.Operation.ADD_VALUE), EquipmentSlotGroup.MAINHAND)
                 .add(AetherIIAttributes.SWEEP_RANGE, new AttributeModifier(BASE_SWEEP_RANGE_ID, 2.0, AttributeModifier.Operation.ADD_VALUE), EquipmentSlotGroup.MAINHAND)
                 .build();
     }

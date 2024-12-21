@@ -6,6 +6,6 @@ import net.minecraft.world.item.ShovelItem;
 
 public class SkyrootShovelItem extends ShovelItem implements SkyrootTool {
     public SkyrootShovelItem() {
-        super(AetherIIItemTiers.SKYROOT, new Properties().attributes(ShovelItem.createAttributes(AetherIIItemTiers.SKYROOT, 1.5F, -3.0F)));
+        super(AetherIIItemTiers.SKYROOT, 1.5F, -3.0F, new Properties());
     }
 }

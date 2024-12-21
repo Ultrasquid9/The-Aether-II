@@ -8,7 +8,7 @@ import net.minecraft.world.item.context.UseOnContext;
 
 public class GravititeShovelItem extends ShovelItem implements GravititeTool {
     public GravititeShovelItem() {
-        super(AetherIIItemTiers.GRAVITITE,  new Properties().attributes(ShovelItem.createAttributes(AetherIIItemTiers.GRAVITITE, 1.5F, -3.0F)));
+        super(AetherIIItemTiers.GRAVITITE, 1.5F, -3.0F, new Properties());
     }
 
     @Override

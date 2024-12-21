@@ -1,51 +1,43 @@
 package com.aetherteam.aetherii.item.equipment.armor;
 
-import com.aetherteam.aetherii.AetherII;
 import com.aetherteam.aetherii.AetherIITags;
+import com.aetherteam.aetherii.data.resources.registries.AetherIIEquipmentAssets;
 import net.minecraft.Util;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvents;
-import net.minecraft.world.item.ArmorItem;
-import net.minecraft.world.item.ArmorMaterial;
-import net.minecraft.world.item.crafting.Ingredient;
-import net.neoforged.neoforge.registries.DeferredHolder;
-import net.neoforged.neoforge.registries.DeferredRegister;
+import net.minecraft.world.item.equipment.ArmorMaterial;
+import net.minecraft.world.item.equipment.ArmorType;
 
 import java.util.EnumMap;
-import java.util.List;
 
 public class AetherIIArmorMaterials { //todo sounds
-    public static final DeferredRegister<ArmorMaterial> ARMOR_MATERIALS = DeferredRegister.create(Registries.ARMOR_MATERIAL, AetherII.MODID);
-
-    public static final DeferredHolder<ArmorMaterial, ArmorMaterial> TAEGORE_HIDE = ARMOR_MATERIALS.register("taegore_hide", () -> new ArmorMaterial(Util.make(new EnumMap<>(ArmorItem.Type.class), map -> {
-        map.put(ArmorItem.Type.BOOTS, 1);
-        map.put(ArmorItem.Type.LEGGINGS, 2);
-        map.put(ArmorItem.Type.CHESTPLATE, 3);
-        map.put(ArmorItem.Type.HELMET, 1);
-    }), 15, SoundEvents.ARMOR_EQUIP_GENERIC, () -> Ingredient.of(AetherIITags.Items.TAEGORE_HIDE_REPAIRING), List.of(new ArmorMaterial.Layer(ResourceLocation.fromNamespaceAndPath(AetherII.MODID, "taegore_hide")), new ArmorMaterial.Layer(ResourceLocation.fromNamespaceAndPath(AetherII.MODID, "taegore_hide"), "_dyed", true)), 0.0F, 0.0F));
-    public static final DeferredHolder<ArmorMaterial, ArmorMaterial> BURRUKAI_PELT = ARMOR_MATERIALS.register("burrukai_pelt", () -> new ArmorMaterial(Util.make(new EnumMap<>(ArmorItem.Type.class), map -> {
-        map.put(ArmorItem.Type.BOOTS, 1);
-        map.put(ArmorItem.Type.LEGGINGS, 4);
-        map.put(ArmorItem.Type.CHESTPLATE, 5);
-        map.put(ArmorItem.Type.HELMET, 2);
-    }), 15, SoundEvents.ARMOR_EQUIP_GENERIC, () -> Ingredient.of(AetherIITags.Items.BURRUKAI_PELT_REPAIRING), List.of(new ArmorMaterial.Layer(ResourceLocation.fromNamespaceAndPath(AetherII.MODID, "burrukai_pelt")), new ArmorMaterial.Layer(ResourceLocation.fromNamespaceAndPath(AetherII.MODID, "burrukai_pelt"), "_dyed", true)), 0.0F, 0.0F));
-    public static final DeferredHolder<ArmorMaterial, ArmorMaterial> ZANITE = ARMOR_MATERIALS.register("zanite", () -> new ArmorMaterial(Util.make(new EnumMap<>(ArmorItem.Type.class), map -> {
-        map.put(ArmorItem.Type.BOOTS, 2);
-        map.put(ArmorItem.Type.LEGGINGS, 5);
-        map.put(ArmorItem.Type.CHESTPLATE, 6);
-        map.put(ArmorItem.Type.HELMET, 2);
-    }), 9, SoundEvents.ARMOR_EQUIP_GENERIC, () -> Ingredient.of(AetherIITags.Items.ZANITE_REPAIRING), List.of(new ArmorMaterial.Layer(ResourceLocation.fromNamespaceAndPath(AetherII.MODID, "zanite"))), 0.0F, 0.0F));
-    public static final DeferredHolder<ArmorMaterial, ArmorMaterial> ARKENIUM = ARMOR_MATERIALS.register("arkenium", () -> new ArmorMaterial(Util.make(new EnumMap<>(ArmorItem.Type.class), map -> {
-        map.put(ArmorItem.Type.BOOTS, 2);
-        map.put(ArmorItem.Type.LEGGINGS, 5);
-        map.put(ArmorItem.Type.CHESTPLATE, 6);
-        map.put(ArmorItem.Type.HELMET, 2);
-    }), 10, SoundEvents.ARMOR_EQUIP_GENERIC, () -> Ingredient.of(AetherIITags.Items.ARKENIUM_REPAIRING), List.of(new ArmorMaterial.Layer(ResourceLocation.fromNamespaceAndPath(AetherII.MODID, "arkenium"))), 1.0F, 0.0F));
-    public static final DeferredHolder<ArmorMaterial, ArmorMaterial> GRAVITITE = ARMOR_MATERIALS.register("gravitite", () -> new ArmorMaterial(Util.make(new EnumMap<>(ArmorItem.Type.class), map -> {
-        map.put(ArmorItem.Type.BOOTS, 3);
-        map.put(ArmorItem.Type.LEGGINGS, 6);
-        map.put(ArmorItem.Type.CHESTPLATE, 8);
-        map.put(ArmorItem.Type.HELMET, 3);
-    }), 10, SoundEvents.ARMOR_EQUIP_GENERIC, () -> Ingredient.of(AetherIITags.Items.GRAVITITE_REPAIRING), List.of(new ArmorMaterial.Layer(ResourceLocation.fromNamespaceAndPath(AetherII.MODID, "gravitite"))), 2.0F, 0.0F));
+    public static final ArmorMaterial TAEGORE_HIDE = new ArmorMaterial(5, Util.make(new EnumMap<>(ArmorType.class), map -> {
+        map.put(ArmorType.BOOTS, 1);
+        map.put(ArmorType.LEGGINGS, 2);
+        map.put(ArmorType.CHESTPLATE, 3);
+        map.put(ArmorType.HELMET, 1);
+    }), 15, SoundEvents.ARMOR_EQUIP_GENERIC, 0.0F, 0.0F, AetherIITags.Items.TAEGORE_HIDE_REPAIRING, AetherIIEquipmentAssets.TAEGORE_HIDE);
+    public static final ArmorMaterial BURRUKAI_PELT = new ArmorMaterial(5, Util.make(new EnumMap<>(ArmorType.class), map -> {
+        map.put(ArmorType.BOOTS, 1);
+        map.put(ArmorType.LEGGINGS, 4);
+        map.put(ArmorType.CHESTPLATE, 5);
+        map.put(ArmorType.HELMET, 2);
+    }), 15, SoundEvents.ARMOR_EQUIP_GENERIC, 0.0F, 0.0F, AetherIITags.Items.BURRUKAI_PELT_REPAIRING, AetherIIEquipmentAssets.BURRUKAI_PELT);
+    public static final ArmorMaterial ZANITE = new ArmorMaterial(15, Util.make(new EnumMap<>(ArmorType.class), map -> {
+        map.put(ArmorType.BOOTS, 2);
+        map.put(ArmorType.LEGGINGS, 5);
+        map.put(ArmorType.CHESTPLATE, 6);
+        map.put(ArmorType.HELMET, 2);
+    }), 9, SoundEvents.ARMOR_EQUIP_GENERIC, 0.0F, 0.0F, AetherIITags.Items.ZANITE_REPAIRING, AetherIIEquipmentAssets.ZANITE);
+    public static final ArmorMaterial ARKENIUM = new ArmorMaterial(15, Util.make(new EnumMap<>(ArmorType.class), map -> {
+        map.put(ArmorType.BOOTS, 2);
+        map.put(ArmorType.LEGGINGS, 5);
+        map.put(ArmorType.CHESTPLATE, 6);
+        map.put(ArmorType.HELMET, 2);
+    }), 10, SoundEvents.ARMOR_EQUIP_GENERIC, 1.0F, 0.0F, AetherIITags.Items.ARKENIUM_REPAIRING, AetherIIEquipmentAssets.ARKENIUM);
+    public static final ArmorMaterial GRAVITITE = new ArmorMaterial(33, Util.make(new EnumMap<>(ArmorType.class), map -> {
+        map.put(ArmorType.BOOTS, 3);
+        map.put(ArmorType.LEGGINGS, 6);
+        map.put(ArmorType.CHESTPLATE, 8);
+        map.put(ArmorType.HELMET, 3);
+    }), 10, SoundEvents.ARMOR_EQUIP_GENERIC, 2.0F, 0.0F, AetherIITags.Items.GRAVITITE_REPAIRING, AetherIIEquipmentAssets.GRAVITITE);
 }

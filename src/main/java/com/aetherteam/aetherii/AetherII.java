@@ -87,7 +87,6 @@ public class AetherII {
                 AetherIIAttributes.ATTRIBUTES,
                 AetherIIMemoryModuleTypes.MEMORY_MODULE_TYPES,
                 AetherIIEffects.EFFECTS,
-                AetherIIArmorMaterials.ARMOR_MATERIALS,
                 AetherIIDataSerializers.ENTITY_DATA_SERIALIZERS,
                 AetherIIDataComponents.DATA_COMPONENT_TYPES,
                 AetherIIDataAttachments.ATTACHMENTS,

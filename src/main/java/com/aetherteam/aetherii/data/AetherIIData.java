@@ -31,6 +31,7 @@ public class AetherIIData {
         generator.addProvider(true, new AetherIIParticleData(packOutput, fileHelper));
         generator.addProvider(true, new AetherIILanguageData(packOutput));
         generator.addProvider(true, new AetherIISoundData(packOutput, fileHelper));
+        generator.addProvider(true, new AetherIIEquipmentAssetData(packOutput));
 
         // Server Data
         DatapackBuiltinEntriesProvider registrySets = new AetherIIRegistrySets(packOutput, lookupProvider);

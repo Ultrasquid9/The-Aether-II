@@ -6,6 +6,6 @@ import net.minecraft.world.item.HoeItem;
 
 public class SkyrootTrowelItem extends HoeItem implements SkyrootTool {
     public SkyrootTrowelItem() {
-        super(AetherIIItemTiers.SKYROOT, new Properties().attributes(HoeItem.createAttributes(AetherIIItemTiers.SKYROOT, 0.0F, -3.0F)));
+        super(AetherIIItemTiers.SKYROOT, 0.0F, -3.0F, new Properties());
     }
 }

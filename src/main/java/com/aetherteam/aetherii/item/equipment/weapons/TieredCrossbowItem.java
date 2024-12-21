@@ -48,7 +48,7 @@ public class TieredCrossbowItem extends CrossbowItem {
     }
 
     public TieredCrossbowItem(ToolMaterial tier, int chargeTime, Properties properties) {
-        super(properties.durability(tier.getUses()));
+        super(properties.durability(tier.durability()));
         this.tier = tier;
         this.chargeTime = chargeTime;
     }
@@ -74,7 +74,7 @@ public class TieredCrossbowItem extends CrossbowItem {
         ChargedProjectiles chargedProjectiles = stack.get(DataComponents.CHARGED_PROJECTILES);
         if (chargedProjectiles != null && !chargedProjectiles.isEmpty()) {
             this.performShooting(level, player, hand, stack, this.getCrossbowShootingPower(chargedProjectiles), 1.0F, null);
-            return InteractionResult.consume(stack);
+            return InteractionResult.CONSUME;
         } else if (!player.getProjectile(stack).isEmpty()) {
             this.startSoundPlayed = false;
             this.midLoadSoundPlayed = false;
@@ -84,9 +84,9 @@ public class TieredCrossbowItem extends CrossbowItem {
                 stack.set(AetherIIDataComponents.CROSSBOW_SPECIAL, false);
             }
             player.startUsingItem(hand);
-            return InteractionResult.consume(stack);
+            return InteractionResult.CONSUME;
         } else {
-            return InteractionResult.fail(stack);
+            return InteractionResult.FAIL;
         }
     }
 
@@ -113,7 +113,7 @@ public class TieredCrossbowItem extends CrossbowItem {
     }
 
     @Override
-    public void releaseUsing(ItemStack stack, Level level, LivingEntity entityLiving, int timeLeft) {
+    public boolean releaseUsing(ItemStack stack, Level level, LivingEntity entityLiving, int timeLeft) {
         int duration = this.getUseDuration(stack, entityLiving) - timeLeft;
         float power = this.getPowerForTime(duration, stack, entityLiving);
         if (power >= 1.0F && !isCharged(stack) && this.tryLoadProjectiles(entityLiving, stack)) {
@@ -127,6 +127,9 @@ public class TieredCrossbowItem extends CrossbowItem {
                 entityLiving.getSoundSource(),
                 1.0F,
                 1.0F / (level.getRandom().nextFloat() * 0.5F + 1.0F) + 0.2F));
+            return true;
+        } else {
+            return false;
         }
     }
 
@@ -299,19 +302,5 @@ public class TieredCrossbowItem extends CrossbowItem {
             ItemStack projectile = chargedProjectiles.getItems().get(0);
             tooltipComponents.add(Component.translatable("item.minecraft.crossbow.projectile").append(CommonComponents.SPACE).append(projectile.getDisplayName()));
         }
-    }
-
-    public ToolMaterial getTier() {
-        return this.tier;
-    }
-
-    @Override
-    public int getEnchantmentValue() {
-        return this.tier.getEnchantmentValue();
-    }
-
-    @Override
-    public boolean isValidRepairItem(ItemStack stack, ItemStack repairItem) {
-        return this.tier.getRepairIngredient().test(repairItem);
     }
 }

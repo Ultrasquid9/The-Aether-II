@@ -20,9 +20,11 @@ import io.wispforest.accessories.api.AccessoriesCapability;
 import io.wispforest.accessories.api.slot.SlotEntryReference;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.Holder;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.network.chat.CommonComponents;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.contents.TranslatableContents;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.entity.EquipmentSlotGroup;
@@ -32,10 +34,12 @@ import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ArmorItem;
-import net.minecraft.world.item.ArmorMaterial;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.component.ItemAttributeModifiers;
+import net.minecraft.world.item.equipment.ArmorMaterial;
+import net.minecraft.world.item.equipment.EquipmentAsset;
+import net.minecraft.world.item.equipment.Equippable;
 import net.neoforged.fml.ModList;
 import org.apache.commons.lang3.math.NumberUtils;
 
@@ -64,23 +68,24 @@ public final class EquipmentUtil {
         return !(attacker instanceof Player player) || (combatifyLoaded ? player.getAttackStrengthScale(1.0F) >= 1.95F : player.getAttackStrengthScale(1.0F) >= 1.0F);
     }
 
-    public static int getArmorCount(LivingEntity entity, Holder<ArmorMaterial> material) {
-        Map<Holder<ArmorMaterial>, Integer> armorTypeCount = new HashMap<>();
+    public static int getArmorCount(LivingEntity entity, ArmorMaterial material) {
+        Map<ResourceKey<EquipmentAsset>, Integer> armorTypeCount = new HashMap<>();
         for (ItemStack itemStack : entity.getArmorSlots()) {
-            if (itemStack.getItem() instanceof ArmorItem armorItem) {
-                Holder<ArmorMaterial> materialHolder = armorItem.getMaterial();
-                if (armorTypeCount.containsKey(materialHolder)) {
-                    armorTypeCount.put(materialHolder, armorTypeCount.get(materialHolder) + 1);
+            Equippable equippable = itemStack.get(DataComponents.EQUIPPABLE);
+            if (equippable != null && equippable.assetId().isPresent()) {
+                ResourceKey<EquipmentAsset> materialAsset = equippable.assetId().get();
+                if (armorTypeCount.containsKey(materialAsset)) {
+                    armorTypeCount.put(materialAsset, armorTypeCount.get(materialAsset) + 1);
                 } else {
-                    armorTypeCount.put(materialHolder, 1);
+                    armorTypeCount.put(materialAsset, 1);
                 }
             }
         }
         AccessoriesCapability accessories = AccessoriesCapability.get(entity);
-        if (accessories != null) {
+        if (accessories != null) { //todo
             SlotEntryReference slotEntryReference = accessories.getFirstEquipped((itemStack) -> itemStack.getItem() instanceof GlovesItem);
             if (slotEntryReference != null && slotEntryReference.stack().getItem() instanceof GlovesItem glovesItem) {
-                Holder<ArmorMaterial> materialHolder = glovesItem.getMaterial();
+                ArmorMaterial materialHolder = glovesItem.getMaterial();
                 if (armorTypeCount.containsKey(materialHolder)) {
                     armorTypeCount.put(materialHolder, armorTypeCount.get(materialHolder) + 1);
                 } else {
@@ -91,7 +96,7 @@ public final class EquipmentUtil {
         return armorTypeCount.computeIfAbsent(material, i -> 0);
     }
 
-    public static boolean hasArmorAbility(LivingEntity entity, Holder<ArmorMaterial> material) {
+    public static boolean hasArmorAbility(LivingEntity entity, ArmorMaterial material) {
         return getArmorCount(entity, material) >= 3;
     }
 

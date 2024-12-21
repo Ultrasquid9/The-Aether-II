@@ -6,6 +6,6 @@ import net.minecraft.world.item.ShovelItem;
 
 public class HolystoneShovelItem extends ShovelItem implements HolystoneTool {
     public HolystoneShovelItem() {
-        super(AetherIIItemTiers.HOLYSTONE,  new Properties().attributes(ShovelItem.createAttributes(AetherIIItemTiers.HOLYSTONE, 1.5F, -3.0F)));
+        super(AetherIIItemTiers.HOLYSTONE, 1.5F, -3.0F, new Properties());
     }
 }
