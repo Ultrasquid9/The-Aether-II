@@ -5,7 +5,6 @@ import com.aetherteam.aetherii.entity.AetherIIAttributes;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EquipmentSlotGroup;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
-import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.ShieldItem;
 import net.minecraft.world.item.ToolMaterial;
 import net.minecraft.world.item.component.ItemAttributeModifiers;
@@ -13,11 +12,8 @@ import net.minecraft.world.item.component.ItemAttributeModifiers;
 public class TieredShieldItem extends ShieldItem {
     public static final ResourceLocation BASE_SHIELD_STAMINA_REDUCTION_ID = ResourceLocation.fromNamespaceAndPath(AetherII.MODID, "base_shield_stamina_reduction");
 
-    private final ToolMaterial tier;
-
     public TieredShieldItem(ToolMaterial tier, Properties properties) {
-        super(properties.durability(tier.getUses()));
-        this.tier = tier;
+        super(properties.durability(tier.durability()).repairable(tier.repairItems()).enchantable(tier.enchantmentValue()));
     }
 
     public static ItemAttributeModifiers createAttributes(int staminaReductionRate) {
@@ -28,19 +24,5 @@ public class TieredShieldItem extends ShieldItem {
         return ItemAttributeModifiers.builder()
                 .add(AetherIIAttributes.SHIELD_STAMINA_REDUCTION, new AttributeModifier(BASE_SHIELD_STAMINA_REDUCTION_ID, staminaReductionRate, AttributeModifier.Operation.ADD_VALUE), EquipmentSlotGroup.HAND)
                 .build();
-    }
-
-    public ToolMaterial getTier() {
-        return this.tier;
-    }
-
-    @Override
-    public int getEnchantmentValue() {
-        return this.tier.getEnchantmentValue();
-    }
-
-    @Override
-    public boolean isValidRepairItem(ItemStack stack, ItemStack repairItem) {
-        return this.tier.getRepairIngredient().test(repairItem);
     }
 }

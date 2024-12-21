@@ -107,7 +107,7 @@ public class SkyrootBucketItem extends BucketItem {
     public static ItemStack swapBucketType(ItemStack filledStack) {
         BucketReplacement replacement = BuiltInRegistries.ITEM.wrapAsHolder(filledStack.getItem()).getData(AetherIIDataMaps.BUCKET_REPLACEMENT);
         if (replacement != null) {
-            Item item = BuiltInRegistries.ITEM.get(replacement.bucket());
+            Item item = BuiltInRegistries.ITEM.getValue(replacement.bucket());
             if (item != null) {
                 return filledStack.transmuteCopy(item);
             }

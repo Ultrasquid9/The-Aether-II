@@ -21,12 +21,13 @@ public class ArcticSnowballItem extends SnowballItem implements ThrowableItem {
     public InteractionResult use(Level level, Player player, InteractionHand hand) {
         ItemStack stack = player.getItemInHand(hand);
         player.startUsingItem(hand);
-        return InteractionResult.consume(stack);
+        return InteractionResult.CONSUME;
     }
 
     @Override
-    public void releaseUsing(ItemStack stack, Level level, LivingEntity livingEntity, int timeLeft) {
+    public boolean releaseUsing(ItemStack stack, Level level, LivingEntity livingEntity, int timeLeft) {
         this.throwItem(stack, level, livingEntity, timeLeft, SoundEvents.SNOWBALL_THROW, new ArcticSnowball(level, livingEntity));
+        return super.releaseUsing(stack, level, livingEntity, timeLeft); //todo
     }
 
     @Override

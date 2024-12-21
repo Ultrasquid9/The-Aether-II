@@ -50,6 +50,6 @@ public class SkyrootSolidBucketItem extends SolidBucketItem {
      * @param blockToItemMap The {@link Map} pairing {@link Block}s to {@link Item}s.
      * @param item           The {@link Item} to register.
      */
-    @Override
-    public void removeFromBlockToItemMap(Map<Block, Item> blockToItemMap, Item item) { }
+//    @Override //todo ?
+//    public void removeFromBlockToItemMap(Map<Block, Item> blockToItemMap, Item item) { }
 }

@@ -35,11 +35,6 @@ public class SolidCanisterItem extends BlockItem implements DispensibleContainer
     }
 
     @Override
-    public String getDescriptionId() {
-        return this.getOrCreateDescriptionId();
-    }
-
-    @Override
     protected SoundEvent getPlaceSound(BlockState state) {
         return this.placeSound;
     }
