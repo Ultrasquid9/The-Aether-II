@@ -22,7 +22,7 @@ import net.minecraft.world.level.Level;
 
 import java.util.Optional;
 
-public class AltarMenu extends RecipeBookMenu<SingleRecipeInput, AltarEnchantingRecipe> {
+public class AltarMenu extends RecipeBookMenu {
     private final Container container;
     private final ContainerData data;
     protected final Level level;
