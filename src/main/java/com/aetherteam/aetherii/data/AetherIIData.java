@@ -19,15 +19,15 @@ import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
 
 public class AetherIIData {
-    public static void dataSetup(GatherDataEvent.Client event) {
+    public static void dataSetup(GatherDataEvent.Client event) { //todo split data events by side
         DataGenerator generator = event.getGenerator();
         ExistingFileHelper fileHelper = event.getExistingFileHelper();
         CompletableFuture<HolderLookup.Provider> lookupProvider = event.getLookupProvider();
         PackOutput packOutput = generator.getPackOutput();
 
         // Client Data
-        generator.addProvider(true, new AetherIIBlockStateData(packOutput, fileHelper));
-        generator.addProvider(true, new AetherIIItemModelData(packOutput, fileHelper));
+        generator.addProvider(true, new AetherIIBlockModelData(packOutput));
+        generator.addProvider(true, new AetherIIItemModelData(packOutput));
         generator.addProvider(true, new AetherIIParticleData(packOutput, fileHelper));
         generator.addProvider(true, new AetherIILanguageData(packOutput));
         generator.addProvider(true, new AetherIISoundData(packOutput, fileHelper));
