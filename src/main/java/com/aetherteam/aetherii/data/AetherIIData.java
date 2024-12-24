@@ -37,7 +37,7 @@ public class AetherIIData {
         DatapackBuiltinEntriesProvider registrySets = new AetherIIRegistrySets(packOutput, lookupProvider);
         CompletableFuture<HolderLookup.Provider> registryProvider = registrySets.getRegistryProvider();
         generator.addProvider(true, registrySets);
-        generator.addProvider(true, new AetherIIRecipeData(packOutput, lookupProvider));
+        generator.addProvider(true, new AetherIIRecipeData.Runner(packOutput, lookupProvider));
         generator.addProvider(true, AetherIILootTableData.create(packOutput, lookupProvider));
         generator.addProvider(true, new AetherIILootModifierData(packOutput, lookupProvider));
         generator.addProvider(true, new AetherIIAdvancementData(packOutput, lookupProvider, fileHelper));
