@@ -4,15 +4,17 @@ import com.aetherteam.aetherii.AetherII;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.crafting.RecipeBookCategories;
 import net.minecraft.world.item.crafting.RecipeBookCategory;
+import net.minecraft.world.item.crafting.display.RecipeDisplay;
+import net.neoforged.neoforge.registries.DeferredHolder;
+import net.neoforged.neoforge.registries.DeferredRegister;
 
 public class AetherIIRecipeBookCategories {
-    public static final RecipeBookCategory ALTAR_FOOD = register("altar_food");
-    public static final RecipeBookCategory ALTAR_BLOCKS = register("altar_blocks");
-    public static final RecipeBookCategory ALTAR_REPAIRING = register("altar_blocks");
-    public static final RecipeBookCategory ALTAR_MISC = register("altar_misc");
+    public static final DeferredRegister<RecipeBookCategory> RECIPE_BOOK_CATEGORIES = DeferredRegister.create(BuiltInRegistries.RECIPE_BOOK_CATEGORY, AetherII.MODID);
 
-    private static RecipeBookCategory register(String id) {
-        return Registry.register(BuiltInRegistries.RECIPE_BOOK_CATEGORY, ResourceLocation.fromNamespaceAndPath(AetherII.MODID, id), new RecipeBookCategory());
-    }
+    public static final DeferredHolder<RecipeBookCategory, RecipeBookCategory> ALTAR_FOOD = RECIPE_BOOK_CATEGORIES.register("altar_food", RecipeBookCategory::new);
+    public static final DeferredHolder<RecipeBookCategory, RecipeBookCategory> ALTAR_BLOCKS = RECIPE_BOOK_CATEGORIES.register("altar_blocks", RecipeBookCategory::new);
+    public static final DeferredHolder<RecipeBookCategory, RecipeBookCategory> ALTAR_REPAIRING = RECIPE_BOOK_CATEGORIES.register("altar_blocks", RecipeBookCategory::new);
+    public static final DeferredHolder<RecipeBookCategory, RecipeBookCategory> ALTAR_MISC = RECIPE_BOOK_CATEGORIES.register("altar_misc", RecipeBookCategory::new);
 }

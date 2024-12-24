@@ -58,7 +58,7 @@ public class ArtisansBenchMenu extends AbstractContainerMenu {
                 ArtisansBenchMenu.this.resultContainer.awardUsedRecipes(player, this.getRelevantItems());
                 ItemStack itemStack = ArtisansBenchMenu.this.inputSlot.remove(1);
                 if (!itemStack.isEmpty()) {
-                    ArtisansBenchMenu.this.setupResultSlot();
+                    ArtisansBenchMenu.this.setupResultSlot(ArtisansBenchMenu.this.selectedRecipeIndex.get());
                 }
 
                 access.execute((level, pos) -> {
@@ -112,12 +112,15 @@ public class ArtisansBenchMenu extends AbstractContainerMenu {
 
     @Override
     public boolean clickMenuButton(Player player, int id) {
-        if (this.isValidRecipeIndex(id)) {
-            this.selectedRecipeIndex.set(id);
-            this.setupResultSlot();
+        if (this.selectedRecipeIndex.get() == id) {
+            return false;
+        } else {
+            if (this.isValidRecipeIndex(id)) {
+                this.selectedRecipeIndex.set(id);
+                this.setupResultSlot(id);
+            }
+            return true;
         }
-
-        return true;
     }
 
     private boolean isValidRecipeIndex(int recipeIndex) {

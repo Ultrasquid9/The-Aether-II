@@ -98,6 +98,8 @@ public class AetherII {
                 AetherIISoundEvents.SOUNDS,
                 AetherIIRecipeTypes.RECIPE_TYPES,
                 AetherIIRecipeSerializers.RECIPE_SERIALIZERS,
+                AetherIIRecipeDisplays.RECIPE_DISPLAYS,
+                AetherIIRecipeBookCategories.RECIPE_BOOK_CATEGORIES,
                 AetherIIGameEvents.GAME_EVENTS,
                 AetherIIPoi.POI,
                 AetherIIFeatures.FEATURES,
@@ -132,8 +134,6 @@ public class AetherII {
     public void commonSetup(FMLCommonSetupEvent event) {
         Reflection.initialize(AetherIIRecipeBookTypes.class);
         Reflection.initialize(AetherIIMobCategory.class);
-        Reflection.initialize(AetherIIRecipeBookCategories.class);
-        Reflection.initialize(AetherIIRecipeDisplays.class);
 
         event.enqueueWork(() -> {
             AetherIIBlocks.registerPots();

@@ -6,6 +6,7 @@ import com.aetherteam.aetherii.inventory.menu.slot.AltarFuelSlot;
 import com.aetherteam.aetherii.inventory.menu.slot.AltarResultSlot;
 import com.aetherteam.aetherii.recipe.recipes.AetherIIRecipeTypes;
 import com.aetherteam.aetherii.recipe.recipes.item.AltarEnchantingRecipe;
+import com.aetherteam.aetherii.recipe.set.AetherIIRecipePropertySets;
 import net.minecraft.core.Direction;
 import net.minecraft.recipebook.ServerPlaceRecipe;
 import net.minecraft.resources.ResourceKey;
@@ -33,11 +34,11 @@ public class AltarMenu extends RecipeBookMenu {
     private final RecipePropertySet acceptedInputs;
     private final RecipeBookType recipeBookType;
 
-    public AltarMenu(ResourceKey<RecipePropertySet> propertySet, int containerId, Inventory playerInventory) {
-        this(propertySet, containerId, playerInventory, new SimpleContainer(10), new SimpleContainerData(2));
+    public AltarMenu(int containerId, Inventory playerInventory) {
+        this(containerId, playerInventory, new SimpleContainer(10), new SimpleContainerData(2));
     }
 
-    public AltarMenu(ResourceKey<RecipePropertySet> propertySet, int containerId, Inventory playerInventory, Container container, ContainerData data) {
+    public AltarMenu(int containerId, Inventory playerInventory, Container container, ContainerData data) {
         super(AetherIIMenuTypes.ALTAR.get(), containerId);
         this.recipeType = AetherIIRecipeTypes.ALTAR_ENCHANTING.get();
         this.recipeBookType = AetherIIRecipeBookTypes.ALTAR;
@@ -46,7 +47,7 @@ public class AltarMenu extends RecipeBookMenu {
         this.container = container;
         this.data = data;
         this.level = playerInventory.player.level();
-        this.acceptedInputs = this.level.recipeAccess().propertySet(propertySet);
+        this.acceptedInputs = this.level.recipeAccess().propertySet(AetherIIRecipePropertySets.ALTAR_INPUT);
 
         // Altar
         this.addSlot(new Slot(container, 0, 51, 58)); // Input
