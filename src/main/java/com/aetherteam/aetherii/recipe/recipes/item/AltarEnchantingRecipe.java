@@ -70,10 +70,10 @@ public class AltarEnchantingRecipe extends SingleItemRecipe {
     @Override
     public RecipeBookCategory recipeBookCategory() {
         return switch (this.category()) {
-            case BLOCKS -> AetherIIRecipeBookCategories.ALTAR_BLOCKS;
-            case FOOD -> AetherIIRecipeBookCategories.ALTAR_FOOD;
-            case REPAIRING -> AetherIIRecipeBookCategories.ALTAR_REPAIRING;
-            case MISC -> AetherIIRecipeBookCategories.ALTAR_MISC;
+            case BLOCKS -> AetherIIRecipeBookCategories.ALTAR_BLOCKS.get();
+            case FOOD -> AetherIIRecipeBookCategories.ALTAR_FOOD.get();
+            case REPAIRING -> AetherIIRecipeBookCategories.ALTAR_REPAIRING.get();
+            case MISC -> AetherIIRecipeBookCategories.ALTAR_MISC.get();
             default -> throw new MatchException(null, null);
         };
     }
