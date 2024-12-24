@@ -1,6 +1,6 @@
 package com.aetherteam.aetherii.recipe.builder;
 
-import com.aetherteam.aetherii.recipe.builder.book.AltarBookCategory;
+import com.aetherteam.aetherii.recipe.book.AltarBookCategory;
 import com.aetherteam.aetherii.recipe.recipes.item.AltarEnchantingRecipe;
 import net.minecraft.advancements.Advancement;
 import net.minecraft.advancements.AdvancementRequirements;

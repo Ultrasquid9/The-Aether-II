@@ -33,6 +33,8 @@ import com.aetherteam.aetherii.network.packet.DamageSystemSyncPacket;
 import com.aetherteam.aetherii.network.packet.OutpostTrackerSyncPacket;
 import com.aetherteam.aetherii.network.packet.clientbound.*;
 import com.aetherteam.aetherii.network.packet.serverbound.*;
+import com.aetherteam.aetherii.recipe.book.AetherIIRecipeBookCategories;
+import com.aetherteam.aetherii.recipe.display.AetherIIRecipeDisplays;
 import com.aetherteam.aetherii.recipe.recipes.AetherIIRecipeTypes;
 import com.aetherteam.aetherii.recipe.serializer.AetherIIRecipeSerializers;
 import com.aetherteam.aetherii.world.AetherIIPoi;
@@ -130,6 +132,8 @@ public class AetherII {
     public void commonSetup(FMLCommonSetupEvent event) {
         Reflection.initialize(AetherIIRecipeBookTypes.class);
         Reflection.initialize(AetherIIMobCategory.class);
+        Reflection.initialize(AetherIIRecipeBookCategories.class);
+        Reflection.initialize(AetherIIRecipeDisplays.class);
 
         event.enqueueWork(() -> {
             AetherIIBlocks.registerPots();
