@@ -15,15 +15,6 @@ package com.aetherteam.aetherii.data.generators;
 //    @Override
 //    protected void registerModels() {
 //        // Tools
-//        this.handheldItem(AetherIIItems.SKYROOT_PICKAXE.get(), "tools/");
-//        this.handheldItem(AetherIIItems.SKYROOT_AXE.get(), "tools/");
-//        this.handheldItem(AetherIIItems.SKYROOT_SHOVEL.get(), "tools/");
-//        this.handheldItem(AetherIIItems.SKYROOT_TROWEL.get(), "tools/");
-//
-//        this.handheldItem(AetherIIItems.HOLYSTONE_PICKAXE.get(), "tools/");
-//        this.handheldItem(AetherIIItems.HOLYSTONE_AXE.get(), "tools/");
-//        this.handheldItem(AetherIIItems.HOLYSTONE_SHOVEL.get(), "tools/");
-//        this.handheldItem(AetherIIItems.HOLYSTONE_TROWEL.get(), "tools/");
 //
 //        this.reinforcedItem(AetherIIItems.ZANITE_PICKAXE.get(), "tools/");
 //        this.reinforcedItem(AetherIIItems.ZANITE_AXE.get(), "tools/");

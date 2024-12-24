@@ -13,27 +13,10 @@ package com.aetherteam.aetherii.data.generators;
 //
 //    @Override
 //    public void registerStatesAndModels() {
-//        // Portal
-//        this.portal(AetherIIBlocks.AETHER_PORTAL.get());
-//
-//        // Aether Dirt
-//        this.grass(AetherIIBlocks.AETHER_GRASS_BLOCK.get(), AetherIIBlocks.AETHER_DIRT.get());
-//        this.enchantedGrass(AetherIIBlocks.ENCHANTED_AETHER_GRASS_BLOCK.get(), AetherIIBlocks.AETHER_GRASS_BLOCK.get(), AetherIIBlocks.AETHER_DIRT.get());
-//        this.dirtPath(AetherIIBlocks.AETHER_DIRT_PATH.get(), AetherIIBlocks.AETHER_DIRT.get());
-//        this.block(AetherIIBlocks.AETHER_DIRT.get(), "natural/");
-//        this.block(AetherIIBlocks.COARSE_AETHER_DIRT.get(), "natural/");
-//        this.farmland(AetherIIBlocks.AETHER_FARMLAND.get(), AetherIIBlocks.AETHER_DIRT.get());
-//        this.block(AetherIIBlocks.SHIMMERING_SILT.get(), "natural/");
 //
 //        // Underground
-//        this.block(AetherIIBlocks.HOLYSTONE.get(), "natural/");
-//        this.block(AetherIIBlocks.UNSTABLE_HOLYSTONE.get(), "natural/");
-//        this.block(AetherIIBlocks.UNDERSHALE.get(), "natural/");
-//        this.block(AetherIIBlocks.UNSTABLE_UNDERSHALE.get(), "natural/");
-//        this.block(AetherIIBlocks.AGIOSITE.get(), "natural/");
 //        this.translucentBlock(AetherIIBlocks.CRUDE_SCATTERGLASS.get(), "natural/");
 //        this.roots(AetherIIBlocks.SKY_ROOTS.get());
-//        this.block(AetherIIBlocks.ICHORITE.get(), "natural/");
 //        this.gas(AetherIIBlocks.GAS.get(), "natural/");
 //        this.pointedStone(AetherIIBlocks.POINTED_HOLYSTONE.get());
 //        this.pointedStone(AetherIIBlocks.POINTED_ICHORITE.get());
