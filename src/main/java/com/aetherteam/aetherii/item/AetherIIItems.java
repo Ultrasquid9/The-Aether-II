@@ -9,10 +9,7 @@ import com.aetherteam.aetherii.entity.AetherIIEntityTypes;
 import com.aetherteam.aetherii.entity.passive.Moa;
 import com.aetherteam.aetherii.item.components.AetherIIDataComponents;
 import com.aetherteam.aetherii.item.components.MoaEggType;
-import com.aetherteam.aetherii.item.consumables.CurativeItem;
 import com.aetherteam.aetherii.item.consumables.HealingStoneItem;
-import com.aetherteam.aetherii.item.consumables.PreventativeItem;
-import com.aetherteam.aetherii.item.consumables.TeaItem;
 import com.aetherteam.aetherii.item.equipment.AetherIIItemTiers;
 import com.aetherteam.aetherii.item.equipment.EquipmentUtil;
 import com.aetherteam.aetherii.item.equipment.armor.AetherIIArmorMaterials;
@@ -211,11 +208,11 @@ public class AetherIIItems {
     public static final DeferredItem<Item> TAEGORE_HIDE = ITEMS.register("taegore_hide", () -> new Item(new Item.Properties()));
     public static final DeferredItem<Item> BURRUKAI_PELT = ITEMS.register("burrukai_pelt", () -> new Item(new Item.Properties()));
     public static final DeferredItem<Item> AECHOR_PETAL = ITEMS.register("aechor_petal", () -> new Item(new Item.Properties()));
-    public static final DeferredItem<Item> BRETTL_CANE = ITEMS.register("brettl_cane", () -> new BlockItem(AetherIIBlocks.BRETTL_PLANT_TIP.get(), new Item.Properties()));
+    public static final DeferredItem<Item> BRETTL_CANE = ITEMS.register("brettl_cane", () -> new BlockItem(AetherIIBlocks.BRETTL_PLANT_TIP.get(), new Item.Properties().useItemDescriptionPrefix()));
     public static final DeferredItem<Item> BRETTL_GRASS = ITEMS.register("brettl_grass", () -> new Item(new Item.Properties()));
     public static final DeferredItem<Item> BRETTL_ROPE = ITEMS.register("brettl_rope", () -> new Item(new Item.Properties()));
     public static final DeferredItem<Item> BRETTL_FLOWER = ITEMS.register("brettl_flower", () -> new Item(new Item.Properties()));
-    public static final DeferredItem<Item> ARILUM_BULBS = ITEMS.register("arilum_bulbs", () -> new BlockItem(AetherIIBlocks.ARILUM_SHOOT.get(), new Item.Properties()));
+    public static final DeferredItem<Item> ARILUM_BULBS = ITEMS.register("arilum_bulbs", () -> new BlockItem(AetherIIBlocks.ARILUM_SHOOT.get(), new Item.Properties().useItemDescriptionPrefix()));
     public static final DeferredItem<Item> ARCTIC_SNOWBALL = ITEMS.register("arctic_snowball", () -> new ArcticSnowballItem(new Item.Properties()));
     public static final DeferredItem<Item> GREEN_SWET_GEL = ITEMS.register("green_swet_gel", () -> new SwetGelItem(new Item.Properties()));
     public static final DeferredItem<Item> BLUE_SWET_GEL = ITEMS.register("blue_swet_gel", () -> new SwetGelItem(new Item.Properties()));
@@ -258,12 +255,12 @@ public class AetherIIItems {
     public static final DeferredItem<Item> ROASTED_SKYROOT_LIZARD_ON_A_STICK = ITEMS.register("roasted_skyroot_lizard_on_a_stick", () -> new Item(new Item.Properties().food(AetherIIFoods.ROASTED_SKYROOT_LIZARD_ON_A_STICK).component(DataComponents.CONSUMABLE, AetherIIConsumables.FAST)));
 
     // Consumables
-    public static final DeferredItem<Item> WATER_VIAL = ITEMS.register("water_vial", () -> new WaterVialItem(new Item.Properties().stacksTo(8)));
-    public static final DeferredItem<Item> BANDAGE = ITEMS.register("bandage", () -> new PreventativeItem(ItemUseAnimation.BOW, 15, AetherIIPreventatives.BANDAGE, new Item.Properties()));
-    public static final DeferredItem<Item> SPLINT = ITEMS.register("splint", () -> new CurativeItem(ItemUseAnimation.BOW, 15, AetherIIEffectCures.SPLINT, new Item.Properties()));
-    public static final DeferredItem<Item> ANTITOXIN_VIAL = ITEMS.register("antitoxin_vial", () -> new PreventativeItem(ItemUseAnimation.DRINK, 15, () -> AetherIIItems.SCATTERGLASS_VIAL.get().getDefaultInstance(), AetherIIPreventatives.ANTITOXIN_VIAL, new Item.Properties().stacksTo(8)));
-    public static final DeferredItem<Item> ANTIVENOM_VIAL = ITEMS.register("antivenom_vial", () -> new PreventativeItem(ItemUseAnimation.DRINK, 15, () -> AetherIIItems.SCATTERGLASS_VIAL.get().getDefaultInstance(), AetherIIPreventatives.ANTIVENOM_VIAL, new Item.Properties().stacksTo(8)));
-    public static final DeferredItem<Item> VALKYRIE_TEA = ITEMS.register("valkyrie_tea", () -> new TeaItem(ItemUseAnimation.DRINK, 15, () -> AetherIIItems.SCATTERGLASS_VIAL.get().getDefaultInstance(), AetherIIEffects.SATURATION_BOOST, new Item.Properties().stacksTo(8)));
+    public static final DeferredItem<Item> WATER_VIAL = ITEMS.register("water_vial", () -> new WaterVialItem(new Item.Properties().stacksTo(8).component(DataComponents.CONSUMABLE, AetherIIConsumables.WATER_VIAL).usingConvertsTo(SCATTERGLASS_VIAL.get())));
+    public static final DeferredItem<Item> BANDAGE = ITEMS.register("bandage", () -> new Item(new Item.Properties().component(DataComponents.CONSUMABLE, AetherIIConsumables.BANDAGE)));
+    public static final DeferredItem<Item> SPLINT = ITEMS.register("splint", () -> new Item(new Item.Properties().component(DataComponents.CONSUMABLE, AetherIIConsumables.SPLINT)));
+    public static final DeferredItem<Item> ANTITOXIN_VIAL = ITEMS.register("antitoxin_vial", () -> new Item(new Item.Properties().stacksTo(8).component(DataComponents.CONSUMABLE, AetherIIConsumables.ANTITOXIN_VIAL).usingConvertsTo(SCATTERGLASS_VIAL.get())));
+    public static final DeferredItem<Item> ANTIVENOM_VIAL = ITEMS.register("antivenom_vial", () -> new Item(new Item.Properties().stacksTo(8).component(DataComponents.CONSUMABLE, AetherIIConsumables.ANTIVENOM_VIAL).usingConvertsTo(SCATTERGLASS_VIAL.get())));
+    public static final DeferredItem<Item> VALKYRIE_TEA = ITEMS.register("valkyrie_tea", () -> new Item(new Item.Properties().stacksTo(8).component(DataComponents.CONSUMABLE, AetherIIConsumables.VALKYRIE_TEA).usingConvertsTo(SCATTERGLASS_VIAL.get())));
     public static final DeferredItem<Item> HEALING_STONE = ITEMS.register("healing_stone", () -> new HealingStoneItem(new Item.Properties().stacksTo(1).component(AetherIIDataComponents.HEALING_STONE_CHARGES, 0)));
 
     // Gliders

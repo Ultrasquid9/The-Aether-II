@@ -21,10 +21,10 @@ import com.aetherteam.aetherii.entity.ai.memory.AetherIIMemoryModuleTypes;
 import com.aetherteam.aetherii.inventory.AetherIIAccessorySlots;
 import com.aetherteam.aetherii.inventory.AetherIIRecipeBookTypes;
 import com.aetherteam.aetherii.inventory.menu.AetherIIMenuTypes;
+import com.aetherteam.aetherii.item.consumeeffect.AetherIIConsumeEffectTypes;
 import com.aetherteam.aetherii.item.AetherIICreativeTabs;
 import com.aetherteam.aetherii.item.AetherIIItems;
 import com.aetherteam.aetherii.item.components.AetherIIDataComponents;
-import com.aetherteam.aetherii.item.equipment.armor.AetherIIArmorMaterials;
 import com.aetherteam.aetherii.loot.functions.AetherIILootFunctions;
 import com.aetherteam.aetherii.loot.modifiers.AetherIILootModifiers;
 import com.aetherteam.aetherii.network.packet.AetherIIPlayerSyncPacket;
@@ -89,6 +89,7 @@ public class AetherII {
                 AetherIIAttributes.ATTRIBUTES,
                 AetherIIMemoryModuleTypes.MEMORY_MODULE_TYPES,
                 AetherIIEffects.EFFECTS,
+                AetherIIConsumeEffectTypes.CONSUME_EFFECT_TYPE,
                 AetherIIDataSerializers.ENTITY_DATA_SERIALIZERS,
                 AetherIIDataComponents.DATA_COMPONENT_TYPES,
                 AetherIIDataAttachments.ATTACHMENTS,
