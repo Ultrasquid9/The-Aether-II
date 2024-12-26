@@ -35,7 +35,6 @@
     "client.ItemRendererMixin",
     "client.LevelRendererMixin",
     "client.LiquidBlockRendererMixin",
-    "client.ReceivingLevelScreenMixin",
     "client.accessor.DeathScreenAccessor",
     "client.accessor.EditBoxAccessor",
     "client.accessor.GuiAccessor",
