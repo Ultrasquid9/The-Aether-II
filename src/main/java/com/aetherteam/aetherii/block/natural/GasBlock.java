@@ -87,7 +87,7 @@ public class GasBlock extends Block implements CanisterPickup {
 
     @Override
     protected void neighborChanged(BlockState state, Level level, BlockPos pos, Block block, @Nullable Orientation orientation, boolean movedByPiston) {
-        if (level.getBlockState(orientation.).is(AetherIITags.Blocks.TRIGGERS_GAS) || state.is(AetherIITags.Blocks.TRIGGERS_GAS)) {
+        if (level.getBlockState(neighborPos).is(AetherIITags.Blocks.TRIGGERS_GAS) || state.is(AetherIITags.Blocks.TRIGGERS_GAS)) {
             this.explode(level, pos, true);
         }
         super.neighborChanged(state, level, pos, block, orientation, movedByPiston);
