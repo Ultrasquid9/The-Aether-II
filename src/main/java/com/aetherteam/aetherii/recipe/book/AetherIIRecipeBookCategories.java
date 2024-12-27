@@ -13,7 +13,7 @@ public class AetherIIRecipeBookCategories {
 
     public static final DeferredHolder<RecipeBookCategory, RecipeBookCategory> ALTAR_FOOD = RECIPE_BOOK_CATEGORIES.register("altar_food", RecipeBookCategory::new);
     public static final DeferredHolder<RecipeBookCategory, RecipeBookCategory> ALTAR_BLOCKS = RECIPE_BOOK_CATEGORIES.register("altar_blocks", RecipeBookCategory::new);
-    public static final DeferredHolder<RecipeBookCategory, RecipeBookCategory> ALTAR_REPAIRING = RECIPE_BOOK_CATEGORIES.register("altar_blocks", RecipeBookCategory::new);
+    public static final DeferredHolder<RecipeBookCategory, RecipeBookCategory> ALTAR_REPAIRING = RECIPE_BOOK_CATEGORIES.register("altar_repairing", RecipeBookCategory::new);
     public static final DeferredHolder<RecipeBookCategory, RecipeBookCategory> ALTAR_MISC = RECIPE_BOOK_CATEGORIES.register("altar_misc", RecipeBookCategory::new);
 
     public static final RecipeBookCategory ALTAR_SEARCH = new RecipeBookCategory();
