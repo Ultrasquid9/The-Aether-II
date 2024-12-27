@@ -44,7 +44,7 @@ public class AetherIIItemTagData extends ItemTagsProvider {
         this.copy(AetherIITags.Blocks.AGIOSITE_DECORATIVE_BLOCKS, AetherIITags.Items.AGIOSITE_DECORATIVE_BLOCKS);
         this.copy(AetherIITags.Blocks.ICESTONE_DECORATIVE_BLOCKS, AetherIITags.Items.ICESTONE_DECORATIVE_BLOCKS);
         this.tag(AetherIITags.Items.RODS_SKYROOT).add(AetherIIItems.SKYROOT_STICK.get());
-        this.tag(AetherIITags.Items.LEATHER_HIDE).add(
+        this.tag(AetherIITags.Items.ANIMALS_FURS).add(
                 AetherIIItems.TAEGORE_HIDE.get(),
                 AetherIIItems.BURRUKAI_PELT.get()
                 );
