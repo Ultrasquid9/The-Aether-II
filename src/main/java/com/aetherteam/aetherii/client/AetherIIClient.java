@@ -13,6 +13,7 @@ import com.aetherteam.aetherii.client.renderer.level.AetherIIRenderEffects;
 import com.aetherteam.aetherii.data.resources.registries.AetherIIDimensions;
 import com.aetherteam.aetherii.inventory.menu.AetherIIMenuTypes;
 import com.aetherteam.aetherii.mixin.mixins.client.accessor.ModelManagerAccessor;
+import com.aetherteam.aetherii.recipe.book.AetherIIRecipeBookCategories;
 import com.google.common.collect.ImmutableMap;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
@@ -21,6 +22,7 @@ import net.minecraft.world.item.Item;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.neoforge.client.event.RegisterDimensionTransitionScreenEvent;
+import net.neoforged.neoforge.client.event.RegisterRecipeBookSearchCategoriesEvent;
 import net.neoforged.neoforge.common.NeoForge;
 
 public class AetherIIClient {
@@ -72,6 +74,7 @@ public class AetherIIClient {
         neoBus.addListener(AetherIIClientTooltips::registerClientTooltipComponents);
         neoBus.addListener(AetherIIClientExtensions::registerClientItemExtensions);
         neoBus.addListener(AetherIIRenderTypes::registerRenderBuffers);
+        neoBus.addListener(AetherIIRecipeBookCategories::registerRecipeBookSearchCategories);
     }
 
     public static void registerDimensionTransitionScreens(RegisterDimensionTransitionScreenEvent event) {

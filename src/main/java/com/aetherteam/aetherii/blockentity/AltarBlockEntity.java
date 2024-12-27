@@ -55,6 +55,7 @@ public class AltarBlockEntity extends BaseContainerBlockEntity implements Worldl
     protected NonNullList<ItemStack> items = NonNullList.withSize(10, ItemStack.EMPTY);
     int processingProgress;
     int processingTotalTime;
+    int fuelCount;
     boolean blasting;
     int blastingDuration;
     protected final ContainerData dataAccess = new ContainerData() {
@@ -63,6 +64,7 @@ public class AltarBlockEntity extends BaseContainerBlockEntity implements Worldl
             return switch (id) {
                 case 0 -> AltarBlockEntity.this.processingProgress;
                 case 1 -> AltarBlockEntity.this.processingTotalTime;
+                case 2 -> AltarBlockEntity.this.fuelCount;
                 default -> 0;
             };
         }
@@ -75,12 +77,16 @@ public class AltarBlockEntity extends BaseContainerBlockEntity implements Worldl
                     break;
                 case 1:
                     AltarBlockEntity.this.processingTotalTime = value;
+                    break;
+                case 2:
+                    AltarBlockEntity.this.fuelCount = value;
+                    break;
             }
         }
 
         @Override
         public int getCount() {
-            return 2;
+            return 3;
         }
     };
     private final Object2IntOpenHashMap<ResourceKey<Recipe<?>>> recipesUsed = new Object2IntOpenHashMap<>();
@@ -137,6 +143,9 @@ public class AltarBlockEntity extends BaseContainerBlockEntity implements Worldl
         boolean changed = false;
 
         RecipeHolder<AltarEnchantingRecipe> recipeHolder = blockEntity.quickCheck.getRecipeFor(new SingleRecipeInput(blockEntity.getItem(0)), level).orElse(null);
+        if (recipeHolder != null) {
+            blockEntity.fuelCount = recipeHolder.value().getFuelCount();
+        }
         boolean hasFuel = hasFuel(level, blockEntity);
         int i = blockEntity.getMaxStackSize();
         boolean isCharging = false;
