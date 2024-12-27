@@ -10,7 +10,6 @@
     "common.EntityMixin",
     "common.ItemCooldownsMixin",
     "common.ItemStackMixin",
-    "common.ModelBuilderMixin",
     "common.PlayerMixin",
     "common.PointedDripstoneBlockMixin",
     "common.RandomStateMixin",
