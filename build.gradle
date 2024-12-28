@@ -107,7 +107,7 @@ dependencies {
         }
     }
 
-    runtimeOnly "io.github.flemmli97:debugutils:1.21-${project.debugutils_version}-neoforge"
+//    runtimeOnly "io.github.flemmli97:debugutils:1.21-${project.debugutils_version}-neoforge"
 
     //compileOnly fileTree(dir: 'libs', include: '*.jar')
 }
