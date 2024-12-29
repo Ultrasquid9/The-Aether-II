@@ -13,13 +13,23 @@ import com.aetherteam.aetherii.client.renderer.item.properties.AetherIIItemModel
 import com.aetherteam.aetherii.client.renderer.level.AetherIIRenderEffects;
 import com.aetherteam.aetherii.data.resources.registries.AetherIIDimensions;
 import com.aetherteam.aetherii.inventory.menu.AetherIIMenuTypes;
+import com.aetherteam.aetherii.item.AetherIIItems;
+import com.aetherteam.aetherii.item.equipment.EquipmentUtil;
+import com.aetherteam.aetherii.item.equipment.armor.GlovesItem;
 import com.aetherteam.aetherii.mixin.mixins.client.accessor.ModelManagerAccessor;
 import com.aetherteam.aetherii.recipe.book.AetherIIRecipeBookCategories;
+import com.aetherteam.nitrogen.event.listeners.TooltipListeners;
 import com.google.common.collect.ImmutableMap;
+import net.minecraft.ChatFormatting;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
+import net.minecraft.core.component.DataComponents;
+import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.equipment.EquipmentAsset;
+import net.minecraft.world.item.equipment.Equippable;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.neoforge.client.event.RegisterDimensionTransitionScreenEvent;
@@ -156,17 +166,18 @@ public class AetherIIClient {
 
 */
     public static void registerTooltipOverrides() {
-        //TODO TOOL TIP PORT IN 1.21.4
-        /*TooltipListeners.TooltipPredicate setBonusPredicate = (player, itemStack, components, context, component) -> {
-            if (player != null && (itemStack.getItem() instanceof ArmorItem || itemStack.getItem() instanceof GlovesItem) && component.getString().contains("%s")) {
-                Holder<ArmorMaterial> material = null;
-                if (itemStack.getItem() instanceof ArmorItem armorItem) {
-                    material = armorItem.getMaterial();
+        //todo new component tooltip system from neoforge
+        TooltipListeners.TooltipPredicate setBonusPredicate = (player, itemStack, components, context, component) -> {
+            if (player != null && component.getString().contains("%s")) {
+                ResourceKey<EquipmentAsset> asset = null;
+                Equippable equippable = itemStack.get(DataComponents.EQUIPPABLE);
+                if (equippable != null && equippable.assetId().isPresent()) {
+                    asset = equippable.assetId().get();
                 } else if (itemStack.getItem() instanceof GlovesItem glovesItem) {
-                    material = glovesItem.getMaterial();
+                    asset = glovesItem.getMaterial();
                 }
-                if (material != null) {
-                    int currentEquipmentCount = EquipmentUtil.getArmorCount(player, material);
+                if (asset != null) {
+                    int currentEquipmentCount = EquipmentUtil.getArmorCount(player, asset);
                     Component finalComponent;
                     if (currentEquipmentCount >= 3) {
                         finalComponent = Component.literal("3/3").withStyle(ChatFormatting.WHITE);
@@ -177,9 +188,9 @@ public class AetherIIClient {
                 }
             }
             return component;
-        };*/
+        };
 
-        /*TooltipListeners.PREDICATES.put(AetherIIItems.TAEGORE_HIDE_HELMET, setBonusPredicate);
+        TooltipListeners.PREDICATES.put(AetherIIItems.TAEGORE_HIDE_HELMET, setBonusPredicate);
         TooltipListeners.PREDICATES.put(AetherIIItems.TAEGORE_HIDE_CHESTPLATE, setBonusPredicate);
         TooltipListeners.PREDICATES.put(AetherIIItems.TAEGORE_HIDE_LEGGINGS, setBonusPredicate);
         TooltipListeners.PREDICATES.put(AetherIIItems.TAEGORE_HIDE_BOOTS, setBonusPredicate);
@@ -203,6 +214,6 @@ public class AetherIIClient {
         TooltipListeners.PREDICATES.put(AetherIIItems.GRAVITITE_CHESTPLATE, setBonusPredicate);
         TooltipListeners.PREDICATES.put(AetherIIItems.GRAVITITE_LEGGINGS, setBonusPredicate);
         TooltipListeners.PREDICATES.put(AetherIIItems.GRAVITITE_BOOTS, setBonusPredicate);
-        TooltipListeners.PREDICATES.put(AetherIIItems.GRAVITITE_GLOVES, setBonusPredicate);*/
+        TooltipListeners.PREDICATES.put(AetherIIItems.GRAVITITE_GLOVES, setBonusPredicate);
     }
 }
