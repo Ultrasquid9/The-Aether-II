@@ -8,11 +8,6 @@ import net.neoforged.api.distmarker.OnlyIn;
 
 @OnlyIn(Dist.CLIENT)
 public class AetherIITexturedModels extends TexturedModel {
-
-    public AetherIITexturedModels(TextureMapping mapping, ModelTemplate template) {
-        super(mapping, template);
-    }
-
     public static final Provider BRYALINN_MOSS_FLOWERS_1 = createDefault(TextureMapping::flowerbed, AetherIIModelTemplates.BRYALINN_MOSS_FLOWERS_1);
     public static final Provider BRYALINN_MOSS_FLOWERS_2 = createDefault(TextureMapping::flowerbed, AetherIIModelTemplates.BRYALINN_MOSS_FLOWERS_2);
     public static final Provider BRYALINN_MOSS_FLOWERS_3 = createDefault(TextureMapping::flowerbed, AetherIIModelTemplates.BRYALINN_MOSS_FLOWERS_3);
@@ -25,4 +20,8 @@ public class AetherIITexturedModels extends TexturedModel {
     public static final Provider TARAHESP_FLOWERS_2 = createDefault(TextureMapping::flowerbed, AetherIIModelTemplates.TARAHESP_FLOWERS_2);
     public static final Provider TARAHESP_FLOWERS_3 = createDefault(TextureMapping::flowerbed, AetherIIModelTemplates.TARAHESP_FLOWERS_3);
     public static final Provider TARAHESP_FLOWERS_4 = createDefault(TextureMapping::flowerbed, AetherIIModelTemplates.TARAHESP_FLOWERS_4);
+
+    public AetherIITexturedModels(TextureMapping mapping, ModelTemplate template) {
+        super(mapping, template);
+    }
 }

@@ -1,6 +1,7 @@
 package com.aetherteam.aetherii.data.providers;
 
 import com.aetherteam.aetherii.block.AetherIIBlocks;
+import com.aetherteam.aetherii.block.natural.AetherLeafPileBlock;
 import com.aetherteam.aetherii.block.natural.ValkyrieSproutBlock;
 import com.aetherteam.aetherii.data.resources.builders.AetherIIModelTemplates;
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
@@ -15,7 +16,9 @@ import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.DripstoneThickness;
 
@@ -88,6 +91,12 @@ public class AetherIIBlockModelProvider extends ModelProvider {
         blockModels.blockStateOutput.accept(MultiVariantGenerator.multiVariant(block).with(c2));
     }
 
+    public void createVine(BlockModelGenerators blockModels, Block block) {
+        blockModels.createMultifaceBlockStates(block);
+        ResourceLocation resourcelocation = blockModels.createFlatItemModelWithBlockTexture(block.asItem(), block);
+//        blockModels.registerSimpleFlatItemModel(block);
+    }
+
     public Variant createPointedStoneVariant(BlockModelGenerators blockModels, Block block, Direction direction, DripstoneThickness thickness) {
         String name = "_" + direction.getSerializedName() + "_" + thickness.getSerializedName();
         TextureMapping mapping = TextureMapping.cross(TextureMapping.getBlockTexture(block, name));
@@ -119,7 +128,7 @@ public class AetherIIBlockModelProvider extends ModelProvider {
     public void createLeafPile(BlockModelGenerators blockModels, Block block, Block baseBlock) {
         TextureMapping mapping = TextureMapping.cube(block);
         ResourceLocation resourcelocation = ModelTemplates.CUBE_ALL.create(baseBlock, mapping, blockModels.modelOutput);
-        blockModels.blockStateOutput.accept(MultiVariantGenerator.multiVariant(block).with(PropertyDispatch.property(BlockStateProperties.LAYERS).generate((i) -> {
+        blockModels.blockStateOutput.accept(MultiVariantGenerator.multiVariant(block).with(PropertyDispatch.property(AetherLeafPileBlock.PILES).generate((i) -> {
             Variant variant = Variant.variant();
             VariantProperty<ResourceLocation> property = VariantProperties.MODEL;
             ResourceLocation location;
@@ -133,6 +142,7 @@ public class AetherIIBlockModelProvider extends ModelProvider {
             return variant.with(property, location);
         })));
         blockModels.registerSimpleItemModel(block, ModelLocationUtils.getModelLocation(block, "_height2"));
+        blockModels.blockStateOutput.accept(BlockModelGenerators.createSimpleBlock(baseBlock, resourcelocation)); //todo
     }
 
     public void createCustomFlowerBed(BlockModelGenerators blockModels, Block block, ResourceLocation flowerbed1, ResourceLocation flowerbed2, ResourceLocation flowerbed3, ResourceLocation flowerbed4) {

@@ -12,10 +12,6 @@ import java.util.Optional;
 
 @OnlyIn(Dist.CLIENT)
 public class AetherIIModelTemplates {
-
-    public AetherIIModelTemplates() {
-    }
-
     public static final ModelTemplate LILICHIME = create("template_lilichime", TextureSlot.ALL);
     public static final ModelTemplate PLURACIAN = create("template_pluracian", TextureSlot.ALL);
     public static final ModelTemplate POTTED_LILICHIME = create("template_potted_lilichime", TextureSlot.PLANT, TextureSlot.TOP, TextureSlot.SIDE);
