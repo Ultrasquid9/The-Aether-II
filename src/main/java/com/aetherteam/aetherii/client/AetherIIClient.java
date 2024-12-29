@@ -41,13 +41,6 @@ public class AetherIIClient {
         bus.addListener(AetherIIClient::registerDimensionTransitionScreens);
 
         AetherIIClient.eventSetup(bus);
-
-        ModelManagerAccessor.setAtlases(ImmutableMap.<ResourceLocation, ResourceLocation>builder()
-                .putAll(ModelManagerAccessor.getAtlases())
-                .put(MoaRenderer.MOA_FEATHER_SHEET, ResourceLocation.fromNamespaceAndPath(AetherII.MODID, "moa_feather"))
-                .put(MoaRenderer.MOA_EYES_SHEET, ResourceLocation.fromNamespaceAndPath(AetherII.MODID, "moa_eyes"))
-                .put(MoaRenderer.MOA_KERATIN_SHEET, ResourceLocation.fromNamespaceAndPath(AetherII.MODID, "moa_keratin"))
-                .build()); //todo 1.21.3 replaces this with an event
     }
 
     public static void clientSetup(FMLClientSetupEvent event) {
@@ -88,6 +81,7 @@ public class AetherIIClient {
         neoBus.addListener(AetherIIRecipeBookCategories::registerRecipeBookSearchCategories);
         neoBus.addListener(AetherIIItemModelProperties::registerSelectProperties);
         neoBus.addListener(AetherIIItemModelProperties::registerRangeSelectProperties);
+        neoBus.addListener(AetherIIAtlases::registerAtlases);
     }
 
     public static void registerDimensionTransitionScreens(RegisterDimensionTransitionScreenEvent event) {
