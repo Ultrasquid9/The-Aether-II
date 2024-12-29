@@ -26,52 +26,52 @@ public class AetherIIItemModelData extends AetherIIItemModelProvider {
         itemModels.generateFlatItem(AetherIIItems.HOLYSTONE_SHOVEL.get(), ModelTemplates.FLAT_HANDHELD_ITEM);
         itemModels.generateFlatItem(AetherIIItems.HOLYSTONE_TROWEL.get(), ModelTemplates.FLAT_HANDHELD_ITEM);
 
-//        this.reinforcedItem(AetherIIItems.ZANITE_PICKAXE.get(), "tools/");
-//        this.reinforcedItem(AetherIIItems.ZANITE_AXE.get(), "tools/");
-//        this.reinforcedItem(AetherIIItems.ZANITE_SHOVEL.get(), "tools/");
-//        this.reinforcedItem(AetherIIItems.ZANITE_TROWEL.get(), "tools/");
-//
+        this.generateReinforcedItem(itemModels, AetherIIItems.ZANITE_PICKAXE.get(), ModelTemplates.FLAT_HANDHELD_ITEM);
+        this.generateReinforcedItem(itemModels, AetherIIItems.ZANITE_AXE.get(), ModelTemplates.FLAT_HANDHELD_ITEM);
+        this.generateReinforcedItem(itemModels, AetherIIItems.ZANITE_SHOVEL.get(), ModelTemplates.FLAT_HANDHELD_ITEM);
+        this.generateReinforcedItem(itemModels, AetherIIItems.ZANITE_TROWEL.get(), ModelTemplates.FLAT_HANDHELD_ITEM);
+
         itemModels.generateFlatItem(AetherIIItems.ARKENIUM_PICKAXE.get(), ModelTemplates.FLAT_HANDHELD_ITEM);
         itemModels.generateFlatItem(AetherIIItems.ARKENIUM_AXE.get(), ModelTemplates.FLAT_HANDHELD_ITEM);
         itemModels.generateFlatItem(AetherIIItems.ARKENIUM_SHOVEL.get(), ModelTemplates.FLAT_HANDHELD_ITEM);
         itemModels.generateFlatItem(AetherIIItems.ARKENIUM_TROWEL.get(), ModelTemplates.FLAT_HANDHELD_ITEM);
-//
+
         itemModels.generateFlatItem(AetherIIItems.GRAVITITE_PICKAXE.get(), ModelTemplates.FLAT_HANDHELD_ITEM);
         itemModels.generateFlatItem(AetherIIItems.GRAVITITE_AXE.get(), ModelTemplates.FLAT_HANDHELD_ITEM);
         itemModels.generateFlatItem(AetherIIItems.GRAVITITE_SHOVEL.get(), ModelTemplates.FLAT_HANDHELD_ITEM);
         itemModels.generateFlatItem(AetherIIItems.GRAVITITE_TROWEL.get(), ModelTemplates.FLAT_HANDHELD_ITEM);
-//
+
         itemModels.generateFlatItem(AetherIIItems.ARKENIUM_SHEARS.get(), ModelTemplates.FLAT_HANDHELD_ITEM);
-//
-//        // Combat
+
+        // Combat
         itemModels.generateFlatItem(AetherIIItems.SKYROOT_SHORTSWORD.get(), ModelTemplates.FLAT_HANDHELD_ITEM);
         itemModels.generateFlatItem(AetherIIItems.SKYROOT_HAMMER.get(), ModelTemplates.FLAT_HANDHELD_ITEM);
         itemModels.generateFlatItem(AetherIIItems.SKYROOT_SPEAR.get(), ModelTemplates.FLAT_HANDHELD_ITEM);
-//        this.crossbowItem(AetherIIItems.SKYROOT_CROSSBOW.get(), "weapons/");
-//
+        this.generateCrossbow(itemModels, AetherIIItems.SKYROOT_CROSSBOW.get());
+
         itemModels.generateFlatItem(AetherIIItems.HOLYSTONE_SHORTSWORD.get(), ModelTemplates.FLAT_HANDHELD_ITEM);
         itemModels.generateFlatItem(AetherIIItems.HOLYSTONE_HAMMER.get(), ModelTemplates.FLAT_HANDHELD_ITEM);
         itemModels.generateFlatItem(AetherIIItems.HOLYSTONE_SPEAR.get(), ModelTemplates.FLAT_HANDHELD_ITEM);
-//        this.crossbowItem(AetherIIItems.HOLYSTONE_CROSSBOW.get(), "weapons/");
-//
-//        this.reinforcedItem(AetherIIItems.ZANITE_SHORTSWORD.get(), "weapons/");
-//        this.reinforcedItem(AetherIIItems.ZANITE_HAMMER.get(), "weapons/");
-//        this.reinforcedItem(AetherIIItems.ZANITE_SPEAR.get(), "weapons/");
-//        this.crossbowItem(AetherIIItems.ZANITE_CROSSBOW.get(), "weapons/");
-//
+        this.generateCrossbow(itemModels, AetherIIItems.HOLYSTONE_CROSSBOW.get());
+
+        this.generateReinforcedItem(itemModels, AetherIIItems.ZANITE_SHORTSWORD.get(), ModelTemplates.FLAT_HANDHELD_ITEM);
+        this.generateReinforcedItem(itemModels, AetherIIItems.ZANITE_HAMMER.get(), ModelTemplates.FLAT_HANDHELD_ITEM);
+        this.generateReinforcedItem(itemModels, AetherIIItems.ZANITE_SPEAR.get(), ModelTemplates.FLAT_HANDHELD_ITEM);
+        this.generateCrossbow(itemModels, AetherIIItems.ZANITE_CROSSBOW.get());
+
         itemModels.generateFlatItem(AetherIIItems.ARKENIUM_SHORTSWORD.get(), ModelTemplates.FLAT_HANDHELD_ITEM);
         itemModels.generateFlatItem(AetherIIItems.ARKENIUM_HAMMER.get(), ModelTemplates.FLAT_HANDHELD_ITEM);
         itemModels.generateFlatItem(AetherIIItems.ARKENIUM_SPEAR.get(), ModelTemplates.FLAT_HANDHELD_ITEM);
-//        this.crossbowItem(AetherIIItems.ARKENIUM_CROSSBOW.get(), "weapons/");
-//
+        this.generateCrossbow(itemModels, AetherIIItems.ARKENIUM_CROSSBOW.get());
+
         itemModels.generateFlatItem(AetherIIItems.GRAVITITE_SHORTSWORD.get(), ModelTemplates.FLAT_HANDHELD_ITEM);
         itemModels.generateFlatItem(AetherIIItems.GRAVITITE_HAMMER.get(), ModelTemplates.FLAT_HANDHELD_ITEM);
         itemModels.generateFlatItem(AetherIIItems.GRAVITITE_SPEAR.get(), ModelTemplates.FLAT_HANDHELD_ITEM);
-//        this.crossbowItem(AetherIIItems.GRAVITITE_CROSSBOW.get(), "weapons/");
-//
+        this.generateCrossbow(itemModels, AetherIIItems.GRAVITITE_CROSSBOW.get());
+
         itemModels.generateFlatItem(AetherIIItems.SCATTERGLASS_BOLT.get(), ModelTemplates.FLAT_ITEM);
-//
-//        // Armor
+
+        // Armor
 //        this.dyedHelmetItem(AetherIIItems.TAEGORE_HIDE_HELMET.get(), "armor/");
 //        this.dyedChestplateItem(AetherIIItems.TAEGORE_HIDE_CHESTPLATE.get(), "armor/");
 //        this.dyedLeggingsItem(AetherIIItems.TAEGORE_HIDE_LEGGINGS.get(), "armor/");
@@ -83,26 +83,26 @@ public class AetherIIItemModelData extends AetherIIItemModelProvider {
 //        this.dyedLeggingsItem(AetherIIItems.BURRUKAI_PELT_LEGGINGS.get(), "armor/");
 //        this.dyedBootsItem(AetherIIItems.BURRUKAI_PELT_BOOTS.get(), "armor/");
 //        this.dyedGlovesItem(AetherIIItems.BURRUKAI_PELT_GLOVES.get(), "armor/");
-//
-//        this.helmetItem(AetherIIItems.ZANITE_HELMET.get(), "armor/");
-//        this.chestplateItem(AetherIIItems.ZANITE_CHESTPLATE.get(), "armor/");
-//        this.leggingsItem(AetherIIItems.ZANITE_LEGGINGS.get(), "armor/");
-//        this.bootsItem(AetherIIItems.ZANITE_BOOTS.get(), "armor/");
-        itemModels.generateFlatItem(AetherIIItems.ZANITE_GLOVES.get(), "armor/");
-//
-//        this.helmetItem(AetherIIItems.ARKENIUM_HELMET.get(), "armor/");
-//        this.chestplateItem(AetherIIItems.ARKENIUM_CHESTPLATE.get(), "armor/");
-//        this.leggingsItem(AetherIIItems.ARKENIUM_LEGGINGS.get(), "armor/");
-//        this.bootsItem(AetherIIItems.ARKENIUM_BOOTS.get(), "armor/");
-        itemModels.generateFlatItem(AetherIIItems.ARKENIUM_GLOVES.get(), "armor/");
-//
-//        this.helmetItem(AetherIIItems.GRAVITITE_HELMET.get(), "armor/");
-//        this.chestplateItem(AetherIIItems.GRAVITITE_CHESTPLATE.get(), "armor/");
-//        this.leggingsItem(AetherIIItems.GRAVITITE_LEGGINGS.get(), "armor/");
-//        this.bootsItem(AetherIIItems.GRAVITITE_BOOTS.get(), "armor/");
-        itemModels.generateFlatItem(AetherIIItems.GRAVITITE_GLOVES.get(), "armor/");
-//
-//        // Materials
+
+        itemModels.generateFlatItem(AetherIIItems.ZANITE_HELMET.get(), ModelTemplates.FLAT_ITEM);
+        itemModels.generateFlatItem(AetherIIItems.ZANITE_CHESTPLATE.get(), ModelTemplates.FLAT_ITEM);
+        itemModels.generateFlatItem(AetherIIItems.ZANITE_LEGGINGS.get(), ModelTemplates.FLAT_ITEM);
+        itemModels.generateFlatItem(AetherIIItems.ZANITE_BOOTS.get(), ModelTemplates.FLAT_ITEM);
+        itemModels.generateFlatItem(AetherIIItems.ZANITE_GLOVES.get(), ModelTemplates.FLAT_ITEM);
+
+        itemModels.generateFlatItem(AetherIIItems.ARKENIUM_HELMET.get(), ModelTemplates.FLAT_ITEM);
+        itemModels.generateFlatItem(AetherIIItems.ARKENIUM_CHESTPLATE.get(), ModelTemplates.FLAT_ITEM);
+        itemModels.generateFlatItem(AetherIIItems.ARKENIUM_LEGGINGS.get(), ModelTemplates.FLAT_ITEM);
+        itemModels.generateFlatItem(AetherIIItems.ARKENIUM_BOOTS.get(), ModelTemplates.FLAT_ITEM);
+        itemModels.generateFlatItem(AetherIIItems.ARKENIUM_GLOVES.get(), ModelTemplates.FLAT_ITEM);
+
+        itemModels.generateFlatItem(AetherIIItems.GRAVITITE_HELMET.get(), ModelTemplates.FLAT_ITEM);
+        itemModels.generateFlatItem(AetherIIItems.GRAVITITE_CHESTPLATE.get(), ModelTemplates.FLAT_ITEM);
+        itemModels.generateFlatItem(AetherIIItems.GRAVITITE_LEGGINGS.get(), ModelTemplates.FLAT_ITEM);
+        itemModels.generateFlatItem(AetherIIItems.GRAVITITE_BOOTS.get(), ModelTemplates.FLAT_ITEM);
+        itemModels.generateFlatItem(AetherIIItems.GRAVITITE_GLOVES.get(), ModelTemplates.FLAT_ITEM);
+
+        // Materials
         itemModels.generateFlatItem(AetherIIItems.SKYROOT_STICK.get(), ModelTemplates.FLAT_HANDHELD_ITEM);
         itemModels.generateFlatItem(AetherIIItems.SCATTERGLASS_SHARD.get(), ModelTemplates.FLAT_ITEM);
         itemModels.generateFlatItem(AetherIIItems.AMBROSIUM_SHARD.get(), ModelTemplates.FLAT_ITEM);
@@ -132,19 +132,19 @@ public class AetherIIItemModelData extends AetherIIItemModelProvider {
         itemModels.generateFlatItem(AetherIIItems.GOLDEN_SWET_GEL.get(), ModelTemplates.FLAT_ITEM);
         itemModels.generateFlatItem(AetherIIItems.WHITE_SWET_GEL.get(), ModelTemplates.FLAT_ITEM);
         itemModels.generateFlatItem(AetherIIItems.SWET_SUGAR.get(), ModelTemplates.FLAT_ITEM);
-//        this.moaFeather(AetherIIItems.MOA_FEATHER.get());
+        this.generateMoaFeatherItem(itemModels, AetherIIItems.MOA_FEATHER.get());
         itemModels.generateFlatItem(AetherIIItems.COCKATRICE_FEATHER.get(), ModelTemplates.FLAT_ITEM);
         itemModels.generateFlatItem(AetherIIItems.SCATTERGLASS_VIAL.get(), ModelTemplates.FLAT_ITEM);
         itemModels.generateFlatItem(AetherIIItems.CHARGE_CORE.get(), ModelTemplates.FLAT_ITEM);
-//
-//        // Irradiated Items
+
+        // Irradiated Items
         itemModels.generateFlatItem(AetherIIItems.IRRADIATED_ARMOR.get(), ModelTemplates.FLAT_ITEM);
         itemModels.generateFlatItem(AetherIIItems.IRRADIATED_WEAPON.get(), ModelTemplates.FLAT_ITEM);
         itemModels.generateFlatItem(AetherIIItems.IRRADIATED_TOOL.get(), ModelTemplates.FLAT_ITEM);
         itemModels.generateFlatItem(AetherIIItems.IRRADIATED_CHUNK.get(), ModelTemplates.FLAT_ITEM);
         itemModels.generateFlatItem(AetherIIItems.IRRADIATED_DUST.get(), ModelTemplates.FLAT_ITEM);
-//
-//        // Food
+
+        // Food
         itemModels.generateFlatItem(AetherIIItems.BLUEBERRY.get(), ModelTemplates.FLAT_ITEM);
         itemModels.generateFlatItem(AetherIIItems.ENCHANTED_BLUEBERRY.get(), ModelTemplates.FLAT_ITEM);
         itemModels.generateFlatItem(AetherIIItems.ORANGE.get(), ModelTemplates.FLAT_ITEM);
@@ -164,8 +164,8 @@ public class AetherIIItemModelData extends AetherIIItemModelProvider {
         itemModels.generateFlatItem(AetherIIItems.TAEGORE_STEAK.get(), ModelTemplates.FLAT_ITEM);
         itemModels.generateFlatItem(AetherIIItems.SKYROOT_LIZARD_ON_A_STICK.get(), ModelTemplates.FLAT_ITEM);
         itemModels.generateFlatItem(AetherIIItems.ROASTED_SKYROOT_LIZARD_ON_A_STICK.get(), ModelTemplates.FLAT_ITEM);
-//
-//        // Consumables
+
+        // Consumables
         itemModels.generateFlatItem(AetherIIItems.WATER_VIAL.get(), ModelTemplates.FLAT_ITEM);
         itemModels.generateFlatItem(AetherIIItems.BANDAGE.get(), ModelTemplates.FLAT_ITEM);
         itemModels.generateFlatItem(AetherIIItems.SPLINT.get(), ModelTemplates.FLAT_ITEM);
@@ -180,7 +180,7 @@ public class AetherIIItemModelData extends AetherIIItemModelProvider {
 //        this.gliderItem(AetherIIItems.BLUE_AERCLOUD_GLIDER.get(), true);
 //        this.gliderItem(AetherIIItems.PURPLE_AERCLOUD_GLIDER.get(), true);
 //
-//        // Skyroot Buckets
+        // Skyroot Buckets
         itemModels.generateFlatItem(AetherIIItems.SKYROOT_BUCKET.get(), ModelTemplates.FLAT_ITEM);
         itemModels.generateFlatItem(AetherIIItems.SKYROOT_WATER_BUCKET.get(), ModelTemplates.FLAT_ITEM);
         itemModels.generateFlatItem(AetherIIItems.SKYROOT_MILK_BUCKET.get(), ModelTemplates.FLAT_ITEM);
@@ -191,13 +191,13 @@ public class AetherIIItemModelData extends AetherIIItemModelProvider {
         itemModels.generateFlatItem(AetherIIItems.SKYROOT_TROPICAL_FISH_BUCKET.get(), ModelTemplates.FLAT_ITEM);
         itemModels.generateFlatItem(AetherIIItems.SKYROOT_AXOLOTL_BUCKET.get(), ModelTemplates.FLAT_ITEM);
         itemModels.generateFlatItem(AetherIIItems.SKYROOT_TADPOLE_BUCKET.get(), ModelTemplates.FLAT_ITEM);
-//
-//        // Arkenium Canisters
+
+        // Arkenium Canisters
         itemModels.generateFlatItem(AetherIIItems.ARKENIUM_CANISTER.get(), ModelTemplates.FLAT_ITEM);
         itemModels.generateFlatItem(AetherIIItems.ARKENIUM_ACID_CANISTER.get(), ModelTemplates.FLAT_ITEM);
         itemModels.generateFlatItem(AetherIIItems.ARKENIUM_GAS_CANISTER.get(), ModelTemplates.FLAT_ITEM);
-//
-//        // Music Discs
+
+        // Music Discs
         itemModels.generateFlatItem(AetherIIItems.MUSIC_DISC_AETHER_TUNE.get(), ModelTemplates.MUSIC_DISC);
         itemModels.generateFlatItem(AetherIIItems.MUSIC_DISC_ASCENDING_DAWN.get(), ModelTemplates.MUSIC_DISC);
         itemModels.generateFlatItem(AetherIIItems.MUSIC_DISC_AERWHALE.get(), ModelTemplates.MUSIC_DISC);
@@ -227,8 +227,8 @@ public class AetherIIItemModelData extends AetherIIItemModelProvider {
         itemModels.generateSpawnEgg(AetherIIItems.COCKATRICE_SPAWN_EGG.get(), 0x8363A6, 0xB8FFC3);
         itemModels.generateSpawnEgg(AetherIIItems.SWET_SPAWN_EGG.get(), 0xC3E3EF, 0xA2D0CC);
         itemModels.generateSpawnEgg(AetherIIItems.SKEPHID_SPAWN_EGG.get(), 0x7D96AB, 0xF7CC94);
-//
-//        // Misc
+
+        // Misc
 //        this.moaEgg(AetherIIItems.MOA_EGG.get());
         itemModels.generateFlatItem(AetherIIItems.MOA_FEED.get(), ModelTemplates.FLAT_ITEM);
         itemModels.generateFlatItem(AetherIIItems.BLUEBERRY_MOA_FEED.get(), ModelTemplates.FLAT_ITEM);
@@ -429,8 +429,8 @@ public class AetherIIItemModelData extends AetherIIItemModelProvider {
 //        this.itemBlockFlat(AetherIIBlocks.BLOOMING_ARILUM_PLANT.get(), "natural/");
 //
 //        // Ground Decoration
-        itemModels.generateFlatItem(AetherIIBlocks.SKYROOT_TWIG.asItem(), "miscellaneous/");
-        itemModels.generateFlatItem(AetherIIBlocks.HOLYSTONE_ROCK.asItem(), "miscellaneous/");
+//        itemModels.generateFlatItem(AetherIIBlocks.SKYROOT_TWIG.asItem(), "miscellaneous/");
+//        itemModels.generateFlatItem(AetherIIBlocks.HOLYSTONE_ROCK.asItem(), "miscellaneous/");
 //
 //        // Skyroot Planks
 //        this.itemBlock(AetherIIBlocks.SKYROOT_PLANKS.get());
@@ -438,7 +438,7 @@ public class AetherIIItemModelData extends AetherIIItemModelProvider {
 //        this.itemBlock(AetherIIBlocks.SKYROOT_SLAB.get());
 //        this.itemFence(AetherIIBlocks.SKYROOT_FENCE.get(), AetherIIBlocks.SKYROOT_PLANKS.get(), "construction/");
 //        this.itemBlock(AetherIIBlocks.SKYROOT_FENCE_GATE.get());
-        itemModels.generateFlatItem(AetherIIBlocks.SKYROOT_DOOR.get().asItem(), "miscellaneous/");
+//        itemModels.generateFlatItem(AetherIIBlocks.SKYROOT_DOOR.get().asItem(), "miscellaneous/");
 //        this.itemBlock(AetherIIBlocks.SKYROOT_TRAPDOOR.get(), "_bottom");
 //        this.itemButton(AetherIIBlocks.SKYROOT_BUTTON.get(), AetherIIBlocks.SKYROOT_PLANKS.get(), "construction/");
 //        this.itemBlock(AetherIIBlocks.SKYROOT_PRESSURE_PLATE.get());
@@ -453,7 +453,7 @@ public class AetherIIItemModelData extends AetherIIItemModelProvider {
 //        this.itemBlock(AetherIIBlocks.SKYROOT_BASE_BEAM.get());
 //        this.itemBlock(AetherIIBlocks.SKYROOT_TOP_BEAM.get());
 //        this.itemBlock(AetherIIBlocks.SKYROOT_BEAM.get());
-        itemModels.generateFlatItem(AetherIIBlocks.SECRET_SKYROOT_DOOR.get().asItem(), "miscellaneous/");
+//        itemModels.generateFlatItem(AetherIIBlocks.SECRET_SKYROOT_DOOR.get().asItem(), "miscellaneous/");
 //        this.itemBlock(AetherIIBlocks.SECRET_SKYROOT_TRAPDOOR.get(), "_bottom");
 //
 //        // Greatroot Planks
@@ -462,7 +462,7 @@ public class AetherIIItemModelData extends AetherIIItemModelProvider {
 //        this.itemBlock(AetherIIBlocks.GREATROOT_SLAB.get());
 //        this.itemFence(AetherIIBlocks.GREATROOT_FENCE.get(), AetherIIBlocks.GREATROOT_PLANKS.get(), "construction/");
 //        this.itemBlock(AetherIIBlocks.GREATROOT_FENCE_GATE.get());
-        itemModels.generateFlatItem(AetherIIBlocks.GREATROOT_DOOR.get().asItem(), "miscellaneous/");
+//        itemModels.generateFlatItem(AetherIIBlocks.GREATROOT_DOOR.get().asItem(), "miscellaneous/");
 //        this.itemBlock(AetherIIBlocks.GREATROOT_TRAPDOOR.get(), "_bottom");
 //        this.itemButton(AetherIIBlocks.GREATROOT_BUTTON.get(), AetherIIBlocks.GREATROOT_PLANKS.get(), "construction/");
 //        this.itemBlock(AetherIIBlocks.GREATROOT_PRESSURE_PLATE.get());
@@ -477,7 +477,7 @@ public class AetherIIItemModelData extends AetherIIItemModelProvider {
 //        this.itemBlock(AetherIIBlocks.GREATROOT_BASE_BEAM.get());
 //        this.itemBlock(AetherIIBlocks.GREATROOT_TOP_BEAM.get());
 //        this.itemBlock(AetherIIBlocks.GREATROOT_BEAM.get());
-        itemModels.generateFlatItem(AetherIIBlocks.SECRET_GREATROOT_DOOR.get().asItem(), "miscellaneous/");
+//        itemModels.generateFlatItem(AetherIIBlocks.SECRET_GREATROOT_DOOR.get().asItem(), "miscellaneous/");
 //        this.itemBlock(AetherIIBlocks.SECRET_GREATROOT_TRAPDOOR.get(), "_bottom");
 //
 //        // Wisproot Planks
@@ -486,7 +486,7 @@ public class AetherIIItemModelData extends AetherIIItemModelProvider {
 //        this.itemBlock(AetherIIBlocks.WISPROOT_SLAB.get());
 //        this.itemFence(AetherIIBlocks.WISPROOT_FENCE.get(), AetherIIBlocks.WISPROOT_PLANKS.get(), "construction/");
 //        this.itemBlock(AetherIIBlocks.WISPROOT_FENCE_GATE.get());
-        itemModels.generateFlatItem(AetherIIBlocks.WISPROOT_DOOR.get().asItem(), "miscellaneous/");
+//        itemModels.generateFlatItem(AetherIIBlocks.WISPROOT_DOOR.get().asItem(), "miscellaneous/");
 //        this.itemBlock(AetherIIBlocks.WISPROOT_TRAPDOOR.get(), "_bottom");
 //        this.itemButton(AetherIIBlocks.WISPROOT_BUTTON.get(), AetherIIBlocks.WISPROOT_PLANKS.get(), "construction/");
 //        this.itemBlock(AetherIIBlocks.WISPROOT_PRESSURE_PLATE.get());
@@ -501,7 +501,7 @@ public class AetherIIItemModelData extends AetherIIItemModelProvider {
 //        this.itemBlock(AetherIIBlocks.WISPROOT_BASE_BEAM.get());
 //        this.itemBlock(AetherIIBlocks.WISPROOT_TOP_BEAM.get());
 //        this.itemBlock(AetherIIBlocks.WISPROOT_BEAM.get());
-        itemModels.generateFlatItem(AetherIIBlocks.SECRET_WISPROOT_DOOR.get().asItem(), "miscellaneous/");
+//        itemModels.generateFlatItem(AetherIIBlocks.SECRET_WISPROOT_DOOR.get().asItem(), "miscellaneous/");
 //        this.itemBlock(AetherIIBlocks.SECRET_WISPROOT_TRAPDOOR.get(), "_bottom");
 //
 //        // Holystone
@@ -664,7 +664,7 @@ public class AetherIIItemModelData extends AetherIIItemModelProvider {
 //        this.itemBlock(AetherIIBlocks.BLACK_CLOUDWOOL_CARPET.get());
 //
 //        // Arkenium Blocks
-        itemModels.generateFlatItem(AetherIIBlocks.ARKENIUM_DOOR.get().asItem(), "miscellaneous/");
+//        itemModels.generateFlatItem(AetherIIBlocks.ARKENIUM_DOOR.get().asItem(), "miscellaneous/");
 //        this.itemBlock(AetherIIBlocks.ARKENIUM_TRAPDOOR.get(), "_bottom");
 //
 //        // Mineral Blocks
@@ -691,14 +691,14 @@ public class AetherIIItemModelData extends AetherIIItemModelProvider {
 //        this.itemBlockFlat(AetherIIBlocks.SKYROOT_LADDER.get(), "construction/");
 //        this.lookalikeBlock(AetherIIBlocks.SKYROOT_BED.get(), this.mcLoc("item/template_bed"));
 //
-        itemModels.generateFlatItem(AetherIIBlocks.SKYROOT_SIGN.get().asItem(), "miscellaneous/");
-        itemModels.generateFlatItem(AetherIIBlocks.SKYROOT_HANGING_SIGN.get().asItem(), "miscellaneous/");
-//
-        itemModels.generateFlatItem(AetherIIBlocks.GREATROOT_SIGN.get().asItem(), "miscellaneous/");
-        itemModels.generateFlatItem(AetherIIBlocks.GREATROOT_HANGING_SIGN.get().asItem(), "miscellaneous/");
-//
-        itemModels.generateFlatItem(AetherIIBlocks.WISPROOT_SIGN.get().asItem(), "miscellaneous/");
-        itemModels.generateFlatItem(AetherIIBlocks.WISPROOT_HANGING_SIGN.get().asItem(), "miscellaneous/");
+//        itemModels.generateFlatItem(AetherIIBlocks.SKYROOT_SIGN.get().asItem(), "miscellaneous/");
+//        itemModels.generateFlatItem(AetherIIBlocks.SKYROOT_HANGING_SIGN.get().asItem(), "miscellaneous/");
+////
+//        itemModels.generateFlatItem(AetherIIBlocks.GREATROOT_SIGN.get().asItem(), "miscellaneous/");
+//        itemModels.generateFlatItem(AetherIIBlocks.GREATROOT_HANGING_SIGN.get().asItem(), "miscellaneous/");
+////
+//        itemModels.generateFlatItem(AetherIIBlocks.WISPROOT_SIGN.get().asItem(), "miscellaneous/");
+//        itemModels.generateFlatItem(AetherIIBlocks.WISPROOT_HANGING_SIGN.get().asItem(), "miscellaneous/");
 //
 //        // Bookshelves
 //        this.itemBlock(AetherIIBlocks.SKYROOT_BOOKSHELF.get());

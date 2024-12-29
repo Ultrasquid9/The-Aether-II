@@ -12,7 +12,6 @@ import net.minecraft.client.data.models.model.ModelLocationUtils;
 import net.minecraft.client.data.models.model.ModelTemplates;
 import net.minecraft.client.data.models.model.TextureMapping;
 import net.minecraft.client.data.models.model.TextureSlot;
-import net.minecraft.data.BlockFamilies;
 import net.minecraft.data.BlockFamily;
 import net.minecraft.data.PackOutput;
 
@@ -105,7 +104,7 @@ public class AetherIIBlockModelData extends AetherIIBlockModelProvider {
 //        this.purpleAercloud(AetherIIBlocks.PURPLE_AERCLOUD.get());
 //        this.translucentInterior(AetherIIBlocks.STORM_AERCLOUD.get());
 //
-//        // Moa Nest
+        // Moa Nest
         blockModels.createTrivialCube(AetherIIBlocks.WOVEN_SKYROOT_STICKS.get());
 //
 //        // Logs
@@ -167,7 +166,7 @@ public class AetherIIBlockModelData extends AetherIIBlockModelProvider {
 //        this.tintedLeaves(AetherIIBlocks.IRRADIATED_GREATOAK_LEAVES.get());
 //        this.tintedLeaves(AetherIIBlocks.IRRADIATED_GREATBOA_LEAVES.get());
 //
-//        // Saplings
+        // Saplings
         blockModels.createPlantWithDefaultItem(AetherIIBlocks.SKYROOT_SAPLING.get(), AetherIIBlocks.POTTED_SKYROOT_SAPLING.get(), BlockModelGenerators.PlantType.NOT_TINTED);
         blockModels.createPlantWithDefaultItem(AetherIIBlocks.SKYPLANE_SAPLING.get(), AetherIIBlocks.POTTED_SKYPLANE_SAPLING.get(), BlockModelGenerators.PlantType.NOT_TINTED);
         blockModels.createPlantWithDefaultItem(AetherIIBlocks.SKYBIRCH_SAPLING.get(), AetherIIBlocks.POTTED_SKYBIRCH_SAPLING.get(), BlockModelGenerators.PlantType.NOT_TINTED);
@@ -232,7 +231,7 @@ public class AetherIIBlockModelData extends AetherIIBlockModelProvider {
 //        this.brettlPlant(AetherIIBlocks.BRETTL_PLANT.get());
 //        this.brettlPlant(AetherIIBlocks.BRETTL_PLANT_TIP.get());
 //
-//        // Lake
+        // Lake
         blockModels.createCrossBlock(AetherIIBlocks.ARILUM_SHOOT.get(), BlockModelGenerators.PlantType.NOT_TINTED);
         blockModels.createCrossBlock(AetherIIBlocks.ARILUM.get(), BlockModelGenerators.PlantType.NOT_TINTED);
         blockModels.createCrossBlock(AetherIIBlocks.ARILUM_PLANT.get(), BlockModelGenerators.PlantType.NOT_TINTED);
@@ -360,13 +359,13 @@ public class AetherIIBlockModelData extends AetherIIBlockModelProvider {
 //        this.doorBlock(AetherIIBlocks.ARKENIUM_DOOR.get());
 //        this.trapdoorBlock(AetherIIBlocks.ARKENIUM_TRAPDOOR.get(), this.texture(this.name(AetherIIBlocks.ARKENIUM_TRAPDOOR.get())), true);
 //
-//        // Mineral Blocks
+        // Mineral Blocks
         blockModels.createTrivialCube(AetherIIBlocks.AMBROSIUM_BLOCK.get());
         blockModels.createTrivialCube(AetherIIBlocks.ZANITE_BLOCK.get());
         blockModels.createTrivialCube(AetherIIBlocks.ARKENIUM_BLOCK.get());
         blockModels.createTrivialCube(AetherIIBlocks.GRAVITITE_BLOCK.get());
-//
-//        // Arilum Lantern
+
+        // Arilum Lantern
         blockModels.createTrivialCube(AetherIIBlocks.GREEN_ARILUM_LANTERN.get());
         blockModels.createTrivialCube(AetherIIBlocks.BLUE_ARILUM_LANTERN.get());
         blockModels.createTrivialCube(AetherIIBlocks.PURPLE_ARILUM_LANTERN.get());
