@@ -21,52 +21,6 @@ package com.aetherteam.aetherii.data.providers;
 //        super(output, id, helper);
 //    }
 //
-//    public void dyedHelmetItem(Item item, String location) {
-//        this.dyedStyledArmorItem(item, location, "helmet");
-//    }
-//
-//    public void dyedChestplateItem(Item item, String location) {
-//        this.dyedStyledArmorItem(item, location, "chestplate");
-//    }
-//
-//    public void dyedLeggingsItem(Item item, String location) {
-//        this.dyedStyledArmorItem(item, location, "leggings");
-//    }
-//
-//    public void dyedBootsItem(Item item, String location) {
-//        this.dyedStyledArmorItem(item, location, "boots");
-//    }
-//
-//    public void dyedGlovesItem(Item item, String location) {
-//        this.dyedStyledArmorItem(item, location, "gloves");
-//    }
-//
-//    public void dyedStyledArmorItem(Item item, String location, String type) {
-//        this.withExistingParent(this.itemName(item), this.mcLoc("item/generated"))
-//                .texture("layer0", this.modLoc("item/" + location + this.itemName(item)))
-//                .texture("layer1", this.modLoc("item/" + location + this.itemName(item) + "_dyed"));
-//    }
-//
-//    public void helmetItem(Item item, String location) {
-//        this.styledArmorItem(item, location, "helmet");
-//    }
-//
-//    public void chestplateItem(Item item, String location) {
-//        this.styledArmorItem(item, location, "chestplate");
-//    }
-//
-//    public void leggingsItem(Item item, String location) {
-//        this.styledArmorItem(item, location, "leggings");
-//    }
-//
-//    public void bootsItem(Item item, String location) {
-//        this.styledArmorItem(item, location, "boots");
-//    }
-//
-//    public void styledArmorItem(Item item, String location, String type) {
-//        this.withExistingParent(this.itemName(item), this.mcLoc("item/generated")).texture("layer0", this.modLoc("item/" + location + this.itemName(item)));
-//    }
-//
 //    public void gliderItem(Item item, boolean hasAbility) {
 //        ItemModelBuilder normalInventorySprite = this.nested().parent(this.getExistingFile(this.mcLoc("item/generated"))).texture("layer0", this.modLoc("item/miscellaneous/" + this.itemName(item)));
 //
@@ -143,47 +97,6 @@ package com.aetherteam.aetherii.data.providers;
 //        this.withExistingParent(this.blockName(block), this.mcLoc("item/generated")).texture("layer0", this.texture(this.blockName(block) + "_bottom_0", "natural/"));
 //    }
 //
-//    public void moaEgg(Item item) {
-//        String itemName = this.itemName(item);
-//        ItemModelBuilder builder = this.withExistingParent(itemName, this.mcLoc("item/generated"));
-//        double keratinColorIndex = 0.0;
-//        double eyeColorIndex = 0.0;
-//        double featherColorIndex = 0.0;
-//        double featherShapeIndex = 0.0;
-//        for (Moa.KeratinColor keratinColor : Moa.KeratinColor.values()) {
-//            for (Moa.EyeColor eyeColor : Moa.EyeColor.values()) {
-//                for (Moa.FeatherColor featherColor : Moa.FeatherColor.values()) {
-//                    for (Moa.FeatherShape featherShape : Moa.FeatherShape.values()) {
-//                        String name = itemName + "_"
-//                                + featherShape.getSerializedName()
-//                                + "_keratin_" + keratinColor.getSerializedName()
-//                                + "_eyes_" + eyeColor.getSerializedName()
-//                                + "_feather_" + featherColor.getSerializedName();
-//
-//                        this.withExistingParent(name, this.mcLoc("item/generated"))
-//                                .texture("layer0", this.modLoc("item/miscellaneous/" + itemName + "_" + featherShape.getSerializedName() + "_" + featherColor.getSerializedName()))
-//                                .texture("layer1", this.modLoc("item/miscellaneous/" + itemName + "_keratin_" + keratinColor.getSerializedName()))
-//                                .texture("layer2", this.modLoc("item/miscellaneous/" + itemName + "_eyes_" + eyeColor.getSerializedName()));
-//                        builder.override()
-//                                .predicate(ResourceLocation.fromNamespaceAndPath(AetherII.MODID, "keratin_color"), new BigDecimal(keratinColorIndex, new MathContext(3)).floatValue())
-//                                .predicate(ResourceLocation.fromNamespaceAndPath(AetherII.MODID, "eye_color"), new BigDecimal(eyeColorIndex, new MathContext(3)).floatValue())
-//                                .predicate(ResourceLocation.fromNamespaceAndPath(AetherII.MODID, "feather_color"), new BigDecimal(featherColorIndex, new MathContext(3)).floatValue())
-//                                .predicate(ResourceLocation.fromNamespaceAndPath(AetherII.MODID, "feather_shape"), new BigDecimal(featherShapeIndex, new MathContext(3)).floatValue())
-//                                .model(this.getExistingFile(this.modLoc("item/" + name))).end();
-//
-//                        featherShapeIndex += 1.0 / Moa.FeatherShape.values().length;
-//                    }
-//                    featherShapeIndex = 0;
-//                    featherColorIndex += 1.0 / Moa.FeatherColor.values().length;
-//                }
-//                featherColorIndex = 0;
-//                eyeColorIndex += 1.0 / Moa.EyeColor.values().length;
-//            }
-//            eyeColorIndex = 0;
-//            keratinColorIndex += 1.0 / Moa.KeratinColor.values().length;
-//        }
-//    }
-//
 //    public void pointedStone(Block block, String location) {
 //        this.withExistingParent(this.blockName(block), this.mcLoc("item/generated")).texture("layer0", this.texture(this.blockName(block), location))
 //                .transforms()
@@ -194,10 +107,5 @@ package com.aetherteam.aetherii.data.providers;
 //
 //    public void aercloudItem(Block block) {
 //        this.withExistingParent(this.blockName(block), this.mcLoc("block/cube_all")).texture("all", this.texture(this.blockName(block), "natural/")).renderType(ResourceLocation.withDefaultNamespace("translucent"));
-//    }
-//
-//    public void blockWithItem(Block block, String location) {
-//        this.withExistingParent(this.blockName(block), this.mcLoc("item/generated"))
-//                .texture("layer0", this.modLoc("item/" + location + this.itemName(block.asItem())));
 //    }
 //}

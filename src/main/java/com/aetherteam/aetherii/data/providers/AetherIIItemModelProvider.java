@@ -2,8 +2,11 @@ package com.aetherteam.aetherii.data.providers;
 
 import com.aetherteam.aetherii.client.renderer.item.properties.ReinforcementTierRange;
 import com.aetherteam.aetherii.client.renderer.item.properties.SelectFeatherColor;
+import com.aetherteam.aetherii.client.renderer.item.properties.SelectMoaEggType;
 import com.aetherteam.aetherii.client.renderer.item.properties.TieredCrossbowPullRange;
 import com.aetherteam.aetherii.entity.passive.Moa;
+import com.aetherteam.aetherii.item.components.MoaEggType;
+import net.minecraft.client.color.item.Dye;
 import net.minecraft.client.data.models.ItemModelGenerators;
 import net.minecraft.client.data.models.ModelProvider;
 import net.minecraft.client.data.models.model.*;
@@ -21,7 +24,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Stream;
 
-public class AetherIIItemModelProvider  extends ModelProvider {
+public class AetherIIItemModelProvider extends ModelProvider {
     public AetherIIItemModelProvider(PackOutput output, String modId) {
         super(output, modId);
     }
@@ -42,6 +45,11 @@ public class AetherIIItemModelProvider  extends ModelProvider {
         itemModels.itemModelOutput.accept(item, ItemModelUtils.conditional(ItemModelUtils.isUsingItem(),
                 ItemModelUtils.rangeSelect(new TieredCrossbowPullRange(), pulling0, ItemModelUtils.override(pulling1, 0.58F), ItemModelUtils.override(pulling2, 1.0F)),
                 ItemModelUtils.select(new Charge(), base, ItemModelUtils.when(CrossbowItem.ChargeType.ARROW, arrow))));
+    }
+
+    public void generateDyedArmorItem(ItemModelGenerators itemModels, Item item, int defaultColor) {
+        ResourceLocation resourcelocation = itemModels.generateLayeredItem(item, TextureMapping.getItemTexture(item), TextureMapping.getItemTexture(item).withSuffix("_dyed"));
+        itemModels.itemModelOutput.accept(item, ItemModelUtils.tintedModel(resourcelocation, new Dye(defaultColor)));
     }
 
     public void generateMoaFeatherItem(ItemModelGenerators itemModels, Item item) {
@@ -71,6 +79,30 @@ public class AetherIIItemModelProvider  extends ModelProvider {
                 ItemModelUtils.override(charged4, 0.4F),
                 ItemModelUtils.override(charged5, 0.5F)
         ));
+    }
+
+    public void generateMoaEggItem(ItemModelGenerators itemModels, Item item) {
+        ResourceLocation modelLocation = ModelLocationUtils.getModelLocation(item);
+        ResourceLocation textureLocation = TextureMapping.getItemTexture(item);
+        List<SelectItemModel.SwitchCase<MoaEggType>> list = new ArrayList<>(Moa.KeratinColor.values().length * Moa.EyeColor.values().length * Moa.FeatherColor.values().length * Moa.FeatherShape.values().length);
+        for (Moa.KeratinColor keratinColor : Moa.KeratinColor.values()) {
+            for (Moa.EyeColor eyeColor : Moa.EyeColor.values()) {
+                for (Moa.FeatherColor featherColor : Moa.FeatherColor.values()) {
+                    for (Moa.FeatherShape featherShape : Moa.FeatherShape.values()) {
+                        MoaEggType type = new MoaEggType(keratinColor, eyeColor, featherColor, featherShape);
+                        ResourceLocation name = modelLocation.withSuffix("_"
+                                + featherShape.getSerializedName()
+                                + "_keratin_" + keratinColor.getSerializedName()
+                                + "_eyes_" + eyeColor.getSerializedName()
+                                + "_feather_" + featherColor.getSerializedName());
+                        ItemModel.Unbaked model = ItemModelUtils.plainModel(name);
+                        ModelTemplates.FLAT_ITEM.create(textureLocation, TextureMapping.layer0(textureLocation), itemModels.modelOutput);
+                        list.add(ItemModelUtils.when(type, model));
+                    }
+                }
+            }
+        }
+        itemModels.itemModelOutput.accept(item, ItemModelUtils.select(new SelectMoaEggType(), ItemModelUtils.plainModel(modelLocation), list));
     }
 
     @Override

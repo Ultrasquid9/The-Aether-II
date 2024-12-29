@@ -73,17 +73,17 @@ public class AetherIIItemModelData extends AetherIIItemModelProvider {
         itemModels.generateFlatItem(AetherIIItems.SCATTERGLASS_BOLT.get(), ModelTemplates.FLAT_ITEM);
 
         // Armor
-//        this.dyedHelmetItem(AetherIIItems.TAEGORE_HIDE_HELMET.get(), "armor/");
-//        this.dyedChestplateItem(AetherIIItems.TAEGORE_HIDE_CHESTPLATE.get(), "armor/");
-//        this.dyedLeggingsItem(AetherIIItems.TAEGORE_HIDE_LEGGINGS.get(), "armor/");
-//        this.dyedBootsItem(AetherIIItems.TAEGORE_HIDE_BOOTS.get(), "armor/");
-//        this.dyedGlovesItem(AetherIIItems.TAEGORE_HIDE_GLOVES.get(), "armor/");
-//
-//        this.dyedHelmetItem(AetherIIItems.BURRUKAI_PELT_HELMET.get(), "armor/");
-//        this.dyedChestplateItem(AetherIIItems.BURRUKAI_PELT_CHESTPLATE.get(), "armor/");
-//        this.dyedLeggingsItem(AetherIIItems.BURRUKAI_PELT_LEGGINGS.get(), "armor/");
-//        this.dyedBootsItem(AetherIIItems.BURRUKAI_PELT_BOOTS.get(), "armor/");
-//        this.dyedGlovesItem(AetherIIItems.BURRUKAI_PELT_GLOVES.get(), "armor/");
+        this.generateDyedArmorItem(itemModels, AetherIIItems.TAEGORE_HIDE_HELMET.get(), -3150087);
+        this.generateDyedArmorItem(itemModels, AetherIIItems.TAEGORE_HIDE_CHESTPLATE.get(), -3150087);
+        this.generateDyedArmorItem(itemModels, AetherIIItems.TAEGORE_HIDE_LEGGINGS.get(), -3150087);
+        this.generateDyedArmorItem(itemModels, AetherIIItems.TAEGORE_HIDE_BOOTS.get(), -3150087);
+        this.generateDyedArmorItem(itemModels, AetherIIItems.TAEGORE_HIDE_GLOVES.get(), -3150087);
+
+        this.generateDyedArmorItem(itemModels, AetherIIItems.BURRUKAI_PELT_HELMET.get(), -10380096);
+        this.generateDyedArmorItem(itemModels, AetherIIItems.BURRUKAI_PELT_CHESTPLATE.get(), -10380096);
+        this.generateDyedArmorItem(itemModels, AetherIIItems.BURRUKAI_PELT_LEGGINGS.get(), -10380096);
+        this.generateDyedArmorItem(itemModels, AetherIIItems.BURRUKAI_PELT_BOOTS.get(), -10380096);
+        this.generateDyedArmorItem(itemModels, AetherIIItems.BURRUKAI_PELT_GLOVES.get(), -10380096);
 
         itemModels.generateFlatItem(AetherIIItems.ZANITE_HELMET.get(), ModelTemplates.FLAT_ITEM);
         itemModels.generateFlatItem(AetherIIItems.ZANITE_CHESTPLATE.get(), ModelTemplates.FLAT_ITEM);
@@ -174,8 +174,8 @@ public class AetherIIItemModelData extends AetherIIItemModelProvider {
         itemModels.generateFlatItem(AetherIIItems.ANTIVENOM_VIAL.get(), ModelTemplates.FLAT_ITEM);
         itemModels.generateFlatItem(AetherIIItems.VALKYRIE_TEA.get(), ModelTemplates.FLAT_ITEM);
         this.generateHealingStoneItem(itemModels, AetherIIItems.HEALING_STONE.get());
-//
-//        // Gliders
+
+        // Gliders
 //        this.gliderItem(AetherIIItems.COLD_AERCLOUD_GLIDER.get(), false);
 //        this.gliderItem(AetherIIItems.GOLDEN_AERCLOUD_GLIDER.get(), false);
 //        this.gliderItem(AetherIIItems.BLUE_AERCLOUD_GLIDER.get(), true);
@@ -230,7 +230,7 @@ public class AetherIIItemModelData extends AetherIIItemModelProvider {
         itemModels.generateSpawnEgg(AetherIIItems.SKEPHID_SPAWN_EGG.get(), 0x7D96AB, 0xF7CC94);
 
         // Misc
-//        this.moaEgg(AetherIIItems.MOA_EGG.get());
+        this.generateMoaEggItem(itemModels, AetherIIItems.MOA_EGG.get());
         itemModels.generateFlatItem(AetherIIItems.MOA_FEED.get(), ModelTemplates.FLAT_ITEM);
         itemModels.generateFlatItem(AetherIIItems.BLUEBERRY_MOA_FEED.get(), ModelTemplates.FLAT_ITEM);
         itemModels.generateFlatItem(AetherIIItems.ENCHANTED_MOA_FEED.get(), ModelTemplates.FLAT_ITEM);

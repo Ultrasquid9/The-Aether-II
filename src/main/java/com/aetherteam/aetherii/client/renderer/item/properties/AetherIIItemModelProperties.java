@@ -8,6 +8,7 @@ import net.neoforged.neoforge.client.event.RegisterSelectItemModelPropertyEvent;
 public class AetherIIItemModelProperties {
     public static void registerSelectProperties(RegisterSelectItemModelPropertyEvent event) {
         event.register(ResourceLocation.fromNamespaceAndPath(AetherII.MODID, "feather_color"), SelectFeatherColor.TYPE);
+        event.register(ResourceLocation.fromNamespaceAndPath(AetherII.MODID, "moa_egg_type"), SelectMoaEggType.TYPE);
     }
 
     public static void registerRangeSelectProperties(RegisterRangeSelectItemModelPropertyEvent event) {
