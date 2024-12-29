@@ -57,6 +57,22 @@ public class AetherIIItemModelProvider  extends ModelProvider {
         itemModels.itemModelOutput.accept(item, ItemModelUtils.select(new SelectFeatherColor(), ItemModelUtils.plainModel(modelLocation), list));
     }
 
+    public void generateHealingStoneItem(ItemModelGenerators itemModels, Item item) {
+        ItemModel.Unbaked base = ItemModelUtils.plainModel(ModelLocationUtils.getModelLocation(item));
+        ItemModel.Unbaked charged1 = ItemModelUtils.plainModel(itemModels.createFlatItemModel(item, "_1", ModelTemplates.FLAT_HANDHELD_ITEM));
+        ItemModel.Unbaked charged2 = ItemModelUtils.plainModel(itemModels.createFlatItemModel(item, "_2", ModelTemplates.FLAT_HANDHELD_ITEM));
+        ItemModel.Unbaked charged3 = ItemModelUtils.plainModel(itemModels.createFlatItemModel(item, "_3", ModelTemplates.FLAT_HANDHELD_ITEM));
+        ItemModel.Unbaked charged4 = ItemModelUtils.plainModel(itemModels.createFlatItemModel(item, "_4", ModelTemplates.FLAT_HANDHELD_ITEM));
+        ItemModel.Unbaked charged5 = ItemModelUtils.plainModel(itemModels.createFlatItemModel(item, "_5", ModelTemplates.FLAT_HANDHELD_ITEM));
+        itemModels.itemModelOutput.accept(item, ItemModelUtils.rangeSelect(new TieredCrossbowPullRange(), base,
+                ItemModelUtils.override(charged1, 0.1F),
+                ItemModelUtils.override(charged2, 0.2F),
+                ItemModelUtils.override(charged3, 0.3F),
+                ItemModelUtils.override(charged4, 0.4F),
+                ItemModelUtils.override(charged5, 0.5F)
+        ));
+    }
+
     @Override
     public Stream<? extends Holder<Block>> getKnownBlocks() {
         return Stream.of();

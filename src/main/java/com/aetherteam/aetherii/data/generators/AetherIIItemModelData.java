@@ -6,6 +6,7 @@ import com.aetherteam.aetherii.item.AetherIIItems;
 import net.minecraft.client.data.models.BlockModelGenerators;
 import net.minecraft.client.data.models.ItemModelGenerators;
 import net.minecraft.client.data.models.model.ModelTemplates;
+import net.minecraft.client.data.models.model.TextureMapping;
 import net.minecraft.data.PackOutput;
 
 public class AetherIIItemModelData extends AetherIIItemModelProvider {
@@ -172,7 +173,7 @@ public class AetherIIItemModelData extends AetherIIItemModelProvider {
         itemModels.generateFlatItem(AetherIIItems.ANTITOXIN_VIAL.get(), ModelTemplates.FLAT_ITEM);
         itemModels.generateFlatItem(AetherIIItems.ANTIVENOM_VIAL.get(), ModelTemplates.FLAT_ITEM);
         itemModels.generateFlatItem(AetherIIItems.VALKYRIE_TEA.get(), ModelTemplates.FLAT_ITEM);
-//        this.healingStoneItem(AetherIIItems.HEALING_STONE.get());
+        this.generateHealingStoneItem(itemModels, AetherIIItems.HEALING_STONE.get());
 //
 //        // Gliders
 //        this.gliderItem(AetherIIItems.COLD_AERCLOUD_GLIDER.get(), false);
@@ -235,7 +236,9 @@ public class AetherIIItemModelData extends AetherIIItemModelProvider {
         itemModels.generateFlatItem(AetherIIItems.ENCHANTED_MOA_FEED.get(), ModelTemplates.FLAT_ITEM);
         itemModels.generateFlatItem(AetherIIItems.MOA_SADDLE.get(), ModelTemplates.FLAT_ITEM);
         itemModels.generateFlatItem(AetherIIItems.GLINT_COIN.get(), ModelTemplates.FLAT_ITEM);
-//        this.portalItem(AetherIIItems.AETHER_PORTAL_FRAME.get(), ModelTemplates.FLAT_ITEM);
+        itemModels.generateLayeredItem(AetherIIItems.AETHER_PORTAL_FRAME.get(),
+                TextureMapping.getItemTexture(AetherIIItems.AETHER_PORTAL_FRAME.get()),
+                TextureMapping.getItemTexture(AetherIIItems.AETHER_PORTAL_FRAME.get()).withSuffix("_inside"));
 //
 //        // Blocks
 //        // Dirt

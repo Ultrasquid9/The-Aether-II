@@ -110,9 +110,7 @@ public class AetherIIClient {
         registerShieldProperties(AetherIIItems.HOLYSTONE_SHIELD.get());
         registerShieldProperties(AetherIIItems.ZANITE_SHIELD.get());
         registerShieldProperties(AetherIIItems.ARKENIUM_SHIELD.get());
-        registerShieldProperties(AetherIIItems.GRAVITITE_SHIELD.get());
-
-        registerHealingStoneProperties(AetherIIItems.HEALING_STONE.get());*/
+        registerShieldProperties(AetherIIItems.GRAVITITE_SHIELD.get());*/
     }
 
     /*private static void registerMoaEggProperties(Item item) {
@@ -157,11 +155,6 @@ public class AetherIIClient {
 
     private static void registerShieldProperties(Item item) {
         ItemProperties.register(item, ResourceLocation.withDefaultNamespace("blocking"), (stack, level, livingEntity, value) -> livingEntity != null && livingEntity.isUsingItem() && livingEntity.getUseItem() == stack ? 1.0F : 0.0F);
-    }
-
-    private static void registerHealingStoneProperties(Item item) {
-        ItemProperties.register(item, ResourceLocation.fromNamespaceAndPath(AetherII.MODID, "charge"), (stack, level, livingEntity, value) ->
-                stack.get(AetherIIDataComponents.HEALING_STONE_CHARGES) != null ? stack.get(AetherIIDataComponents.HEALING_STONE_CHARGES) / 10.0F : 0.0F);
     }
 
 */
