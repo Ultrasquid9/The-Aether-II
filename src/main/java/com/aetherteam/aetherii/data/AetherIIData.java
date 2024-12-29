@@ -52,15 +52,14 @@ public class AetherIIData {
                 Optional.of(new InclusiveRange<>(0, Integer.MAX_VALUE)))));
     }
 
-    public static void clientData(GatherDataEvent.Client event) { //todo split data events by side
+    public static void clientData(GatherDataEvent.Client event) {
         DataGenerator generator = event.getGenerator();
         ExistingFileHelper fileHelper = event.getExistingFileHelper();
-        CompletableFuture<HolderLookup.Provider> lookupProvider = event.getLookupProvider();
         PackOutput packOutput = generator.getPackOutput();
 
         // Client Data
-//        generator.addProvider(true, new AetherIIBlockModelData(packOutput));
-//        generator.addProvider(true, new AetherIIItemModelData(packOutput));
+        generator.addProvider(true, new AetherIIBlockModelData(packOutput));
+        generator.addProvider(true, new AetherIIItemModelData(packOutput));
         generator.addProvider(true, new AetherIIParticleData(packOutput, fileHelper));
         generator.addProvider(true, new AetherIILanguageData(packOutput));
         generator.addProvider(true, new AetherIISoundData(packOutput, fileHelper));
