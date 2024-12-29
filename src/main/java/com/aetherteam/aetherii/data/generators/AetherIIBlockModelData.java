@@ -3,6 +3,7 @@ package com.aetherteam.aetherii.data.generators;
 import com.aetherteam.aetherii.AetherII;
 import com.aetherteam.aetherii.block.AetherIIBlocks;
 import com.aetherteam.aetherii.data.providers.AetherIIBlockModelProvider;
+import com.aetherteam.aetherii.data.resources.builders.AetherIIBlockFamilies;
 import net.minecraft.client.data.models.BlockModelGenerators;
 import net.minecraft.client.data.models.ItemModelGenerators;
 import net.minecraft.client.data.models.blockstates.Variant;
@@ -11,6 +12,8 @@ import net.minecraft.client.data.models.model.ModelLocationUtils;
 import net.minecraft.client.data.models.model.ModelTemplates;
 import net.minecraft.client.data.models.model.TextureMapping;
 import net.minecraft.client.data.models.model.TextureSlot;
+import net.minecraft.data.BlockFamilies;
+import net.minecraft.data.BlockFamily;
 import net.minecraft.data.PackOutput;
 
 public class AetherIIBlockModelData extends AetherIIBlockModelProvider {
@@ -20,6 +23,8 @@ public class AetherIIBlockModelData extends AetherIIBlockModelProvider {
 
     @Override
     protected void registerModels(BlockModelGenerators blockModels, ItemModelGenerators itemModels) {
+        AetherIIBlockFamilies.getAllFamilies().filter(BlockFamily::shouldGenerateModel).forEach((family) -> blockModels.family(family.getBaseBlock()).generateFor(family));
+
         // Portal
         this.createAetherPortalBlock(blockModels);
 
@@ -38,13 +43,9 @@ public class AetherIIBlockModelData extends AetherIIBlockModelProvider {
         blockModels.createTrivialCube(AetherIIBlocks.SHIMMERING_SILT.get());
 
         // Underground
-        blockModels.createTrivialCube(AetherIIBlocks.HOLYSTONE.get());
         blockModels.createTrivialCube(AetherIIBlocks.UNSTABLE_HOLYSTONE.get());
-        blockModels.createTrivialCube(AetherIIBlocks.UNDERSHALE.get());
         blockModels.createTrivialCube(AetherIIBlocks.UNSTABLE_UNDERSHALE.get());
-        blockModels.createTrivialCube(AetherIIBlocks.AGIOSITE.get());
         blockModels.createTrivialCube(AetherIIBlocks.ICHORITE.get());
-//        this.translucentBlock(AetherIIBlocks.CRUDE_SCATTERGLASS.get());
 //        this.roots(AetherIIBlocks.SKY_ROOTS.get());
 //        this.gas(AetherIIBlocks.GAS.get());
 //        this.pointedStone(AetherIIBlocks.POINTED_HOLYSTONE.get());
@@ -52,38 +53,32 @@ public class AetherIIBlockModelData extends AetherIIBlockModelProvider {
 
         // Highfields
         blockModels.createTrivialCube(AetherIIBlocks.QUICKSOIL.get());
-        blockModels.createTrivialCube(AetherIIBlocks.MOSSY_HOLYSTONE.get());
-        blockModels.createTrivialCube(AetherIIBlocks.BRYALINN_MOSS_BLOCK.get());
-//        this.carpet(AetherIIBlocks.BRYALINN_MOSS_CARPET.get(), AetherIIBlocks.BRYALINN_MOSS_BLOCK.get());
+        blockModels.createFullAndCarpetBlocks(AetherIIBlocks.BRYALINN_MOSS_BLOCK.get(), AetherIIBlocks.BRYALINN_MOSS_CARPET.get());
 //        this.mossVines(AetherIIBlocks.BRYALINN_MOSS_VINES.get());
 //        this.bryalinnFlowers(AetherIIBlocks.BRYALINN_MOSS_FLOWERS.get());
-//        this.cutoutBlock(AetherIIBlocks.TANGLED_BRANCHES.get());
+        this.createCutoutCube(blockModels, AetherIIBlocks.TANGLED_BRANCHES.get());
 
         // Magnetic
         blockModels.createTrivialCube(AetherIIBlocks.FERROSITE_SAND.get());
         blockModels.createTrivialCube(AetherIIBlocks.FERROSITE_MUD.get());
         blockModels.createTrivialCube(AetherIIBlocks.FERROSITE.get());
         blockModels.createTrivialCube(AetherIIBlocks.RUSTED_FERROSITE.get());
-//        this.crossBlock(AetherIIBlocks.MAGNETIC_SHROOM.get());
+        blockModels.createCrossBlock(AetherIIBlocks.MAGNETIC_SHROOM.get(), BlockModelGenerators.PlantType.NOT_TINTED);
 
         // Arctic
         blockModels.createTrivialCube(AetherIIBlocks.ARCTIC_SNOW_BLOCK.get());
 //        this.snowLayer(AetherIIBlocks.ARCTIC_SNOW.get(), AetherIIBlocks.ARCTIC_SNOW_BLOCK.get());
-//        this.translucentBlock(AetherIIBlocks.ARCTIC_ICE.get());
+        this.createTranslucentCube(blockModels, AetherIIBlocks.ARCTIC_ICE.get());
         blockModels.createTrivialCube(AetherIIBlocks.ARCTIC_PACKED_ICE.get());
-        blockModels.createTrivialCube(AetherIIBlocks.ICESTONE.get());
 //        this.iceCrystal(AetherIIBlocks.LARGE_ARCTIC_ICE_CRYSTAL.get());
 //        this.iceCrystal(AetherIIBlocks.MEDIUM_ARCTIC_ICE_CRYSTAL.get());
 //        this.iceCrystal(AetherIIBlocks.SMALL_ARCTIC_ICE_CRYSTAL.get());
-        blockModels.createTrivialCube(AetherIIBlocks.SHAYELINN_MOSS_BLOCK.get());
-//        this.carpet(AetherIIBlocks.SHAYELINN_MOSS_CARPET.get(), AetherIIBlocks.SHAYELINN_MOSS_BLOCK.get());
+        blockModels.createFullAndCarpetBlocks(AetherIIBlocks.SHAYELINN_MOSS_BLOCK.get(), AetherIIBlocks.SHAYELINN_MOSS_CARPET.get());
 //        this.mossVines(AetherIIBlocks.SHAYELINN_MOSS_VINES.get());
 
         // Irradiated
-        blockModels.createTrivialCube(AetherIIBlocks.IRRADIATED_HOLYSTONE.get());
         blockModels.createTrivialCube(AetherIIBlocks.IRRADIATED_DUST_BLOCK.get());
-        blockModels.createTrivialCube(AetherIIBlocks.AMBRELINN_MOSS_BLOCK.get());
-//        this.carpet(AetherIIBlocks.AMBRELINN_MOSS_CARPET.get(), AetherIIBlocks.AMBRELINN_MOSS_BLOCK.get());
+        blockModels.createFullAndCarpetBlocks(AetherIIBlocks.AMBRELINN_MOSS_BLOCK.get(), AetherIIBlocks.AMBRELINN_MOSS_CARPET.get());
 //        this.ambrelinnMossVines(AetherIIBlocks.AMBRELINN_MOSS_VINES.get());
 //        this.tarahespFlowers(AetherIIBlocks.TARAHESP_FLOWERS.get());
 
@@ -173,35 +168,23 @@ public class AetherIIBlockModelData extends AetherIIBlockModelProvider {
 //        this.tintedLeaves(AetherIIBlocks.IRRADIATED_GREATBOA_LEAVES.get());
 //
 //        // Saplings
-//        this.saplingBlock(AetherIIBlocks.SKYROOT_SAPLING.get());
-//        this.saplingBlock(AetherIIBlocks.SKYPLANE_SAPLING.get());
-//        this.saplingBlock(AetherIIBlocks.SKYBIRCH_SAPLING.get());
-//        this.saplingBlock(AetherIIBlocks.SKYPINE_SAPLING.get());
-//        this.saplingBlock(AetherIIBlocks.WISPROOT_SAPLING.get());
-//        this.saplingBlock(AetherIIBlocks.WISPTOP_SAPLING.get());
-//        this.saplingBlock(AetherIIBlocks.GREATROOT_SAPLING.get());
-//        this.saplingBlock(AetherIIBlocks.GREATOAK_SAPLING.get());
-//        this.saplingBlock(AetherIIBlocks.GREATBOA_SAPLING.get());
-//        this.saplingBlock(AetherIIBlocks.AMBEROOT_SAPLING.get());
-//
-//        // Potted Saplings
-//        this.pottedPlant(AetherIIBlocks.POTTED_SKYROOT_SAPLING.get(), AetherIIBlocks.SKYROOT_SAPLING.get());
-//        this.pottedPlant(AetherIIBlocks.POTTED_SKYPLANE_SAPLING.get(), AetherIIBlocks.SKYPLANE_SAPLING.get());
-//        this.pottedPlant(AetherIIBlocks.POTTED_SKYBIRCH_SAPLING.get(), AetherIIBlocks.SKYBIRCH_SAPLING.get());
-//        this.pottedPlant(AetherIIBlocks.POTTED_SKYPINE_SAPLING.get(), AetherIIBlocks.SKYPINE_SAPLING.get());
-//        this.pottedPlant(AetherIIBlocks.POTTED_WISPROOT_SAPLING.get(), AetherIIBlocks.WISPROOT_SAPLING.get());
-//        this.pottedPlant(AetherIIBlocks.POTTED_WISPTOP_SAPLING.get(), AetherIIBlocks.WISPTOP_SAPLING.get());
-//        this.pottedPlant(AetherIIBlocks.POTTED_GREATROOT_SAPLING.get(), AetherIIBlocks.GREATROOT_SAPLING.get());
-//        this.pottedPlant(AetherIIBlocks.POTTED_GREATOAK_SAPLING.get(), AetherIIBlocks.GREATOAK_SAPLING.get());
-//        this.pottedPlant(AetherIIBlocks.POTTED_GREATBOA_SAPLING.get(), AetherIIBlocks.GREATBOA_SAPLING.get());
-//        this.pottedPlant(AetherIIBlocks.POTTED_AMBEROOT_SAPLING.get(), AetherIIBlocks.AMBEROOT_SAPLING.get());
+        blockModels.createPlantWithDefaultItem(AetherIIBlocks.SKYROOT_SAPLING.get(), AetherIIBlocks.POTTED_SKYROOT_SAPLING.get(), BlockModelGenerators.PlantType.NOT_TINTED);
+        blockModels.createPlantWithDefaultItem(AetherIIBlocks.SKYPLANE_SAPLING.get(), AetherIIBlocks.POTTED_SKYPLANE_SAPLING.get(), BlockModelGenerators.PlantType.NOT_TINTED);
+        blockModels.createPlantWithDefaultItem(AetherIIBlocks.SKYBIRCH_SAPLING.get(), AetherIIBlocks.POTTED_SKYBIRCH_SAPLING.get(), BlockModelGenerators.PlantType.NOT_TINTED);
+        blockModels.createPlantWithDefaultItem(AetherIIBlocks.SKYPINE_SAPLING.get(), AetherIIBlocks.POTTED_SKYPINE_SAPLING.get(), BlockModelGenerators.PlantType.NOT_TINTED);
+        blockModels.createPlantWithDefaultItem(AetherIIBlocks.WISPROOT_SAPLING.get(), AetherIIBlocks.POTTED_WISPROOT_SAPLING.get(), BlockModelGenerators.PlantType.NOT_TINTED);
+        blockModels.createPlantWithDefaultItem(AetherIIBlocks.WISPTOP_SAPLING.get(), AetherIIBlocks.POTTED_WISPTOP_SAPLING.get(), BlockModelGenerators.PlantType.NOT_TINTED);
+        blockModels.createPlantWithDefaultItem(AetherIIBlocks.GREATROOT_SAPLING.get(), AetherIIBlocks.POTTED_GREATROOT_SAPLING.get(), BlockModelGenerators.PlantType.NOT_TINTED);
+        blockModels.createPlantWithDefaultItem(AetherIIBlocks.GREATOAK_SAPLING.get(), AetherIIBlocks.POTTED_GREATOAK_SAPLING.get(), BlockModelGenerators.PlantType.NOT_TINTED);
+        blockModels.createPlantWithDefaultItem(AetherIIBlocks.GREATBOA_SAPLING.get(), AetherIIBlocks.POTTED_GREATBOA_SAPLING.get(), BlockModelGenerators.PlantType.NOT_TINTED);
+        blockModels.createPlantWithDefaultItem(AetherIIBlocks.AMBEROOT_SAPLING.get(), AetherIIBlocks.POTTED_AMBEROOT_SAPLING.get(), BlockModelGenerators.PlantType.NOT_TINTED);
 //
 //        // Grasses
 //        this.shortGrass(AetherIIBlocks.AETHER_SHORT_GRASS.get());
 //        this.shortGrass(AetherIIBlocks.AETHER_MEDIUM_GRASS.get());
 //        this.shortGrass(AetherIIBlocks.AETHER_LONG_GRASS.get());
 //        this.tintedFern(AetherIIBlocks.HIGHLAND_FERN.get());
-//        this.crossBlock(AetherIIBlocks.SHIELD_FERN.get());
+        blockModels.createCrossBlock(AetherIIBlocks.SHIELD_FERN.get(), BlockModelGenerators.PlantType.NOT_TINTED);
 //
 //        // Flowers
 //        this.frostedCross(AetherIIBlocks.HESPEROSE.get());
@@ -212,7 +195,7 @@ public class AetherIIBlockModelData extends AetherIIBlockModelProvider {
 //        this.asymmetricalCrossEven(AetherIIBlocks.SATIVAL_SHOOT.get());
 //        this.holpupea(AetherIIBlocks.HOLPUPEA.get());
 //        this.asymmetricalCrossOdd(AetherIIBlocks.BLADE_POA.get());
-//        this.crossBlock(AetherIIBlocks.AECHOR_CUTTING.get());
+        blockModels.createCrossBlock(AetherIIBlocks.AECHOR_CUTTING.get(), BlockModelGenerators.PlantType.NOT_TINTED);
 //
 //        // Potted Flowers
 //        this.pottedTintedPlant(AetherIIBlocks.POTTED_HIGHLAND_FERN.get(), AetherIIBlocks.HIGHLAND_FERN.get());
@@ -228,7 +211,7 @@ public class AetherIIBlockModelData extends AetherIIBlockModelProvider {
 //
 //        // Bushes
 //        this.bush(AetherIIBlocks.HIGHLANDS_BUSH.get());
-//        this.crossBlock(AetherIIBlocks.BLUEBERRY_BUSH_STEM.get());
+        blockModels.createCrossBlock(AetherIIBlocks.BLUEBERRY_BUSH_STEM.get(), BlockModelGenerators.PlantType.NOT_TINTED);
 //        this.berryBush(AetherIIBlocks.BLUEBERRY_BUSH.get(), AetherIIBlocks.BLUEBERRY_BUSH_STEM.get());
 //
 //        // Potted Bushes
@@ -250,26 +233,15 @@ public class AetherIIBlockModelData extends AetherIIBlockModelProvider {
 //        this.brettlPlant(AetherIIBlocks.BRETTL_PLANT_TIP.get());
 //
 //        // Lake
-//        this.crossBlock(AetherIIBlocks.ARILUM_SHOOT.get());
-//        this.crossBlock(AetherIIBlocks.ARILUM.get());
-//        this.crossBlock(AetherIIBlocks.ARILUM_PLANT.get());
-//        this.crossBlock(AetherIIBlocks.BLOOMING_ARILUM.get());
-//        this.crossBlock(AetherIIBlocks.BLOOMING_ARILUM_PLANT.get());
+        blockModels.createCrossBlock(AetherIIBlocks.ARILUM_SHOOT.get(), BlockModelGenerators.PlantType.NOT_TINTED);
+        blockModels.createCrossBlock(AetherIIBlocks.ARILUM.get(), BlockModelGenerators.PlantType.NOT_TINTED);
+        blockModels.createCrossBlock(AetherIIBlocks.ARILUM_PLANT.get(), BlockModelGenerators.PlantType.NOT_TINTED);
+        blockModels.createCrossBlock(AetherIIBlocks.BLOOMING_ARILUM.get(), BlockModelGenerators.PlantType.NOT_TINTED);
+        blockModels.createCrossBlock(AetherIIBlocks.BLOOMING_ARILUM_PLANT.get(), BlockModelGenerators.PlantType.NOT_TINTED);
 //
 //        // Ground Decoration
 //        this.twig(AetherIIBlocks.SKYROOT_TWIG.get(), AetherIIBlocks.SKYROOT_LOG.get());
 //        this.rock(AetherIIBlocks.HOLYSTONE_ROCK.get(), AetherIIBlocks.HOLYSTONE.get());
-//
-//        // Skyroot Planks
-        blockModels.createTrivialCube(AetherIIBlocks.SKYROOT_PLANKS.get());
-//        this.stairs(AetherIIBlocks.SKYROOT_STAIRS.get(), AetherIIBlocks.SKYROOT_PLANKS.get());
-//        this.slab(AetherIIBlocks.SKYROOT_SLAB.get(), AetherIIBlocks.SKYROOT_PLANKS.get());
-//        this.fence(AetherIIBlocks.SKYROOT_FENCE.get(), AetherIIBlocks.SKYROOT_PLANKS.get());
-//        this.fenceGateBlock(AetherIIBlocks.SKYROOT_FENCE_GATE.get(), AetherIIBlocks.SKYROOT_PLANKS.get());
-//        this.doorBlock(AetherIIBlocks.SKYROOT_DOOR.get());
-//        this.trapdoorBlock(AetherIIBlocks.SKYROOT_TRAPDOOR.get(), this.texture(this.name(AetherIIBlocks.SKYROOT_TRAPDOOR.get())), true);
-//        this.buttonBlock(AetherIIBlocks.SKYROOT_BUTTON.get(), this.texture(this.name(AetherIIBlocks.SKYROOT_PLANKS.get())));
-//        this.pressurePlateBlock(AetherIIBlocks.SKYROOT_PRESSURE_PLATE.get(), this.texture(this.name(AetherIIBlocks.SKYROOT_PLANKS.get())));
 //
 //        // Skyroot Decorative Blocks
         blockModels.createTrivialCube(AetherIIBlocks.SKYROOT_FLOORBOARDS.get());
@@ -284,17 +256,6 @@ public class AetherIIBlockModelData extends AetherIIBlockModelProvider {
 //        this.doorBlock(AetherIIBlocks.SECRET_SKYROOT_DOOR.get(), this.texture(this.name(AetherIIBlocks.SKYROOT_PLANKS.get())), this.texture(this.name(AetherIIBlocks.SKYROOT_PLANKS.get())));
 //        this.secretTrapdoorBlock(AetherIIBlocks.SECRET_SKYROOT_TRAPDOOR.get(), this.texture(this.name(AetherIIBlocks.SKYROOT_PLANKS.get())));
 //
-//        // Greatroot Planks
-        blockModels.createTrivialCube(AetherIIBlocks.GREATROOT_PLANKS.get());
-//        this.stairs(AetherIIBlocks.GREATROOT_STAIRS.get(), AetherIIBlocks.GREATROOT_PLANKS.get());
-//        this.slab(AetherIIBlocks.GREATROOT_SLAB.get(), AetherIIBlocks.GREATROOT_PLANKS.get());
-//        this.fence(AetherIIBlocks.GREATROOT_FENCE.get(), AetherIIBlocks.GREATROOT_PLANKS.get());
-//        this.fenceGateBlock(AetherIIBlocks.GREATROOT_FENCE_GATE.get(), AetherIIBlocks.GREATROOT_PLANKS.get());
-//        this.doorBlock(AetherIIBlocks.GREATROOT_DOOR.get());
-//        this.trapdoorBlock(AetherIIBlocks.GREATROOT_TRAPDOOR.get(), texture(name(AetherIIBlocks.GREATROOT_TRAPDOOR.get())), true);
-//        this.buttonBlock(AetherIIBlocks.GREATROOT_BUTTON.get(), this.texture(this.name(AetherIIBlocks.GREATROOT_PLANKS.get())));
-//        this.pressurePlateBlock(AetherIIBlocks.GREATROOT_PRESSURE_PLATE.get(), this.texture(this.name(AetherIIBlocks.GREATROOT_PLANKS.get())));
-//
 //        // Greatroot Decorative Blocks
         blockModels.createTrivialCube(AetherIIBlocks.GREATROOT_FLOORBOARDS.get());
         blockModels.createTrivialCube(AetherIIBlocks.GREATROOT_HIGHLIGHT.get());
@@ -308,17 +269,6 @@ public class AetherIIBlockModelData extends AetherIIBlockModelProvider {
 //        this.doorBlock(AetherIIBlocks.SECRET_GREATROOT_DOOR.get(), this.texture(this.name(AetherIIBlocks.GREATROOT_PLANKS.get())), this.texture(this.name(AetherIIBlocks.GREATROOT_PLANKS.get())));
 //        this.secretTrapdoorBlock(AetherIIBlocks.SECRET_GREATROOT_TRAPDOOR.get(), this.texture(this.name(AetherIIBlocks.GREATROOT_PLANKS.get())));
 //
-//        // Wisproot Planks
-        blockModels.createTrivialCube(AetherIIBlocks.WISPROOT_PLANKS.get());
-//        this.stairs(AetherIIBlocks.WISPROOT_STAIRS.get(), AetherIIBlocks.WISPROOT_PLANKS.get());
-//        this.slab(AetherIIBlocks.WISPROOT_SLAB.get(), AetherIIBlocks.WISPROOT_PLANKS.get());
-//        this.fence(AetherIIBlocks.WISPROOT_FENCE.get(), AetherIIBlocks.WISPROOT_PLANKS.get());
-//        this.fenceGateBlock(AetherIIBlocks.WISPROOT_FENCE_GATE.get(), AetherIIBlocks.WISPROOT_PLANKS.get());
-//        this.doorBlock(AetherIIBlocks.WISPROOT_DOOR.get());
-//        this.trapdoorBlock(AetherIIBlocks.WISPROOT_TRAPDOOR.get(), texture(name(AetherIIBlocks.WISPROOT_TRAPDOOR.get())), true);
-//        this.buttonBlock(AetherIIBlocks.WISPROOT_BUTTON.get(), this.texture(this.name(AetherIIBlocks.WISPROOT_PLANKS.get())));
-//        this.pressurePlateBlock(AetherIIBlocks.WISPROOT_PRESSURE_PLATE.get(), this.texture(this.name(AetherIIBlocks.WISPROOT_PLANKS.get())));
-//
 //        // Wisproot Decorative Blocks
         blockModels.createTrivialCube(AetherIIBlocks.WISPROOT_FLOORBOARDS.get());
         blockModels.createTrivialCube(AetherIIBlocks.WISPROOT_HIGHLIGHT.get());
@@ -331,29 +281,6 @@ public class AetherIIBlockModelData extends AetherIIBlockModelProvider {
 //        this.decorativeFacingPillar(AetherIIBlocks.WISPROOT_BEAM.get(),  AetherIIBlocks.WISPROOT_HIGHLIGHT.get());
 //        this.doorBlock(AetherIIBlocks.SECRET_WISPROOT_DOOR.get(), this.texture(this.name(AetherIIBlocks.WISPROOT_PLANKS.get())), this.texture(this.name(AetherIIBlocks.WISPROOT_PLANKS.get())));
 //        this.secretTrapdoorBlock(AetherIIBlocks.SECRET_WISPROOT_TRAPDOOR.get(), this.texture(this.name(AetherIIBlocks.WISPROOT_PLANKS.get())));
-//
-//        // Holystone
-//        this.stairs(AetherIIBlocks.HOLYSTONE_STAIRS.get(), AetherIIBlocks.HOLYSTONE.get());
-//        this.slab(AetherIIBlocks.HOLYSTONE_SLAB.get(), AetherIIBlocks.HOLYSTONE.get());
-//        this.wallBlock(AetherIIBlocks.HOLYSTONE_WALL.get(), AetherIIBlocks.HOLYSTONE.get());
-//        this.buttonBlock(AetherIIBlocks.HOLYSTONE_BUTTON.get(), this.texture(this.name(AetherIIBlocks.HOLYSTONE.get())));
-//        this.pressurePlateBlock(AetherIIBlocks.HOLYSTONE_PRESSURE_PLATE.get(), this.texture(this.name(AetherIIBlocks.HOLYSTONE.get())));
-//
-//        // Mossy Holystone
-//        this.stairs(AetherIIBlocks.MOSSY_HOLYSTONE_STAIRS.get(), AetherIIBlocks.MOSSY_HOLYSTONE.get());
-//        this.slab(AetherIIBlocks.MOSSY_HOLYSTONE_SLAB.get(), AetherIIBlocks.MOSSY_HOLYSTONE.get());
-//        this.wallBlock(AetherIIBlocks.MOSSY_HOLYSTONE_WALL.get(), AetherIIBlocks.MOSSY_HOLYSTONE.get());
-//
-//        // Irradiated Holystone
-//        this.stairs(AetherIIBlocks.IRRADIATED_HOLYSTONE_STAIRS.get(), AetherIIBlocks.IRRADIATED_HOLYSTONE.get());
-//        this.slab(AetherIIBlocks.IRRADIATED_HOLYSTONE_SLAB.get(), AetherIIBlocks.IRRADIATED_HOLYSTONE.get());
-//        this.wallBlock(AetherIIBlocks.IRRADIATED_HOLYSTONE_WALL.get(), AetherIIBlocks.IRRADIATED_HOLYSTONE.get());
-//
-//        // Holystone Bricks
-        blockModels.createTrivialCube(AetherIIBlocks.HOLYSTONE_BRICKS.get());
-//        this.stairs(AetherIIBlocks.HOLYSTONE_BRICK_STAIRS.get(), AetherIIBlocks.HOLYSTONE_BRICKS.get());
-//        this.slab(AetherIIBlocks.HOLYSTONE_BRICK_SLAB.get(), AetherIIBlocks.HOLYSTONE_BRICKS.get());
-//        this.wallBlock(AetherIIBlocks.HOLYSTONE_BRICK_WALL.get(), AetherIIBlocks.HOLYSTONE_BRICKS.get());
 //
 //        // Holystone Decorative Blocks
         blockModels.createTrivialCube(AetherIIBlocks.HOLYSTONE_FLAGSTONES.get());
@@ -375,33 +302,11 @@ public class AetherIIBlockModelData extends AetherIIBlockModelProvider {
 //        this.decorativeFacingPillar(AetherIIBlocks.FADED_HOLYSTONE_CAPSTONE_PILLAR.get(), AetherIIBlocks.FADED_HOLYSTONE_KEYSTONE.get());
 //        this.decorativeFacingPillar(AetherIIBlocks.FADED_HOLYSTONE_PILLAR.get(), AetherIIBlocks.FADED_HOLYSTONE_KEYSTONE.get());
 //
-//        // Faded Holystone Bricks
-        blockModels.createTrivialCube(AetherIIBlocks.FADED_HOLYSTONE_BRICKS.get());
-//        this.stairs(AetherIIBlocks.FADED_HOLYSTONE_BRICK_STAIRS.get(), AetherIIBlocks.FADED_HOLYSTONE_BRICKS.get());
-//        this.slab(AetherIIBlocks.FADED_HOLYSTONE_BRICK_SLAB.get(), AetherIIBlocks.FADED_HOLYSTONE_BRICKS.get());
-//        this.wallBlock(AetherIIBlocks.FADED_HOLYSTONE_BRICK_WALL.get(), AetherIIBlocks.FADED_HOLYSTONE_BRICKS.get());
-//
-//        // Undershale
-//        this.stairs(AetherIIBlocks.UNDERSHALE_STAIRS.get(), AetherIIBlocks.UNDERSHALE.get());
-//        this.slab(AetherIIBlocks.UNDERSHALE_SLAB.get(), AetherIIBlocks.UNDERSHALE.get());
-//        this.wallBlock(AetherIIBlocks.UNDERSHALE_WALL.get(), AetherIIBlocks.UNDERSHALE.get());
-//
 //        // Undershale Bricks
         blockModels.createTrivialCube(AetherIIBlocks.UNDERSHALE_BRICKS.get());
 //        this.stairs(AetherIIBlocks.UNDERSHALE_BRICK_STAIRS.get(), AetherIIBlocks.UNDERSHALE_BRICKS.get());
 //        this.slab(AetherIIBlocks.UNDERSHALE_BRICK_SLAB.get(), AetherIIBlocks.UNDERSHALE_BRICKS.get());
 //        this.wallBlock(AetherIIBlocks.UNDERSHALE_BRICK_WALL.get(), AetherIIBlocks.UNDERSHALE_BRICKS.get());
-//
-//        // Agiosite
-//        this.stairs(AetherIIBlocks.AGIOSITE_STAIRS.get(), AetherIIBlocks.AGIOSITE.get());
-//        this.slab(AetherIIBlocks.AGIOSITE_SLAB.get(), AetherIIBlocks.AGIOSITE.get());
-//        this.wallBlock(AetherIIBlocks.AGIOSITE_WALL.get(), AetherIIBlocks.AGIOSITE.get());
-//
-//        // Agiosite Bricks
-        blockModels.createTrivialCube(AetherIIBlocks.AGIOSITE_BRICKS.get());
-//        this.stairs(AetherIIBlocks.AGIOSITE_BRICK_STAIRS.get(), AetherIIBlocks.AGIOSITE_BRICKS.get());
-//        this.slab(AetherIIBlocks.AGIOSITE_BRICK_SLAB.get(), AetherIIBlocks.AGIOSITE_BRICKS.get());
-//        this.wallBlock(AetherIIBlocks.AGIOSITE_BRICK_WALL.get(), AetherIIBlocks.AGIOSITE_BRICKS.get());
 //
 //        // Agiosite Decorative Blocks
         blockModels.createTrivialCube(AetherIIBlocks.AGIOSITE_FLAGSTONES.get());
@@ -412,17 +317,6 @@ public class AetherIIBlockModelData extends AetherIIBlockModelProvider {
 //        this.decorativeFacingPillar(AetherIIBlocks.AGIOSITE_CAPSTONE_PILLAR.get(), AetherIIBlocks.AGIOSITE_KEYSTONE.get());
 //        this.decorativeFacingPillar(AetherIIBlocks.AGIOSITE_PILLAR.get(), AetherIIBlocks.AGIOSITE_KEYSTONE.get());
 //
-//        // Icestone
-//        this.stairs(AetherIIBlocks.ICESTONE_STAIRS.get(), AetherIIBlocks.ICESTONE.get());
-//        this.slab(AetherIIBlocks.ICESTONE_SLAB.get(), AetherIIBlocks.ICESTONE.get());
-//        this.wallBlock(AetherIIBlocks.ICESTONE_WALL.get(), AetherIIBlocks.ICESTONE.get());
-//
-//        // Icestone Bricks
-        blockModels.createTrivialCube(AetherIIBlocks.ICESTONE_BRICKS.get());
-//        this.stairs(AetherIIBlocks.ICESTONE_BRICK_STAIRS.get(), AetherIIBlocks.ICESTONE_BRICKS.get());
-//        this.slab(AetherIIBlocks.ICESTONE_BRICK_SLAB.get(), AetherIIBlocks.ICESTONE_BRICKS.get());
-//        this.wallBlock(AetherIIBlocks.ICESTONE_BRICK_WALL.get(), AetherIIBlocks.ICESTONE_BRICKS.get());
-//
 //        // Icestone Decorative Blocks
         blockModels.createTrivialCube(AetherIIBlocks.ICESTONE_FLAGSTONES.get());
         blockModels.createTrivialCube(AetherIIBlocks.ICESTONE_KEYSTONE.get());
@@ -432,28 +326,18 @@ public class AetherIIBlockModelData extends AetherIIBlockModelProvider {
 //        this.decorativeFacingPillar(AetherIIBlocks.ICESTONE_CAPSTONE_PILLAR.get(), AetherIIBlocks.ICESTONE_KEYSTONE.get());
 //        this.decorativeFacingPillar(AetherIIBlocks.ICESTONE_PILLAR.get(), AetherIIBlocks.ICESTONE_KEYSTONE.get());
 //
-//        // Glass
-//        this.translucentBlock(AetherIIBlocks.QUICKSOIL_GLASS.get());
-//        this.translucentBlock(AetherIIBlocks.SKYROOT_FRAMED_QUICKSOIL_GLASS.get());
-//        this.translucentBlock(AetherIIBlocks.ARKENIUM_FRAMED_QUICKSOIL_GLASS.get());
-//        this.translucentBlock(AetherIIBlocks.SKYROOT_FRAMED_CRUDE_SCATTERGLASS.get());
-//        this.translucentBlock(AetherIIBlocks.ARKENIUM_FRAMED_CRUDE_SCATTERGLASS.get());
-//        this.translucentBlock(AetherIIBlocks.SCATTERGLASS.get());
-//        this.translucentBlock(AetherIIBlocks.SKYROOT_FRAMED_SCATTERGLASS.get());
-//        this.translucentBlock(AetherIIBlocks.ARKENIUM_FRAMED_SCATTERGLASS.get());
-//
-//        // Glass Panes
-//        this.pane(AetherIIBlocks.QUICKSOIL_GLASS_PANE.get(), AetherIIBlocks.QUICKSOIL_GLASS.get());
-//        this.pane(AetherIIBlocks.SKYROOT_FRAMED_QUICKSOIL_GLASS_PANE.get(), AetherIIBlocks.SKYROOT_FRAMED_QUICKSOIL_GLASS.get());
-//        this.pane(AetherIIBlocks.ARKENIUM_FRAMED_QUICKSOIL_GLASS_PANE.get(), AetherIIBlocks.ARKENIUM_FRAMED_QUICKSOIL_GLASS.get());
-//        this.crudeScatterglassPane(AetherIIBlocks.CRUDE_SCATTERGLASS_PANE.get(), AetherIIBlocks.CRUDE_SCATTERGLASS.get());
-//        this.crudeScatterglassPane(AetherIIBlocks.SKYROOT_FRAMED_CRUDE_SCATTERGLASS_PANE.get(), AetherIIBlocks.SKYROOT_FRAMED_CRUDE_SCATTERGLASS.get());
-//        this.crudeScatterglassPane(AetherIIBlocks.ARKENIUM_FRAMED_CRUDE_SCATTERGLASS_PANE.get(), AetherIIBlocks.ARKENIUM_FRAMED_CRUDE_SCATTERGLASS.get());
-//        this.pane(AetherIIBlocks.SCATTERGLASS_PANE.get(), AetherIIBlocks.SCATTERGLASS.get());
-//        this.crudeScatterglassPane(AetherIIBlocks.SKYROOT_FRAMED_SCATTERGLASS_PANE.get(), AetherIIBlocks.SKYROOT_FRAMED_SCATTERGLASS.get());
-//        this.crudeScatterglassPane(AetherIIBlocks.ARKENIUM_FRAMED_SCATTERGLASS_PANE.get(), AetherIIBlocks.ARKENIUM_FRAMED_SCATTERGLASS.get());
-//
-//        // Wool
+        // Glass
+        this.createGlassBlocks(blockModels, AetherIIBlocks.QUICKSOIL_GLASS.get(), AetherIIBlocks.QUICKSOIL_GLASS_PANE.get());
+        this.createGlassBlocks(blockModels, AetherIIBlocks.SKYROOT_FRAMED_QUICKSOIL_GLASS.get(), AetherIIBlocks.SKYROOT_FRAMED_QUICKSOIL_GLASS_PANE.get());
+        this.createGlassBlocks(blockModels, AetherIIBlocks.ARKENIUM_FRAMED_QUICKSOIL_GLASS.get(), AetherIIBlocks.ARKENIUM_FRAMED_QUICKSOIL_GLASS_PANE.get());
+        this.createGlassBlocks(blockModels, AetherIIBlocks.CRUDE_SCATTERGLASS.get(), AetherIIBlocks.CRUDE_SCATTERGLASS_PANE.get());
+        this.createGlassBlocks(blockModels, AetherIIBlocks.SKYROOT_FRAMED_CRUDE_SCATTERGLASS.get(), AetherIIBlocks.SKYROOT_FRAMED_CRUDE_SCATTERGLASS_PANE.get());
+        this.createGlassBlocks(blockModels, AetherIIBlocks.ARKENIUM_FRAMED_CRUDE_SCATTERGLASS.get(), AetherIIBlocks.ARKENIUM_FRAMED_CRUDE_SCATTERGLASS_PANE.get());
+        this.createGlassBlocks(blockModels, AetherIIBlocks.SCATTERGLASS.get(), AetherIIBlocks.SCATTERGLASS_PANE.get());
+        this.createGlassBlocks(blockModels, AetherIIBlocks.SKYROOT_FRAMED_SCATTERGLASS.get(), AetherIIBlocks.SKYROOT_FRAMED_SCATTERGLASS_PANE.get());
+        this.createGlassBlocks(blockModels, AetherIIBlocks.ARKENIUM_FRAMED_SCATTERGLASS.get(), AetherIIBlocks.ARKENIUM_FRAMED_SCATTERGLASS_PANE.get());
+
+        // Wool
         blockModels.createFullAndCarpetBlocks(AetherIIBlocks.CLOUDWOOL.get(), AetherIIBlocks.CLOUDWOOL_CARPET.get());
         blockModels.createFullAndCarpetBlocks(AetherIIBlocks.WHITE_CLOUDWOOL.get(), AetherIIBlocks.WHITE_CLOUDWOOL_CARPET.get());
         blockModels.createFullAndCarpetBlocks(AetherIIBlocks.ORANGE_CLOUDWOOL.get(), AetherIIBlocks.ORANGE_CLOUDWOOL_CARPET.get());
@@ -500,13 +384,8 @@ public class AetherIIBlockModelData extends AetherIIBlockModelProvider {
 //        this.skyrootLadder(AetherIIBlocks.SKYROOT_LADDER.get());
 //        this.bed(AetherIIBlocks.SKYROOT_BED.get(), AetherIIBlocks.SKYROOT_PLANKS.get());
 //
-//        this.signBlock(AetherIIBlocks.SKYROOT_SIGN.get(), AetherIIBlocks.SKYROOT_WALL_SIGN.get(), this.texture(this.name(AetherIIBlocks.SKYROOT_PLANKS.get())));
 //        this.hangingSignBlock(AetherIIBlocks.SKYROOT_HANGING_SIGN.get(), AetherIIBlocks.SKYROOT_WALL_HANGING_SIGN.get(), this.texture(this.name(AetherIIBlocks.STRIPPED_SKYROOT_LOG.get())));
-//
-//        this.signBlock(AetherIIBlocks.GREATROOT_SIGN.get(), AetherIIBlocks.GREATROOT_WALL_SIGN.get(), this.texture(this.name(AetherIIBlocks.GREATROOT_PLANKS.get())));
 //        this.hangingSignBlock(AetherIIBlocks.GREATROOT_HANGING_SIGN.get(), AetherIIBlocks.GREATROOT_WALL_HANGING_SIGN.get(), this.texture(this.name(AetherIIBlocks.STRIPPED_SKYROOT_LOG.get())));
-//
-//        this.signBlock(AetherIIBlocks.WISPROOT_SIGN.get(), AetherIIBlocks.WISPROOT_WALL_SIGN.get(), this.texture(this.name(AetherIIBlocks.WISPROOT_PLANKS.get())));
 //        this.hangingSignBlock(AetherIIBlocks.WISPROOT_HANGING_SIGN.get(), AetherIIBlocks.WISPROOT_WALL_HANGING_SIGN.get(), this.texture(this.name(AetherIIBlocks.STRIPPED_SKYROOT_LOG.get())));
 //
 //        // Moa Egg
