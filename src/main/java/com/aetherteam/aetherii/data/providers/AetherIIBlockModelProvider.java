@@ -71,7 +71,7 @@ public class AetherIIBlockModelProvider extends ModelProvider {
     public void createTintedGrassBlock(BlockModelGenerators blockModels, Block block, Variant snowyVariant) {
         ResourceLocation model = AetherIIModelTemplates.TINTED_GRASS.create(
                 AetherIIBlocks.AETHER_GRASS_BLOCK.get(),
-                AetherIITextureMappings.grass(AetherIIBlocks.AETHER_GRASS_BLOCK.get(), AetherIIBlocks.AETHER_DIRT.get()),
+                AetherIITextureMappings.tintedGrass(AetherIIBlocks.AETHER_GRASS_BLOCK.get(), AetherIIBlocks.AETHER_DIRT.get()),
                 blockModels.modelOutput
         );
         List<Variant> list = Arrays.asList(BlockModelGenerators.createRotatedVariants(model));

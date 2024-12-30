@@ -1,12 +1,11 @@
 package com.aetherteam.aetherii.data.resources.builders.models;
 
-import com.aetherteam.aetherii.block.AetherIIBlocks;
 import net.minecraft.client.data.models.model.TextureMapping;
 import net.minecraft.client.data.models.model.TextureSlot;
 import net.minecraft.world.level.block.Block;
 
 public class AetherIITextureMappings {
-    public static TextureMapping grass(Block grass, Block dirt) {
+    public static TextureMapping tintedGrass(Block grass, Block dirt) {
         return new TextureMapping()
                 .put(TextureSlot.BOTTOM, TextureMapping.getBlockTexture(dirt))
                 .copySlot(TextureSlot.BOTTOM, TextureSlot.PARTICLE)
