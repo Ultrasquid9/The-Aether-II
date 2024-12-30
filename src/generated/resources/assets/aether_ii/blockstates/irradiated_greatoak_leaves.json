@@ -1,10 +1,7 @@
 {
   "variants": {
-    "snowy=false": {
+    "": {
       "model": "aether_ii:block/irradiated_greatoak_leaves"
-    },
-    "snowy=true": {
-      "model": "aether_ii:block/irradiated_greatoak_leaves_snowy"
     }
   }
 }

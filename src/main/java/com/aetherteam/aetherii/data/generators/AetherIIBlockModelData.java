@@ -36,7 +36,7 @@ public class AetherIIBlockModelData extends AetherIIBlockModelProvider {
         blockModels.createTrivialCube(AetherIIBlocks.UNSTABLE_HOLYSTONE.get());
         blockModels.createTrivialCube(AetherIIBlocks.UNSTABLE_UNDERSHALE.get());
         blockModels.createTrivialCube(AetherIIBlocks.ICHORITE.get());
-        blockModels.createCrossBlock(AetherIIBlocks.SKY_ROOTS.get(), BlockModelGenerators.PlantType.NOT_TINTED); //todo frosted
+        this.createSnowyCross(blockModels, AetherIIBlocks.SKY_ROOTS.get());
         this.createTranslucentCube(blockModels, AetherIIBlocks.GAS.get()); //todo translcucent interior
         this.createTranslucentCube(blockModels, AetherIIBlocks.ACID.get()); //todo ???? blockstate definition
         this.createPointedStone(blockModels, AetherIIBlocks.POINTED_HOLYSTONE.get());
@@ -133,15 +133,15 @@ public class AetherIIBlockModelData extends AetherIIBlockModelProvider {
         this.createLeavesWithPiles(blockModels, AetherIIBlocks.GREATOAK_LEAVES.get(), AetherIIBlocks.GREATOAK_LEAF_PILE.get());
         this.createLeavesWithPiles(blockModels, AetherIIBlocks.GREATBOA_LEAVES.get(), AetherIIBlocks.GREATBOA_LEAF_PILE.get());
         this.createLeavesWithPiles(blockModels, AetherIIBlocks.AMBEROOT_LEAVES.get(), AetherIIBlocks.AMBEROOT_LEAF_PILE.get());
-        this.createLeavesWithPiles(blockModels, AetherIIBlocks.IRRADIATED_SKYROOT_LEAVES.get(), AetherIIBlocks.IRRADIATED_SKYROOT_LEAF_PILE.get()); //todo tinting
-        this.createLeavesWithPiles(blockModels, AetherIIBlocks.IRRADIATED_SKYPLANE_LEAVES.get(), AetherIIBlocks.IRRADIATED_SKYPLANE_LEAF_PILE.get());
-        this.createLeavesWithPiles(blockModels, AetherIIBlocks.IRRADIATED_SKYBIRCH_LEAVES.get(), AetherIIBlocks.IRRADIATED_SKYBIRCH_LEAF_PILE.get());
-        this.createLeavesWithPiles(blockModels, AetherIIBlocks.IRRADIATED_SKYPINE_LEAVES.get(), AetherIIBlocks.IRRADIATED_SKYPINE_LEAF_PILE.get());
-        this.createLeavesWithPiles(blockModels, AetherIIBlocks.IRRADIATED_WISPROOT_LEAVES.get(), AetherIIBlocks.IRRADIATED_WISPROOT_LEAF_PILE.get());
-        this.createLeavesWithPiles(blockModels, AetherIIBlocks.IRRADIATED_WISPTOP_LEAVES.get(), AetherIIBlocks.IRRADIATED_WISPTOP_LEAF_PILE.get());
-        this.createLeavesWithPiles(blockModels, AetherIIBlocks.IRRADIATED_GREATROOT_LEAVES.get(), AetherIIBlocks.IRRADIATED_GREATROOT_LEAF_PILE.get());
-        this.createLeavesWithPiles(blockModels, AetherIIBlocks.IRRADIATED_GREATOAK_LEAVES.get(), AetherIIBlocks.IRRADIATED_GREATOAK_LEAF_PILE.get());
-        this.createLeavesWithPiles(blockModels, AetherIIBlocks.IRRADIATED_GREATBOA_LEAVES.get(), AetherIIBlocks.IRRADIATED_GREATBOA_LEAF_PILE.get());
+        this.createTintedLeavesWithPiles(blockModels, AetherIIBlocks.IRRADIATED_SKYROOT_LEAVES.get(), AetherIIBlocks.IRRADIATED_SKYROOT_LEAF_PILE.get());
+        this.createTintedLeavesWithPiles(blockModels, AetherIIBlocks.IRRADIATED_SKYPLANE_LEAVES.get(), AetherIIBlocks.IRRADIATED_SKYPLANE_LEAF_PILE.get());
+        this.createTintedLeavesWithPiles(blockModels, AetherIIBlocks.IRRADIATED_SKYBIRCH_LEAVES.get(), AetherIIBlocks.IRRADIATED_SKYBIRCH_LEAF_PILE.get());
+        this.createTintedLeavesWithPiles(blockModels, AetherIIBlocks.IRRADIATED_SKYPINE_LEAVES.get(), AetherIIBlocks.IRRADIATED_SKYPINE_LEAF_PILE.get());
+        this.createTintedLeavesWithPiles(blockModels, AetherIIBlocks.IRRADIATED_WISPROOT_LEAVES.get(), AetherIIBlocks.IRRADIATED_WISPROOT_LEAF_PILE.get());
+        this.createTintedLeavesWithPiles(blockModels, AetherIIBlocks.IRRADIATED_WISPTOP_LEAVES.get(), AetherIIBlocks.IRRADIATED_WISPTOP_LEAF_PILE.get());
+        this.createTintedLeavesWithPiles(blockModels, AetherIIBlocks.IRRADIATED_GREATROOT_LEAVES.get(), AetherIIBlocks.IRRADIATED_GREATROOT_LEAF_PILE.get());
+        this.createTintedLeavesWithPiles(blockModels, AetherIIBlocks.IRRADIATED_GREATOAK_LEAVES.get(), AetherIIBlocks.IRRADIATED_GREATOAK_LEAF_PILE.get());
+        this.createTintedLeavesWithPiles(blockModels, AetherIIBlocks.IRRADIATED_GREATBOA_LEAVES.get(), AetherIIBlocks.IRRADIATED_GREATBOA_LEAF_PILE.get());
 
         // Saplings
         blockModels.createPlantWithDefaultItem(AetherIIBlocks.SKYROOT_SAPLING.get(), AetherIIBlocks.POTTED_SKYROOT_SAPLING.get(), BlockModelGenerators.PlantType.NOT_TINTED);
@@ -175,9 +175,9 @@ public class AetherIIBlockModelData extends AetherIIBlockModelProvider {
         // Potted Flowers //todo
         blockModels.createPlantWithDefaultItem(AetherIIBlocks.HIGHLAND_FERN.get(), AetherIIBlocks.POTTED_HIGHLAND_FERN.get(), BlockModelGenerators.PlantType.NOT_TINTED);
         blockModels.createPlantWithDefaultItem(AetherIIBlocks.SHIELD_FERN.get(), AetherIIBlocks.POTTED_SHIELD_FERN.get(), BlockModelGenerators.PlantType.NOT_TINTED);
-        blockModels.createPlantWithDefaultItem(AetherIIBlocks.HESPEROSE.get(), AetherIIBlocks.POTTED_HESPEROSE.get(), BlockModelGenerators.PlantType.NOT_TINTED);
-        blockModels.createPlantWithDefaultItem(AetherIIBlocks.TARABLOOM.get(), AetherIIBlocks.POTTED_TARABLOOM.get(), BlockModelGenerators.PlantType.NOT_TINTED);
-        blockModels.createPlantWithDefaultItem(AetherIIBlocks.POASPROUT.get(), AetherIIBlocks.POTTED_POASPROUT.get(), BlockModelGenerators.PlantType.NOT_TINTED);
+        this.createSnowyPlantWithDefaultItem(blockModels, AetherIIBlocks.HESPEROSE.get(), AetherIIBlocks.POTTED_HESPEROSE.get());
+        this.createSnowyPlantWithDefaultItem(blockModels, AetherIIBlocks.TARABLOOM.get(), AetherIIBlocks.POTTED_TARABLOOM.get());
+        this.createSnowyPlantWithDefaultItem(blockModels, AetherIIBlocks.POASPROUT.get(), AetherIIBlocks.POTTED_POASPROUT.get());
         blockModels.createPlantWithDefaultItem(AetherIIBlocks.SATIVAL_SHOOT.get(), AetherIIBlocks.POTTED_SATIVAL_SHOOT.get(), BlockModelGenerators.PlantType.NOT_TINTED);
         blockModels.createPlantWithDefaultItem(AetherIIBlocks.LILICHIME.get(), AetherIIBlocks.POTTED_LILICHIME.get(), BlockModelGenerators.PlantType.NOT_TINTED);
         blockModels.createPlantWithDefaultItem(AetherIIBlocks.PLURACIAN.get(), AetherIIBlocks.POTTED_PLURACIAN.get(), BlockModelGenerators.PlantType.NOT_TINTED);

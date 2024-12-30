@@ -16,6 +16,7 @@ import java.util.Optional;
 public class AetherIIModelTemplates {
     public static final ModelTemplate TEMPLATE_CUTOUT_CUBE = ModelTemplates.CUBE_ALL.extend().renderType("cutout").build();
     public static final ModelTemplate TEMPLATE_TRANSLUCENT_CUBE = ModelTemplates.CUBE_ALL.extend().renderType("translucent").build();
+    public static final ModelTemplate TEMPLATE_CUTOUT_CROSS = ModelTemplates.CROSS.extend().renderType("cutout").build();
     public static final ModelTemplate TINTED_GRASS = ModelTemplates.create("block", TextureSlot.BOTTOM, TextureSlot.PARTICLE, TextureSlot.TOP, AetherIITextureSlots.TOP_1, AetherIITextureSlots.TOP_2, AetherIITextureSlots.TOP_3, TextureSlot.SIDE, AetherIITextureSlots.SIDE_OVERLAY_1, AetherIITextureSlots.SIDE_OVERLAY_2, AetherIITextureSlots.SIDE_OVERLAY_3).extend()
             .renderType(ResourceLocation.withDefaultNamespace("cutout"))
             .element((builder) -> builder
@@ -57,6 +58,7 @@ public class AetherIIModelTemplates {
             ).build();
     public static final ModelTemplate THIN = ModelTemplates.create("thin_block", TextureSlot.ALL);
     public static final ModelTemplate DIRT_PATH = ModelTemplates.create("dirt_path", TextureSlot.BOTTOM, TextureSlot.PARTICLE, TextureSlot.TOP, TextureSlot.SIDE);
+    public static final ModelTemplate LEAVES = ModelTemplates.create("leaves", TextureSlot.ALL).extend().renderType(ResourceLocation.withDefaultNamespace("cutout")).build();
     public static final ModelTemplate LILICHIME = create("template_lilichime", TextureSlot.ALL);
     public static final ModelTemplate PLURACIAN = create("template_pluracian", TextureSlot.ALL);
     public static final ModelTemplate POTTED_LILICHIME = create("template_potted_lilichime", TextureSlot.PLANT, TextureSlot.TOP, TextureSlot.SIDE);
