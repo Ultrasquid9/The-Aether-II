@@ -1,4 +1,4 @@
-package com.aetherteam.aetherii.data.resources.builders;
+package com.aetherteam.aetherii.data.resources.builders.models;
 
 import com.aetherteam.aetherii.block.AetherIIBlocks;
 import com.google.common.collect.Maps;

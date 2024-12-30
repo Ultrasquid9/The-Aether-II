@@ -1,4 +1,4 @@
-package com.aetherteam.aetherii.data.resources.builders;
+package com.aetherteam.aetherii.data.resources.builders.models;
 
 import net.minecraft.client.data.models.model.ModelTemplate;
 import net.minecraft.client.data.models.model.TextureMapping;

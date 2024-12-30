@@ -1,4 +1,4 @@
-package com.aetherteam.aetherii.data.resources.builders;
+package com.aetherteam.aetherii.data.resources.builders.worldgen;
 
 import net.minecraft.core.HolderSet;
 import net.minecraft.world.entity.MobCategory;

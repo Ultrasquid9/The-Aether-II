@@ -1,4 +1,4 @@
-package com.aetherteam.aetherii.data.resources.builders;
+package com.aetherteam.aetherii.data.resources.builders.worldgen;
 
 import com.aetherteam.aetherii.AetherII;
 import com.aetherteam.aetherii.data.resources.registries.AetherIIDensityFunctions;

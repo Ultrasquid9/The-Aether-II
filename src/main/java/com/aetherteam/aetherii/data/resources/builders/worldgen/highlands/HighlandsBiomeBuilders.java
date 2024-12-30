@@ -1,4 +1,4 @@
-package com.aetherteam.aetherii.data.resources.builders.highlands;
+package com.aetherteam.aetherii.data.resources.builders.worldgen.highlands;
 
 import com.aetherteam.aetherii.client.AetherIISoundEvents;
 import com.aetherteam.aetherii.client.particle.AetherIIParticleTypes;
