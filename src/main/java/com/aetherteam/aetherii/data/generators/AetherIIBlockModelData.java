@@ -163,9 +163,6 @@ public class AetherIIBlockModelData extends AetherIIBlockModelProvider {
 //        blockModels.createCrossBlock(AetherIIBlocks.SHIELD_FERN.get(), BlockModelGenerators.PlantType.NOT_TINTED);
 
         // Flowers
-//        blockModels.createCrossBlock(AetherIIBlocks.HESPEROSE.get(), BlockModelGenerators.PlantType.NOT_TINTED); //todo frosting
-//        blockModels.createCrossBlock(AetherIIBlocks.TARABLOOM.get(), BlockModelGenerators.PlantType.NOT_TINTED);
-//        blockModels.createCrossBlock(AetherIIBlocks.POASPROUT.get(), BlockModelGenerators.PlantType.NOT_TINTED);
 //        blockModels.createCrossBlock(AetherIIBlocks.LILICHIME.get(), BlockModelGenerators.PlantType.NOT_TINTED); //todo custom model
 //        blockModels.createCrossBlock(AetherIIBlocks.PLURACIAN.get(), BlockModelGenerators.PlantType.NOT_TINTED); //todo custom model
 //        blockModels.createCrossBlock(AetherIIBlocks.SATIVAL_SHOOT.get(), BlockModelGenerators.PlantType.NOT_TINTED); //todo custom model
