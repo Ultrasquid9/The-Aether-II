@@ -237,6 +237,11 @@ public class AetherIIBlockModelSubProvider extends BlockModelGenerators {
         this.registerSimpleItemModel(piles, ModelLocationUtils.getModelLocation(piles, "_height1"));
     }
 
+    public void createCrossWithDefaultItem(Block block, PlantType type) {
+        this.registerSimpleItemModel(block.asItem(), type.createItemModel(this, block));
+        this.createCrossBlock(block, type);
+    }
+
     public void createSnowyPlantWithDefaultItem(Block plant, Block pot) {
         this.createSnowyCross(plant);
 

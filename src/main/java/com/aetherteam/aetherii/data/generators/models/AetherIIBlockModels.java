@@ -198,12 +198,12 @@ public class AetherIIBlockModels extends AetherIIBlockModelSubProvider {
 //        this.createValkyrieSprout(blockModels);
 //        this.createGrowingPlant(AetherIIBlocks.BRETTL_PLANT_TIP.get(), AetherIIBlocks.BRETTL_PLANT.get(), BlockModelGenerators.PlantType.NOT_TINTED);
 //
-//        // Lake
-//        this.createCutoutCross(AetherIIBlocks.ARILUM_SHOOT.get());
-//        this.createCutoutCross(AetherIIBlocks.ARILUM.get());
-//        this.createCutoutCross(AetherIIBlocks.ARILUM_PLANT.get());
-//        this.createCutoutCross(AetherIIBlocks.BLOOMING_ARILUM.get());
-//        this.createCutoutCross(AetherIIBlocks.BLOOMING_ARILUM_PLANT.get());
+        // Lake
+        this.createCrossBlock(AetherIIBlocks.ARILUM_SHOOT.get(), PlantType.NOT_TINTED);
+        this.createCrossWithDefaultItem(AetherIIBlocks.ARILUM.get(), PlantType.NOT_TINTED);
+        this.createCrossWithDefaultItem(AetherIIBlocks.ARILUM_PLANT.get(), PlantType.NOT_TINTED);
+        this.createCrossWithDefaultItem(AetherIIBlocks.BLOOMING_ARILUM.get(), PlantType.NOT_TINTED);
+        this.createCrossWithDefaultItem(AetherIIBlocks.BLOOMING_ARILUM_PLANT.get(), PlantType.NOT_TINTED);
 //
 //        // Ground Decoration
 //        this.createTrivialCube(AetherIIBlocks.SKYROOT_TWIG.get());
