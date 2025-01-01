@@ -109,7 +109,7 @@ public class AetherIIBlockModels extends AetherIIBlockModelSubProvider {
         this.createAercloud(AetherIIBlocks.BLUE_AERCLOUD.get());
         this.createAercloud(AetherIIBlocks.GOLDEN_AERCLOUD.get());
         this.createAercloud(AetherIIBlocks.GREEN_AERCLOUD.get());
-        this.createPurpleAercloud(AetherIIBlocks.PURPLE_AERCLOUD.get()); //todo faces
+        this.createPurpleAercloud(AetherIIBlocks.PURPLE_AERCLOUD.get());
         this.createAercloud(AetherIIBlocks.STORM_AERCLOUD.get());
 
         // Moa Nest
@@ -336,7 +336,7 @@ public class AetherIIBlockModels extends AetherIIBlockModelSubProvider {
         this.createTrivialCube(AetherIIBlocks.WHITE_ARILUM_LANTERN.get());
 
         // Utility
-//        this.createAmbrosiumTorch(blockModels);
+        this.createAmbrosiumTorch();
         this.createCraftingTableLike(AetherIIBlocks.SKYROOT_CRAFTING_TABLE.get(), AetherIIBlocks.SKYROOT_PLANKS.get(), TextureMapping::craftingTable);
         this.createFurnace(AetherIIBlocks.HOLYSTONE_FURNACE.get(), TexturedModel.ORIENTABLE_ONLY_TOP);
 //        this.createAltar(blockModels); //todo

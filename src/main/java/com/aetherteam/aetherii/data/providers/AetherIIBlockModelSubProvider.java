@@ -413,14 +413,14 @@ public class AetherIIBlockModelSubProvider extends BlockModelGenerators {
 //        blockModels.blockStateOutput.accept(MultiVariantGenerator.multiVariant(AetherIIBlocks.VALKYRIE_SPROUT.get()).with(propertyDispatch));
 //    }
 //
-//    public void createAmbrosiumTorch(BlockModelGenerators blockModels) {
-//        TextureMapping mapping = TextureMapping.torch(AetherIIBlocks.AMBROSIUM_TORCH.get());
-//        blockModels.blockStateOutput.accept(BlockModelGenerators.createSimpleBlock(AetherIIBlocks.AMBROSIUM_TORCH.get(), AetherIIModelTemplates.TALL_TORCH.create(AetherIIBlocks.AMBROSIUM_TORCH.get(), mapping, blockModels.modelOutput)));
-//        blockModels.blockStateOutput.accept(MultiVariantGenerator.multiVariant(AetherIIBlocks.AMBROSIUM_WALL_TORCH.get(), Variant.variant().with(VariantProperties.MODEL, AetherIIModelTemplates.TALL_WALL_TORCH.create(AetherIIBlocks.AMBROSIUM_WALL_TORCH.get(), mapping, blockModels.modelOutput)))
-//                .with(BlockModelGenerators.createTorchHorizontalDispatch()));
-//        blockModels.registerSimpleFlatItemModel(AetherIIBlocks.AMBROSIUM_TORCH.get());
-//    }
-//
+    public void createAmbrosiumTorch() {
+        TextureMapping mapping = TextureMapping.torch(AetherIIBlocks.AMBROSIUM_TORCH.get());
+        this.blockStateOutput.accept(BlockModelGenerators.createSimpleBlock(AetherIIBlocks.AMBROSIUM_TORCH.get(), AetherIIModelTemplates.TALL_TORCH.create(AetherIIBlocks.AMBROSIUM_TORCH.get(), mapping, this.modelOutput)));
+        this.blockStateOutput.accept(MultiVariantGenerator.multiVariant(AetherIIBlocks.AMBROSIUM_WALL_TORCH.get(), Variant.variant().with(VariantProperties.MODEL, AetherIIModelTemplates.TALL_WALL_TORCH.create(AetherIIBlocks.AMBROSIUM_WALL_TORCH.get(), mapping, this.modelOutput)))
+                .with(BlockModelGenerators.createTorchHorizontalDispatch()));
+        this.registerSimpleFlatItemModel(AetherIIBlocks.AMBROSIUM_TORCH.get());
+    }
+
 //    public void createAltar(BlockModelGenerators blockModels) {
 //        ResourceLocation location = AetherIITexturedModels.ALTAR.create(AetherIIBlocks.ALTAR.get(), blockModels.modelOutput);
 //        ResourceLocation location_charging = blockModels.createSuffixedVariant(AetherIIBlocks.ALTAR.get(), "_charging", AetherIIModelTemplates.ALTAR, TextureMapping::cube);

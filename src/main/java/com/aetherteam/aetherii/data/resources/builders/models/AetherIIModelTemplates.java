@@ -116,7 +116,7 @@ public class AetherIIModelTemplates {
     public static final ModelTemplate ORIENTABLE_SECRET_TRAPDOOR_BOTTOM = create("template_orientable_secret_trapdoor_bottom", "_bottom", TextureSlot.TEXTURE);
     public static final ModelTemplate ORIENTABLE_SECRET_TRAPDOOR_OPEN = create("template_orientable_secret_trapdoor_open", "_open", TextureSlot.TEXTURE);
     public static final ModelTemplate TALL_TORCH = create("template_tall_torch", TextureSlot.TORCH);
-    public static final ModelTemplate TALL_WALL_TORCH = create("template_tall_torch_wall", TextureSlot.TORCH);
+    public static final ModelTemplate TALL_WALL_TORCH = create("template_tall_wall_torch", TextureSlot.TORCH);
     public static final ModelTemplate ALTAR = create("template_altar", TextureSlot.ALL);
     public static final ModelTemplate ARKENIUM_FORGE = create("template_arkenium_forge", TextureSlot.ALL).extend().renderType(ResourceLocation.withDefaultNamespace("cutout")).build();
 
