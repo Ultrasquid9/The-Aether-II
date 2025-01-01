@@ -59,6 +59,33 @@ public class AetherIIModelTemplates {
     public static final ModelTemplate THIN = ModelTemplates.create("thin_block", TextureSlot.ALL);
     public static final ModelTemplate DIRT_PATH = ModelTemplates.create("dirt_path", TextureSlot.BOTTOM, TextureSlot.PARTICLE, TextureSlot.TOP, TextureSlot.SIDE);
     public static final ModelTemplate LEAVES = ModelTemplates.create("leaves", TextureSlot.ALL).extend().renderType(ResourceLocation.withDefaultNamespace("cutout_mipped")).build();
+    public static final ModelTemplate TRANSLUCENT_INNER_FACES = ModelTemplates.create("cube", TextureSlot.PARTICLE, TextureSlot.NORTH, TextureSlot.SOUTH, TextureSlot.EAST, TextureSlot.WEST, TextureSlot.UP, TextureSlot.DOWN).extend()
+            .renderType(ResourceLocation.withDefaultNamespace("translucent"))
+            .element((builder) -> builder
+                    .from(0.0F, 15.998F, 0.0F).to(16.0F, 16.0F, 16.0F)
+                    .face(Direction.DOWN, (faceBuilder) -> faceBuilder.texture(TextureSlot.UP).uvs(0, 16, 16, 0).cullface(Direction.UP))
+                    .face(Direction.UP, (faceBuilder) -> faceBuilder.texture(TextureSlot.UP).uvs(0, 0, 16, 16).cullface(Direction.UP))
+            ).element((builder) -> builder
+                    .from(0.0F, 0.0F, 0.0F).to(16.0F, 0.002F, 16.0F)
+                    .face(Direction.DOWN, (faceBuilder) -> faceBuilder.texture(TextureSlot.DOWN).uvs(0, 0, 16, 16).cullface(Direction.DOWN))
+                    .face(Direction.UP, (faceBuilder) -> faceBuilder.texture(TextureSlot.DOWN).uvs(0, 16, 16, 0).cullface(Direction.DOWN))
+            ).element((builder) -> builder
+                    .from(0.0F, 0.0F, 0.0F).to(16.0F, 16.0F, 0.002F)
+                    .face(Direction.NORTH, (faceBuilder) -> faceBuilder.texture(TextureSlot.NORTH).uvs(0, 0, 16, 16).cullface(Direction.NORTH))
+                    .face(Direction.SOUTH, (faceBuilder) -> faceBuilder.texture(TextureSlot.NORTH).uvs(16, 0, 0, 16).cullface(Direction.NORTH))
+            ).element((builder) -> builder
+                    .from(0.0F, 0.0F, 15.998F).to(16.0F, 16.0F, 16.0F)
+                    .face(Direction.NORTH, (faceBuilder) -> faceBuilder.texture(TextureSlot.SOUTH).uvs(16, 0, 0, 16).cullface(Direction.SOUTH))
+                    .face(Direction.SOUTH, (faceBuilder) -> faceBuilder.texture(TextureSlot.SOUTH).uvs(0, 0, 16, 16).cullface(Direction.SOUTH))
+            ).element((builder) -> builder
+                    .from(0.0F, 0.0F, 0.0F).to(0.002F, 16.0F, 16.0F)
+                    .face(Direction.WEST, (faceBuilder) -> faceBuilder.texture(TextureSlot.WEST).uvs(0, 0, 16, 16).cullface(Direction.WEST))
+                    .face(Direction.EAST, (faceBuilder) -> faceBuilder.texture(TextureSlot.WEST).uvs(16, 0, 0, 16).cullface(Direction.WEST))
+            ).element((builder) -> builder
+                    .from(15.998F, 0.0F, 0.0F).to(16.0F, 16.0F, 16.0F)
+                    .face(Direction.WEST, (faceBuilder) -> faceBuilder.texture(TextureSlot.EAST).uvs(16, 0, 0, 16).cullface(Direction.EAST))
+                    .face(Direction.EAST, (faceBuilder) -> faceBuilder.texture(TextureSlot.EAST).uvs(0, 0, 16, 16).cullface(Direction.EAST))
+            ).build();
 
     public static final ModelTemplate LILICHIME = create("template_lilichime", TextureSlot.ALL);
     public static final ModelTemplate PLURACIAN = create("template_pluracian", TextureSlot.ALL);

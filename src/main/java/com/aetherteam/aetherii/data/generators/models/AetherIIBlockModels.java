@@ -41,7 +41,7 @@ public class AetherIIBlockModels extends AetherIIBlockModelSubProvider {
         this.createTrivialCube(AetherIIBlocks.UNSTABLE_UNDERSHALE.get());
         this.createTrivialCube(AetherIIBlocks.ICHORITE.get());
         this.createSnowyCross(AetherIIBlocks.SKY_ROOTS.get());
-//        this.createTranslucentCube(AetherIIBlocks.GAS.get()); //todo translcucent interior
+        this.createTranslucentCubeInnerFaces(AetherIIBlocks.GAS.get());
 //        this.createTranslucentCube(AetherIIBlocks.ACID.get()); //todo ???? blockstate definition
         this.createPointedStone(AetherIIBlocks.POINTED_HOLYSTONE.get());
         this.createPointedStone(AetherIIBlocks.POINTED_ICHORITE.get());
@@ -105,12 +105,12 @@ public class AetherIIBlockModels extends AetherIIBlockModelSubProvider {
         this.createCrystal(AetherIIBlocks.CORROBONITE_CLUSTER.get(), AetherIIModelTemplates.MEDIUM_CRYSTAL);
 
         // Aerclouds
-//        this.createTranslucentCube(AetherIIBlocks.COLD_AERCLOUD.get()); //todo translucent interior
-//        this.createTranslucentCube(AetherIIBlocks.BLUE_AERCLOUD.get());
-//        this.createTranslucentCube(AetherIIBlocks.GOLDEN_AERCLOUD.get());
-//        this.createTranslucentCube(AetherIIBlocks.GREEN_AERCLOUD.get());
+        this.createAercloud(AetherIIBlocks.COLD_AERCLOUD.get());
+        this.createAercloud(AetherIIBlocks.BLUE_AERCLOUD.get());
+        this.createAercloud(AetherIIBlocks.GOLDEN_AERCLOUD.get());
+        this.createAercloud(AetherIIBlocks.GREEN_AERCLOUD.get());
 //        this.createTranslucentCube(AetherIIBlocks.PURPLE_AERCLOUD.get()); //todo faces
-//        this.createTranslucentCube(AetherIIBlocks.STORM_AERCLOUD.get());
+        this.createAercloud(AetherIIBlocks.STORM_AERCLOUD.get());
 
         // Moa Nest
         this.createTrivialCube(AetherIIBlocks.WOVEN_SKYROOT_STICKS.get());

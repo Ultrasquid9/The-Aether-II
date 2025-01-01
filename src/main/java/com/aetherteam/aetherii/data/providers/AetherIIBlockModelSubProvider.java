@@ -68,6 +68,18 @@ public class AetherIIBlockModelSubProvider extends BlockModelGenerators {
         this.blockStateOutput.accept(BlockModelGenerators.createSimpleBlock(block, AetherIIModelTemplates.TEMPLATE_TRANSLUCENT_CUBE.create(block, TextureMapping.cube(block), this.modelOutput)));
     }
 
+    public void createTranslucentCubeInnerFaces(Block block) {
+        TextureMapping mapping = new TextureMapping()
+                .put(TextureSlot.PARTICLE, TextureMapping.getBlockTexture(block))
+                .put(TextureSlot.UP, TextureMapping.getBlockTexture(block))
+                .put(TextureSlot.DOWN, TextureMapping.getBlockTexture(block))
+                .put(TextureSlot.NORTH, TextureMapping.getBlockTexture(block))
+                .put(TextureSlot.SOUTH, TextureMapping.getBlockTexture(block))
+                .put(TextureSlot.EAST, TextureMapping.getBlockTexture(block))
+                .put(TextureSlot.WEST, TextureMapping.getBlockTexture(block));
+        this.blockStateOutput.accept(BlockModelGenerators.createSimpleBlock(block, AetherIIModelTemplates.TRANSLUCENT_INNER_FACES.create(block, mapping, this.modelOutput)));
+    }
+
     public ResourceLocation createTranslucentItemModelWithBlockTexture(Item item, Block block) {
         return AetherIIModelTemplates.TRANSLUCENT_FLAT_ITEM.create(ModelLocationUtils.getModelLocation(item), TextureMapping.layer0(block), this.modelOutput);
     }
@@ -227,6 +239,11 @@ public class AetherIIBlockModelSubProvider extends BlockModelGenerators {
 
     public WoodProvider woodProviderColumn(Block side, Block top) {
         return new WoodProvider(TextureMapping.column(TextureMapping.getBlockTexture(side), TextureMapping.getBlockTexture(top, "_top")));
+    }
+
+    public void createAercloud(Block block) {
+        this.createTranslucentCubeInnerFaces(block);
+        this.itemModelOutput.accept(block.asItem(), ItemModelUtils.plainModel(AetherIIModelTemplates.TEMPLATE_TRANSLUCENT_CUBE.create(block.asItem(), TextureMapping.cube(block), this.modelOutput)));
     }
 
     public void createCustomFlowerBed(Block block, ResourceLocation flowerbed1, ResourceLocation flowerbed2, ResourceLocation flowerbed3, ResourceLocation flowerbed4) {
