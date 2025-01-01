@@ -102,14 +102,6 @@ public class AetherIIBlockModelSubProvider extends BlockModelGenerators {
         this.blockStateOutput.accept(MultiVariantGenerator.multiVariant(AetherIIBlocks.AETHER_FARMLAND.get()).with(BlockModelGenerators.createEmptyOrFullDispatch(BlockStateProperties.MOISTURE, 7, locationMoist, location)));
     }
 //
-//    public void createSnowyCross(BlockModelGenerators blockModels, Block block) {
-//        ResourceLocation defaultLocation = AetherIIModelTemplates.TEMPLATE_CUTOUT_CROSS.create(block, TextureMapping.cross(block), blockModels.modelOutput);
-//        ResourceLocation snowyLocation = blockModels.createSuffixedVariant(block, "_snowy", AetherIIModelTemplates.TEMPLATE_CUTOUT_CROSS, TextureMapping::cross);
-//        blockModels.blockStateOutput.accept(MultiVariantGenerator.multiVariant(block, Variant.variant().with(VariantProperties.MODEL, ModelLocationUtils.getModelLocation(block.asItem())))
-//                .with(BlockModelGenerators.createBooleanModelDispatch(BlockStateProperties.SNOWY, snowyLocation, defaultLocation)));
-//        blockModels.registerSimpleFlatItemModel(block);
-//    }
-//
 //    public void createGlassBlocks(BlockModelGenerators blockModels, Block glass, Block pane) {
 //        this.createTranslucentCube(blockModels, glass);
 //        TextureMapping mapping = TextureMapping.pane(glass, pane);
@@ -244,14 +236,22 @@ public class AetherIIBlockModelSubProvider extends BlockModelGenerators {
         })));
         this.registerSimpleItemModel(piles, ModelLocationUtils.getModelLocation(piles, "_height1"));
     }
-//
-//    public void createSnowyPlantWithDefaultItem(BlockModelGenerators blockModels, Block plant, Block pot) {
-//        this.createSnowyCross(blockModels, plant);
-//
-//        TextureMapping plantMapping = TextureMapping.plant(plant);
-//        ResourceLocation potLocation = ModelTemplates.FLOWER_POT_CROSS.create(pot, plantMapping, blockModels.modelOutput);
-//        blockModels.blockStateOutput.accept(BlockModelGenerators.createSimpleBlock(pot, potLocation));
-//    }
+
+    public void createSnowyPlantWithDefaultItem(Block plant, Block pot) {
+        this.createSnowyCross(plant);
+
+        TextureMapping plantMapping = TextureMapping.plant(plant);
+        ResourceLocation potLocation = ModelTemplates.FLOWER_POT_CROSS.create(pot, plantMapping, this.modelOutput);
+        this.blockStateOutput.accept(BlockModelGenerators.createSimpleBlock(pot, potLocation));
+    }
+
+    public void createSnowyCross(Block block) {
+        this.registerSimpleFlatItemModel(block);
+        ResourceLocation defaultLocation = AetherIIModelTemplates.TEMPLATE_CUTOUT_CROSS.create(block, TextureMapping.cross(block), this.modelOutput);
+        ResourceLocation snowyLocation = this.createSuffixedVariant(block, "_snowy", AetherIIModelTemplates.TEMPLATE_CUTOUT_CROSS, TextureMapping::cross);
+        this.blockStateOutput.accept(MultiVariantGenerator.multiVariant(block, Variant.variant().with(VariantProperties.MODEL, ModelLocationUtils.getModelLocation(block.asItem())))
+                .with(BlockModelGenerators.createBooleanModelDispatch(BlockStateProperties.SNOWY, snowyLocation, defaultLocation)));
+    }
 //
 //    public void createValkyrieSprout(BlockModelGenerators blockModels) {
 //        Integer[] list = new Integer[]{0, 1, 2};

@@ -38,7 +38,7 @@ public class AetherIIBlockModels extends AetherIIBlockModelSubProvider {
         this.createTrivialCube(AetherIIBlocks.UNSTABLE_HOLYSTONE.get());
         this.createTrivialCube(AetherIIBlocks.UNSTABLE_UNDERSHALE.get());
         this.createTrivialCube(AetherIIBlocks.ICHORITE.get());
-//        this.createSnowyCross(AetherIIBlocks.SKY_ROOTS.get());
+        this.createSnowyCross(AetherIIBlocks.SKY_ROOTS.get());
 //        this.createTranslucentCube(AetherIIBlocks.GAS.get()); //todo translcucent interior
 //        this.createTranslucentCube(AetherIIBlocks.ACID.get()); //todo ???? blockstate definition
         this.createPointedStone(AetherIIBlocks.POINTED_HOLYSTONE.get());
@@ -167,9 +167,9 @@ public class AetherIIBlockModels extends AetherIIBlockModelSubProvider {
 //        // Flowers //todo
 //        this.createPlantWithDefaultItem(AetherIIBlocks.HIGHLAND_FERN.get(), AetherIIBlocks.POTTED_HIGHLAND_FERN.get(), BlockModelGenerators.PlantType.NOT_TINTED);
 //        this.createPlantWithDefaultItem(AetherIIBlocks.SHIELD_FERN.get(), AetherIIBlocks.POTTED_SHIELD_FERN.get(), BlockModelGenerators.PlantType.NOT_TINTED);
-//        this.createSnowyPlantWithDefaultItem(AetherIIBlocks.HESPEROSE.get(), AetherIIBlocks.POTTED_HESPEROSE.get());
-//        this.createSnowyPlantWithDefaultItem(AetherIIBlocks.TARABLOOM.get(), AetherIIBlocks.POTTED_TARABLOOM.get());
-//        this.createSnowyPlantWithDefaultItem(AetherIIBlocks.POASPROUT.get(), AetherIIBlocks.POTTED_POASPROUT.get());
+        this.createSnowyPlantWithDefaultItem(AetherIIBlocks.HESPEROSE.get(), AetherIIBlocks.POTTED_HESPEROSE.get());
+        this.createSnowyPlantWithDefaultItem(AetherIIBlocks.TARABLOOM.get(), AetherIIBlocks.POTTED_TARABLOOM.get());
+        this.createSnowyPlantWithDefaultItem(AetherIIBlocks.POASPROUT.get(), AetherIIBlocks.POTTED_POASPROUT.get());
 //        this.createPlantWithDefaultItem(AetherIIBlocks.SATIVAL_SHOOT.get(), AetherIIBlocks.POTTED_SATIVAL_SHOOT.get(), BlockModelGenerators.PlantType.NOT_TINTED);
 //        this.createPlantWithDefaultItem(AetherIIBlocks.LILICHIME.get(), AetherIIBlocks.POTTED_LILICHIME.get(), BlockModelGenerators.PlantType.NOT_TINTED);
 //        this.createPlantWithDefaultItem(AetherIIBlocks.PLURACIAN.get(), AetherIIBlocks.POTTED_PLURACIAN.get(), BlockModelGenerators.PlantType.NOT_TINTED);
