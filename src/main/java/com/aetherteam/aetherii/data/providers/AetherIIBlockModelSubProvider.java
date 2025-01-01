@@ -215,6 +215,10 @@ public class AetherIIBlockModelSubProvider extends BlockModelGenerators {
         this.blockStateOutput.accept(BlockModelGenerators.createSimpleBlock(AetherIIBlocks.ARCTIC_SNOW_BLOCK.get(), snowBlockLocation));
     }
 
+    public WoodProvider woodProviderColumn(Block side, Block top) {
+        return new WoodProvider(TextureMapping.column(TextureMapping.getBlockTexture(side), TextureMapping.getBlockTexture(top, "_top")));
+    }
+
     public void createCustomFlowerBed(Block block, ResourceLocation flowerbed1, ResourceLocation flowerbed2, ResourceLocation flowerbed3, ResourceLocation flowerbed4) {
         this.registerSimpleFlatItemModel(block.asItem());
         this.blockStateOutput.accept(MultiPartGenerator.multiPart(block)
