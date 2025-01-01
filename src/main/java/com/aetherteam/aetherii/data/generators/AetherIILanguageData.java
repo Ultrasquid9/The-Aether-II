@@ -212,6 +212,7 @@ public class AetherIILanguageData extends AetherIILanguageProvider {
         this.addBlock(AetherIIBlocks.AECHOR_CUTTING, "Aechor Cutting");
 
         // Potted Flowers
+        this.addBlock(AetherIIBlocks.POTTED_MAGNETIC_SHROOM, "Potted Magnetic Shroom");
         this.addBlock(AetherIIBlocks.POTTED_HIGHLAND_FERN, "Potted Highland Fern");
         this.addBlock(AetherIIBlocks.POTTED_SHIELD_FERN, "Potted Shield Fern");
         this.addBlock(AetherIIBlocks.POTTED_HESPEROSE, "Potted Hesperose");

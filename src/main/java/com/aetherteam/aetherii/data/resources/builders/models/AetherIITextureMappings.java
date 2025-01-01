@@ -1,10 +1,23 @@
 package com.aetherteam.aetherii.data.resources.builders.models;
 
+import com.aetherteam.aetherii.block.AetherIIBlocks;
+import net.minecraft.client.data.models.blockstates.Variant;
+import net.minecraft.client.data.models.blockstates.VariantProperties;
+import net.minecraft.client.data.models.model.ModelTemplates;
 import net.minecraft.client.data.models.model.TextureMapping;
 import net.minecraft.client.data.models.model.TextureSlot;
 import net.minecraft.world.level.block.Block;
 
 public class AetherIITextureMappings {
+    public static TextureMapping snowyGrass(Block grass, Block dirt) {
+        return  new TextureMapping()
+                .put(TextureSlot.BOTTOM, TextureMapping.getBlockTexture(dirt))
+                .copyForced(TextureSlot.BOTTOM, TextureSlot.PARTICLE)
+                .put(TextureSlot.TOP, TextureMapping.getBlockTexture(grass, "_top"))
+                .put(TextureSlot.SIDE, TextureMapping.getBlockTexture(grass, "_snow"));
+    }
+
+
     public static TextureMapping tintedGrass(Block grass, Block dirt) {
         return new TextureMapping()
                 .put(TextureSlot.BOTTOM, TextureMapping.getBlockTexture(dirt))

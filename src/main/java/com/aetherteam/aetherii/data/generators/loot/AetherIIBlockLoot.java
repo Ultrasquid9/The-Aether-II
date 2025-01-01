@@ -218,6 +218,7 @@ public class AetherIIBlockLoot extends AetherIIBlockLootSubProvider {
         this.dropSelf(AetherIIBlocks.AECHOR_CUTTING.get());
 
         // Potted Flowers
+        this.dropPottedContents(AetherIIBlocks.POTTED_MAGNETIC_SHROOM.get());
         this.dropPottedContents(AetherIIBlocks.POTTED_HIGHLAND_FERN.get());
         this.dropPottedContents(AetherIIBlocks.POTTED_SHIELD_FERN.get());
         this.dropPottedContents(AetherIIBlocks.POTTED_HESPEROSE.get());
