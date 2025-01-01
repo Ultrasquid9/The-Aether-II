@@ -103,8 +103,8 @@ public class AetherIIBlockModels extends AetherIIBlockModelSubProvider {
         this.createTrivialCube(AetherIIBlocks.UNDERSHALE_GRAVITITE_ORE.get());
         this.createTrivialCube(AetherIIBlocks.CORROBONITE_ORE.get());
         this.createCrystal(AetherIIBlocks.CORROBONITE_CLUSTER.get(), AetherIIModelTemplates.MEDIUM_CRYSTAL);
-//
-//        // Aerclouds
+
+        // Aerclouds
 //        this.createTranslucentCube(AetherIIBlocks.COLD_AERCLOUD.get()); //todo translucent interior
 //        this.createTranslucentCube(AetherIIBlocks.BLUE_AERCLOUD.get());
 //        this.createTranslucentCube(AetherIIBlocks.GOLDEN_AERCLOUD.get());
@@ -158,14 +158,14 @@ public class AetherIIBlockModels extends AetherIIBlockModelSubProvider {
         this.createPlantWithDefaultItem(AetherIIBlocks.GREATOAK_SAPLING.get(), AetherIIBlocks.POTTED_GREATOAK_SAPLING.get(), BlockModelGenerators.PlantType.NOT_TINTED);
         this.createPlantWithDefaultItem(AetherIIBlocks.GREATBOA_SAPLING.get(), AetherIIBlocks.POTTED_GREATBOA_SAPLING.get(), BlockModelGenerators.PlantType.NOT_TINTED);
         this.createPlantWithDefaultItem(AetherIIBlocks.AMBEROOT_SAPLING.get(), AetherIIBlocks.POTTED_AMBEROOT_SAPLING.get(), BlockModelGenerators.PlantType.NOT_TINTED);
-//
-//        // Grasses
+
+        // Grasses
 //        this.createCrossBlock(AetherIIBlocks.AETHER_SHORT_GRASS.get(), BlockModelGenerators.PlantType.NOT_TINTED); //todo tinting and frosting and enchanting
 //        this.createCrossBlock(AetherIIBlocks.AETHER_MEDIUM_GRASS.get(), BlockModelGenerators.PlantType.NOT_TINTED);
 //        this.createCrossBlock(AetherIIBlocks.AETHER_LONG_GRASS.get(), BlockModelGenerators.PlantType.NOT_TINTED);
 ////        this.createCrossBlock(AetherIIBlocks.HIGHLAND_FERN.get(), BlockModelGenerators.PlantType.NOT_TINTED);
-//
-//        // Flowers //todo
+
+        // Flowers //todo
 //        this.createPlantWithDefaultItem(AetherIIBlocks.HIGHLAND_FERN.get(), AetherIIBlocks.POTTED_HIGHLAND_FERN.get(), BlockModelGenerators.PlantType.NOT_TINTED);
         this.createPlantWithDefaultItem(AetherIIBlocks.SHIELD_FERN.get(), AetherIIBlocks.POTTED_SHIELD_FERN.get(), BlockModelGenerators.PlantType.NOT_TINTED);
         this.createSnowyPlantWithDefaultItem(AetherIIBlocks.HESPEROSE.get(), AetherIIBlocks.POTTED_HESPEROSE.get());
@@ -203,87 +203,87 @@ public class AetherIIBlockModels extends AetherIIBlockModelSubProvider {
         this.createCrossWithDefaultItem(AetherIIBlocks.ARILUM_PLANT.get(), PlantType.NOT_TINTED);
         this.createCrossWithDefaultItem(AetherIIBlocks.BLOOMING_ARILUM.get(), PlantType.NOT_TINTED);
         this.createCrossWithDefaultItem(AetherIIBlocks.BLOOMING_ARILUM_PLANT.get(), PlantType.NOT_TINTED);
-//
-//        // Ground Decoration
+
+        // Ground Decoration
 //        this.createTrivialCube(AetherIIBlocks.SKYROOT_TWIG.get());
 //        this.createTrivialCube(AetherIIBlocks.HOLYSTONE_ROCK.get());
 //        //todo
 //        //        this.twig(AetherIIBlocks.SKYROOT_TWIG.get(), AetherIIBlocks.SKYROOT_LOG.get());
 //        //        this.rock(AetherIIBlocks.HOLYSTONE_ROCK.get(), AetherIIBlocks.HOLYSTONE.get());
-//
-//        // Skyroot Decorative Blocks
+
+        // Skyroot Decorative Blocks
         this.createTrivialCube(AetherIIBlocks.SKYROOT_FLOORBOARDS.get());
         this.createTrivialCube(AetherIIBlocks.SKYROOT_HIGHLIGHT.get());
         this.createTrivialCube(AetherIIBlocks.SKYROOT_SHINGLES.get());
         this.createTrivialCube(AetherIIBlocks.SKYROOT_SMALL_SHINGLES.get());
-//        this.createCustomColumn(AetherIIBlocks.SKYROOT_BASE_PLANKS.get(), AetherIIBlocks.SKYROOT_HIGHLIGHT.get());
-//        this.createCustomColumn(AetherIIBlocks.SKYROOT_TOP_PLANKS.get(), AetherIIBlocks.SKYROOT_HIGHLIGHT.get());
+        this.createCubeColumn(AetherIIBlocks.SKYROOT_BASE_PLANKS.get(), AetherIIBlocks.SKYROOT_HIGHLIGHT.get());
+        this.createCubeColumn(AetherIIBlocks.SKYROOT_TOP_PLANKS.get(), AetherIIBlocks.SKYROOT_HIGHLIGHT.get());
 //        this.createCustomColumn(AetherIIBlocks.SKYROOT_BASE_BEAM.get(), AetherIIBlocks.SKYROOT_HIGHLIGHT.get()); //todo
 //        this.createCustomColumn(AetherIIBlocks.SKYROOT_TOP_BEAM.get(), AetherIIBlocks.SKYROOT_HIGHLIGHT.get());
 //        this.createCustomColumn(AetherIIBlocks.SKYROOT_BEAM.get(), AetherIIBlocks.SKYROOT_HIGHLIGHT.get());
         this.createSecretDoor(AetherIIBlocks.SECRET_SKYROOT_DOOR.get(), AetherIIBlocks.SKYROOT_PLANKS.get()); //todo
         this.createOrientableSecretTrapdoor(AetherIIBlocks.SECRET_SKYROOT_TRAPDOOR.get(), AetherIIBlocks.SKYROOT_PLANKS.get());
-//
-//        // Greatroot Decorative Blocks
+
+        // Greatroot Decorative Blocks
         this.createTrivialCube(AetherIIBlocks.GREATROOT_FLOORBOARDS.get());
         this.createTrivialCube(AetherIIBlocks.GREATROOT_HIGHLIGHT.get());
         this.createTrivialCube(AetherIIBlocks.GREATROOT_SHINGLES.get());
         this.createTrivialCube(AetherIIBlocks.GREATROOT_SMALL_SHINGLES.get());
-//        this.createCustomColumn(AetherIIBlocks.GREATROOT_BASE_PLANKS.get(), AetherIIBlocks.GREATROOT_HIGHLIGHT.get());
-//        this.createCustomColumn(AetherIIBlocks.GREATROOT_TOP_PLANKS.get(), AetherIIBlocks.GREATROOT_HIGHLIGHT.get());
+        this.createCubeColumn(AetherIIBlocks.GREATROOT_BASE_PLANKS.get(), AetherIIBlocks.GREATROOT_HIGHLIGHT.get());
+        this.createCubeColumn(AetherIIBlocks.GREATROOT_TOP_PLANKS.get(), AetherIIBlocks.GREATROOT_HIGHLIGHT.get());
 //        this.createCustomColumn(AetherIIBlocks.GREATROOT_BASE_BEAM.get(), AetherIIBlocks.GREATROOT_HIGHLIGHT.get()); //todo
 //        this.createCustomColumn(AetherIIBlocks.GREATROOT_TOP_BEAM.get(), AetherIIBlocks.GREATROOT_HIGHLIGHT.get());
 //        this.createCustomColumn(AetherIIBlocks.GREATROOT_BEAM.get(), AetherIIBlocks.GREATROOT_HIGHLIGHT.get());
         this.createSecretDoor(AetherIIBlocks.SECRET_GREATROOT_DOOR.get(), AetherIIBlocks.GREATROOT_PLANKS.get()); //todo
         this.createOrientableSecretTrapdoor(AetherIIBlocks.SECRET_GREATROOT_TRAPDOOR.get(), AetherIIBlocks.GREATROOT_PLANKS.get());
-//
-//        // Wisproot Decorative Blocks
+
+        // Wisproot Decorative Blocks
         this.createTrivialCube(AetherIIBlocks.WISPROOT_FLOORBOARDS.get());
         this.createTrivialCube(AetherIIBlocks.WISPROOT_HIGHLIGHT.get());
         this.createTrivialCube(AetherIIBlocks.WISPROOT_SHINGLES.get());
         this.createTrivialCube(AetherIIBlocks.WISPROOT_SMALL_SHINGLES.get());
-//        this.createCustomColumn(AetherIIBlocks.WISPROOT_BASE_PLANKS.get(), AetherIIBlocks.WISPROOT_HIGHLIGHT.get());
-//        this.createCustomColumn(AetherIIBlocks.WISPROOT_TOP_PLANKS.get(), AetherIIBlocks.WISPROOT_HIGHLIGHT.get());
+        this.createCubeColumn(AetherIIBlocks.WISPROOT_BASE_PLANKS.get(), AetherIIBlocks.WISPROOT_HIGHLIGHT.get());
+        this.createCubeColumn(AetherIIBlocks.WISPROOT_TOP_PLANKS.get(), AetherIIBlocks.WISPROOT_HIGHLIGHT.get());
 //        this.createCustomColumn(AetherIIBlocks.WISPROOT_BASE_BEAM.get(), AetherIIBlocks.WISPROOT_HIGHLIGHT.get()); //todo
 //        this.createCustomColumn(AetherIIBlocks.WISPROOT_TOP_BEAM.get(), AetherIIBlocks.WISPROOT_HIGHLIGHT.get());
 //        this.createCustomColumn(AetherIIBlocks.WISPROOT_BEAM.get(), AetherIIBlocks.WISPROOT_HIGHLIGHT.get());
         this.createSecretDoor(AetherIIBlocks.SECRET_WISPROOT_DOOR.get(), AetherIIBlocks.WISPROOT_PLANKS.get()); //todo
         this.createOrientableSecretTrapdoor(AetherIIBlocks.SECRET_WISPROOT_TRAPDOOR.get(), AetherIIBlocks.WISPROOT_PLANKS.get());
-//
-//        // Holystone Decorative Blocks
+
+        // Holystone Decorative Blocks
         this.createTrivialCube(AetherIIBlocks.HOLYSTONE_FLAGSTONES.get());
         this.createTrivialCube(AetherIIBlocks.HOLYSTONE_HEADSTONE.get());
         this.createTrivialCube(AetherIIBlocks.HOLYSTONE_KEYSTONE.get());
-//        this.createCustomColumn(AetherIIBlocks.HOLYSTONE_BASE_BRICKS.get(), AetherIIBlocks.HOLYSTONE_KEYSTONE.get());
-//        this.createCustomColumn(AetherIIBlocks.HOLYSTONE_CAPSTONE_BRICKS.get(), AetherIIBlocks.HOLYSTONE_KEYSTONE.get());
+        this.createCubeColumn(AetherIIBlocks.HOLYSTONE_BASE_BRICKS.get(), AetherIIBlocks.HOLYSTONE_KEYSTONE.get());
+        this.createCubeColumn(AetherIIBlocks.HOLYSTONE_CAPSTONE_BRICKS.get(), AetherIIBlocks.HOLYSTONE_KEYSTONE.get());
 //        this.createCustomColumn(AetherIIBlocks.HOLYSTONE_BASE_PILLAR.get(), AetherIIBlocks.HOLYSTONE_KEYSTONE.get()); //todo
 //        this.createCustomColumn(AetherIIBlocks.HOLYSTONE_CAPSTONE_PILLAR.get(), AetherIIBlocks.HOLYSTONE_KEYSTONE.get());
 //        this.createCustomColumn(AetherIIBlocks.HOLYSTONE_PILLAR.get(), AetherIIBlocks.HOLYSTONE_KEYSTONE.get());
-//
-//        // Faded Holystone Decorative Blocks
+
+        // Faded Holystone Decorative Blocks
         this.createTrivialCube(AetherIIBlocks.FADED_HOLYSTONE_FLAGSTONES.get());
         this.createTrivialCube(AetherIIBlocks.FADED_HOLYSTONE_HEADSTONE.get());
         this.createTrivialCube(AetherIIBlocks.FADED_HOLYSTONE_KEYSTONE.get());
-//        this.createCustomColumn(AetherIIBlocks.FADED_HOLYSTONE_BASE_BRICKS.get(), AetherIIBlocks.FADED_HOLYSTONE_KEYSTONE.get());
-//        this.createCustomColumn(AetherIIBlocks.FADED_HOLYSTONE_CAPSTONE_BRICKS.get(), AetherIIBlocks.FADED_HOLYSTONE_KEYSTONE.get());
+        this.createCubeColumn(AetherIIBlocks.FADED_HOLYSTONE_BASE_BRICKS.get(), AetherIIBlocks.FADED_HOLYSTONE_KEYSTONE.get());
+        this.createCubeColumn(AetherIIBlocks.FADED_HOLYSTONE_CAPSTONE_BRICKS.get(), AetherIIBlocks.FADED_HOLYSTONE_KEYSTONE.get());
 //        this.createCustomColumn(AetherIIBlocks.FADED_HOLYSTONE_BASE_PILLAR.get(), AetherIIBlocks.FADED_HOLYSTONE_KEYSTONE.get()); //todo
 //        this.createCustomColumn(AetherIIBlocks.FADED_HOLYSTONE_CAPSTONE_PILLAR.get(), AetherIIBlocks.FADED_HOLYSTONE_KEYSTONE.get());
 //        this.createCustomColumn(AetherIIBlocks.FADED_HOLYSTONE_PILLAR.get(), AetherIIBlocks.FADED_HOLYSTONE_KEYSTONE.get());
-//
-//        // Agiosite Decorative Blocks
+
+        // Agiosite Decorative Blocks
         this.createTrivialCube(AetherIIBlocks.AGIOSITE_FLAGSTONES.get());
         this.createTrivialCube(AetherIIBlocks.AGIOSITE_KEYSTONE.get());
-//        this.createCustomColumn(AetherIIBlocks.AGIOSITE_BASE_BRICKS.get(), AetherIIBlocks.AGIOSITE_KEYSTONE.get());
-//        this.createCustomColumn(AetherIIBlocks.AGIOSITE_CAPSTONE_BRICKS.get(), AetherIIBlocks.AGIOSITE_KEYSTONE.get());
+        this.createCubeColumn(AetherIIBlocks.AGIOSITE_BASE_BRICKS.get(), AetherIIBlocks.AGIOSITE_KEYSTONE.get());
+        this.createCubeColumn(AetherIIBlocks.AGIOSITE_CAPSTONE_BRICKS.get(), AetherIIBlocks.AGIOSITE_KEYSTONE.get());
 //        this.createCustomColumn(AetherIIBlocks.AGIOSITE_BASE_PILLAR.get(), AetherIIBlocks.AGIOSITE_KEYSTONE.get());
 //        this.createCustomColumn(AetherIIBlocks.AGIOSITE_CAPSTONE_PILLAR.get(), AetherIIBlocks.AGIOSITE_KEYSTONE.get());
 //        this.createCustomColumn(AetherIIBlocks.AGIOSITE_PILLAR.get(), AetherIIBlocks.AGIOSITE_KEYSTONE.get());
-//
-//        // Icestone Decorative Blocks
+
+        // Icestone Decorative Blocks
         this.createTrivialCube(AetherIIBlocks.ICESTONE_FLAGSTONES.get());
         this.createTrivialCube(AetherIIBlocks.ICESTONE_KEYSTONE.get());
-//        this.createCustomColumn(AetherIIBlocks.ICESTONE_BASE_BRICKS.get(), AetherIIBlocks.ICESTONE_KEYSTONE.get());
-//        this.createCustomColumn(AetherIIBlocks.ICESTONE_CAPSTONE_BRICKS.get(), AetherIIBlocks.ICESTONE_KEYSTONE.get());
+        this.createCubeColumn(AetherIIBlocks.ICESTONE_BASE_BRICKS.get(), AetherIIBlocks.ICESTONE_KEYSTONE.get());
+        this.createCubeColumn(AetherIIBlocks.ICESTONE_CAPSTONE_BRICKS.get(), AetherIIBlocks.ICESTONE_KEYSTONE.get());
 //        this.createCustomColumn(AetherIIBlocks.ICESTONE_BASE_PILLAR.get(), AetherIIBlocks.ICESTONE_KEYSTONE.get());
 //        this.createCustomColumn(AetherIIBlocks.ICESTONE_CAPSTONE_PILLAR.get(), AetherIIBlocks.ICESTONE_KEYSTONE.get());
 //        this.createCustomColumn(AetherIIBlocks.ICESTONE_PILLAR.get(), AetherIIBlocks.ICESTONE_KEYSTONE.get());
@@ -335,7 +335,7 @@ public class AetherIIBlockModels extends AetherIIBlockModelSubProvider {
         this.createTrivialCube(AetherIIBlocks.GOLDEN_ARILUM_LANTERN.get());
         this.createTrivialCube(AetherIIBlocks.WHITE_ARILUM_LANTERN.get());
 
-//        // Utility
+        // Utility
 //        this.createAmbrosiumTorch(blockModels);
         this.createCraftingTableLike(AetherIIBlocks.SKYROOT_CRAFTING_TABLE.get(), AetherIIBlocks.SKYROOT_PLANKS.get(), TextureMapping::craftingTable);
         this.createFurnace(AetherIIBlocks.HOLYSTONE_FURNACE.get(), TexturedModel.ORIENTABLE_ONLY_TOP);
@@ -349,15 +349,15 @@ public class AetherIIBlockModels extends AetherIIBlockModelSubProvider {
         this.createHangingSign(AetherIIBlocks.STRIPPED_SKYROOT_LOG.get(), AetherIIBlocks.SKYROOT_HANGING_SIGN.get(), AetherIIBlocks.SKYROOT_WALL_HANGING_SIGN.get());
         this.createHangingSign(AetherIIBlocks.STRIPPED_GREATROOT_LOG.get(), AetherIIBlocks.GREATROOT_HANGING_SIGN.get(), AetherIIBlocks.GREATROOT_WALL_HANGING_SIGN.get());
         this.createHangingSign(AetherIIBlocks.STRIPPED_WISPROOT_LOG.get(), AetherIIBlocks.WISPROOT_HANGING_SIGN.get(), AetherIIBlocks.WISPROOT_WALL_HANGING_SIGN.get());
-//
-//        // Moa Egg
+
+        // Moa Egg
 //        this.createTrivialCube(AetherIIBlocks.MOA_EGG.get()); //todo
-//
-//        // Bookshelves
-//        this.createCustomColumn(AetherIIBlocks.SKYROOT_BOOKSHELF.get(), AetherIIBlocks.SKYROOT_PLANKS.get());
-//        this.createCustomColumn(AetherIIBlocks.HOLYSTONE_BOOKSHELF.get(), AetherIIBlocks.HOLYSTONE_BRICKS.get());
-//
-//        // Furniture
+
+        // Bookshelves
+        this.createCubeColumn(AetherIIBlocks.SKYROOT_BOOKSHELF.get(), AetherIIBlocks.SKYROOT_PLANKS.get());
+        this.createCubeColumn(AetherIIBlocks.HOLYSTONE_BOOKSHELF.get(), AetherIIBlocks.HOLYSTONE_BRICKS.get());
+
+        // Furniture
 //        this.createTrivialCube(AetherIIBlocks.OUTPOST_CAMPFIRE.get()); //todo
     }
 }
