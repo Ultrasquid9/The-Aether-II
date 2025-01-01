@@ -1,7 +1,9 @@
 package com.aetherteam.aetherii.data.generators.models;
 
+import com.aetherteam.aetherii.block.AetherIIBlocks;
 import com.aetherteam.aetherii.data.providers.AetherIIBlockModelSubProvider;
 import com.aetherteam.aetherii.data.resources.builders.models.AetherIIBlockFamilies;
+import net.minecraft.client.data.models.BlockModelGenerators;
 import net.minecraft.client.data.models.ItemModelOutput;
 import net.minecraft.client.data.models.blockstates.BlockStateGenerator;
 import net.minecraft.client.data.models.model.ModelInstance;
@@ -140,18 +142,18 @@ public class AetherIIBlockModels extends AetherIIBlockModelSubProvider {
 //        this.createTintedLeavesWithPiles(blockModels, AetherIIBlocks.IRRADIATED_GREATROOT_LEAVES.get(), AetherIIBlocks.IRRADIATED_GREATROOT_LEAF_PILE.get());
 //        this.createTintedLeavesWithPiles(blockModels, AetherIIBlocks.IRRADIATED_GREATOAK_LEAVES.get(), AetherIIBlocks.IRRADIATED_GREATOAK_LEAF_PILE.get());
 //        this.createTintedLeavesWithPiles(blockModels, AetherIIBlocks.IRRADIATED_GREATBOA_LEAVES.get(), AetherIIBlocks.IRRADIATED_GREATBOA_LEAF_PILE.get());
-//
-//        // Saplings
-//        blockModels.createPlantWithDefaultItem(AetherIIBlocks.SKYROOT_SAPLING.get(), AetherIIBlocks.POTTED_SKYROOT_SAPLING.get(), BlockModelGenerators.PlantType.NOT_TINTED);
-//        blockModels.createPlantWithDefaultItem(AetherIIBlocks.SKYPLANE_SAPLING.get(), AetherIIBlocks.POTTED_SKYPLANE_SAPLING.get(), BlockModelGenerators.PlantType.NOT_TINTED);
-//        blockModels.createPlantWithDefaultItem(AetherIIBlocks.SKYBIRCH_SAPLING.get(), AetherIIBlocks.POTTED_SKYBIRCH_SAPLING.get(), BlockModelGenerators.PlantType.NOT_TINTED);
-//        blockModels.createPlantWithDefaultItem(AetherIIBlocks.SKYPINE_SAPLING.get(), AetherIIBlocks.POTTED_SKYPINE_SAPLING.get(), BlockModelGenerators.PlantType.NOT_TINTED);
-//        blockModels.createPlantWithDefaultItem(AetherIIBlocks.WISPROOT_SAPLING.get(), AetherIIBlocks.POTTED_WISPROOT_SAPLING.get(), BlockModelGenerators.PlantType.NOT_TINTED);
-//        blockModels.createPlantWithDefaultItem(AetherIIBlocks.WISPTOP_SAPLING.get(), AetherIIBlocks.POTTED_WISPTOP_SAPLING.get(), BlockModelGenerators.PlantType.NOT_TINTED);
-//        blockModels.createPlantWithDefaultItem(AetherIIBlocks.GREATROOT_SAPLING.get(), AetherIIBlocks.POTTED_GREATROOT_SAPLING.get(), BlockModelGenerators.PlantType.NOT_TINTED);
-//        blockModels.createPlantWithDefaultItem(AetherIIBlocks.GREATOAK_SAPLING.get(), AetherIIBlocks.POTTED_GREATOAK_SAPLING.get(), BlockModelGenerators.PlantType.NOT_TINTED);
-//        blockModels.createPlantWithDefaultItem(AetherIIBlocks.GREATBOA_SAPLING.get(), AetherIIBlocks.POTTED_GREATBOA_SAPLING.get(), BlockModelGenerators.PlantType.NOT_TINTED);
-//        blockModels.createPlantWithDefaultItem(AetherIIBlocks.AMBEROOT_SAPLING.get(), AetherIIBlocks.POTTED_AMBEROOT_SAPLING.get(), BlockModelGenerators.PlantType.NOT_TINTED);
+
+        // Saplings
+        this.createPlantWithDefaultItem(AetherIIBlocks.SKYROOT_SAPLING.get(), AetherIIBlocks.POTTED_SKYROOT_SAPLING.get(), BlockModelGenerators.PlantType.NOT_TINTED);
+        this.createPlantWithDefaultItem(AetherIIBlocks.SKYPLANE_SAPLING.get(), AetherIIBlocks.POTTED_SKYPLANE_SAPLING.get(), BlockModelGenerators.PlantType.NOT_TINTED);
+        this.createPlantWithDefaultItem(AetherIIBlocks.SKYBIRCH_SAPLING.get(), AetherIIBlocks.POTTED_SKYBIRCH_SAPLING.get(), BlockModelGenerators.PlantType.NOT_TINTED);
+        this.createPlantWithDefaultItem(AetherIIBlocks.SKYPINE_SAPLING.get(), AetherIIBlocks.POTTED_SKYPINE_SAPLING.get(), BlockModelGenerators.PlantType.NOT_TINTED);
+        this.createPlantWithDefaultItem(AetherIIBlocks.WISPROOT_SAPLING.get(), AetherIIBlocks.POTTED_WISPROOT_SAPLING.get(), BlockModelGenerators.PlantType.NOT_TINTED);
+        this.createPlantWithDefaultItem(AetherIIBlocks.WISPTOP_SAPLING.get(), AetherIIBlocks.POTTED_WISPTOP_SAPLING.get(), BlockModelGenerators.PlantType.NOT_TINTED);
+        this.createPlantWithDefaultItem(AetherIIBlocks.GREATROOT_SAPLING.get(), AetherIIBlocks.POTTED_GREATROOT_SAPLING.get(), BlockModelGenerators.PlantType.NOT_TINTED);
+        this.createPlantWithDefaultItem(AetherIIBlocks.GREATOAK_SAPLING.get(), AetherIIBlocks.POTTED_GREATOAK_SAPLING.get(), BlockModelGenerators.PlantType.NOT_TINTED);
+        this.createPlantWithDefaultItem(AetherIIBlocks.GREATBOA_SAPLING.get(), AetherIIBlocks.POTTED_GREATBOA_SAPLING.get(), BlockModelGenerators.PlantType.NOT_TINTED);
+        this.createPlantWithDefaultItem(AetherIIBlocks.AMBEROOT_SAPLING.get(), AetherIIBlocks.POTTED_AMBEROOT_SAPLING.get(), BlockModelGenerators.PlantType.NOT_TINTED);
 //
 //        // Grasses
 //        blockModels.createCrossBlock(AetherIIBlocks.AETHER_SHORT_GRASS.get(), BlockModelGenerators.PlantType.NOT_TINTED); //todo tinting and frosting

@@ -4,7 +4,9 @@ import net.minecraft.client.data.models.BlockModelGenerators;
 import net.minecraft.client.data.models.ItemModelOutput;
 import net.minecraft.client.data.models.blockstates.BlockStateGenerator;
 import net.minecraft.client.data.models.model.ModelInstance;
+import net.minecraft.client.data.models.model.TextureMapping;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.level.block.Block;
 
 import java.util.function.BiConsumer;
 import java.util.function.Consumer;
@@ -12,6 +14,20 @@ import java.util.function.Consumer;
 public class AetherIIBlockModelSubProvider extends BlockModelGenerators {
     public AetherIIBlockModelSubProvider(Consumer<BlockStateGenerator> blockStateOutput, ItemModelOutput itemModelOutput, BiConsumer<ResourceLocation, ModelInstance> modelOutput) {
         super(blockStateOutput, itemModelOutput, modelOutput);
+    }
+
+    @Override
+    public void createCrossBlock(Block block, PlantType type, TextureMapping mapping) {
+        ResourceLocation resourcelocation = type.getCross().extend().renderType(ResourceLocation.withDefaultNamespace("cutout")).build().create(block, mapping, this.modelOutput);
+        this.blockStateOutput.accept(createSimpleBlock(block, resourcelocation));
+    }
+
+    @Override
+    public void createPlant(Block plant, Block pot, PlantType type) {
+        this.createCrossBlock(plant, type);
+        TextureMapping texturemapping = type.getPlantTextureMapping(plant);
+        ResourceLocation resourcelocation = type.getCrossPot().extend().renderType(ResourceLocation.withDefaultNamespace("cutout")).build().create(pot, texturemapping, this.modelOutput);
+        this.blockStateOutput.accept(createSimpleBlock(pot, resourcelocation));
     }
 
 //    public void createCutoutMippedCube(BlockModelGenerators blockModels, Block block) {
