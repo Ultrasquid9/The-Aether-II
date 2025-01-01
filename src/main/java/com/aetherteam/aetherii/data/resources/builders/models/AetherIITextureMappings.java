@@ -26,4 +26,8 @@ public class AetherIITextureMappings {
                 .put(TextureSlot.TOP, TextureMapping.getBlockTexture(path, "_top"))
                 .put(TextureSlot.SIDE, TextureMapping.getBlockTexture(path, "_side"));
     }
+
+    public static TextureMapping particle(TextureMapping textureMapping) {
+        return textureMapping.copyForced(TextureSlot.ALL, TextureSlot.PARTICLE);
+    }
 }

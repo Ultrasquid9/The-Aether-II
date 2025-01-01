@@ -8,6 +8,8 @@ import net.neoforged.api.distmarker.OnlyIn;
 
 @OnlyIn(Dist.CLIENT)
 public class AetherIITexturedModels extends TexturedModel {
+    public static final Provider LEAVES = createDefault(TextureMapping::cube, AetherIIModelTemplates.TEMPLATE_CUTOUT_MIPPED_CUBE);
+    public static final Provider TINTED_LEAVES = createDefault(TextureMapping::cube, AetherIIModelTemplates.LEAVES);
     public static final Provider BRYALINN_MOSS_FLOWERS_1 = createDefault(TextureMapping::flowerbed, AetherIIModelTemplates.BRYALINN_MOSS_FLOWERS_1);
     public static final Provider BRYALINN_MOSS_FLOWERS_2 = createDefault(TextureMapping::flowerbed, AetherIIModelTemplates.BRYALINN_MOSS_FLOWERS_2);
     public static final Provider BRYALINN_MOSS_FLOWERS_3 = createDefault(TextureMapping::flowerbed, AetherIIModelTemplates.BRYALINN_MOSS_FLOWERS_3);
