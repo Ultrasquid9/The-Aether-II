@@ -821,15 +821,6 @@ package com.aetherteam.aetherii.data.providers;
 //                .end();
 //    }
 //
-//    public void frostedCross(Block block) {
-//        this.getVariantBuilder(block).forAllStates((state) -> {
-//            boolean snowy = state.getValue(BlockStateProperties.SNOWY);
-//            String prefix = snowy ? "frosted_" : "";
-//            ModelFile grass = this.models().cross(prefix + this.name(block), this.texture(prefix + this.name(block), "natural/")).renderType(ResourceLocation.withDefaultNamespace("cutout"));
-//            return ConfiguredModel.builder().modelFile(grass).build();
-//        });
-//    }
-//
 //    public void bush(Block block) {
 //        this.getVariantBuilder(block).partialState().addModels(new ConfiguredModel(this.bush(block, this.name(block) + "_stem")));
 //    }
@@ -1088,45 +1079,6 @@ package com.aetherteam.aetherii.data.providers;
 //        });
 //    }
 //
-//    public void doorBlock(DoorBlock block) {
-//        this.doorBlockWithRenderType(block, "cutout");
-//    }
-//
-//    public void doorBlockWithRenderType(DoorBlock block, String renderType) {
-//        this.doorBlockInternalWithRenderType(block, this.name(block), ResourceLocation.tryParse(renderType));
-//    }
-//
-//    private void doorBlockInternalWithRenderType(DoorBlock block, String baseName, ResourceLocation renderType) {
-//        ModelFile bottomLeft = this.door(block, baseName + "_bottom_left", "door_bottom_left").renderType(renderType);
-//        ModelFile bottomLeftOpen = this.door(block, baseName + "_bottom_left_open", "door_bottom_left_open").renderType(renderType);
-//        ModelFile bottomRight = this.door(block, baseName + "_bottom_right", "door_bottom_right").renderType(renderType);
-//        ModelFile bottomRightOpen = this.door(block, baseName + "_bottom_right_open", "door_bottom_right_open").renderType(renderType);
-//        ModelFile topLeft = this.door(block, baseName + "_top_left", "door_top_left").renderType(renderType);
-//        ModelFile topLeftOpen = this.door(block, baseName + "_top_left_open", "door_top_left_open").renderType(renderType);
-//        ModelFile topRight = this.door(block, baseName + "_top_right", "door_top_right").renderType(renderType);
-//        ModelFile topRightOpen = this.door(block, baseName + "_top_right_open", "door_top_right_open").renderType(renderType);
-//        this.doorBlock(block, bottomLeft, bottomLeftOpen, bottomRight, bottomRightOpen, topLeft, topLeftOpen, topRight, topRightOpen);
-//    }
-//
-//    private BlockModelBuilder door(DoorBlock block, String name, String model) {
-//        return this.models().withExistingParent(name,  this.modLoc("block/" + model)).texture("door", this.texture(this.name(block), "construction/")).texture("bottom", this.texture(this.name(block), "construction/", "_bottom")).texture("top", this.texture(this.name(block), "construction/", "_top"));
-//    }
-//
-//    public void secretTrapdoorBlock(TrapDoorBlock block, ResourceLocation texture) {
-//        this.secretTrapdoorBlockInternal(block, this.name(block), texture);
-//    }
-//
-//    private void secretTrapdoorBlockInternal(TrapDoorBlock block, String baseName, ResourceLocation texture) {
-//        ModelFile bottom = this.models().withExistingParent(baseName + "_bottom", this.modLoc("block/template_orientable_secret_trapdoor_bottom")).texture("texture", texture);
-//        ModelFile top = this.models().withExistingParent(baseName + "_top", this.modLoc("block/template_orientable_secret_trapdoor_top")).texture("texture", texture);
-//        ModelFile open = this.models().withExistingParent(baseName + "_open", this.modLoc("block/template_orientable_secret_trapdoor_open")).texture("texture", texture);
-//        this.trapdoorBlock(block, bottom, top, open, true);
-//    }
-//
-//    public void crudeScatterglassPane(IronBarsBlock block, HalfTransparentBlock glass, String location) {
-//        this.paneBlockWithRenderType(block, this.texture(this.name(glass), location), this.extend(this.texture(this.name(block), location), "_top"), ResourceLocation.withDefaultNamespace("translucent"));
-//    }
-
 //    public void moaEgg(Block block) {
 //        ModelFile moaEgg = this.models().withExistingParent(this.name(block), modLoc("block/template_moa_egg")).texture("particle", this.texture(this.name(AetherIIBlocks.WOVEN_SKYROOT_STICKS.get()), "natural/"));
 //        this.getVariantBuilder(block).partialState().addModels(new ConfiguredModel(moaEgg));

@@ -1,6 +1,7 @@
 package com.aetherteam.aetherii.data.providers;
 
 import com.aetherteam.aetherii.block.AetherIIBlocks;
+import com.aetherteam.aetherii.block.miscellaneous.FacingPillarBlock;
 import com.aetherteam.aetherii.block.natural.AetherLeafPileBlock;
 import com.aetherteam.aetherii.block.natural.AetherLeavesBlock;
 import com.aetherteam.aetherii.client.AetherIIColorResolvers;
@@ -70,11 +71,30 @@ public class AetherIIBlockModelSubProvider extends BlockModelGenerators {
     public ResourceLocation createTranslucentItemModelWithBlockTexture(Item item, Block block) {
         return AetherIIModelTemplates.TRANSLUCENT_FLAT_ITEM.create(ModelLocationUtils.getModelLocation(item), TextureMapping.layer0(block), this.modelOutput);
     }
-//
+
     public void createCubeColumn(Block side, Block top) {
         TextureMapping mapping = TextureMapping.column(TextureMapping.getBlockTexture(side), TextureMapping.getBlockTexture(top));
         ResourceLocation location = ModelTemplates.CUBE_COLUMN.create(side, mapping, this.modelOutput);
         this.blockStateOutput.accept(BlockModelGenerators.createSimpleBlock(side, location));
+    }
+
+    public void createFacingPillarWithHorizontalVariant(Block side, Block top) {
+        TextureMapping mapping = TextureMapping.column(TextureMapping.getBlockTexture(side), TextureMapping.getBlockTexture(top));
+        ResourceLocation verticalLocation = ModelTemplates.CUBE_COLUMN.create(side, mapping, this.modelOutput);
+        ResourceLocation horizontalLocation = ModelTemplates.CUBE_COLUMN_HORIZONTAL.create(side, mapping, this.modelOutput);
+        this.blockStateOutput.accept(createFacingPillarWithHorizontalVariant(side, verticalLocation, horizontalLocation));
+    }
+
+    public static BlockStateGenerator createFacingPillarWithHorizontalVariant(Block block, ResourceLocation vertical, ResourceLocation horizontal) {
+        return MultiVariantGenerator.multiVariant(block).with(
+                PropertyDispatch.property(FacingPillarBlock.FACING)
+                        .select(Direction.UP, Variant.variant().with(VariantProperties.MODEL, vertical))
+                        .select(Direction.DOWN, Variant.variant().with(VariantProperties.MODEL, vertical).with(VariantProperties.X_ROT, VariantProperties.Rotation.R180))
+                        .select(Direction.NORTH, Variant.variant().with(VariantProperties.MODEL, horizontal).with(VariantProperties.X_ROT, VariantProperties.Rotation.R90))
+                        .select(Direction.SOUTH, Variant.variant().with(VariantProperties.MODEL, horizontal).with(VariantProperties.X_ROT, VariantProperties.Rotation.R90).with(VariantProperties.Y_ROT, VariantProperties.Rotation.R180))
+                        .select(Direction.EAST, Variant.variant().with(VariantProperties.MODEL, horizontal).with(VariantProperties.X_ROT, VariantProperties.Rotation.R90).with(VariantProperties.Y_ROT, VariantProperties.Rotation.R90))
+                        .select(Direction.WEST, Variant.variant().with(VariantProperties.MODEL, horizontal).with(VariantProperties.X_ROT, VariantProperties.Rotation.R90).with(VariantProperties.Y_ROT, VariantProperties.Rotation.R270))
+        );
     }
 
     public void createAetherPortalBlock() {
