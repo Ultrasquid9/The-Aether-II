@@ -24,8 +24,7 @@ public class AetherIIData {
         PackOutput packOutput = generator.getPackOutput();
 
         // Client Data
-        generator.addProvider(true, new AetherIIBlockModelData(packOutput));
-        generator.addProvider(true, new AetherIIItemModelData(packOutput));
+        generator.addProvider(true, new AetherIIModelData(packOutput));
         generator.addProvider(true, new AetherIIParticleData(packOutput));
         generator.addProvider(true, new AetherIILanguageData(packOutput));
         generator.addProvider(true, new AetherIISoundData(packOutput));

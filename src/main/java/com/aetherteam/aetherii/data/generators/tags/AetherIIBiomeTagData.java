@@ -8,7 +8,6 @@ import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.BiomeTagsProvider;
 import net.minecraft.world.level.biome.Biomes;
 
-import javax.annotation.Nullable;
 import java.util.concurrent.CompletableFuture;
 
 public class AetherIIBiomeTagData extends BiomeTagsProvider {

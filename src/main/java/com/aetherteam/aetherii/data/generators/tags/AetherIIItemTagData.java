@@ -14,7 +14,6 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.neoforged.neoforge.common.Tags;
 
-import javax.annotation.Nullable;
 import java.util.concurrent.CompletableFuture;
 
 public class AetherIIItemTagData extends ItemTagsProvider {

@@ -10,7 +10,6 @@ import net.minecraft.world.level.block.Blocks;
 import net.neoforged.neoforge.common.Tags;
 import net.neoforged.neoforge.common.data.BlockTagsProvider;
 
-import javax.annotation.Nullable;
 import java.util.concurrent.CompletableFuture;
 
 public class AetherIIBlockTagData extends BlockTagsProvider {

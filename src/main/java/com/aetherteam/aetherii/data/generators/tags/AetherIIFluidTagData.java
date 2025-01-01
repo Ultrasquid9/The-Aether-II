@@ -8,7 +8,6 @@ import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.FluidTagsProvider;
 import net.minecraft.world.level.material.Fluids;
 
-import javax.annotation.Nullable;
 import java.util.concurrent.CompletableFuture;
 
 public class AetherIIFluidTagData extends FluidTagsProvider {

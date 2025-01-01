@@ -10,7 +10,6 @@ import net.minecraft.tags.EntityTypeTags;
 import net.minecraft.world.entity.EntityType;
 import net.neoforged.neoforge.common.Tags;
 
-import javax.annotation.Nullable;
 import java.util.concurrent.CompletableFuture;
 
 public class AetherIIEntityTagData extends EntityTypeTagsProvider {
