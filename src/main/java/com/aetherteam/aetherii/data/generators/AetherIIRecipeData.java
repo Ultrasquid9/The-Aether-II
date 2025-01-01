@@ -182,8 +182,20 @@ public class AetherIIRecipeData extends AetherIIRecipeProvider {
         woodFromLogs(AetherIIBlocks.GREATROOT_WOOD.get(), AetherIIBlocks.GREATROOT_LOG.get());
         woodFromLogs(AetherIIBlocks.WISPROOT_WOOD.get(), AetherIIBlocks.WISPROOT_LOG.get());
         woodFromLogs(AetherIIBlocks.AMBEROOT_WOOD.get(), AetherIIBlocks.AMBEROOT_LOG.get());
+        ShapelessRecipeBuilder.shapeless(getter, RecipeCategory.MISC, AetherIIBlocks.MOSSY_WISPROOT_LOG_END.get(), 1)
+                .requires(AetherIIBlocks.WISPROOT_LOG)
+                .requires(AetherIIBlocks.BRYALINN_MOSS_VINES)
+                .unlockedBy("has_vines", has(AetherIIBlocks.BRYALINN_MOSS_VINES))
+                .save(this.output);
         ShapelessRecipeBuilder.shapeless(getter, RecipeCategory.MISC, AetherIIBlocks.MOSSY_WISPROOT_LOG.get(), 1)
                 .requires(AetherIIBlocks.WISPROOT_LOG)
+                .requires(AetherIIBlocks.BRYALINN_MOSS_VINES)
+                .requires(AetherIIBlocks.BRYALINN_MOSS_VINES)
+                .unlockedBy("has_vines", has(AetherIIBlocks.BRYALINN_MOSS_VINES))
+                .save(this.output);
+        ShapelessRecipeBuilder.shapeless(getter, RecipeCategory.MISC, AetherIIBlocks.MOSSY_WISPROOT_WOOD.get(), 1)
+                .requires(AetherIIBlocks.WISPROOT_WOOD)
+                .requires(AetherIIBlocks.BRYALINN_MOSS_VINES)
                 .requires(AetherIIBlocks.BRYALINN_MOSS_VINES)
                 .unlockedBy("has_vines", has(AetherIIBlocks.BRYALINN_MOSS_VINES))
                 .save(this.output);

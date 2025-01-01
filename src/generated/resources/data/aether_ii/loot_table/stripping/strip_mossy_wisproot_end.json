@@ -9,7 +9,7 @@
           "functions": [
             {
               "add": false,
-              "count": 2.0,
+              "count": 1.0,
               "function": "minecraft:set_count"
             },
             {
@@ -24,5 +24,5 @@
       "rolls": 1.0
     }
   ],
-  "random_sequence": "aether_ii:stripping/strip_mossy_wisproot"
+  "random_sequence": "aether_ii:stripping/strip_mossy_wisproot_end"
 }

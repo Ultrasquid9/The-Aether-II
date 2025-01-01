@@ -78,14 +78,24 @@ public class AetherIIBlockModelSubProvider extends BlockModelGenerators {
         this.blockStateOutput.accept(BlockModelGenerators.createSimpleBlock(side, location));
     }
 
-    public void createFacingPillarWithHorizontalVariant(Block side, Block top) {
+    public void createFacingColumnWithHorizontalVariant(Block side, Block top) {
         TextureMapping mapping = TextureMapping.column(TextureMapping.getBlockTexture(side), TextureMapping.getBlockTexture(top));
         ResourceLocation verticalLocation = ModelTemplates.CUBE_COLUMN.create(side, mapping, this.modelOutput);
         ResourceLocation horizontalLocation = ModelTemplates.CUBE_COLUMN_HORIZONTAL.create(side, mapping, this.modelOutput);
-        this.blockStateOutput.accept(createFacingPillarWithHorizontalVariant(side, verticalLocation, horizontalLocation));
+        this.blockStateOutput.accept(createFacingColumnWithHorizontalVariant(side, verticalLocation, horizontalLocation));
     }
 
-    public static BlockStateGenerator createFacingPillarWithHorizontalVariant(Block block, ResourceLocation vertical, ResourceLocation horizontal) {
+    public void createFacingTopBottomColumnWithHorizontalVariant(Block side, Block top, Block bottom) {
+        TextureMapping mapping = new TextureMapping()
+                .put(TextureSlot.SIDE, TextureMapping.getBlockTexture(side))
+                .put(TextureSlot.TOP, TextureMapping.getBlockTexture(top, "_top"))
+                .put(TextureSlot.BOTTOM, TextureMapping.getBlockTexture(bottom, "_top"));
+        ResourceLocation verticalLocation = ModelTemplates.CUBE_BOTTOM_TOP.create(side, mapping, this.modelOutput);
+        ResourceLocation horizontalLocation = ModelTemplates.CUBE_BOTTOM_TOP.create(ModelLocationUtils.getModelLocation(side, "_horizontal"), mapping, this.modelOutput);
+        this.blockStateOutput.accept(createFacingColumnWithHorizontalVariant(side, verticalLocation, horizontalLocation));
+    }
+
+    public static BlockStateGenerator createFacingColumnWithHorizontalVariant(Block block, ResourceLocation vertical, ResourceLocation horizontal) {
         return MultiVariantGenerator.multiVariant(block).with(
                 PropertyDispatch.property(FacingPillarBlock.FACING)
                         .select(Direction.UP, Variant.variant().with(VariantProperties.MODEL, vertical))

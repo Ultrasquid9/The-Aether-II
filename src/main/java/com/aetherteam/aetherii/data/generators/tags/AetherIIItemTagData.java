@@ -343,6 +343,7 @@ public class AetherIIItemTagData extends ItemTagsProvider {
                 AetherIIBlocks.GREATROOT_LOG.asItem(),
                 AetherIIBlocks.WISPROOT_LOG.asItem(),
                 AetherIIBlocks.MOSSY_WISPROOT_LOG.asItem(),
+                AetherIIBlocks.MOSSY_WISPROOT_LOG_END.asItem(),
                 AetherIIBlocks.AMBEROOT_LOG.asItem(),
                 AetherIIBlocks.SKYROOT_LEAVES.asItem(),
                 AetherIIBlocks.SKYPLANE_LEAVES.asItem(),

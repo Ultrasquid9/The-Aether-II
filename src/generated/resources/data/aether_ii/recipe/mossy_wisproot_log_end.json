@@ -3,11 +3,10 @@
   "category": "misc",
   "ingredients": [
     "aether_ii:wisproot_log",
-    "aether_ii:bryalinn_moss_vines",
     "aether_ii:bryalinn_moss_vines"
   ],
   "result": {
     "count": 1,
-    "id": "aether_ii:mossy_wisproot_log"
+    "id": "aether_ii:mossy_wisproot_log_end"
   }
 }
