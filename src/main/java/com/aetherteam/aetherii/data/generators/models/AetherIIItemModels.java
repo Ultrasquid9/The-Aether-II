@@ -249,7 +249,5 @@ public class AetherIIItemModels extends AetherIIItemModelSubProvider {
 //        this.generateLayeredItem(AetherIIItems.AETHER_PORTAL_FRAME.get(), //todo
 //                TextureMapping.getItemTexture(AetherIIItems.AETHER_PORTAL_FRAME.get()),
 //                TextureMapping.getItemTexture(AetherIIItems.AETHER_PORTAL_FRAME.get()).withSuffix("_inside"));
-
-//        this.createFenceItem(blockModels, AetherIIBlocks.SKYROOT_FENCE.asItem(), AetherIIBlocks.SKYROOT_PLANKS.get());
     }
 }

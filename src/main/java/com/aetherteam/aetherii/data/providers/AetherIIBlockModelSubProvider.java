@@ -46,11 +46,6 @@ public class AetherIIBlockModelSubProvider extends BlockModelGenerators {
 //        blockModels.blockStateOutput.accept(BlockModelGenerators.createSimpleBlock(side, resourcelocation));
 //    }
 //
-//    public void createCutoutCross(BlockModelGenerators blockModels, Block block) {
-//        blockModels.blockStateOutput.accept(BlockModelGenerators.createSimpleBlock(block, AetherIIModelTemplates.TEMPLATE_CUTOUT_CROSS.create(block, TextureMapping.cross(block), blockModels.modelOutput)));
-//        blockModels.registerSimpleFlatItemModel(block);
-//    }
-//
 //    public void createAetherPortalBlock(BlockModelGenerators blockModels) {
 //        blockModels.blockStateOutput.accept(MultiVariantGenerator.multiVariant(AetherIIBlocks.AETHER_PORTAL.get()).with(PropertyDispatch.property(BlockStateProperties.HORIZONTAL_AXIS)
 //                .select(Direction.Axis.X, Variant.variant().with(VariantProperties.MODEL, ModelLocationUtils.getModelLocation(AetherIIBlocks.AETHER_PORTAL.get(), "_ns")))

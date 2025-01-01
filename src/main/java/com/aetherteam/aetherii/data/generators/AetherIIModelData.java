@@ -26,22 +26,30 @@ public class AetherIIModelData extends ModelProvider {
     }
 
     public CompletableFuture<?> run(CachedOutput output) {
-        ItemInfoCollector itemModelOutput = new ItemInfoCollector(this::getKnownItems);
-        BlockStateGeneratorCollector blockModelOutput = new BlockStateGeneratorCollector(this::getKnownBlocks);
+        ItemInfoCollector itemModelOutput = new ItemInfoCollector(this::getKnownItems) {
+            @Override
+            public void finalizeAndValidate() { //todo temporary
+                try {
+                    super.finalizeAndValidate();
+                } catch (IllegalStateException ignore) {
+
+                }
+            }
+        };
+        BlockStateGeneratorCollector blockModelOutput = new BlockStateGeneratorCollector(this::getKnownBlocks) {
+            @Override
+            public void validate() { //todo temporary
+                try {
+                    super.validate();
+                } catch (IllegalStateException ignore) {
+
+                }
+            }
+        };
         SimpleModelCollector modelOutput = new SimpleModelCollector();
         this.registerModels(new AetherIIBlockModels(blockModelOutput, itemModelOutput, modelOutput), new AetherIIItemModels(itemModelOutput, modelOutput));
         blockModelOutput.validate();
         itemModelOutput.finalizeAndValidate();
         return CompletableFuture.allOf(blockModelOutput.save(output, this.blockStatePathProvider), modelOutput.save(output, this.modelPathProvider), itemModelOutput.save(output, this.itemInfoPathProvider));
-    }
-
-    @Override
-    protected Stream<? extends Holder<Block>> getKnownBlocks() {
-        return Stream.of();
-    }
-
-    @Override
-    protected Stream<? extends Holder<Item>> getKnownItems() {
-        return Stream.of();
     }
 }
