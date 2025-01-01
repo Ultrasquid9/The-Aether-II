@@ -6,6 +6,7 @@ import net.minecraft.client.data.models.blockstates.VariantProperties;
 import net.minecraft.client.data.models.model.ModelTemplates;
 import net.minecraft.client.data.models.model.TextureMapping;
 import net.minecraft.client.data.models.model.TextureSlot;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Block;
 
 public class AetherIITextureMappings {
@@ -51,6 +52,14 @@ public class AetherIITextureMappings {
                 .put(AetherIITextureSlots.TARAHESP_FLOWERS_WHITE, TextureMapping.getBlockTexture(block, "_white"))
                 .put(AetherIITextureSlots.TARAHESP_FLOWERS_PURPLE, TextureMapping.getBlockTexture(block, "_purple"))
                 .copySlot(AetherIITextureSlots.TARAHESP_FLOWERS_PURPLE, TextureSlot.PARTICLE);
+    }
+
+    public static TextureMapping doorTop(Block block) {
+        return new TextureMapping().put(TextureSlot.ALL, TextureMapping.getBlockTexture(block)).put(TextureSlot.TOP, TextureMapping.getBlockTexture(block, "_top")).copySlot(TextureSlot.TOP, TextureSlot.PARTICLE);
+    }
+
+    public static TextureMapping doorBottom(Block block) {
+        return new TextureMapping().put(TextureSlot.ALL, TextureMapping.getBlockTexture(block)).put(TextureSlot.BOTTOM, TextureMapping.getBlockTexture(block, "_bottom")).copySlot(TextureSlot.BOTTOM, TextureSlot.PARTICLE);
     }
 
     public static TextureMapping particle(TextureMapping textureMapping) {

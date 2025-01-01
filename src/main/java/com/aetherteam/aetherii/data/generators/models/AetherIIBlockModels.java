@@ -221,8 +221,8 @@ public class AetherIIBlockModels extends AetherIIBlockModelSubProvider {
 //        this.createCustomColumn(AetherIIBlocks.SKYROOT_BASE_BEAM.get(), AetherIIBlocks.SKYROOT_HIGHLIGHT.get()); //todo
 //        this.createCustomColumn(AetherIIBlocks.SKYROOT_TOP_BEAM.get(), AetherIIBlocks.SKYROOT_HIGHLIGHT.get());
 //        this.createCustomColumn(AetherIIBlocks.SKYROOT_BEAM.get(), AetherIIBlocks.SKYROOT_HIGHLIGHT.get());
-//        this.createDoor(AetherIIBlocks.SECRET_SKYROOT_DOOR.get()); //todo
-//        this.createTrapdoor(AetherIIBlocks.SECRET_SKYROOT_TRAPDOOR.get());
+        this.createSecretDoor(AetherIIBlocks.SECRET_SKYROOT_DOOR.get(), AetherIIBlocks.SKYROOT_PLANKS.get()); //todo
+        this.createOrientableSecretTrapdoor(AetherIIBlocks.SECRET_SKYROOT_TRAPDOOR.get(), AetherIIBlocks.SKYROOT_PLANKS.get());
 //
 //        // Greatroot Decorative Blocks
         this.createTrivialCube(AetherIIBlocks.GREATROOT_FLOORBOARDS.get());
@@ -234,8 +234,8 @@ public class AetherIIBlockModels extends AetherIIBlockModelSubProvider {
 //        this.createCustomColumn(AetherIIBlocks.GREATROOT_BASE_BEAM.get(), AetherIIBlocks.GREATROOT_HIGHLIGHT.get()); //todo
 //        this.createCustomColumn(AetherIIBlocks.GREATROOT_TOP_BEAM.get(), AetherIIBlocks.GREATROOT_HIGHLIGHT.get());
 //        this.createCustomColumn(AetherIIBlocks.GREATROOT_BEAM.get(), AetherIIBlocks.GREATROOT_HIGHLIGHT.get());
-//        this.createDoor(AetherIIBlocks.SECRET_GREATROOT_DOOR.get()); //todo
-//        this.createTrapdoor(AetherIIBlocks.SECRET_GREATROOT_TRAPDOOR.get());
+        this.createSecretDoor(AetherIIBlocks.SECRET_GREATROOT_DOOR.get(), AetherIIBlocks.GREATROOT_PLANKS.get()); //todo
+        this.createOrientableSecretTrapdoor(AetherIIBlocks.SECRET_GREATROOT_TRAPDOOR.get(), AetherIIBlocks.GREATROOT_PLANKS.get());
 //
 //        // Wisproot Decorative Blocks
         this.createTrivialCube(AetherIIBlocks.WISPROOT_FLOORBOARDS.get());
@@ -247,8 +247,8 @@ public class AetherIIBlockModels extends AetherIIBlockModelSubProvider {
 //        this.createCustomColumn(AetherIIBlocks.WISPROOT_BASE_BEAM.get(), AetherIIBlocks.WISPROOT_HIGHLIGHT.get()); //todo
 //        this.createCustomColumn(AetherIIBlocks.WISPROOT_TOP_BEAM.get(), AetherIIBlocks.WISPROOT_HIGHLIGHT.get());
 //        this.createCustomColumn(AetherIIBlocks.WISPROOT_BEAM.get(), AetherIIBlocks.WISPROOT_HIGHLIGHT.get());
-//        this.createDoor(AetherIIBlocks.SECRET_WISPROOT_DOOR.get()); //todo
-//        this.createTrapdoor(AetherIIBlocks.SECRET_WISPROOT_TRAPDOOR.get());
+        this.createSecretDoor(AetherIIBlocks.SECRET_WISPROOT_DOOR.get(), AetherIIBlocks.WISPROOT_PLANKS.get()); //todo
+        this.createOrientableSecretTrapdoor(AetherIIBlocks.SECRET_WISPROOT_TRAPDOOR.get(), AetherIIBlocks.WISPROOT_PLANKS.get());
 //
 //        // Holystone Decorative Blocks
         this.createTrivialCube(AetherIIBlocks.HOLYSTONE_FLAGSTONES.get());
@@ -317,10 +317,10 @@ public class AetherIIBlockModels extends AetherIIBlockModelSubProvider {
         this.createFullAndCarpetBlocks(AetherIIBlocks.GREEN_CLOUDWOOL.get(), AetherIIBlocks.GREEN_CLOUDWOOL_CARPET.get());
         this.createFullAndCarpetBlocks(AetherIIBlocks.RED_CLOUDWOOL.get(), AetherIIBlocks.RED_CLOUDWOOL_CARPET.get());
         this.createFullAndCarpetBlocks(AetherIIBlocks.BLACK_CLOUDWOOL.get(), AetherIIBlocks.BLACK_CLOUDWOOL_CARPET.get());
-//
-//        // Arkenium Blocks
-//        this.createDoor(AetherIIBlocks.ARKENIUM_DOOR.get());
-//        this.createOrientableTrapdoor(AetherIIBlocks.ARKENIUM_TRAPDOOR.get());
+
+        // Arkenium Blocks
+        this.createDoor(AetherIIBlocks.ARKENIUM_DOOR.get());
+        this.createOrientableTrapdoor(AetherIIBlocks.ARKENIUM_TRAPDOOR.get());
 
         // Mineral Blocks
         this.createTrivialCube(AetherIIBlocks.AMBROSIUM_BLOCK.get());

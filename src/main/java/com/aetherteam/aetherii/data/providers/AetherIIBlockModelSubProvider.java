@@ -43,6 +43,22 @@ public class AetherIIBlockModelSubProvider extends BlockModelGenerators {
         this.blockStateOutput.accept(createSimpleBlock(pot, resourcelocation));
     }
 
+    @Override
+    public void createDoor(Block block) {
+        TextureMapping bottomMapping = AetherIITextureMappings.doorBottom(block);
+        TextureMapping topMapping = AetherIITextureMappings.doorTop(block);
+        ResourceLocation left = AetherIIModelTemplates.DOOR_BOTTOM_LEFT.create(block, bottomMapping, this.modelOutput);
+        ResourceLocation bottomLeftOpen = AetherIIModelTemplates.DOOR_BOTTOM_LEFT_OPEN.create(block, bottomMapping, this.modelOutput);
+        ResourceLocation bottomRight = AetherIIModelTemplates.DOOR_BOTTOM_RIGHT.create(block, bottomMapping, this.modelOutput);
+        ResourceLocation bottomRightOpen = AetherIIModelTemplates.DOOR_BOTTOM_RIGHT_OPEN.create(block, bottomMapping, this.modelOutput);
+        ResourceLocation topLeft = AetherIIModelTemplates.DOOR_TOP_LEFT.create(block, topMapping, this.modelOutput);
+        ResourceLocation topLeftOpen = AetherIIModelTemplates.DOOR_TOP_LEFT_OPEN.create(block, topMapping, this.modelOutput);
+        ResourceLocation topRight = AetherIIModelTemplates.DOOR_TOP_RIGHT.create(block, topMapping, this.modelOutput);
+        ResourceLocation topRightOpen = AetherIIModelTemplates.DOOR_TOP_RIGHT_OPEN.create(block, topMapping, this.modelOutput);
+        this.registerSimpleFlatItemModel(block.asItem());
+        this.blockStateOutput.accept(createDoor(block, left, bottomLeftOpen, bottomRight, bottomRightOpen, topLeft, topLeftOpen, topRight, topRightOpen));
+    }
+
     public void createCutoutMippedCube(Block block) {
         this.blockStateOutput.accept(BlockModelGenerators.createSimpleBlock(block, AetherIIModelTemplates.TEMPLATE_CUTOUT_MIPPED_CUBE.create(block, TextureMapping.cube(block), this.modelOutput)));
     }
@@ -261,6 +277,29 @@ public class AetherIIBlockModelSubProvider extends BlockModelGenerators {
         ResourceLocation snowyLocation = this.createSuffixedVariant(block, "_snowy", AetherIIModelTemplates.TEMPLATE_CUTOUT_CROSS, TextureMapping::cross);
         this.blockStateOutput.accept(MultiVariantGenerator.multiVariant(block, Variant.variant().with(VariantProperties.MODEL, ModelLocationUtils.getModelLocation(block.asItem())))
                 .with(BlockModelGenerators.createBooleanModelDispatch(BlockStateProperties.SNOWY, snowyLocation, defaultLocation)));
+    }
+
+    public void createSecretDoor(Block block, Block base) {
+        TextureMapping mapping = TextureMapping.door(TextureMapping.getBlockTexture(base), TextureMapping.getBlockTexture(base));
+        ResourceLocation bottomLeft = ModelTemplates.DOOR_BOTTOM_LEFT.create(block, mapping, this.modelOutput);
+        ResourceLocation bottomLeftOpen = ModelTemplates.DOOR_BOTTOM_LEFT_OPEN.create(block, mapping, this.modelOutput);
+        ResourceLocation right = ModelTemplates.DOOR_BOTTOM_RIGHT.create(block, mapping, this.modelOutput);
+        ResourceLocation bottomRightOpen = ModelTemplates.DOOR_BOTTOM_RIGHT_OPEN.create(block, mapping, this.modelOutput);
+        ResourceLocation topLeft = ModelTemplates.DOOR_TOP_LEFT.create(block, mapping, this.modelOutput);
+        ResourceLocation topLeftOpen = ModelTemplates.DOOR_TOP_LEFT_OPEN.create(block, mapping, this.modelOutput);
+        ResourceLocation topRight = ModelTemplates.DOOR_TOP_RIGHT.create(block, mapping, this.modelOutput);
+        ResourceLocation topRightOpen = ModelTemplates.DOOR_TOP_RIGHT_OPEN.create(block, mapping, this.modelOutput);
+        this.registerSimpleFlatItemModel(block.asItem());
+        this.blockStateOutput.accept(createDoor(block, bottomLeft, bottomLeftOpen, right, bottomRightOpen, topLeft, topLeftOpen, topRight, topRightOpen));
+    }
+
+    public void createOrientableSecretTrapdoor(Block block, Block base) {
+        TextureMapping mapping = TextureMapping.defaultTexture(base);
+        ResourceLocation top = AetherIIModelTemplates.ORIENTABLE_SECRET_TRAPDOOR_TOP.create(block, mapping, this.modelOutput);
+        ResourceLocation bottom = AetherIIModelTemplates.ORIENTABLE_SECRET_TRAPDOOR_BOTTOM.create(block, mapping, this.modelOutput);
+        ResourceLocation open = AetherIIModelTemplates.ORIENTABLE_SECRET_TRAPDOOR_OPEN.create(block, mapping, this.modelOutput);
+        this.blockStateOutput.accept(createOrientableTrapdoor(block, top, bottom, open));
+        this.registerSimpleItemModel(block, bottom);
     }
 //
 //    public void createValkyrieSprout(BlockModelGenerators blockModels) {
