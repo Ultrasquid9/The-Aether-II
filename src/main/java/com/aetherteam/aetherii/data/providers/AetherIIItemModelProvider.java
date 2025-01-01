@@ -106,11 +106,11 @@ public class AetherIIItemModelProvider extends ModelProvider {
         itemModels.itemModelOutput.accept(item, ItemModelUtils.select(new SelectMoaEggType(), ItemModelUtils.plainModel(modelLocation), list));
     }
 
-    // Block Items
-    public void createFenceItem(BlockModelGenerators blockModels, Item item, Block block) {
-        ModelTemplates.FENCE_INVENTORY.create(ModelLocationUtils.getModelLocation(item),
-                TextureMapping.fence(block), blockModels.modelOutput);
-    }
+//    // Block Items
+//    public void createFenceItem(BlockModelGenerators blockModels, Item item, Block block) {
+//        ModelTemplates.FENCE_INVENTORY.create(ModelLocationUtils.getModelLocation(item),
+//                TextureMapping.fence(block), blockModels.modelOutput);
+//    }
 
     @Override
     public Stream<? extends Holder<Block>> getKnownBlocks() {
