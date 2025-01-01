@@ -454,4 +454,8 @@ public class AetherIIBlockModelSubProvider extends BlockModelGenerators {
 //                                .with(BlockModelGenerators.createBooleanModelDispatch(ArkeniumForgeBlock.CHARGED, location_charged, location))
 //                );
 //    }
+
+    public void createMoaEgg(Block block) {
+        this.blockStateOutput.accept(createSimpleBlock(block, AetherIIModelTemplates.EMPTY.create(block, new TextureMapping().put(TextureSlot.PARTICLE, TextureMapping.getBlockTexture(AetherIIBlocks.WOVEN_SKYROOT_STICKS.get())), this.modelOutput)));
+    }
 }
