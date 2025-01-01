@@ -4,6 +4,7 @@ import com.aetherteam.aetherii.block.AetherIIBlocks;
 import com.aetherteam.aetherii.block.miscellaneous.FacingPillarBlock;
 import com.aetherteam.aetherii.block.natural.AetherLeafPileBlock;
 import com.aetherteam.aetherii.block.natural.AetherLeavesBlock;
+import com.aetherteam.aetherii.block.natural.PurpleAercloudBlock;
 import com.aetherteam.aetherii.client.AetherIIColorResolvers;
 import com.aetherteam.aetherii.client.renderer.item.color.AetherGrassColorSource;
 import com.aetherteam.aetherii.data.resources.builders.models.AetherIIModelTemplates;
@@ -61,11 +62,11 @@ public class AetherIIBlockModelSubProvider extends BlockModelGenerators {
     }
 
     public void createCutoutMippedCube(Block block) {
-        this.blockStateOutput.accept(BlockModelGenerators.createSimpleBlock(block, AetherIIModelTemplates.TEMPLATE_CUTOUT_MIPPED_CUBE.create(block, TextureMapping.cube(block), this.modelOutput)));
+        this.blockStateOutput.accept(BlockModelGenerators.createSimpleBlock(block, AetherIIModelTemplates.TEMPLATE_CUTOUT_MIPPED_CUBE_ALL.create(block, TextureMapping.cube(block), this.modelOutput)));
     }
 
     public void createTranslucentCube(Block block) {
-        this.blockStateOutput.accept(BlockModelGenerators.createSimpleBlock(block, AetherIIModelTemplates.TEMPLATE_TRANSLUCENT_CUBE.create(block, TextureMapping.cube(block), this.modelOutput)));
+        this.blockStateOutput.accept(BlockModelGenerators.createSimpleBlock(block, AetherIIModelTemplates.TEMPLATE_TRANSLUCENT_CUBE_ALL.create(block, TextureMapping.cube(block), this.modelOutput)));
     }
 
     public void createTranslucentCubeInnerFaces(Block block) {
@@ -243,7 +244,50 @@ public class AetherIIBlockModelSubProvider extends BlockModelGenerators {
 
     public void createAercloud(Block block) {
         this.createTranslucentCubeInnerFaces(block);
-        this.itemModelOutput.accept(block.asItem(), ItemModelUtils.plainModel(AetherIIModelTemplates.TEMPLATE_TRANSLUCENT_CUBE.create(block.asItem(), TextureMapping.cube(block), this.modelOutput)));
+        this.itemModelOutput.accept(block.asItem(), ItemModelUtils.plainModel(AetherIIModelTemplates.TEMPLATE_TRANSLUCENT_CUBE_ALL.create(block.asItem(), TextureMapping.cube(block), this.modelOutput)));
+    }
+
+    public void createPurpleAercloud(Block block) {
+        TextureMapping leftMapping = new TextureMapping()
+                .put(TextureSlot.PARTICLE, TextureMapping.getBlockTexture(block, "_back"))
+                .put(TextureSlot.UP, TextureMapping.getBlockTexture(block, "_front"))
+                .put(TextureSlot.DOWN, TextureMapping.getBlockTexture(block, "_back"))
+                .put(TextureSlot.NORTH, TextureMapping.getBlockTexture(block, "_left"))
+                .put(TextureSlot.SOUTH, TextureMapping.getBlockTexture(block, "_left"))
+                .put(TextureSlot.EAST, TextureMapping.getBlockTexture(block, "_left"))
+                .put(TextureSlot.WEST, TextureMapping.getBlockTexture(block, "_left"));
+        TextureMapping rightMapping = new TextureMapping()
+                .put(TextureSlot.PARTICLE, TextureMapping.getBlockTexture(block, "_back"))
+                .put(TextureSlot.UP, TextureMapping.getBlockTexture(block, "_front"))
+                .put(TextureSlot.DOWN, TextureMapping.getBlockTexture(block, "_back"))
+                .put(TextureSlot.NORTH, TextureMapping.getBlockTexture(block, "_right"))
+                .put(TextureSlot.SOUTH, TextureMapping.getBlockTexture(block, "_right"))
+                .put(TextureSlot.EAST, TextureMapping.getBlockTexture(block, "_right"))
+                .put(TextureSlot.WEST, TextureMapping.getBlockTexture(block, "_right"));
+
+        ResourceLocation left = AetherIIModelTemplates.TRANSLUCENT_INNER_FACES.create(ModelLocationUtils.getModelLocation(block, "_left"), leftMapping, this.modelOutput);
+        ResourceLocation right = AetherIIModelTemplates.TRANSLUCENT_INNER_FACES.create(ModelLocationUtils.getModelLocation(block, "_right"), rightMapping, this.modelOutput);
+
+        this.blockStateOutput.accept(MultiVariantGenerator.multiVariant(block).with(PropertyDispatch.property(PurpleAercloudBlock.FACING).generate((direction) -> {
+            Variant variant = Variant.variant();
+            VariantProperty<ResourceLocation> property = VariantProperties.MODEL;
+            switch(direction) {
+                case NORTH -> {
+                    return variant.with(property, left).with(VariantProperties.X_ROT, VariantProperties.Rotation.R90);
+                }
+                case SOUTH -> {
+                    return variant.with(property, right).with(VariantProperties.X_ROT, VariantProperties.Rotation.R270);
+                }
+                case WEST -> {
+                    return variant.with(property, left).with(VariantProperties.X_ROT, VariantProperties.Rotation.R270).with(VariantProperties.Y_ROT, VariantProperties.Rotation.R90);
+                }
+                case EAST -> {
+                    return variant.with(property, right).with(VariantProperties.X_ROT, VariantProperties.Rotation.R90).with(VariantProperties.Y_ROT, VariantProperties.Rotation.R90);
+                }
+            }
+            return variant.with(property, left);
+        })));
+        this.itemModelOutput.accept(block.asItem(), ItemModelUtils.plainModel(AetherIIModelTemplates.TEMPLATE_TRANSLUCENT_CUBE.create(block.asItem(), rightMapping, this.modelOutput)));
     }
 
     public void createCustomFlowerBed(Block block, ResourceLocation flowerbed1, ResourceLocation flowerbed2, ResourceLocation flowerbed3, ResourceLocation flowerbed4) {

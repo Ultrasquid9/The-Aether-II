@@ -109,7 +109,7 @@ public class AetherIIBlockModels extends AetherIIBlockModelSubProvider {
         this.createAercloud(AetherIIBlocks.BLUE_AERCLOUD.get());
         this.createAercloud(AetherIIBlocks.GOLDEN_AERCLOUD.get());
         this.createAercloud(AetherIIBlocks.GREEN_AERCLOUD.get());
-//        this.createTranslucentCube(AetherIIBlocks.PURPLE_AERCLOUD.get()); //todo faces
+        this.createPurpleAercloud(AetherIIBlocks.PURPLE_AERCLOUD.get()); //todo faces
         this.createAercloud(AetherIIBlocks.STORM_AERCLOUD.get());
 
         // Moa Nest
