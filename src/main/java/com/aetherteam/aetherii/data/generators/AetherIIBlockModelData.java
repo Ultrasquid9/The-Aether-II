@@ -27,7 +27,7 @@ public class AetherIIBlockModelData extends AetherIIBlockModelProvider {
         AetherIIBlockFamilies.getAllFamilies().filter(BlockFamily::shouldGenerateModel).forEach((family) -> blockModels.family(family.getBaseBlock()).generateFor(family));
 
         // Portal
-        this.createAetherPortalBlock(blockModels);
+//        this.createAetherPortalBlock(blockModels);
 
         // Surface
 //        this.createAetherGrassBlocks(blockModels);
