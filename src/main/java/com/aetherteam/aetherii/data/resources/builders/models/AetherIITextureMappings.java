@@ -27,6 +27,19 @@ public class AetherIITextureMappings {
                 .put(TextureSlot.SIDE, TextureMapping.getBlockTexture(path, "_side"));
     }
 
+    public static TextureMapping flowerbed(Block block) {
+        return new TextureMapping()
+                .put(TextureSlot.FLOWERBED, TextureMapping.getBlockTexture(block))
+                .copySlot(TextureSlot.FLOWERBED, TextureSlot.PARTICLE);
+    }
+
+    public static TextureMapping tarahespFlowerbed(Block block) {
+        return new TextureMapping()
+                .put(AetherIITextureSlots.TARAHESP_FLOWERS_WHITE, TextureMapping.getBlockTexture(block, "_white"))
+                .put(AetherIITextureSlots.TARAHESP_FLOWERS_PURPLE, TextureMapping.getBlockTexture(block, "_purple"))
+                .copySlot(AetherIITextureSlots.TARAHESP_FLOWERS_PURPLE, TextureSlot.PARTICLE);
+    }
+
     public static TextureMapping particle(TextureMapping textureMapping) {
         return textureMapping.copyForced(TextureSlot.ALL, TextureSlot.PARTICLE);
     }
