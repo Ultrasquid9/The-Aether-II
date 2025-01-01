@@ -81,6 +81,7 @@ public class AetherIIModelTemplates {
     public static final ModelTemplate ALTAR = create("template_altar", TextureSlot.ALL);
     public static final ModelTemplate ARKENIUM_FORGE = create("template_arkenium_forge", TextureSlot.ALL).extend().renderType(ResourceLocation.withDefaultNamespace("cutout")).build();
 
+    public static final ModelTemplate TRANSLUCENT_FLAT_ITEM = ModelTemplates.FLAT_ITEM.extend().renderType(ResourceLocation.withDefaultNamespace("translucent")).build();
     public static final ModelTemplate SMALL_CRYSTAL = ModelTemplates.createItem("small_amethyst_bud", TextureSlot.LAYER0);
     public static final ModelTemplate MEDIUM_CRYSTAL = ModelTemplates.createItem("medium_amethyst_bud", TextureSlot.LAYER0);
     public static final ModelTemplate LARGE_CRYSTAL = ModelTemplates.createItem("large_amethyst_bud", TextureSlot.LAYER0);

@@ -164,11 +164,10 @@ public class AetherIIBlockModels extends AetherIIBlockModelSubProvider {
 //        this.createCrossBlock(AetherIIBlocks.AETHER_MEDIUM_GRASS.get(), BlockModelGenerators.PlantType.NOT_TINTED);
 //        this.createCrossBlock(AetherIIBlocks.AETHER_LONG_GRASS.get(), BlockModelGenerators.PlantType.NOT_TINTED);
 ////        this.createCrossBlock(AetherIIBlocks.HIGHLAND_FERN.get(), BlockModelGenerators.PlantType.NOT_TINTED);
-////        this.createCrossBlock(AetherIIBlocks.SHIELD_FERN.get(), BlockModelGenerators.PlantType.NOT_TINTED);
 //
 //        // Flowers //todo
 //        this.createPlantWithDefaultItem(AetherIIBlocks.HIGHLAND_FERN.get(), AetherIIBlocks.POTTED_HIGHLAND_FERN.get(), BlockModelGenerators.PlantType.NOT_TINTED);
-//        this.createPlantWithDefaultItem(AetherIIBlocks.SHIELD_FERN.get(), AetherIIBlocks.POTTED_SHIELD_FERN.get(), BlockModelGenerators.PlantType.NOT_TINTED);
+        this.createPlantWithDefaultItem(AetherIIBlocks.SHIELD_FERN.get(), AetherIIBlocks.POTTED_SHIELD_FERN.get(), BlockModelGenerators.PlantType.NOT_TINTED);
         this.createSnowyPlantWithDefaultItem(AetherIIBlocks.HESPEROSE.get(), AetherIIBlocks.POTTED_HESPEROSE.get());
         this.createSnowyPlantWithDefaultItem(AetherIIBlocks.TARABLOOM.get(), AetherIIBlocks.POTTED_TARABLOOM.get());
         this.createSnowyPlantWithDefaultItem(AetherIIBlocks.POASPROUT.get(), AetherIIBlocks.POTTED_POASPROUT.get());
@@ -176,7 +175,7 @@ public class AetherIIBlockModels extends AetherIIBlockModelSubProvider {
 //        this.createPlantWithDefaultItem(AetherIIBlocks.LILICHIME.get(), AetherIIBlocks.POTTED_LILICHIME.get(), BlockModelGenerators.PlantType.NOT_TINTED);
 //        this.createPlantWithDefaultItem(AetherIIBlocks.PLURACIAN.get(), AetherIIBlocks.POTTED_PLURACIAN.get(), BlockModelGenerators.PlantType.NOT_TINTED);
 //        this.createPlantWithDefaultItem(AetherIIBlocks.BLADE_POA.get(), AetherIIBlocks.POTTED_BLADE_POA.get(), BlockModelGenerators.PlantType.NOT_TINTED);
-//        this.createPlantWithDefaultItem(AetherIIBlocks.AECHOR_CUTTING.get(), AetherIIBlocks.POTTED_AECHOR_CUTTING.get(), BlockModelGenerators.PlantType.NOT_TINTED);
+        this.createPlantWithDefaultItem(AetherIIBlocks.AECHOR_CUTTING.get(), AetherIIBlocks.POTTED_AECHOR_CUTTING.get(), BlockModelGenerators.PlantType.NOT_TINTED);
 //
 //        // Bushes
 ////        this.createTrivialCube(AetherIIBlocks.HIGHLANDS_BUSH.get()); //todo custom model
@@ -288,17 +287,17 @@ public class AetherIIBlockModels extends AetherIIBlockModelSubProvider {
 //        this.createCustomColumn(AetherIIBlocks.ICESTONE_BASE_PILLAR.get(), AetherIIBlocks.ICESTONE_KEYSTONE.get());
 //        this.createCustomColumn(AetherIIBlocks.ICESTONE_CAPSTONE_PILLAR.get(), AetherIIBlocks.ICESTONE_KEYSTONE.get());
 //        this.createCustomColumn(AetherIIBlocks.ICESTONE_PILLAR.get(), AetherIIBlocks.ICESTONE_KEYSTONE.get());
-//
-//        // Glass
-//        this.createGlassBlocks(AetherIIBlocks.QUICKSOIL_GLASS.get(), AetherIIBlocks.QUICKSOIL_GLASS_PANE.get());
-//        this.createGlassBlocks(AetherIIBlocks.SKYROOT_FRAMED_QUICKSOIL_GLASS.get(), AetherIIBlocks.SKYROOT_FRAMED_QUICKSOIL_GLASS_PANE.get());
-//        this.createGlassBlocks(AetherIIBlocks.ARKENIUM_FRAMED_QUICKSOIL_GLASS.get(), AetherIIBlocks.ARKENIUM_FRAMED_QUICKSOIL_GLASS_PANE.get());
-//        this.createGlassBlocks(AetherIIBlocks.CRUDE_SCATTERGLASS.get(), AetherIIBlocks.CRUDE_SCATTERGLASS_PANE.get());
-//        this.createGlassBlocks(AetherIIBlocks.SKYROOT_FRAMED_CRUDE_SCATTERGLASS.get(), AetherIIBlocks.SKYROOT_FRAMED_CRUDE_SCATTERGLASS_PANE.get());
-//        this.createGlassBlocks(AetherIIBlocks.ARKENIUM_FRAMED_CRUDE_SCATTERGLASS.get(), AetherIIBlocks.ARKENIUM_FRAMED_CRUDE_SCATTERGLASS_PANE.get());
-//        this.createGlassBlocks(AetherIIBlocks.SCATTERGLASS.get(), AetherIIBlocks.SCATTERGLASS_PANE.get());
-//        this.createGlassBlocks(AetherIIBlocks.SKYROOT_FRAMED_SCATTERGLASS.get(), AetherIIBlocks.SKYROOT_FRAMED_SCATTERGLASS_PANE.get());
-//        this.createGlassBlocks(AetherIIBlocks.ARKENIUM_FRAMED_SCATTERGLASS.get(), AetherIIBlocks.ARKENIUM_FRAMED_SCATTERGLASS_PANE.get());
+
+        // Glass
+        this.createGlassBlocks(AetherIIBlocks.QUICKSOIL_GLASS.get(), AetherIIBlocks.QUICKSOIL_GLASS_PANE.get());
+        this.createGlassBlocks(AetherIIBlocks.SKYROOT_FRAMED_QUICKSOIL_GLASS.get(), AetherIIBlocks.SKYROOT_FRAMED_QUICKSOIL_GLASS_PANE.get());
+        this.createGlassBlocks(AetherIIBlocks.ARKENIUM_FRAMED_QUICKSOIL_GLASS.get(), AetherIIBlocks.ARKENIUM_FRAMED_QUICKSOIL_GLASS_PANE.get());
+        this.createGlassBlocks(AetherIIBlocks.CRUDE_SCATTERGLASS.get(), AetherIIBlocks.CRUDE_SCATTERGLASS_PANE.get());
+        this.createGlassBlocks(AetherIIBlocks.SKYROOT_FRAMED_CRUDE_SCATTERGLASS.get(), AetherIIBlocks.SKYROOT_FRAMED_CRUDE_SCATTERGLASS_PANE.get());
+        this.createGlassBlocks(AetherIIBlocks.ARKENIUM_FRAMED_CRUDE_SCATTERGLASS.get(), AetherIIBlocks.ARKENIUM_FRAMED_CRUDE_SCATTERGLASS_PANE.get());
+        this.createGlassBlocks(AetherIIBlocks.SCATTERGLASS.get(), AetherIIBlocks.SCATTERGLASS_PANE.get());
+        this.createGlassBlocks(AetherIIBlocks.SKYROOT_FRAMED_SCATTERGLASS.get(), AetherIIBlocks.SKYROOT_FRAMED_SCATTERGLASS_PANE.get());
+        this.createGlassBlocks(AetherIIBlocks.ARKENIUM_FRAMED_SCATTERGLASS.get(), AetherIIBlocks.ARKENIUM_FRAMED_SCATTERGLASS_PANE.get());
 
         // Wool
         this.createFullAndCarpetBlocks(AetherIIBlocks.CLOUDWOOL.get(), AetherIIBlocks.CLOUDWOOL_CARPET.get());
