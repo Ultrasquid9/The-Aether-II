@@ -96,16 +96,4 @@ package com.aetherteam.aetherii.data.providers;
 //    public void orangeTree(Block block) {
 //        this.withExistingParent(this.blockName(block), this.mcLoc("item/generated")).texture("layer0", this.texture(this.blockName(block) + "_bottom_0", "natural/"));
 //    }
-//
-//    public void pointedStone(Block block, String location) {
-//        this.withExistingParent(this.blockName(block), this.mcLoc("item/generated")).texture("layer0", this.texture(this.blockName(block), location))
-//                .transforms()
-//                .transform(ItemDisplayContext.THIRD_PERSON_RIGHT_HAND).rotation(0.0F, 100.0F, 0.0F).translation(-1.0F, -1.0F, 0.0F).scale(0.9F, 0.9F, 0.9F).end()
-//                .transform(ItemDisplayContext.FIRST_PERSON_RIGHT_HAND).rotation(0.0F, 100.0F, 0.0F).translation(0.0F, -2.0F, 0.0F).scale(0.9F, 0.9F, 0.9F).end()
-//                .end();
-//    }
-//
-//    public void aercloudItem(Block block) {
-//        this.withExistingParent(this.blockName(block), this.mcLoc("block/cube_all")).texture("all", this.texture(this.blockName(block), "natural/")).renderType(ResourceLocation.withDefaultNamespace("translucent"));
-//    }
 //}
