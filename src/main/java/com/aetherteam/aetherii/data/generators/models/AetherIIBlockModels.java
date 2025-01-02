@@ -13,7 +13,6 @@ import net.minecraft.client.data.models.model.TextureMapping;
 import net.minecraft.client.data.models.model.TexturedModel;
 import net.minecraft.data.BlockFamily;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.level.block.Blocks;
 
 import java.util.function.BiConsumer;
 import java.util.function.Consumer;
@@ -164,7 +163,6 @@ public class AetherIIBlockModels extends AetherIIBlockModelSubProvider {
 //        this.createCrossBlock(AetherIIBlocks.AETHER_SHORT_GRASS.get(), BlockModelGenerators.PlantType.NOT_TINTED); //todo tinting and frosting and enchanting
 //        this.createCrossBlock(AetherIIBlocks.AETHER_MEDIUM_GRASS.get(), BlockModelGenerators.PlantType.NOT_TINTED);
 //        this.createCrossBlock(AetherIIBlocks.AETHER_LONG_GRASS.get(), BlockModelGenerators.PlantType.NOT_TINTED);
-////        this.createCrossBlock(AetherIIBlocks.HIGHLAND_FERN.get(), BlockModelGenerators.PlantType.NOT_TINTED);
 
         // Flowers //todo
 //        this.createPlantWithDefaultItem(AetherIIBlocks.HIGHLAND_FERN.get(), AetherIIBlocks.POTTED_HIGHLAND_FERN.get(), BlockModelGenerators.PlantType.NOT_TINTED);
@@ -172,20 +170,21 @@ public class AetherIIBlockModels extends AetherIIBlockModelSubProvider {
         this.createSnowyPlantWithDefaultItem(AetherIIBlocks.HESPEROSE.get(), AetherIIBlocks.POTTED_HESPEROSE.get());
         this.createSnowyPlantWithDefaultItem(AetherIIBlocks.TARABLOOM.get(), AetherIIBlocks.POTTED_TARABLOOM.get());
         this.createSnowyPlantWithDefaultItem(AetherIIBlocks.POASPROUT.get(), AetherIIBlocks.POTTED_POASPROUT.get());
-//        this.createPlantWithDefaultItem(AetherIIBlocks.SATIVAL_SHOOT.get(), AetherIIBlocks.POTTED_SATIVAL_SHOOT.get(), BlockModelGenerators.PlantType.NOT_TINTED);
-//        this.createPlantWithDefaultItem(AetherIIBlocks.LILICHIME.get(), AetherIIBlocks.POTTED_LILICHIME.get(), BlockModelGenerators.PlantType.NOT_TINTED);
-//        this.createPlantWithDefaultItem(AetherIIBlocks.PLURACIAN.get(), AetherIIBlocks.POTTED_PLURACIAN.get(), BlockModelGenerators.PlantType.NOT_TINTED);
-//        this.createPlantWithDefaultItem(AetherIIBlocks.BLADE_POA.get(), AetherIIBlocks.POTTED_BLADE_POA.get(), BlockModelGenerators.PlantType.NOT_TINTED);
+        this.createAsymmetricalPlantWithDefaultItem(AetherIIBlocks.SATIVAL_SHOOT.get(), AetherIITexturedModels.ASYMMETRICAL_CROSS_EVEN, AetherIITexturedModels.ASYMMETRICAL_CROSS_EVEN_MIRRORED,
+                AetherIIBlocks.POTTED_SATIVAL_SHOOT.get(), AetherIIModelTemplates.POTTED_ASYMMETRICAL_CROSS_EVEN);
+        this.createUniquePlantWithDefaultItem(AetherIIBlocks.LILICHIME.get(), AetherIITexturedModels.LILICHIME, AetherIIBlocks.POTTED_LILICHIME.get(), AetherIIModelTemplates.POTTED_LILICHIME);
+        this.createUniquePlantWithDefaultItem(AetherIIBlocks.PLURACIAN.get(), AetherIITexturedModels.PLURACIAN, AetherIIBlocks.POTTED_PLURACIAN.get(), AetherIIModelTemplates.POTTED_PLURACIAN);
+        this.createAsymmetricalPlantWithDefaultItem(AetherIIBlocks.BLADE_POA.get(), AetherIITexturedModels.ASYMMETRICAL_CROSS_ODD, AetherIITexturedModels.ASYMMETRICAL_CROSS_ODD_MIRRORED,
+                AetherIIBlocks.POTTED_BLADE_POA.get(), AetherIIModelTemplates.POTTED_ASYMMETRICAL_CROSS_ODD);
         this.createPlantWithDefaultItem(AetherIIBlocks.AECHOR_CUTTING.get(), AetherIIBlocks.POTTED_AECHOR_CUTTING.get(), BlockModelGenerators.PlantType.NOT_TINTED);
 //
 //        // Bushes
 ////        this.createTrivialCube(AetherIIBlocks.HIGHLANDS_BUSH.get()); //todo custom model
-//        this.createCrossBlock(AetherIIBlocks.BLUEBERRY_BUSH_STEM.get(), BlockModelGenerators.PlantType.NOT_TINTED);
+        this.createPlantWithDefaultItem(AetherIIBlocks.BLUEBERRY_BUSH_STEM.get(), AetherIIBlocks.POTTED_BLUEBERRY_BUSH_STEM.get(), BlockModelGenerators.PlantType.NOT_TINTED);
 ////        this.createTrivialCube(AetherIIBlocks.BLUEBERRY_BUSH.get());  //todo custom model //, AetherIIBlocks.BLUEBERRY_BUSH_STEM.get()
 //
 //        // Potted Bushes
 //        this.createPlantWithDefaultItem(AetherIIBlocks.HIGHLANDS_BUSH.get(), AetherIIBlocks.POTTED_HIGHLANDS_BUSH.get(), BlockModelGenerators.PlantType.NOT_TINTED);
-//        this.createPlantWithDefaultItem(AetherIIBlocks.BLUEBERRY_BUSH_STEM.get(), AetherIIBlocks.POTTED_BLUEBERRY_BUSH_STEM.get(), BlockModelGenerators.PlantType.NOT_TINTED);
 //        this.createPlantWithDefaultItem(AetherIIBlocks.BLUEBERRY_BUSH.get(), AetherIIBlocks.POTTED_BLUEBERRY_BUSH.get(), BlockModelGenerators.PlantType.NOT_TINTED);
 //
 //        // Orange Tree
@@ -197,7 +196,7 @@ public class AetherIIBlockModels extends AetherIIBlockModelSubProvider {
 //        // Surface Vegetation
 //        this.createValkyrieSprout(blockModels);
 //        this.createGrowingPlant(AetherIIBlocks.BRETTL_PLANT_TIP.get(), AetherIIBlocks.BRETTL_PLANT.get(), BlockModelGenerators.PlantType.NOT_TINTED);
-//
+
         // Lake
         this.createCrossBlock(AetherIIBlocks.ARILUM_SHOOT.get(), PlantType.NOT_TINTED);
         this.createCrossWithDefaultItem(AetherIIBlocks.ARILUM.get(), PlantType.NOT_TINTED);

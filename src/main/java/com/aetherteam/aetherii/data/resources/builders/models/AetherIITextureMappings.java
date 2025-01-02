@@ -1,12 +1,7 @@
 package com.aetherteam.aetherii.data.resources.builders.models;
 
-import com.aetherteam.aetherii.block.AetherIIBlocks;
-import net.minecraft.client.data.models.blockstates.Variant;
-import net.minecraft.client.data.models.blockstates.VariantProperties;
-import net.minecraft.client.data.models.model.ModelTemplates;
 import net.minecraft.client.data.models.model.TextureMapping;
 import net.minecraft.client.data.models.model.TextureSlot;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Block;
 
 public class AetherIITextureMappings {
@@ -60,6 +55,15 @@ public class AetherIITextureMappings {
 
     public static TextureMapping doorBottom(Block block) {
         return new TextureMapping().put(TextureSlot.ALL, TextureMapping.getBlockTexture(block)).put(TextureSlot.BOTTOM, TextureMapping.getBlockTexture(block, "_bottom")).copySlot(TextureSlot.BOTTOM, TextureSlot.PARTICLE);
+    }
+
+    public static TextureMapping asymmetricalCross(Block block) {
+        return new TextureMapping().put(TextureSlot.CROSS, TextureMapping.getBlockTexture(block)).put(AetherIITextureSlots.CROSS_OTHER, TextureMapping.getBlockTexture(block, "_other"))
+                .put(TextureSlot.PARTICLE, TextureMapping.getBlockTexture(block));
+    }
+
+    public static TextureMapping plant(Block block) {
+        return new TextureMapping().put(TextureSlot.PLANT, TextureMapping.getBlockTexture(block)).put(TextureSlot.PARTICLE, TextureMapping.getBlockTexture(block));
     }
 
     public static TextureMapping particle(TextureMapping textureMapping) {

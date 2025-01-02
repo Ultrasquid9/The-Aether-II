@@ -374,6 +374,27 @@ public class AetherIIBlockModelSubProvider extends BlockModelGenerators {
                 .with(BlockModelGenerators.createBooleanModelDispatch(BlockStateProperties.SNOWY, snowyLocation, defaultLocation)));
     }
 
+    public void createAsymmetricalPlantWithDefaultItem(Block block, TexturedModel.Provider provider, TexturedModel.Provider mirroredProvider, Block pot, ModelTemplate potTemplate) {
+        this.registerSimpleFlatItemModel(block);
+
+        ResourceLocation location = provider.create(block, this.modelOutput);
+        ResourceLocation mirroredLocation = mirroredProvider.create(block, this.modelOutput);
+        this.blockStateOutput.accept(BlockModelGenerators.createRotatedVariant(block, location, mirroredLocation));
+
+        ResourceLocation potLocation = potTemplate.create(pot, AetherIITextureMappings.asymmetricalCross(block), this.modelOutput);
+        this.blockStateOutput.accept(BlockModelGenerators.createSimpleBlock(pot, potLocation));
+    }
+
+    public void createUniquePlantWithDefaultItem(Block block, TexturedModel.Provider provider, Block pot, ModelTemplate potTemplate) {
+        this.registerSimpleFlatItemModel(block.asItem());
+
+        ResourceLocation location = provider.create(block, this.modelOutput);
+        this.blockStateOutput.accept(BlockModelGenerators.createSimpleBlock(block, location));
+
+        ResourceLocation potLocation = potTemplate.create(pot, TextureMapping.plant(block), this.modelOutput);
+        this.blockStateOutput.accept(BlockModelGenerators.createSimpleBlock(pot, potLocation));
+    }
+
     public void createSecretDoor(Block block, Block base) {
         TextureMapping mapping = TextureMapping.door(TextureMapping.getBlockTexture(base), TextureMapping.getBlockTexture(base));
         ResourceLocation bottomLeft = ModelTemplates.DOOR_BOTTOM_LEFT.create(block, mapping, this.modelOutput);

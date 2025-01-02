@@ -90,10 +90,16 @@ public class AetherIIModelTemplates {
             ).build();
     public static final ModelTemplate LADDER = ModelTemplates.create("ladder", TextureSlot.TEXTURE, TextureSlot.PARTICLE).extend().renderType(ResourceLocation.withDefaultNamespace("cutout")).build();
 
-    public static final ModelTemplate LILICHIME = create("template_lilichime", TextureSlot.ALL);
-    public static final ModelTemplate PLURACIAN = create("template_pluracian", TextureSlot.ALL);
-    public static final ModelTemplate POTTED_LILICHIME = create("template_potted_lilichime", TextureSlot.PLANT, TextureSlot.TOP, TextureSlot.SIDE);
-    public static final ModelTemplate POTTED_PLURACIAN = create("template_potted_pluracian", TextureSlot.PLANT, TextureSlot.TOP, TextureSlot.SIDE);
+    public static final ModelTemplate ASYMMETRICAL_CROSS_EVEN = create("asymmetrical_cross_even", TextureSlot.CROSS, AetherIITextureSlots.CROSS_OTHER, TextureSlot.PARTICLE).extend().renderType(ResourceLocation.withDefaultNamespace("cutout")).build();
+    public static final ModelTemplate ASYMMETRICAL_CROSS_EVEN_MIRRORED = create("asymmetrical_cross_even_mirrored", "_mirrored", TextureSlot.CROSS, AetherIITextureSlots.CROSS_OTHER, TextureSlot.PARTICLE).extend().renderType(ResourceLocation.withDefaultNamespace("cutout")).build();
+    public static final ModelTemplate ASYMMETRICAL_CROSS_ODD = create("asymmetrical_cross_odd", TextureSlot.CROSS, AetherIITextureSlots.CROSS_OTHER, TextureSlot.PARTICLE).extend().renderType(ResourceLocation.withDefaultNamespace("cutout")).build();
+    public static final ModelTemplate ASYMMETRICAL_CROSS_ODD_MIRRORED = create("asymmetrical_cross_odd_mirrored", "_mirrored", TextureSlot.CROSS, AetherIITextureSlots.CROSS_OTHER, TextureSlot.PARTICLE).extend().renderType(ResourceLocation.withDefaultNamespace("cutout")).build();
+    public static final ModelTemplate POTTED_ASYMMETRICAL_CROSS_EVEN = create("flower_pot_asymmetrical_cross_even", TextureSlot.CROSS, AetherIITextureSlots.CROSS_OTHER).extend().renderType(ResourceLocation.withDefaultNamespace("cutout")).build();
+    public static final ModelTemplate POTTED_ASYMMETRICAL_CROSS_ODD = create("flower_pot_asymmetrical_cross_odd", TextureSlot.CROSS, AetherIITextureSlots.CROSS_OTHER).extend().renderType(ResourceLocation.withDefaultNamespace("cutout")).build();
+    public static final ModelTemplate LILICHIME = create("template_lilichime", TextureSlot.PLANT).extend().renderType(ResourceLocation.withDefaultNamespace("cutout")).build();
+    public static final ModelTemplate PLURACIAN = create("template_pluracian", TextureSlot.PLANT).extend().renderType(ResourceLocation.withDefaultNamespace("cutout")).build();
+    public static final ModelTemplate POTTED_LILICHIME = create("flower_pot_lilichime", TextureSlot.PLANT).extend().renderType(ResourceLocation.withDefaultNamespace("cutout")).build();
+    public static final ModelTemplate POTTED_PLURACIAN = create("flower_pot_pluracian", TextureSlot.PLANT).extend().renderType(ResourceLocation.withDefaultNamespace("cutout")).build();
     public static final ModelTemplate BRYALINN_MOSS_FLOWERS_1 = create("template_bryalinn_moss_flowers_1", "_1", TextureSlot.FLOWERBED, TextureSlot.PARTICLE).extend().renderType(ResourceLocation.withDefaultNamespace("cutout")).build();
     public static final ModelTemplate BRYALINN_MOSS_FLOWERS_2 = create("template_bryalinn_moss_flowers_2", "_2", TextureSlot.FLOWERBED, TextureSlot.PARTICLE).extend().renderType(ResourceLocation.withDefaultNamespace("cutout")).build();
     public static final ModelTemplate BRYALINN_MOSS_FLOWERS_3 = create("template_bryalinn_moss_flowers_3", "_3", TextureSlot.FLOWERBED, TextureSlot.PARTICLE).extend().renderType(ResourceLocation.withDefaultNamespace("cutout")).build();
