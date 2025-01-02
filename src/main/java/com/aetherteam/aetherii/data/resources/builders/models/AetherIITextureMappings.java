@@ -5,14 +5,19 @@ import net.minecraft.client.data.models.model.TextureSlot;
 import net.minecraft.world.level.block.Block;
 
 public class AetherIITextureMappings {
-    public static TextureMapping snowyGrass(Block grass, Block dirt) {
+    public static TextureMapping portal(Block portal) {
+        return new TextureMapping()
+                .put(AetherIITextureSlots.PORTAL, TextureMapping.getBlockTexture(portal))
+                .copySlot(AetherIITextureSlots.PORTAL, TextureSlot.PARTICLE);
+    }
+
+        public static TextureMapping snowyGrass(Block grass, Block dirt) {
         return  new TextureMapping()
                 .put(TextureSlot.BOTTOM, TextureMapping.getBlockTexture(dirt))
                 .copyForced(TextureSlot.BOTTOM, TextureSlot.PARTICLE)
                 .put(TextureSlot.TOP, TextureMapping.getBlockTexture(grass, "_top"))
                 .put(TextureSlot.SIDE, TextureMapping.getBlockTexture(grass, "_snow"));
     }
-
 
     public static TextureMapping tintedGrass(Block grass, Block dirt) {
         return new TextureMapping()
@@ -28,12 +33,28 @@ public class AetherIITextureMappings {
                 .put(AetherIITextureSlots.SIDE_OVERLAY_3, TextureMapping.getBlockTexture(grass, "_side_overlay_3"));
     }
 
+    public static TextureMapping tintedTallGrass(Block tallGrass) {
+        return new TextureMapping()
+                .put(TextureSlot.CROSS, TextureMapping.getBlockTexture(tallGrass))
+                .copySlot(TextureSlot.CROSS, TextureSlot.PARTICLE)
+                .put(AetherIITextureSlots.OVERLAY_1, TextureMapping.getBlockTexture(tallGrass, "_1"))
+                .put(AetherIITextureSlots.OVERLAY_2, TextureMapping.getBlockTexture(tallGrass, "_2"))
+                .put(AetherIITextureSlots.OVERLAY_3, TextureMapping.getBlockTexture(tallGrass, "_3"));
+    }
+
     public static TextureMapping dirtPath(Block path, Block dirt) {
         return new TextureMapping()
                 .put(TextureSlot.BOTTOM, TextureMapping.getBlockTexture(dirt))
                 .copySlot(TextureSlot.BOTTOM, TextureSlot.PARTICLE)
                 .put(TextureSlot.TOP, TextureMapping.getBlockTexture(path, "_top"))
                 .put(TextureSlot.SIDE, TextureMapping.getBlockTexture(path, "_side"));
+    }
+
+    public static TextureMapping bushBlock(Block bush) {
+        return new TextureMapping()
+                .put(TextureSlot.TEXTURE, TextureMapping.getBlockTexture(bush))
+                .copySlot(TextureSlot.TEXTURE, TextureSlot.PARTICLE)
+                .put(TextureSlot.CROSS, TextureMapping.getBlockTexture(bush, "_stem"));
     }
 
     public static TextureMapping flowerbed(Block block) {
