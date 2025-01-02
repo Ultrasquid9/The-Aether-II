@@ -5,6 +5,8 @@ import com.aetherteam.aetherii.block.miscellaneous.FacingPillarBlock;
 import com.aetherteam.aetherii.block.natural.AetherLeafPileBlock;
 import com.aetherteam.aetherii.block.natural.AetherLeavesBlock;
 import com.aetherteam.aetherii.block.natural.PurpleAercloudBlock;
+import com.aetherteam.aetherii.block.utility.AltarBlock;
+import com.aetherteam.aetherii.block.utility.ArkeniumForgeBlock;
 import com.aetherteam.aetherii.client.AetherIIColorResolvers;
 import com.aetherteam.aetherii.client.renderer.item.color.AetherGrassColorSource;
 import com.aetherteam.aetherii.data.resources.builders.models.AetherIIModelTemplates;
@@ -421,39 +423,40 @@ public class AetherIIBlockModelSubProvider extends BlockModelGenerators {
         this.registerSimpleFlatItemModel(AetherIIBlocks.AMBROSIUM_TORCH.get());
     }
 
-//    public void createAltar(BlockModelGenerators blockModels) {
-//        ResourceLocation location = AetherIITexturedModels.ALTAR.create(AetherIIBlocks.ALTAR.get(), blockModels.modelOutput);
-//        ResourceLocation location_charging = blockModels.createSuffixedVariant(AetherIIBlocks.ALTAR.get(), "_charging", AetherIIModelTemplates.ALTAR, TextureMapping::cube);
-//        ResourceLocation location_blasting = blockModels.createSuffixedVariant(AetherIIBlocks.ALTAR.get(), "_blasting", AetherIIModelTemplates.ALTAR, TextureMapping::cube);
-//        blockModels.blockStateOutput
-//                .accept(
-//                        MultiVariantGenerator.multiVariant(AetherIIBlocks.ALTAR.get())
-//                                .with(BlockModelGenerators.createHorizontalFacingDispatch())
-//                                .with(BlockModelGenerators.createBooleanModelDispatch(AltarBlock.CHARGING, location_charging, location))
-//                                .with(BlockModelGenerators.createBooleanModelDispatch(AltarBlock.BLASTING, location_blasting, location))
-//                );
-//    }
-//
-//    public void createArtisansBench(BlockModelGenerators blockModels) {
-//        blockModels.blockStateOutput
-//                .accept(
-//                        MultiVariantGenerator.multiVariant(
-//                                        AetherIIBlocks.ARTISANS_BENCH.get(), Variant.variant().with(VariantProperties.MODEL, ModelLocationUtils.getModelLocation(AetherIIBlocks.ARTISANS_BENCH.get()))
-//                                )
-//                                .with(BlockModelGenerators.createHorizontalFacingDispatch())
-//                );
-//    }
-//
-//    public void createArkeniumForge(BlockModelGenerators blockModels) {
-//        ResourceLocation location = AetherIITexturedModels.ARKENIUM_FORGE.create(AetherIIBlocks.ARKENIUM_FORGE.get(), blockModels.modelOutput);
-//        ResourceLocation location_charged = blockModels.createSuffixedVariant(AetherIIBlocks.ARKENIUM_FORGE.get(), "_charged", AetherIIModelTemplates.ARKENIUM_FORGE, TextureMapping::cube);
-//        blockModels.blockStateOutput
-//                .accept(
-//                        MultiVariantGenerator.multiVariant(AetherIIBlocks.ARKENIUM_FORGE.get())
-//                                .with(BlockModelGenerators.createHorizontalFacingDispatch())
-//                                .with(BlockModelGenerators.createBooleanModelDispatch(ArkeniumForgeBlock.CHARGED, location_charged, location))
-//                );
-//    }
+    public void createAltar(Block block, Block particle) {
+        ResourceLocation location = AetherIIModelTemplates.ALTAR.create(block, TextureMapping.cube(block).put(TextureSlot.PARTICLE, TextureMapping.getBlockTexture(particle)), this.modelOutput);
+        ResourceLocation chargingLocation = AetherIIModelTemplates.ALTAR.create(ModelLocationUtils.getModelLocation(block, "_charging"), TextureMapping.cube(TextureMapping.getBlockTexture(block, "_charging")).put(TextureSlot.PARTICLE, TextureMapping.getBlockTexture(particle)), this.modelOutput);
+        ResourceLocation blastingLocation = AetherIIModelTemplates.ALTAR.create(ModelLocationUtils.getModelLocation(block, "_blasting"), TextureMapping.cube(TextureMapping.getBlockTexture(block, "_blasting")).put(TextureSlot.PARTICLE, TextureMapping.getBlockTexture(particle)), this.modelOutput);
+        this.blockStateOutput.accept(MultiVariantGenerator.multiVariant(block, Variant.variant().with(VariantProperties.MODEL, location))
+                .with(BlockModelGenerators.createHorizontalFacingDispatch()).with(PropertyDispatch.properties(AltarBlock.BLASTING, AltarBlock.CHARGING)
+                        .select(true, true, Variant.variant().with(VariantProperties.MODEL, blastingLocation))
+                        .select(true, false, Variant.variant().with(VariantProperties.MODEL, blastingLocation))
+                        .select(false, true, Variant.variant().with(VariantProperties.MODEL, chargingLocation))
+                        .select(false, false, Variant.variant().with(VariantProperties.MODEL, location)))
+        );
+    }
+
+    public void createArtisansBench(Block block, Block particle) {
+        ResourceLocation location = AetherIIModelTemplates.ARTISANS_BENCH.create(block, TextureMapping.cube(block).put(TextureSlot.PARTICLE, TextureMapping.getBlockTexture(particle)), this.modelOutput);
+        this.blockStateOutput.accept(MultiVariantGenerator.multiVariant(block, Variant.variant()
+                .with(VariantProperties.MODEL, location)).with(BlockModelGenerators.createHorizontalFacingDispatch()));
+    }
+
+    public void createArkeniumForge(Block block, Block particle) {
+        ResourceLocation location = AetherIIModelTemplates.ARKENIUM_FORGE.create(block, TextureMapping.cube(block).put(TextureSlot.PARTICLE, TextureMapping.getBlockTexture(particle)), this.modelOutput);
+        ResourceLocation chargedLocation = AetherIIModelTemplates.ARKENIUM_FORGE.create(ModelLocationUtils.getModelLocation(block, "_charged"), TextureMapping.cube(TextureMapping.getBlockTexture(block, "_charged")).put(TextureSlot.PARTICLE, TextureMapping.getBlockTexture(particle)), this.modelOutput);
+        this.blockStateOutput.accept(MultiVariantGenerator.multiVariant(block, Variant.variant().with(VariantProperties.MODEL, location))
+                .with(BlockModelGenerators.createHorizontalFacingDispatch())
+                .with(BlockModelGenerators.createBooleanModelDispatch(ArkeniumForgeBlock.CHARGED, chargedLocation, location)));
+    }
+
+    public void createLadder(Block block) {
+        TextureMapping mapping = new TextureMapping().put(TextureSlot.TEXTURE, TextureMapping.getBlockTexture(block)).copySlot(TextureSlot.TEXTURE, TextureSlot.PARTICLE);
+        ResourceLocation location = AetherIIModelTemplates.LADDER.create(block, mapping, this.modelOutput);
+        this.blockStateOutput.accept(MultiVariantGenerator.multiVariant(block, Variant.variant().with(VariantProperties.MODEL, location))
+                .with(BlockModelGenerators.createHorizontalFacingDispatch()));
+        this.registerSimpleFlatItemModel(block);
+    }
 
     public void createMoaEgg(Block block) {
         this.blockStateOutput.accept(createSimpleBlock(block, AetherIIModelTemplates.EMPTY.create(block, new TextureMapping().put(TextureSlot.PARTICLE, TextureMapping.getBlockTexture(AetherIIBlocks.WOVEN_SKYROOT_STICKS.get())), this.modelOutput)));
