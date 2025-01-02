@@ -101,4 +101,10 @@ public class AetherIIItemModelSubProvider extends ItemModelGenerators {
         }
         this.itemModelOutput.accept(item, ItemModelUtils.select(new SelectMoaEggType(), ItemModelUtils.plainModel(modelLocation), list));
     }
+
+    public void generatePortalFrameItem(Item item) {
+        ResourceLocation location = ModelTemplates.TWO_LAYERED_ITEM.extend().renderType(ResourceLocation.withDefaultNamespace("translucent")).build()
+                .create(item, TextureMapping.layered(TextureMapping.getItemTexture(item), TextureMapping.getItemTexture(item, "_inside")), this.modelOutput);
+        this.itemModelOutput.accept(item, ItemModelUtils.plainModel(location));
+    }
 }

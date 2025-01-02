@@ -245,9 +245,6 @@ public class AetherIIItemModels extends AetherIIItemModelSubProvider {
         this.generateFlatItem(AetherIIItems.ENCHANTED_MOA_FEED.get(), ModelTemplates.FLAT_ITEM);
         this.generateFlatItem(AetherIIItems.MOA_SADDLE.get(), ModelTemplates.FLAT_ITEM);
         this.generateFlatItem(AetherIIItems.GLINT_COIN.get(), ModelTemplates.FLAT_ITEM);
-        this.generateFlatItem(AetherIIItems.AETHER_PORTAL_FRAME.get(), ModelTemplates.FLAT_ITEM);
-//        this.generateLayeredItem(AetherIIItems.AETHER_PORTAL_FRAME.get(), //todo
-//                TextureMapping.getItemTexture(AetherIIItems.AETHER_PORTAL_FRAME.get()),
-//                TextureMapping.getItemTexture(AetherIIItems.AETHER_PORTAL_FRAME.get()).withSuffix("_inside"));
+        this.generatePortalFrameItem(AetherIIItems.AETHER_PORTAL_FRAME.get());
     }
 }
