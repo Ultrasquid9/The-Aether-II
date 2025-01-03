@@ -1,4 +1,5 @@
 {
+	"parent": "builtin/generated",
 	"gui_light": "front",
 	"textures": {
 		"0": "aether_ii:item/shields/holystone_shield/holystone_handle",

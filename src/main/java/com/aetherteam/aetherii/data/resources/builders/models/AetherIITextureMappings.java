@@ -75,8 +75,6 @@ public class AetherIITextureMappings {
 
     public static TextureMapping pottedBushBlock(Block block) {
         return new TextureMapping()
-                .put(AetherIITextureSlots.FLOWERPOT, TextureMapping.getBlockTexture(Blocks.FLOWER_POT))
-                .copySlot(AetherIITextureSlots.FLOWERPOT, TextureSlot.PARTICLE)
                 .put(TextureSlot.STEM, TextureMapping.getBlockTexture(block, "_stem"))
                 .put(AetherIITextureSlots.BUSH, TextureMapping.getBlockTexture(block));
     }

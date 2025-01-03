@@ -88,51 +88,13 @@ public class AetherIIClient {
     public static void registerItemModelProperties() {
         //TODO Properties Support in 1.21.4
         /*
-
-        registerMoaEggProperties(AetherIIItems.MOA_EGG.get());
-
         registerGliderProperties(AetherIIItems.COLD_AERCLOUD_GLIDER.get(), false);
         registerGliderProperties(AetherIIItems.GOLDEN_AERCLOUD_GLIDER.get(), false);
         registerGliderProperties(AetherIIItems.BLUE_AERCLOUD_GLIDER.get(), true);
-        registerGliderProperties(AetherIIItems.PURPLE_AERCLOUD_GLIDER.get(), true);
-
-        registerShieldProperties(AetherIIItems.SKYROOT_SHIELD.get());
-        registerShieldProperties(AetherIIItems.HOLYSTONE_SHIELD.get());
-        registerShieldProperties(AetherIIItems.ZANITE_SHIELD.get());
-        registerShieldProperties(AetherIIItems.ARKENIUM_SHIELD.get());
-        registerShieldProperties(AetherIIItems.GRAVITITE_SHIELD.get());*/
+        registerGliderProperties(AetherIIItems.PURPLE_AERCLOUD_GLIDER.get(), true);*/
     }
 
-    /*private static void registerMoaEggProperties(Item item) {
-        ItemProperties.register(item, ResourceLocation.fromNamespaceAndPath(AetherII.MODID, "keratin_color"), (stack, level, livingEntity, value) -> {
-            MoaEggType moaEggType = stack.get(AetherIIDataComponents.MOA_EGG_TYPE);
-            if (moaEggType != null) {
-                return new BigDecimal((double) moaEggType.keratinColor().ordinal() / Moa.KeratinColor.values().length, new MathContext(3)).floatValue();
-            }
-            return 0.0F;
-        });
-        ItemProperties.register(item, ResourceLocation.fromNamespaceAndPath(AetherII.MODID, "eye_color"), (stack, level, livingEntity, value) -> {
-            MoaEggType moaEggType = stack.get(AetherIIDataComponents.MOA_EGG_TYPE);
-            if (moaEggType != null) {
-                return new BigDecimal((double) moaEggType.eyeColor().ordinal() / Moa.EyeColor.values().length, new MathContext(3)).floatValue();
-            }
-            return 0.0F;
-        });
-        ItemProperties.register(item, ResourceLocation.fromNamespaceAndPath(AetherII.MODID, "feather_color"), (stack, level, livingEntity, value) -> {
-            MoaEggType moaEggType = stack.get(AetherIIDataComponents.MOA_EGG_TYPE);
-            if (moaEggType != null) {
-                return new BigDecimal((double) moaEggType.featherColor().ordinal() / Moa.FeatherColor.values().length, new MathContext(3)).floatValue();
-            }
-            return 0.0F;
-        });
-        ItemProperties.register(item, ResourceLocation.fromNamespaceAndPath(AetherII.MODID, "feather_shape"), (stack, level, livingEntity, value) -> {
-            MoaEggType moaEggType = stack.get(AetherIIDataComponents.MOA_EGG_TYPE);
-            if (moaEggType != null) {
-                return new BigDecimal((double) moaEggType.featherShape().ordinal() / Moa.FeatherShape.values().length, new MathContext(3)).floatValue();
-            }
-            return 0.0F;
-        });
-    }
+    /*
 
     private static void registerGliderProperties(Item item, boolean hasAbility) {
         ItemProperties.register(item, ResourceLocation.fromNamespaceAndPath(AetherII.MODID, "parachuting"), (stack, level, livingEntity, value) ->
@@ -141,10 +103,6 @@ public class AetherIIClient {
             ItemProperties.register(item, ResourceLocation.fromNamespaceAndPath(AetherII.MODID, "dull"), (stack, level, livingEntity, value) ->
                     livingEntity == null ? 0.0F : livingEntity instanceof Player player && !player.getData(AetherIIDataAttachments.PLAYER).getCanRefuelAbilities().get(stack.getItemHolder()) ? 1.0F : 0.0F);
         }
-    }
-
-    private static void registerShieldProperties(Item item) {
-        ItemProperties.register(item, ResourceLocation.withDefaultNamespace("blocking"), (stack, level, livingEntity, value) -> livingEntity != null && livingEntity.isUsingItem() && livingEntity.getUseItem() == stack ? 1.0F : 0.0F);
     }
 
 */
