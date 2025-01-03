@@ -473,21 +473,43 @@ public class AetherIIBlockModelSubProvider extends BlockModelGenerators {
     }
 
     public void createValkyrieSprout() {
-        Integer[] list = new Integer[]{0, 1, 2};
-
-        Int2ObjectMap<ResourceLocation> map = new Int2ObjectOpenHashMap<>();
-        PropertyDispatch propertyDispatch = PropertyDispatch.property(ValkyrieSproutBlock.AGE)
-                .generate(
-                        age -> {
-                            int i = list[age];
-                            ResourceLocation location = map.computeIfAbsent(
-                                    i, j -> this.createSuffixedVariant(AetherIIBlocks.VALKYRIE_SPROUT.get(), "_stage" + i, AetherIIModelTemplates.TEMPLATE_CUTOUT_CROSS, TextureMapping::cross)
-                            );
-                            return Variant.variant().with(VariantProperties.MODEL, location);
-                        }
-                );
+        PropertyDispatch propertyDispatch = PropertyDispatch.property(ValkyrieSproutBlock.AGE).generate(age -> {
+            ResourceLocation location = this.createSuffixedVariant(AetherIIBlocks.VALKYRIE_SPROUT.get(), "_stage" + age, AetherIIModelTemplates.TEMPLATE_CUTOUT_CROSS, TextureMapping::cross);
+            return Variant.variant().with(VariantProperties.MODEL, location);
+        });
         this.registerSimpleFlatItemModel(AetherIIBlocks.VALKYRIE_SPROUT.get(),"_stage0");
         this.blockStateOutput.accept(MultiVariantGenerator.multiVariant(AetherIIBlocks.VALKYRIE_SPROUT.get()).with(propertyDispatch));
+    }
+
+    public void createTwig(Block twig, Block base) {
+        TextureMapping mapping = TextureMapping.logColumn(base);
+        ResourceLocation twigs1 = AetherIIModelTemplates.TWIG_1.create(twig, mapping, this.modelOutput);
+        ResourceLocation twigs2 = AetherIIModelTemplates.TWIG_2.create(twig, mapping, this.modelOutput);
+        this.blockStateOutput.accept(MultiVariantGenerator.multiVariant(twig).with(BlockModelGenerators.createHorizontalFacingDispatch()).with(PropertyDispatch.property(TwigBlock.AMOUNT).generate((amount) -> {
+            if (amount == 2) {
+                return Variant.variant().with(VariantProperties.MODEL, twigs2);
+            } else {
+                return Variant.variant().with(VariantProperties.MODEL, twigs1);
+            }
+        })));
+        this.registerSimpleFlatItemModel(twig.asItem());
+    }
+
+    public void createRock(Block rock, Block base) {
+        TextureMapping mapping = TextureMapping.cube(base);
+        ResourceLocation rock1 = AetherIIModelTemplates.ROCK_1.create(rock, mapping, this.modelOutput);
+        ResourceLocation rock2 = AetherIIModelTemplates.ROCK_2.create(rock, mapping, this.modelOutput);
+        ResourceLocation rock3 = AetherIIModelTemplates.ROCK_3.create(rock, mapping, this.modelOutput);
+        this.blockStateOutput.accept(MultiVariantGenerator.multiVariant(rock).with(BlockModelGenerators.createHorizontalFacingDispatch()).with(PropertyDispatch.property(RockBlock.AMOUNT).generate((amount) -> {
+            if (amount == 3) {
+                return Variant.variant().with(VariantProperties.MODEL, rock3);
+            } else if (amount == 2) {
+                return Variant.variant().with(VariantProperties.MODEL, rock2);
+            } else {
+                return Variant.variant().with(VariantProperties.MODEL, rock1);
+            }
+        })));
+        this.registerSimpleFlatItemModel(rock.asItem());
     }
 
     public void createAmbrosiumTorch() {

@@ -9,6 +9,8 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Block;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.api.distmarker.OnlyIn;
+import net.neoforged.neoforge.client.model.generators.template.FaceRotation;
+import org.w3c.dom.Text;
 
 import java.util.Optional;
 
@@ -160,6 +162,91 @@ public class AetherIIModelTemplates {
                     .face(Direction.EAST, (faceBuilder) -> faceBuilder.uvs(0, 0, 16, 16).texture(TextureSlot.CROSS))
             ).build();
     public static final ModelTemplate LADDER = ModelTemplates.create("ladder", TextureSlot.TEXTURE, TextureSlot.PARTICLE).extend().renderType(ResourceLocation.withDefaultNamespace("cutout")).build();
+    public static final ModelTemplate TWIG_1 = ModelTemplates.create("block", "_1", TextureSlot.TOP, TextureSlot.SIDE, TextureSlot.PARTICLE).extend()
+            .element((builder) -> builder
+                    .from(7.0F, 0.0F, 2.0F).to(9.0F, 2.0F, 13.0F)
+                    .rotation((rotationBuilder) -> rotationBuilder.angle(0).axis(Direction.Axis.X).origin(9.0F, 0.0F, 7.0F))
+                    .face(Direction.NORTH, (faceBuilder) -> faceBuilder.uvs(7, 7, 9, 9).rotation(FaceRotation.UPSIDE_DOWN).texture(TextureSlot.TOP))
+                    .face(Direction.EAST, (faceBuilder) -> faceBuilder.uvs(2, 2, 4, 13).rotation(FaceRotation.CLOCKWISE_90).texture(TextureSlot.SIDE))
+                    .face(Direction.SOUTH, (faceBuilder) -> faceBuilder.uvs(7, 7, 9, 9).texture(TextureSlot.TOP))
+                    .face(Direction.WEST, (faceBuilder) -> faceBuilder.uvs(6, 2, 8, 13).rotation(FaceRotation.COUNTERCLOCKWISE_90).texture(TextureSlot.SIDE))
+                    .face(Direction.UP, (faceBuilder) -> faceBuilder.uvs(4, 2, 6, 13).texture(TextureSlot.SIDE))
+                    .face(Direction.DOWN, (faceBuilder) -> faceBuilder.uvs(0, 2, 2, 13).rotation(FaceRotation.UPSIDE_DOWN).texture(TextureSlot.SIDE))
+            ).build();
+    public static final ModelTemplate TWIG_2 = ModelTemplates.create("block", "_2", TextureSlot.TOP, TextureSlot.SIDE, TextureSlot.PARTICLE).extend()
+            .element((builder) -> builder
+                    .from(11.0F, 0.0F, 2.0F).to(13.0F, 2.0F, 13.0F)
+                    .rotation((rotationBuilder) -> rotationBuilder.angle(0).axis(Direction.Axis.X).origin(9.0F, 0.0F, 7.0F))
+                    .face(Direction.NORTH, (faceBuilder) -> faceBuilder.uvs(7, 7, 9, 9).rotation(FaceRotation.UPSIDE_DOWN).texture(TextureSlot.TOP))
+                    .face(Direction.EAST, (faceBuilder) -> faceBuilder.uvs(2, 2, 4, 13).rotation(FaceRotation.CLOCKWISE_90).texture(TextureSlot.SIDE))
+                    .face(Direction.SOUTH, (faceBuilder) -> faceBuilder.uvs(7, 7, 9, 9).texture(TextureSlot.TOP))
+                    .face(Direction.WEST, (faceBuilder) -> faceBuilder.uvs(6, 2, 8, 13).rotation(FaceRotation.COUNTERCLOCKWISE_90).texture(TextureSlot.SIDE))
+                    .face(Direction.UP, (faceBuilder) -> faceBuilder.uvs(4, 2, 6, 13).texture(TextureSlot.SIDE))
+                    .face(Direction.DOWN, (faceBuilder) -> faceBuilder.uvs(0, 2, 2, 13).rotation(FaceRotation.UPSIDE_DOWN).texture(TextureSlot.SIDE))
+            ).element((builder) -> builder
+                    .from(2.0F, -1.0F, 9.0F).to(8.0F, 1.0F, 11.0F)
+                    .rotation((rotationBuilder) -> rotationBuilder.angle(0).axis(Direction.Axis.Y).origin(8.0F, 0.0F, 8.0F))
+                    .face(Direction.NORTH, (faceBuilder) -> faceBuilder.uvs(2.0F, 4.0F, 4.0F, 8.0F).rotation(FaceRotation.CLOCKWISE_90).texture(TextureSlot.SIDE))
+                    .face(Direction.EAST, (faceBuilder) -> faceBuilder.uvs(7.0F, 7.0F, 9.0F, 9.0F).texture(TextureSlot.TOP))
+                    .face(Direction.SOUTH, (faceBuilder) -> faceBuilder.uvs(6.0F, 2.0F, 8.0F, 8.0F).rotation(FaceRotation.COUNTERCLOCKWISE_90).texture(TextureSlot.SIDE))
+                    .face(Direction.WEST, (faceBuilder) -> faceBuilder.uvs(7.0F, 7.0F, 9.0F, 9.0F).rotation(FaceRotation.UPSIDE_DOWN).texture(TextureSlot.TOP))
+                    .face(Direction.UP, (faceBuilder) -> faceBuilder.uvs(4.0F, 2.0F, 6.0F, 8.0F).rotation(FaceRotation.COUNTERCLOCKWISE_90).texture(TextureSlot.SIDE))
+                    .face(Direction.DOWN, (faceBuilder) -> faceBuilder.uvs(0.0F, 2.0F, 2.0F, 8.0F).rotation(FaceRotation.COUNTERCLOCKWISE_90).texture(TextureSlot.SIDE))
+            ).build();
+    public static final ModelTemplate ROCK_1 = ModelTemplates.create("block", "_1", TextureSlot.TEXTURE, TextureSlot.PARTICLE).extend()
+            .element((builder) -> builder
+                    .from(5.0F, 0.0F, 5.0F).to(11.0F, 3.0F, 11.0F)
+                    .face(Direction.NORTH, (faceBuilder) -> faceBuilder.uvs(0.0F, 6.0F, 6.0F, 9.0F).texture(TextureSlot.TEXTURE))
+                    .face(Direction.EAST, (faceBuilder) -> faceBuilder.uvs(6.0F, 6.0F, 12.0F, 9.0F).texture(TextureSlot.TEXTURE))
+                    .face(Direction.SOUTH, (faceBuilder) -> faceBuilder.uvs(0.0F, 6.0F, 6.0F, 9.0F).texture(TextureSlot.TEXTURE))
+                    .face(Direction.WEST, (faceBuilder) -> faceBuilder.uvs(6.0F, 6.0F, 12.0F, 9.0F).texture(TextureSlot.TEXTURE))
+                    .face(Direction.UP, (faceBuilder) -> faceBuilder.uvs(6.0F, 0.0F, 12.0F, 6.0F).texture(TextureSlot.TEXTURE))
+                    .face(Direction.DOWN, (faceBuilder) -> faceBuilder.uvs(6.0F, 9.0F, 12.0F, 15.0F).texture(TextureSlot.TEXTURE))
+            ).build();
+    public static final ModelTemplate ROCK_2 = ModelTemplates.create("block", "_2", TextureSlot.TEXTURE, TextureSlot.PARTICLE).extend()
+            .element((builder) -> builder
+                    .from(2.0F, 0.0F, 2.0F).to(8.0F, 3.0F, 8.0F)
+                    .face(Direction.NORTH, (faceBuilder) -> faceBuilder.uvs(0.0F, 6.0F, 6.0F, 9.0F).texture(TextureSlot.TEXTURE))
+                    .face(Direction.EAST, (faceBuilder) -> faceBuilder.uvs(6.0F, 6.0F, 12.0F, 9.0F).texture(TextureSlot.TEXTURE))
+                    .face(Direction.SOUTH, (faceBuilder) -> faceBuilder.uvs(0.0F, 6.0F, 6.0F, 9.0F).texture(TextureSlot.TEXTURE))
+                    .face(Direction.WEST, (faceBuilder) -> faceBuilder.uvs(6.0F, 6.0F, 12.0F, 9.0F).texture(TextureSlot.TEXTURE))
+                    .face(Direction.UP, (faceBuilder) -> faceBuilder.uvs(6.0F, 0.0F, 12.0F, 6.0F).texture(TextureSlot.TEXTURE))
+                    .face(Direction.DOWN, (faceBuilder) -> faceBuilder.uvs(6.0F, 9.0F, 12.0F, 15.0F).texture(TextureSlot.TEXTURE))
+            ).element((builder) -> builder
+                    .from(10.0F, 0.0F, 9.0F).to(14.0F, 2.0F, 13.0F)
+                    .face(Direction.NORTH, (faceBuilder) -> faceBuilder.uvs(0.0F, 4.0F, 4.0F, 6.0F).texture(TextureSlot.TEXTURE))
+                    .face(Direction.EAST, (faceBuilder) -> faceBuilder.uvs(4.0F, 4.0F, 8.0F, 6.0F).texture(TextureSlot.TEXTURE))
+                    .face(Direction.SOUTH, (faceBuilder) -> faceBuilder.uvs(0.0F, 4.0F, 4.0F, 6.0F).texture(TextureSlot.TEXTURE))
+                    .face(Direction.WEST, (faceBuilder) -> faceBuilder.uvs(4.0F, 4.0F, 8.0F, 6.0F).texture(TextureSlot.TEXTURE))
+                    .face(Direction.UP, (faceBuilder) -> faceBuilder.uvs(4.0F, 0.0F, 8.0F, 4.0F).texture(TextureSlot.TEXTURE))
+                    .face(Direction.DOWN, (faceBuilder) -> faceBuilder.uvs(4.0F, 8.0F, 8.0F, 12.0F).texture(TextureSlot.TEXTURE))
+            ).build();
+    public static final ModelTemplate ROCK_3 = ModelTemplates.create("block", "_3", TextureSlot.TEXTURE, TextureSlot.PARTICLE).extend()
+            .element((builder) -> builder
+                    .from(2.0F, 0.0F, 2.0F).to(8.0F, 3.0F, 8.0F)
+                    .face(Direction.NORTH, (faceBuilder) -> faceBuilder.uvs(0.0F, 6.0F, 6.0F, 9.0F).texture(TextureSlot.TEXTURE))
+                    .face(Direction.EAST, (faceBuilder) -> faceBuilder.uvs(6.0F, 6.0F, 12.0F, 9.0F).texture(TextureSlot.TEXTURE))
+                    .face(Direction.SOUTH, (faceBuilder) -> faceBuilder.uvs(0.0F, 6.0F, 6.0F, 9.0F).texture(TextureSlot.TEXTURE))
+                    .face(Direction.WEST, (faceBuilder) -> faceBuilder.uvs(6.0F, 6.0F, 12.0F, 9.0F).texture(TextureSlot.TEXTURE))
+                    .face(Direction.UP, (faceBuilder) -> faceBuilder.uvs(6.0F, 0.0F, 12.0F, 6.0F).texture(TextureSlot.TEXTURE))
+                    .face(Direction.DOWN, (faceBuilder) -> faceBuilder.uvs(6.0F, 9.0F, 12.0F, 15.0F).texture(TextureSlot.TEXTURE))
+            ).element((builder) -> builder
+                    .from(10.0F, 0.0F, 6.0F).to(14.0F, 2.0F, 10.0F)
+                    .face(Direction.NORTH, (faceBuilder) -> faceBuilder.uvs(0.0F, 4.0F, 4.0F, 6.0F).texture(TextureSlot.TEXTURE))
+                    .face(Direction.EAST, (faceBuilder) -> faceBuilder.uvs(4.0F, 4.0F, 8.0F, 6.0F).texture(TextureSlot.TEXTURE))
+                    .face(Direction.SOUTH, (faceBuilder) -> faceBuilder.uvs(0.0F, 4.0F, 4.0F, 6.0F).texture(TextureSlot.TEXTURE))
+                    .face(Direction.WEST, (faceBuilder) -> faceBuilder.uvs(4.0F, 4.0F, 8.0F, 6.0F).texture(TextureSlot.TEXTURE))
+                    .face(Direction.UP, (faceBuilder) -> faceBuilder.uvs(4.0F, 0.0F, 8.0F, 4.0F).texture(TextureSlot.TEXTURE))
+                    .face(Direction.DOWN, (faceBuilder) -> faceBuilder.uvs(4.0F, 8.0F, 8.0F, 12.0F).texture(TextureSlot.TEXTURE))
+            ).element((builder) -> builder
+                    .from(7.0F, 0.0F, 12.0F).to(9.0F, 1.0F, 14.0F)
+                    .face(Direction.NORTH, (faceBuilder) -> faceBuilder.uvs(0.0F, 2.0F, 2.0F, 3.0F).texture(TextureSlot.TEXTURE))
+                    .face(Direction.EAST, (faceBuilder) -> faceBuilder.uvs(2.0F, 2.0F, 4.0F, 3.0F).texture(TextureSlot.TEXTURE))
+                    .face(Direction.SOUTH, (faceBuilder) -> faceBuilder.uvs(0.0F, 2.0F, 2.0F, 3.0F).texture(TextureSlot.TEXTURE))
+                    .face(Direction.WEST, (faceBuilder) -> faceBuilder.uvs(2.0F, 2.0F, 4.0F, 3.0F).texture(TextureSlot.TEXTURE))
+                    .face(Direction.UP, (faceBuilder) -> faceBuilder.uvs(2.0F, 0.0F, 4.0F, 2.0F).texture(TextureSlot.TEXTURE))
+                    .face(Direction.DOWN, (faceBuilder) -> faceBuilder.uvs(2.0F, 3.0F, 4.0F, 5.0F).texture(TextureSlot.TEXTURE))
+            ).build();
 
     public static final ModelTemplate ASYMMETRICAL_CROSS_EVEN = create("asymmetrical_cross_even", TextureSlot.CROSS, AetherIITextureSlots.CROSS_OTHER, TextureSlot.PARTICLE).extend().renderType(ResourceLocation.withDefaultNamespace("cutout")).build();
     public static final ModelTemplate ASYMMETRICAL_CROSS_EVEN_MIRRORED = create("asymmetrical_cross_even_mirrored", "_mirrored", TextureSlot.CROSS, AetherIITextureSlots.CROSS_OTHER, TextureSlot.PARTICLE).extend().renderType(ResourceLocation.withDefaultNamespace("cutout")).build();

@@ -184,13 +184,13 @@ public class AetherIIBlockModels extends AetherIIBlockModelSubProvider {
         this.createPlantWithDefaultItem(AetherIIBlocks.BLUEBERRY_BUSH_STEM.get(), AetherIIBlocks.POTTED_BLUEBERRY_BUSH_STEM.get(), PlantType.NOT_TINTED);
         this.createBush(AetherIIBlocks.BLUEBERRY_BUSH.get());
 
-//        // Orange Tree
+        // Orange Tree
 //        this.createCrossBlock(AetherIIBlocks.ORANGE_TREE.get(), BlockModelGenerators.PlantType.NOT_TINTED); //todo custom model
-//
-//        // Potted Orange Tree
+
+        // Potted Orange Tree
 //        this.createPlantWithDefaultItem(AetherIIBlocks.ORANGE_TREE.get(), AetherIIBlocks.POTTED_ORANGE_TREE.get(), BlockModelGenerators.PlantType.NOT_TINTED); //todo
-//
-// Surface Vegetation
+
+        // Surface Vegetation
         this.createValkyrieSprout();
 //        this.createGrowingPlant(AetherIIBlocks.BRETTL_PLANT_TIP.get(), AetherIIBlocks.BRETTL_PLANT.get(), BlockModelGenerators.PlantType.NOT_TINTED);
 
@@ -202,9 +202,8 @@ public class AetherIIBlockModels extends AetherIIBlockModelSubProvider {
         this.createCrossWithDefaultItem(AetherIIBlocks.BLOOMING_ARILUM_PLANT.get(), PlantType.NOT_TINTED);
 
         // Ground Decoration
-        //todo
-//        this.twig(AetherIIBlocks.SKYROOT_TWIG.get(), AetherIIBlocks.SKYROOT_LOG.get());
-//        this.rock(AetherIIBlocks.HOLYSTONE_ROCK.get(), AetherIIBlocks.HOLYSTONE.get());
+        this.createTwig(AetherIIBlocks.SKYROOT_TWIG.get(), AetherIIBlocks.SKYROOT_LOG.get());
+        this.createRock(AetherIIBlocks.HOLYSTONE_ROCK.get(), AetherIIBlocks.HOLYSTONE.get());
 
         // Skyroot Decorative Blocks
         this.createTrivialCube(AetherIIBlocks.SKYROOT_FLOORBOARDS.get());

@@ -254,105 +254,6 @@ package com.aetherteam.aetherii.data.providers;
 //        }
 //    }
 //
-//    public void tintedFern(Block block) {
-//        this.getVariantBuilder(block).forAllStates((state) -> {
-//            AetherTallGrassBlock.GrassType type = state.getValue(AetherTallGrassBlock.TYPE);
-//            ModelFile model;
-//            switch (type) {
-//                case SNOWY -> model = this.models().cross("frosted_" + this.name(block), this.texture("frosted_" + this.name(block), "natural/"))
-//                        .renderType(ResourceLocation.withDefaultNamespace("cutout"));
-//                case ENCHANTED -> model = this.models().cross("enchanted_" + this.name(block), this.texture("enchanted_" + this.name(block), "natural/"))
-//                        .renderType(ResourceLocation.withDefaultNamespace("cutout"));
-//                default -> model = this.models().withExistingParent(this.name(block), this.mcLoc("block/tinted_cross"))
-//                        .texture("cross", this.texture(this.name(block), "natural/"))
-//                        .renderType(ResourceLocation.withDefaultNamespace("cutout"));
-//            }
-//            return ConfiguredModel.builder().modelFile(model).build();
-//        });
-//    }
-//
-//    public void shortGrass(Block block) {
-//        this.getVariantBuilder(block).forAllStates((state) -> {
-//            AetherTallGrassBlock.GrassType type = state.getValue(AetherTallGrassBlock.TYPE);
-//            ModelFile grass;
-//            switch (type) {
-//                case SNOWY -> grass = this.models().cross("frosted_" + this.name(block), this.texture("frosted_" + this.name(block), "natural/")).renderType(ResourceLocation.withDefaultNamespace("cutout"));
-//                case ENCHANTED -> grass = this.models().cross("enchanted_" + this.name(block), this.texture("enchanted_" + this.name(block), "natural/")).renderType(ResourceLocation.withDefaultNamespace("cutout"));
-//                default -> grass = this.triTintedCross(this.name(block))
-//                        .texture("particle", this.texture(this.name(block), "natural/"))
-//                        .texture("cross_1", this.extend(this.texture(this.name(block), "natural/"), "_1"))
-//                        .texture("cross_2", this.extend(this.texture(this.name(block), "natural/"), "_2"))
-//                        .texture("cross_3", this.extend(this.texture(this.name(block), "natural/"), "_3"));
-//            }
-//            return ConfiguredModel.builder().modelFile(grass).build();
-//        });
-//    }
-//
-//    public ModelBuilder<BlockModelBuilder> triTintedCross(String name) {
-//        return this.models().getBuilder(name)
-//                .renderType(ResourceLocation.withDefaultNamespace("cutout"))
-//                .ao(false)
-//                .element()
-//                .from(0.8F, 0.0F, 8.0F).to(15.2F, 16.0F, 8.0F)
-//                .rotation().origin(8.0F, 8.0F, 8.0F).axis(Direction.Axis.Y).angle(45.0F).rescale(true).end()
-//                .shade(false)
-//                .face(Direction.NORTH).uvs(0.0F, 0.0F, 16.0F, 16.0F).texture("#cross_1").tintindex(0).end()
-//                .face(Direction.SOUTH).uvs(0.0F, 0.0F, 16.0F, 16.0F).texture("#cross_1").tintindex(0).end()
-//                .end()
-//                .element()
-//                .from(8.0F, 0.0F, 0.8F).to(8.0F, 16.0F, 15.2F)
-//                .rotation().origin(8.0F, 8.0F, 8.0F).axis(Direction.Axis.Y).angle(45.0F).rescale(true).end()
-//                .shade(false)
-//                .face(Direction.WEST).uvs(0.0F, 0.0F, 16.0F, 16.0F).texture("#cross_1").tintindex(0).end()
-//                .face(Direction.EAST).uvs(0.0F, 0.0F, 16.0F, 16.0F).texture("#cross_1").tintindex(0).end()
-//                .end()
-//                .element()
-//                .from(0.8F, 0.0F, 8.0F).to(15.2F, 16.0F, 8.0F)
-//                .rotation().origin(8.0F, 8.0F, 8.0F).axis(Direction.Axis.Y).angle(45.0F).rescale(true).end()
-//                .shade(false)
-//                .face(Direction.NORTH).uvs(0.0F, 0.0F, 16.0F, 16.0F).texture("#cross_2").tintindex(1).end()
-//                .face(Direction.SOUTH).uvs(0.0F, 0.0F, 16.0F, 16.0F).texture("#cross_2").tintindex(1).end()
-//                .end()
-//                .element()
-//                .from(8.0F, 0.0F, 0.8F).to(8.0F, 16.0F, 15.2F)
-//                .rotation().origin(8.0F, 8.0F, 8.0F).axis(Direction.Axis.Y).angle(45.0F).rescale(true).end()
-//                .shade(false)
-//                .face(Direction.WEST).uvs(0.0F, 0.0F, 16.0F, 16.0F).texture("#cross_2").tintindex(1).end()
-//                .face(Direction.EAST).uvs(0.0F, 0.0F, 16.0F, 16.0F).texture("#cross_2").tintindex(1).end()
-//                .end()
-//                .element()
-//                .from(0.8F, 0.0F, 8.0F).to(15.2F, 16.0F, 8.0F)
-//                .rotation().origin(8.0F, 8.0F, 8.0F).axis(Direction.Axis.Y).angle(45.0F).rescale(true).end()
-//                .shade(false)
-//                .face(Direction.NORTH).uvs(0.0F, 0.0F, 16.0F, 16.0F).texture("#cross_3").tintindex(2).end()
-//                .face(Direction.SOUTH).uvs(0.0F, 0.0F, 16.0F, 16.0F).texture("#cross_3").tintindex(2).end()
-//                .end()
-//                .element()
-//                .from(8.0F, 0.0F, 0.8F).to(8.0F, 16.0F, 15.2F)
-//                .rotation().origin(8.0F, 8.0F, 8.0F).axis(Direction.Axis.Y).angle(45.0F).rescale(true).end()
-//                .shade(false)
-//                .face(Direction.WEST).uvs(0.0F, 0.0F, 16.0F, 16.0F).texture("#cross_3").tintindex(2).end()
-//                .face(Direction.EAST).uvs(0.0F, 0.0F, 16.0F, 16.0F).texture("#cross_3").tintindex(2).end()
-//                .end();
-//    }
-//
-//    public void bush(Block block) {
-//        this.getVariantBuilder(block).partialState().addModels(new ConfiguredModel(this.bush(block, this.name(block) + "_stem")));
-//    }
-//
-//    public void berryBush(Block block, Block stem) {
-//        this.getVariantBuilder(block).partialState().addModels(new ConfiguredModel(this.bush(block, this.name(stem))));
-//    }
-//
-//    public ModelFile bush(Block block, String stem) {
-//        return this.models().withExistingParent(this.name(block), this.mcLoc("block/block"))
-//                .texture("particle", this.texture(this.name(block), "natural/")).texture("bush", this.texture(this.name(block), "natural/")).texture("stem", this.texture(stem, "natural/"))
-//                .element().from(0.0F, 0.0F, 0.0F).to(16.0F, 16.0F, 16.0F).shade(true).allFaces((direction, builder) -> builder.texture("#bush").end()).end()
-//                .element().from(0.8F, 0.0F, 8.0F).to(15.2F, 16.0F, 8.0F).rotation().origin(8.0F, 8.0F, 8.0F).axis(Direction.Axis.Y).angle(45.0F).rescale(true).end().shade(true).face(Direction.NORTH).texture("#stem").end().face(Direction.SOUTH).texture("#stem").end().end()
-//                .element().from(8.0F, 0.0F, 0.8F).to(8.0F, 16.0F, 15.2F).rotation().origin(8.0F, 8.0F, 8.0F).axis(Direction.Axis.Y).angle(45.0F).rescale(true).end().shade(true).face(Direction.WEST).texture("#stem").end().face(Direction.EAST).texture("#stem").end().end()
-//                .renderType(ResourceLocation.withDefaultNamespace("cutout"));
-//    }
-//
 //    public void pottedBush(Block bush, String location) {
 //        this.pottedBush(bush, this.name(bush) + "_stem", location);
 //    }
@@ -442,16 +343,6 @@ package com.aetherteam.aetherii.data.providers;
 //    public void pottedOrangeTree(Block block, Block tree) {
 //        ModelFile pot = this.models().withExistingParent(this.name(block), this.mcLoc("block/flower_pot_cross")).texture("plant", this.modLoc("block/natural/" + this.name(tree) + "_bottom_0")).renderType(ResourceLocation.withDefaultNamespace("cutout"));
 //        this.getVariantBuilder(block).partialState().addModels(new ConfiguredModel(pot));
-//    }
-//
-//    public void valkyrieSprout(Block block) {
-//        String blockName = this.name(block);
-//        this.getVariantBuilder(block).forAllStates((state) -> {
-//            int age = state.getValue(ValkyrieSproutBlock.AGE);
-//            ResourceLocation location = this.extend(this.texture(blockName, "natural/"), "_" + age);
-//            ModelFile model = this.models().cross(blockName + "_" + age, location).renderType(ResourceLocation.withDefaultNamespace("cutout"));
-//            return ConfiguredModel.builder().modelFile(model).build();
-//        });
 //    }
 //
 //    public void brettlPlant(Block block) {
