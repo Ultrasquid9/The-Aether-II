@@ -111,6 +111,7 @@ public class AetherIIModelTemplates {
     public static final ModelTemplate THIN = ModelTemplates.create("thin_block", TextureSlot.ALL);
     public static final ModelTemplate DIRT_PATH = ModelTemplates.create("dirt_path", TextureSlot.BOTTOM, TextureSlot.PARTICLE, TextureSlot.TOP, TextureSlot.SIDE);
     public static final ModelTemplate LEAVES = ModelTemplates.create("leaves", TextureSlot.ALL).extend().renderType(ResourceLocation.withDefaultNamespace("cutout_mipped")).build();
+    public static final ModelTemplate VINE = ModelTemplates.create("vine", AetherIITextureSlots.VINE, TextureSlot.PARTICLE).extend().renderType(ResourceLocation.withDefaultNamespace("cutout")).build();
     public static final ModelTemplate TRANSLUCENT_INNER_FACES = ModelTemplates.create("cube", TextureSlot.PARTICLE, TextureSlot.NORTH, TextureSlot.SOUTH, TextureSlot.EAST, TextureSlot.WEST, TextureSlot.UP, TextureSlot.DOWN).extend()
             .renderType(ResourceLocation.withDefaultNamespace("translucent"))
             .element((builder) -> builder

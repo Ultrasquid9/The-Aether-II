@@ -30,6 +30,7 @@ import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
 import net.minecraft.world.level.block.state.properties.DripstoneThickness;
+import org.apache.commons.lang3.ArrayUtils;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -38,6 +39,7 @@ import java.util.List;
 import java.util.function.BiConsumer;
 import java.util.function.Consumer;
 import java.util.function.Function;
+import java.util.stream.IntStream;
 
 public class AetherIIBlockModelSubProvider extends BlockModelGenerators {
     public AetherIIBlockModelSubProvider(Consumer<BlockStateGenerator> blockStateOutput, ItemModelOutput itemModelOutput, BiConsumer<ResourceLocation, ModelInstance> modelOutput) {
@@ -213,34 +215,28 @@ public class AetherIIBlockModelSubProvider extends BlockModelGenerators {
         return Variant.variant().with(VariantProperties.MODEL, AetherIIModelTemplates.TEMPLATE_CUTOUT_CROSS.createWithSuffix(block, name, mapping, this.modelOutput));
     }
 
-//    public void createVine(Block block) {
-//
-//        ResourceLocation resourcelocation = ModelLocationUtils.getModelLocation(block);
-//        MultiPartGenerator multipartgenerator = MultiPartGenerator.multiPart(block);
-//        Condition.TerminalCondition condition$terminalcondition = Util.make(Condition.condition(), (p_387548_) -> {
-//            MULTIFACE_GENERATOR.stream().map(Pair::getFirst).map(MultifaceBlock::getFaceProperty).forEach((p_387201_) -> {
-//                if (block.defaultBlockState().hasProperty(p_387201_)) {
-//                    p_387548_.term(p_387201_, false);
-//                }
-//            });
-//        });
-//
-//        for (Pair<Direction, Function<ResourceLocation, Variant>> directionFunctionPair : MULTIFACE_GENERATOR) {
-//            BooleanProperty booleanproperty = MultifaceBlock.getFaceProperty(directionFunctionPair.getFirst());
-//            Function<ResourceLocation, Variant> function = directionFunctionPair.getSecond();
-//            if (block.defaultBlockState().hasProperty(booleanproperty)) {
-//                multipartgenerator.with(Condition.condition().term(booleanproperty, true), function.apply(resourcelocation));
-//                multipartgenerator.with(condition$terminalcondition, function.apply(resourcelocation));
-//            }
-//        }
-//
-//        this.blockStateOutput.accept(multipartgenerator);
-//
-//
-//
-//        ResourceLocation resourcelocation = blockModels.createFlatItemModelWithBlockTexture(block.asItem(), block);
-////        blockModels.registerSimpleFlatItemModel(block);
-//    }
+    public void createVine(Block block) {
+        ResourceLocation normal = AetherIIModelTemplates.VINE.create(block, AetherIITextureMappings.vine(TextureMapping.getBlockTexture(block)), this.modelOutput);
+        ResourceLocation bottom = AetherIIModelTemplates.VINE.create(ModelLocationUtils.getModelLocation(block, "_bottom"), AetherIITextureMappings.vine(TextureMapping.getBlockTexture(block, "_bottom")), this.modelOutput);
+        MultiPartGenerator multiPart = MultiPartGenerator.multiPart(block);
+        Condition.TerminalCondition condition = Util.make(Condition.condition(), (terminalCondition) -> MULTIFACE_GENERATOR.stream().map(Pair::getFirst).map(MultifaceBlock::getFaceProperty).forEach((bool) -> {
+            if (block.defaultBlockState().hasProperty(bool)) {
+                terminalCondition.term(bool, false);
+            }
+        }));
+        for (Pair<Direction, Function<ResourceLocation, Variant>> directionFunctionPair : MULTIFACE_GENERATOR) {
+            BooleanProperty bool = MultifaceBlock.getFaceProperty(directionFunctionPair.getFirst());
+            Function<ResourceLocation, Variant> function = directionFunctionPair.getSecond();
+            if (block.defaultBlockState().hasProperty(bool)) {
+                multiPart
+                        .with(Condition.condition().term(BottomedVineBlock.AGE, 0, ArrayUtils.toObject(IntStream.range(1, 25).toArray())).term(bool, true), function.apply(normal))
+                        .with(Condition.condition().term(BottomedVineBlock.AGE, 25).term(bool, true), function.apply(bottom));
+                multiPart.with(condition, function.apply(normal));
+            }
+        }
+        this.blockStateOutput.accept(multiPart);
+        this.registerSimpleFlatItemModel(block);
+    }
 
 
     public void createCrystal(Block block, ModelTemplate itemModel) {
