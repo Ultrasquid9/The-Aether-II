@@ -38,9 +38,10 @@ public class KirridWoolLayer extends RenderLayer<KirridRenderState, EntityModel<
                 this.getParentModel().renderToBuffer(poseStack, consumer, packedLight, LivingEntityRenderer.getOverlayCoords(kirrid, 0.0F), -16777216);
             }
         } else {
-            int i = Kirrid.getDecimalColor(kirrid.woolColor);
-
-            coloredCutoutModelCopyLayerRender(this.getParentModel(), getTexture(kirrid), poseStack, bufferSource, packedLight, kirrid, i);
+            kirrid.woolColor.ifPresent((woolColor) -> {
+                int i = Kirrid.getDecimalColor(woolColor);
+                coloredCutoutModelCopyLayerRender(this.getParentModel(), getTexture(kirrid), poseStack, bufferSource, packedLight, kirrid, i);
+            });
         }
     }
 
