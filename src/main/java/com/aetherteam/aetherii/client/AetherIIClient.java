@@ -94,18 +94,6 @@ public class AetherIIClient {
         registerGliderProperties(AetherIIItems.PURPLE_AERCLOUD_GLIDER.get(), true);*/
     }
 
-    /*
-
-    private static void registerGliderProperties(Item item, boolean hasAbility) {
-        ItemProperties.register(item, ResourceLocation.fromNamespaceAndPath(AetherII.MODID, "parachuting"), (stack, level, livingEntity, value) ->
-                livingEntity == null ? 0.0F : ItemStack.isSameItem(stack, livingEntity.getUseItem()) && livingEntity.getUseItemRemainingTicks() > 0 ? 1.0F : 0.0F);
-        if (hasAbility) {
-            ItemProperties.register(item, ResourceLocation.fromNamespaceAndPath(AetherII.MODID, "dull"), (stack, level, livingEntity, value) ->
-                    livingEntity == null ? 0.0F : livingEntity instanceof Player player && !player.getData(AetherIIDataAttachments.PLAYER).getCanRefuelAbilities().get(stack.getItemHolder()) ? 1.0F : 0.0F);
-        }
-    }
-
-*/
     public static void registerTooltipOverrides() {
         //todo new component tooltip system from neoforge
         TooltipListeners.TooltipPredicate setBonusPredicate = (player, itemStack, components, context, component) -> {

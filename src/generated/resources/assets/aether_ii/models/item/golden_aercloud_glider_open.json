@@ -1,0 +1,27 @@
+{
+  "parent": "aether_ii:item/aercloud_glider_open",
+  "display": {
+    "firstperson_righthand": {
+      "translation": [
+        0,
+        9,
+        -6
+      ]
+    },
+    "thirdperson_righthand": {
+      "rotation": [
+        -90,
+        0,
+        -35
+      ],
+      "translation": [
+        11.55,
+        -2,
+        -0.1
+      ]
+    }
+  },
+  "textures": {
+    "texture": "aether_ii:item/golden_aercloud_glider_model"
+  }
+}

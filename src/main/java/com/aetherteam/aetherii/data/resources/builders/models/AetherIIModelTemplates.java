@@ -1,6 +1,7 @@
 package com.aetherteam.aetherii.data.resources.builders.models;
 
 import com.aetherteam.aetherii.AetherII;
+import net.minecraft.client.data.models.model.ModelLocationUtils;
 import net.minecraft.client.data.models.model.ModelTemplate;
 import net.minecraft.client.data.models.model.ModelTemplates;
 import net.minecraft.client.data.models.model.TextureSlot;
@@ -295,6 +296,9 @@ public class AetherIIModelTemplates {
     public static final ModelTemplate FULL_CRYSTAL = ModelTemplates.createItem("amethyst_cluster", TextureSlot.LAYER0);
     public static final ModelTemplate POINTED_STONE = ModelTemplates.createItem("pointed_dripstone", TextureSlot.LAYER0);
 
+    public static final ModelTemplate AERCLOUD_GLIDER_CLOSED = createItem("aercloud_glider_closed", "_closed", TextureSlot.TEXTURE);
+    public static final ModelTemplate AERCLOUD_GLIDER_OPEN = createItem("aercloud_glider_open", "_open", TextureSlot.TEXTURE);
+
     public static ModelTemplate create(TextureSlot... textureSlot) {
         return new ModelTemplate(Optional.empty(), Optional.empty(), textureSlot);
     }
@@ -307,10 +311,25 @@ public class AetherIIModelTemplates {
         return new ModelTemplate(Optional.of(decorateBlockModelLocation(path)), Optional.of(suffix), textureSlot);
     }
 
+    public static ModelTemplate createItem(String path, TextureSlot... textureSlot) {
+        return new ModelTemplate(Optional.of(decorateItemModelLocation(path)), Optional.empty(), textureSlot);
+    }
+
+    public static ModelTemplate createItem(String path, String suffix, TextureSlot... textureSlot) {
+        return new ModelTemplate(Optional.of(decorateItemModelLocation(path)), Optional.of(suffix), textureSlot);
+    }
+
     /**
-     * Based on {@link ModelTemplate#getDefaultModelLocation(Block)}
+     * Based on {@link ModelLocationUtils#decorateBlockModelLocation(String)}
      */
     public static ResourceLocation decorateBlockModelLocation(String path) {
         return ResourceLocation.fromNamespaceAndPath(AetherII.MODID, path).withPrefix("block/");
+    }
+
+    /**
+     * Based on {@link ModelLocationUtils#decorateItemModelLocation(String)}
+     */
+    public static ResourceLocation decorateItemModelLocation(String path) {
+        return ResourceLocation.fromNamespaceAndPath(AetherII.MODID, path).withPrefix("item/");
     }
 }

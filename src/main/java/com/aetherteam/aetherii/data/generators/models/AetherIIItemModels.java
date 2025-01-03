@@ -181,14 +181,10 @@ public class AetherIIItemModels extends AetherIIItemModelSubProvider {
         this.generateHealingStoneItem(AetherIIItems.HEALING_STONE.get());
 
         // Gliders
-        this.generateFlatItem(AetherIIItems.COLD_AERCLOUD_GLIDER.get(), ModelTemplates.FLAT_ITEM); //TODO
-        this.generateFlatItem(AetherIIItems.GOLDEN_AERCLOUD_GLIDER.get(), ModelTemplates.FLAT_ITEM);
-        this.generateFlatItem(AetherIIItems.BLUE_AERCLOUD_GLIDER.get(), ModelTemplates.FLAT_ITEM);
-        this.generateFlatItem(AetherIIItems.PURPLE_AERCLOUD_GLIDER.get(), ModelTemplates.FLAT_ITEM);
-//        this.gliderItem(AetherIIItems.COLD_AERCLOUD_GLIDER.get(), false);
-//        this.gliderItem(AetherIIItems.GOLDEN_AERCLOUD_GLIDER.get(), false);
-//        this.gliderItem(AetherIIItems.BLUE_AERCLOUD_GLIDER.get(), true);
-//        this.gliderItem(AetherIIItems.PURPLE_AERCLOUD_GLIDER.get(), true);
+        this.generateGliderItem(AetherIIItems.COLD_AERCLOUD_GLIDER.get(), false);
+        this.generateGliderItem(AetherIIItems.GOLDEN_AERCLOUD_GLIDER.get(), false);
+        this.generateGliderItem(AetherIIItems.BLUE_AERCLOUD_GLIDER.get(), true);
+        this.generateGliderItem(AetherIIItems.PURPLE_AERCLOUD_GLIDER.get(), true);
 //
         // Skyroot Buckets
         this.generateFlatItem(AetherIIItems.SKYROOT_BUCKET.get(), ModelTemplates.FLAT_ITEM);

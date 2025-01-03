@@ -1,6 +1,7 @@
 package com.aetherteam.aetherii.data.providers;
 
 import com.aetherteam.aetherii.client.renderer.item.properties.*;
+import com.aetherteam.aetherii.data.resources.builders.models.AetherIIModelTemplates;
 import com.aetherteam.aetherii.entity.passive.Moa;
 import com.aetherteam.aetherii.item.components.MoaEggType;
 import net.minecraft.client.color.item.Dye;
@@ -10,10 +11,13 @@ import net.minecraft.client.data.models.model.*;
 import net.minecraft.client.renderer.item.ItemModel;
 import net.minecraft.client.renderer.item.SelectItemModel;
 import net.minecraft.client.renderer.item.properties.select.Charge;
+import net.minecraft.client.renderer.item.properties.select.DisplayContext;
+import net.minecraft.client.renderer.item.properties.select.SelectItemModelProperties;
 import net.minecraft.client.renderer.special.ShieldSpecialRenderer;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.CrossbowItem;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemDisplayContext;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -79,6 +83,53 @@ public class AetherIIItemModelSubProvider extends ItemModelGenerators {
                 ItemModelUtils.override(charged4, 0.4F),
                 ItemModelUtils.override(charged5, 0.5F)
         ));
+    }
+
+    public void generateGliderItem(Item item, boolean hasAbility) {
+        ResourceLocation normalInventorySprite = ModelTemplates.FLAT_ITEM.create(item, TextureMapping.layer0(item), this.modelOutput);
+        List<SelectItemModel.SwitchCase<ItemDisplayContext>> normalList = List.of(
+                ItemModelUtils.when(ItemDisplayContext.GUI, ItemModelUtils.plainModel(normalInventorySprite)),
+                ItemModelUtils.when(ItemDisplayContext.GROUND, ItemModelUtils.plainModel(normalInventorySprite)),
+                ItemModelUtils.when(ItemDisplayContext.FIXED, ItemModelUtils.plainModel(normalInventorySprite))
+        );
+
+        ItemModel.Unbaked closedGliderModelBase = ItemModelUtils.plainModel(AetherIIModelTemplates.AERCLOUD_GLIDER_CLOSED.extend()
+                .transform(ItemDisplayContext.THIRD_PERSON_RIGHT_HAND, (builder) -> builder.rotation(-90.0F, 0.0F, -80.0F).translation(5.75F, -2.0F, 4.15F).scale(0.75F))
+                .transform(ItemDisplayContext.FIRST_PERSON_RIGHT_HAND, (builder) -> builder.rotation(0.0F, 0.0F, -90.0F).translation(7.5F, 0.0F, 4.0F))
+                .build()
+                .create(item, new TextureMapping().put(TextureSlot.TEXTURE, TextureMapping.getItemTexture(item, "_model")), this.modelOutput));
+        ItemModel.Unbaked openGliderModelBase = ItemModelUtils.plainModel(AetherIIModelTemplates.AERCLOUD_GLIDER_OPEN.extend()
+                .transform(ItemDisplayContext.THIRD_PERSON_RIGHT_HAND, (builder) -> builder.rotation(-90.0F, 0.0F, -35.0F).translation(11.55F, -2.0F, -0.1F))
+                .transform(ItemDisplayContext.FIRST_PERSON_RIGHT_HAND, (builder) -> builder.rotation(0.0F, 0.0F, 0.0F).translation(0.0F, 9.0F, -6.0F))
+                .build()
+                .create(item, new TextureMapping().put(TextureSlot.TEXTURE, TextureMapping.getItemTexture(item, "_model")), this.modelOutput));
+
+        ItemModel.Unbaked normalRangeSelect = ItemModelUtils.rangeSelect(
+                new ParachutingRange(),
+                ItemModelUtils.select(new DisplayContext(), closedGliderModelBase, normalList),
+                ItemModelUtils.override(ItemModelUtils.select(new DisplayContext(), openGliderModelBase, normalList), 1.0F));
+
+        if (!hasAbility) {
+            this.itemModelOutput.accept(item, normalRangeSelect);
+        } else {
+            ResourceLocation dullInventorySprite = ModelTemplates.FLAT_ITEM.create(ModelLocationUtils.getModelLocation(item, "_dull"), TextureMapping.layer0(TextureMapping.getItemTexture(item, "_dull")), this.modelOutput);
+            List<SelectItemModel.SwitchCase<ItemDisplayContext>> dullList = List.of(
+                    ItemModelUtils.when(ItemDisplayContext.GUI, ItemModelUtils.plainModel(dullInventorySprite)),
+                    ItemModelUtils.when(ItemDisplayContext.GROUND, ItemModelUtils.plainModel(dullInventorySprite)),
+                    ItemModelUtils.when(ItemDisplayContext.FIXED, ItemModelUtils.plainModel(dullInventorySprite))
+            );
+
+            ItemModel.Unbaked dullRangeSelect = ItemModelUtils.rangeSelect(
+                    new ParachutingRange(),
+                    ItemModelUtils.select(new DisplayContext(), closedGliderModelBase, dullList),
+                    ItemModelUtils.override(ItemModelUtils.select(new DisplayContext(), openGliderModelBase, dullList), 1.0F));
+
+            this.itemModelOutput.accept(item, ItemModelUtils.rangeSelect(
+                    new DullAbilityRange(),
+                    normalRangeSelect,
+                    ItemModelUtils.override(dullRangeSelect, 1.0F))
+            );
+        }
     }
 
     public void generateMoaEggItem(Item item) {
