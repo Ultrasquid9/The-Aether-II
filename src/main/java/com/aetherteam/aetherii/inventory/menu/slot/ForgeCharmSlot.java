@@ -16,7 +16,7 @@ import org.jetbrains.annotations.Nullable;
 import java.util.List;
 
 public class ForgeCharmSlot extends Slot {
-    public static final ResourceLocation SLOT_CHARM = ResourceLocation.fromNamespaceAndPath(AetherII.MODID, "gui/slot/container/arkenium_forge/slot_charm");
+    public static final ResourceLocation SLOT_CHARM = ResourceLocation.fromNamespaceAndPath(AetherII.MODID, "container/arkenium_forge/slot_charm");
     private final ArkeniumForgeMenu menu;
     private final int charmIndex;
     private boolean isLocked;

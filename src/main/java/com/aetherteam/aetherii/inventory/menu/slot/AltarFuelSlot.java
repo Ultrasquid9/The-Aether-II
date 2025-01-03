@@ -10,7 +10,7 @@ import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
 
 public class AltarFuelSlot extends Slot {
-    public static final ResourceLocation SLOT_FUEL = ResourceLocation.fromNamespaceAndPath(AetherII.MODID, "gui/slot/container/altar/slot_fuel");
+    public static final ResourceLocation SLOT_FUEL = ResourceLocation.fromNamespaceAndPath(AetherII.MODID, "container/altar/slot_fuel");
     private final AltarMenu menu;
 
     public AltarFuelSlot(AltarMenu menu, Container container, int slot, int x, int y) {

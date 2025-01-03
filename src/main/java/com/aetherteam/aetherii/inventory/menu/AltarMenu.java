@@ -33,13 +33,13 @@ public class AltarMenu extends RecipeBookMenu {
     private final RecipePropertySet acceptedInputs;
 
     public AltarMenu(int containerId, Inventory playerInventory) {
-        this(containerId, playerInventory, new SimpleContainer(10), new SimpleContainerData(2));
+        this(containerId, playerInventory, new SimpleContainer(10), new SimpleContainerData(3));
     }
 
     public AltarMenu(int containerId, Inventory playerInventory, Container container, ContainerData data) {
         super(AetherIIMenuTypes.ALTAR.get(), containerId);
         checkContainerSize(container, 10);
-        checkContainerDataCount(data, 2);
+        checkContainerDataCount(data, 3);
         this.container = container;
         this.data = data;
         this.level = playerInventory.player.level();
@@ -157,7 +157,7 @@ public class AltarMenu extends RecipeBookMenu {
     }
 
     public int getFuelCount() {
-        return this.data.get(0);
+        return this.data.get(2);
     }
 
     @Override

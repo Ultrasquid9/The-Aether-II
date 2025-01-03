@@ -96,8 +96,8 @@ public class ArkeniumForgeMenu extends AbstractContainerMenu {
             AetherIIItems.ZANITE_GLOVES,
             AetherIIItems.ARKENIUM_GLOVES,
             AetherIIItems.GRAVITITE_GLOVES);
-    public static final ResourceLocation SLOT_PRIMARY = ResourceLocation.fromNamespaceAndPath(AetherII.MODID, "gui/slot/container/arkenium_forge/slot_primary");
-    public static final ResourceLocation SLOT_SECONDARY = ResourceLocation.fromNamespaceAndPath(AetherII.MODID, "gui/slot/container/arkenium_forge/slot_secondary");
+    public static final ResourceLocation SLOT_PRIMARY = ResourceLocation.fromNamespaceAndPath(AetherII.MODID, "container/arkenium_forge/slot_primary");
+    public static final ResourceLocation SLOT_SECONDARY = ResourceLocation.fromNamespaceAndPath(AetherII.MODID, "container/arkenium_forge/slot_secondary");
     private final Container container;
     private final Player player;
     @Nullable
