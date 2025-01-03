@@ -218,36 +218,4 @@ package com.aetherteam.aetherii.data.providers;
 //                .face(Direction.WEST).uvs(1.0F, 4.0F, 15.0F, 14.0F).texture("#stem").end().end();
 //    }
 //
-//    public void skyrootChest(Block block) {
-//        ModelFile chest = this.models().cubeAll(this.name(block), ResourceLocation.fromNamespaceAndPath(AetherII.MODID, "block/construction/skyroot_planks"));
-//        this.chest(block, chest);
-//    }
-//
-//
-//    public void bed(Block block, Block dummyBlock) {
-//        ModelFile head = this.models().cubeAll(this.name(block) + "_head", this.texture(this.name(dummyBlock), "construction/"));
-//        ModelFile foot = this.models().cubeAll(this.name(block) + "_foot", this.texture(this.name(dummyBlock), "construction/"));
-//        this.getVariantBuilder(block).forAllStatesExcept(state -> {
-//            Direction dir = state.getValue(BlockStateProperties.HORIZONTAL_FACING);
-//            BedPart part = state.getValue(BlockStateProperties.BED_PART);
-//            return ConfiguredModel.builder()
-//                    .modelFile(part == BedPart.HEAD ? head : foot)
-//                    .rotationY((((int) dir.toYRot()) + 180) % 360)
-//                    .build();
-//        }, BedBlock.OCCUPIED);
-//    }
-
-//
-//    public void campfire(Block block) {
-//        ResourceLocation texture = this.texture(this.name(block), "furniture/");
-//        ResourceLocation particleTexture = this.texture(this.name(AetherIIBlocks.HOLYSTONE_BRICKS.get()), "construction/");
-//        this.getVariantBuilder(block).forAllStatesExcept((blockState) -> {
-//            Direction partFacing = blockState.getValue(OutpostCampfireBlock.PART_FACING);
-//            ModelFile model = this.models().withExistingParent(this.name(block) + "_" + partFacing.name().toLowerCase(), this.modLoc("template_" + this.name(block) + "_" + partFacing.name().toLowerCase()))
-//                    .texture("texture", texture)
-//                    .texture("particle", particleTexture)
-//                    .renderType(ResourceLocation.withDefaultNamespace("cutout"));
-//            return ConfiguredModel.builder().modelFile(model).build();
-//        }, OutpostCampfireBlock.LIT);
-//    }
 //}

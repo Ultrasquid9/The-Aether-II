@@ -1,6 +1,7 @@
 package com.aetherteam.aetherii.data.providers;
 
 import com.aetherteam.aetherii.block.AetherIIBlocks;
+import com.aetherteam.aetherii.block.furniture.OutpostCampfireBlock;
 import com.aetherteam.aetherii.block.miscellaneous.FacingPillarBlock;
 import com.aetherteam.aetherii.block.natural.*;
 import com.aetherteam.aetherii.block.utility.AltarBlock;
@@ -11,10 +12,7 @@ import com.aetherteam.aetherii.data.resources.builders.models.AetherIIModelTempl
 import com.aetherteam.aetherii.data.resources.builders.models.AetherIITextureMappings;
 import com.aetherteam.aetherii.data.resources.builders.models.AetherIITexturedModels;
 import com.mojang.datafixers.util.Pair;
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
 import net.minecraft.Util;
-import net.minecraft.client.color.item.GrassColorSource;
 import net.minecraft.client.data.models.BlockModelGenerators;
 import net.minecraft.client.data.models.ItemModelOutput;
 import net.minecraft.client.data.models.blockstates.*;
@@ -22,22 +20,16 @@ import net.minecraft.client.data.models.model.*;
 import net.minecraft.client.renderer.special.BedSpecialRenderer;
 import net.minecraft.core.Direction;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.MultifaceBlock;
-import net.minecraft.world.level.block.VaultBlock;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
 import net.minecraft.world.level.block.state.properties.DripstoneThickness;
 import org.apache.commons.lang3.ArrayUtils;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Iterator;
-import java.util.List;
+import java.util.*;
 import java.util.function.BiConsumer;
 import java.util.function.Consumer;
 import java.util.function.Function;
@@ -618,5 +610,18 @@ public class AetherIIBlockModelSubProvider extends BlockModelGenerators {
 
     public void createMoaEgg(Block block) {
         this.blockStateOutput.accept(createSimpleBlock(block, AetherIIModelTemplates.EMPTY.create(block, new TextureMapping().put(TextureSlot.PARTICLE, TextureMapping.getBlockTexture(AetherIIBlocks.WOVEN_SKYROOT_STICKS.get())), this.modelOutput)));
+    }
+
+    public void createOutpostCampfire() {
+        this.blockStateOutput.accept(MultiVariantGenerator.multiVariant(AetherIIBlocks.OUTPOST_CAMPFIRE.get()).with(PropertyDispatch.property(OutpostCampfireBlock.PART_FACING).generate(facing -> {
+            ResourceLocation model = AetherIIModelTemplates.create("template_outpost_campfire_" + facing.name().toLowerCase(Locale.ROOT), "_" + facing.name().toLowerCase(Locale.ROOT), TextureSlot.TEXTURE)
+                    .extend().renderType(ResourceLocation.withDefaultNamespace("cutout")).build()
+                    .create(AetherIIBlocks.OUTPOST_CAMPFIRE.get(), new TextureMapping()
+                            .put(TextureSlot.TEXTURE, TextureMapping.getBlockTexture(AetherIIBlocks.OUTPOST_CAMPFIRE.get()))
+                            .putForced(TextureSlot.PARTICLE, TextureMapping.getBlockTexture(AetherIIBlocks.HOLYSTONE_BRICKS.get())),
+                            this.modelOutput);
+            return Variant.variant().with(VariantProperties.MODEL, model);
+        })));
+        this.registerSimpleFlatItemModel(AetherIIBlocks.OUTPOST_CAMPFIRE.asItem());
     }
 }
