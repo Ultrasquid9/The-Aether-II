@@ -19,6 +19,14 @@ public class AetherIITextureMappings {
                 .put(TextureSlot.SIDE, TextureMapping.getBlockTexture(grass, "_snow"));
     }
 
+    public static TextureMapping snowyLeaves(Block leaves) {
+        return  new TextureMapping()
+                .put(TextureSlot.BOTTOM, TextureMapping.getBlockTexture(leaves))
+                .copyForced(TextureSlot.BOTTOM, TextureSlot.PARTICLE)
+                .put(TextureSlot.TOP, TextureMapping.getBlockTexture(leaves))
+                .put(TextureSlot.SIDE, TextureMapping.getBlockTexture(leaves, "_snowy"));
+    }
+
     public static TextureMapping tintedGrass(Block grass, Block dirt) {
         return new TextureMapping()
                 .put(TextureSlot.BOTTOM, TextureMapping.getBlockTexture(dirt))

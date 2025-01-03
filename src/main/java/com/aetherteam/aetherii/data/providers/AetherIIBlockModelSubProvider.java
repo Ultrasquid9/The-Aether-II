@@ -320,8 +320,9 @@ public class AetherIIBlockModelSubProvider extends BlockModelGenerators {
     }
 
     public void createLeavesWithPiles(Block leaves, Block piles) {
+        TextureMapping snowMapping = AetherIITextureMappings.snowyLeaves(leaves);
         ResourceLocation defaultLocation = AetherIITexturedModels.LEAVES.create(leaves, this.modelOutput);
-        ResourceLocation snowyLocation = this.createSuffixedVariant(leaves, "_snowy", ModelTemplates.CUBE_ALL, TextureMapping::cube);
+        ResourceLocation snowyLocation = ModelTemplates.CUBE_BOTTOM_TOP.create(ModelLocationUtils.getModelLocation(leaves, "_snowy"), snowMapping, this.modelOutput);
         this.blockStateOutput.accept(MultiVariantGenerator.multiVariant(leaves).with(BlockModelGenerators.createBooleanModelDispatch(AetherLeavesBlock.SNOWY, snowyLocation, defaultLocation)));
         this.createPiles(piles, leaves);
     }
