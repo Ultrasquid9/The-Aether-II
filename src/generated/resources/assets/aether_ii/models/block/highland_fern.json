@@ -1,5 +1,6 @@
 {
-  "parent": "minecraft:block/cross",
+  "parent": "minecraft:block/tinted_cross",
+  "render_type": "minecraft:cutout",
   "textures": {
     "cross": "aether_ii:block/highland_fern"
   }

@@ -13,14 +13,12 @@ import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.neoforged.neoforge.common.Tags;
-import net.neoforged.neoforge.common.data.ExistingFileHelper;
 
-import javax.annotation.Nullable;
 import java.util.concurrent.CompletableFuture;
 
 public class AetherIIItemTagData extends ItemTagsProvider {
-    public AetherIIItemTagData(PackOutput output, CompletableFuture<HolderLookup.Provider> registries, CompletableFuture<TagLookup<Block>> blockTags, @Nullable ExistingFileHelper helper) {
-        super(output, registries, blockTags, AetherII.MODID, helper);
+    public AetherIIItemTagData(PackOutput output, CompletableFuture<HolderLookup.Provider> registries, CompletableFuture<TagLookup<Block>> blockTags) {
+        super(output, registries, blockTags, AetherII.MODID);
     }
 
     @SuppressWarnings("unchecked")
@@ -41,6 +39,8 @@ public class AetherIIItemTagData extends ItemTagsProvider {
         this.copy(AetherIITags.Blocks.WISPROOT_DECORATIVE_BLOCKS, AetherIITags.Items.WISPROOT_DECORATIVE_BLOCKS);
         this.copy(AetherIITags.Blocks.HOLYSTONE_DECORATIVE_BLOCKS, AetherIITags.Items.HOLYSTONE_DECORATIVE_BLOCKS);
         this.copy(AetherIITags.Blocks.FADED_HOLYSTONE_DECORATIVE_BLOCKS, AetherIITags.Items.FADED_HOLYSTONE_DECORATIVE_BLOCKS);
+        this.copy(AetherIITags.Blocks.ICHORITE_DECORATIVE_BLOCKS, AetherIITags.Items.ICHORITE_DECORATIVE_BLOCKS);
+        this.copy(AetherIITags.Blocks.MARBLED_ICHORITE_DECORATIVE_BLOCKS, AetherIITags.Items.MARBLED_ICHORITE_DECORATIVE_BLOCKS);
         this.copy(AetherIITags.Blocks.AGIOSITE_DECORATIVE_BLOCKS, AetherIITags.Items.AGIOSITE_DECORATIVE_BLOCKS);
         this.copy(AetherIITags.Blocks.ICESTONE_DECORATIVE_BLOCKS, AetherIITags.Items.ICESTONE_DECORATIVE_BLOCKS);
         this.tag(AetherIITags.Items.RODS_SKYROOT).add(AetherIIItems.SKYROOT_STICK.get());
@@ -345,6 +345,7 @@ public class AetherIIItemTagData extends ItemTagsProvider {
                 AetherIIBlocks.GREATROOT_LOG.asItem(),
                 AetherIIBlocks.WISPROOT_LOG.asItem(),
                 AetherIIBlocks.MOSSY_WISPROOT_LOG.asItem(),
+                AetherIIBlocks.MOSSY_WISPROOT_LOG_END.asItem(),
                 AetherIIBlocks.AMBEROOT_LOG.asItem(),
                 AetherIIBlocks.SKYROOT_LEAVES.asItem(),
                 AetherIIBlocks.SKYPLANE_LEAVES.asItem(),
@@ -651,16 +652,16 @@ public class AetherIIItemTagData extends ItemTagsProvider {
         );
         this.tag(Tags.Items.GLASS_BLOCKS_COLORLESS).add(
                 AetherIIBlocks.QUICKSOIL_GLASS.asItem(),
-                AetherIIBlocks.SKYROOT_FRAMED_QUICKSOIL_GLASS.asItem(),
-                AetherIIBlocks.ARKENIUM_FRAMED_QUICKSOIL_GLASS.asItem(),
+                AetherIIBlocks.TILED_QUICKSOIL_GLASS.asItem(),
+                AetherIIBlocks.GRIDDED_QUICKSOIL_GLASS.asItem(),
                 AetherIIBlocks.SCATTERGLASS.asItem(),
                 AetherIIBlocks.SKYROOT_FRAMED_SCATTERGLASS.asItem(),
                 AetherIIBlocks.ARKENIUM_FRAMED_SCATTERGLASS.asItem()
         );
         this.tag(Tags.Items.GLASS_PANES_COLORLESS).add(
                 AetherIIBlocks.QUICKSOIL_GLASS_PANE.asItem(),
-                AetherIIBlocks.SKYROOT_FRAMED_QUICKSOIL_GLASS_PANE.asItem(),
-                AetherIIBlocks.ARKENIUM_FRAMED_QUICKSOIL_GLASS_PANE.asItem(),
+                AetherIIBlocks.TILED_QUICKSOIL_GLASS_PANE.asItem(),
+                AetherIIBlocks.GRIDDED_QUICKSOIL_GLASS_PANE.asItem(),
                 AetherIIBlocks.SCATTERGLASS_PANE.asItem(),
                 AetherIIBlocks.SKYROOT_FRAMED_SCATTERGLASS_PANE.asItem(),
                 AetherIIBlocks.ARKENIUM_FRAMED_SCATTERGLASS_PANE.asItem()

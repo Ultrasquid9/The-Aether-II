@@ -44,6 +44,7 @@ public class AetherIILoot {
 
     // Stripping
     public static final ResourceKey<LootTable> STRIP_MOSSY_WISPROOT = register("stripping/strip_mossy_wisproot");
+    public static final ResourceKey<LootTable> STRIP_MOSSY_WISPROOT_END = register("stripping/strip_mossy_wisproot_end");
     public static final ResourceKey<LootTable> STRIP_AMBEROOT = register("stripping/strip_amberoot");
 
     private static ResourceKey<LootTable> register(String id) {

@@ -16,18 +16,18 @@
       "y": 270
     },
     "blasting=false,charging=true,facing=east": {
-      "model": "aether_ii:block/altar",
+      "model": "aether_ii:block/altar_charging",
       "y": 90
     },
     "blasting=false,charging=true,facing=north": {
-      "model": "aether_ii:block/altar"
+      "model": "aether_ii:block/altar_charging"
     },
     "blasting=false,charging=true,facing=south": {
-      "model": "aether_ii:block/altar",
+      "model": "aether_ii:block/altar_charging",
       "y": 180
     },
     "blasting=false,charging=true,facing=west": {
-      "model": "aether_ii:block/altar",
+      "model": "aether_ii:block/altar_charging",
       "y": 270
     },
     "blasting=true,charging=false,facing=east": {

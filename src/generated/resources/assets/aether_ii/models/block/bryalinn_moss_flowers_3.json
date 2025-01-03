@@ -1,7 +1,8 @@
 {
   "parent": "aether_ii:block/template_bryalinn_moss_flowers_3",
+  "render_type": "minecraft:cutout",
   "textures": {
     "flowerbed": "aether_ii:block/bryalinn_moss_flowers",
-    "stem": "aether_ii:block/bryalinn_moss_flowers_stem"
+    "particle": "aether_ii:block/bryalinn_moss_flowers"
   }
 }

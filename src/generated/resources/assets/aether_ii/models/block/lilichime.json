@@ -1,6 +1,7 @@
 {
-  "parent": "minecraft:block/cross",
+  "parent": "aether_ii:block/template_lilichime",
+  "render_type": "minecraft:cutout",
   "textures": {
-    "cross": "aether_ii:block/lilichime"
+    "plant": "aether_ii:block/lilichime"
   }
 }

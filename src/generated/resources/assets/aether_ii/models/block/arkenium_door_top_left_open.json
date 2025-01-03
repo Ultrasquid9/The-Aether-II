@@ -1,7 +1,9 @@
 {
-  "parent": "minecraft:block/door_top_left_open",
+  "parent": "aether_ii:block/door_top_left_open",
+  "render_type": "minecraft:cutout",
   "textures": {
-    "bottom": "aether_ii:block/arkenium_door_bottom",
+    "all": "aether_ii:block/arkenium_door",
+    "particle": "aether_ii:block/arkenium_door_top",
     "top": "aether_ii:block/arkenium_door_top"
   }
 }

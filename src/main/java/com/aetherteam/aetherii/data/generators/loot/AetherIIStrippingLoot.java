@@ -29,9 +29,13 @@ public class AetherIIStrippingLoot implements LootTableSubProvider {
     @Override
     public void generate(BiConsumer<ResourceKey<LootTable>, LootTable.Builder> builder) {
         HolderLookup.RegistryLookup<Enchantment> registrylookup = this.registries.lookupOrThrow(Registries.ENCHANTMENT);
-        builder.accept(AetherIILoot.STRIP_MOSSY_WISPROOT, LootTable.lootTable()
+        builder.accept(AetherIILoot.STRIP_MOSSY_WISPROOT_END, LootTable.lootTable()
                 .withPool(LootPool.lootPool().add(LootItem.lootTableItem(AetherIIBlocks.BRYALINN_MOSS_VINES.get())
                         .apply(SetItemCountFunction.setCount(ConstantValue.exactly(1.0F)))
+                        .apply(ApplyBonusCount.addOreBonusCount(registrylookup.getOrThrow(Enchantments.FORTUNE))))));
+        builder.accept(AetherIILoot.STRIP_MOSSY_WISPROOT, LootTable.lootTable()
+                .withPool(LootPool.lootPool().add(LootItem.lootTableItem(AetherIIBlocks.BRYALINN_MOSS_VINES.get())
+                        .apply(SetItemCountFunction.setCount(ConstantValue.exactly(2.0F)))
                         .apply(ApplyBonusCount.addOreBonusCount(registrylookup.getOrThrow(Enchantments.FORTUNE))))));
         builder.accept(AetherIILoot.STRIP_AMBEROOT, LootTable.lootTable()
                 .withPool(LootPool.lootPool().add(LootItem.lootTableItem(AetherIIItems.GOLDEN_AMBER.get())

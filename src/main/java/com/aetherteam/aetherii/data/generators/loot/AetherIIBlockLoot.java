@@ -7,7 +7,6 @@ import com.aetherteam.aetherii.mixin.mixins.common.accessor.BlockLootAccessor;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.Registries;
-import net.minecraft.data.loot.BlockLootSubProvider;
 import net.minecraft.world.flag.FeatureFlags;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
@@ -125,6 +124,8 @@ public class AetherIIBlockLoot extends AetherIIBlockLootSubProvider {
         this.dropSelf(AetherIIBlocks.WISPROOT_LOG.get());
         this.dropSelf(AetherIIBlocks.STRIPPED_WISPROOT_LOG.get());
         this.add(AetherIIBlocks.MOSSY_WISPROOT_LOG.get(), block -> this.createSingleItemTableWithSilkTouch(block, AetherIIBlocks.WISPROOT_LOG.get()));
+        this.add(AetherIIBlocks.MOSSY_WISPROOT_LOG_END.get(), block -> this.createSingleItemTableWithSilkTouch(block, AetherIIBlocks.WISPROOT_LOG.get()));
+        this.add(AetherIIBlocks.MOSSY_WISPROOT_WOOD.get(), block -> this.createSingleItemTableWithSilkTouch(block, AetherIIBlocks.WISPROOT_WOOD.get()));
         this.add(AetherIIBlocks.AMBEROOT_LOG.get(), (wood) -> this.droppingAmberoot(getter, wood, AetherIIBlocks.SKYROOT_LOG.get(), AetherIIItems.GOLDEN_AMBER.get()));
         this.dropSelf(AetherIIBlocks.SKYROOT_WOOD.get());
         this.dropSelf(AetherIIBlocks.STRIPPED_SKYROOT_WOOD.get());
@@ -219,6 +220,7 @@ public class AetherIIBlockLoot extends AetherIIBlockLootSubProvider {
         this.dropSelf(AetherIIBlocks.AECHOR_CUTTING.get());
 
         // Potted Flowers
+        this.dropPottedContents(AetherIIBlocks.POTTED_MAGNETIC_SHROOM.get());
         this.dropPottedContents(AetherIIBlocks.POTTED_HIGHLAND_FERN.get());
         this.dropPottedContents(AetherIIBlocks.POTTED_SHIELD_FERN.get());
         this.dropPottedContents(AetherIIBlocks.POTTED_HESPEROSE.get());
@@ -396,6 +398,55 @@ public class AetherIIBlockLoot extends AetherIIBlockLootSubProvider {
         this.add(AetherIIBlocks.UNDERSHALE_BRICK_SLAB.get(), this::createSlabItemTable);
         this.dropSelf(AetherIIBlocks.UNDERSHALE_BRICK_WALL.get());
 
+        // Ichorite
+        this.dropSelf(AetherIIBlocks.ICHORITE.get());
+        this.dropSelf(AetherIIBlocks.ICHORITE_STAIRS.get());
+        this.dropSelf(AetherIIBlocks.ICHORITE_SLAB.get());
+        this.dropSelf(AetherIIBlocks.ICHORITE_WALL.get());
+
+        // Smooth Ichorite
+        this.dropSelf(AetherIIBlocks.SMOOTH_ICHORITE.get());
+        this.dropSelf(AetherIIBlocks.SMOOTH_ICHORITE_STAIRS.get());
+        this.dropSelf(AetherIIBlocks.SMOOTH_ICHORITE_SLAB.get());
+        this.dropSelf(AetherIIBlocks.SMOOTH_ICHORITE_WALL.get());
+
+        // Ichorite Bricks
+        this.dropSelf(AetherIIBlocks.ICHORITE_BRICKS.get());
+        this.dropSelf(AetherIIBlocks.ICHORITE_BRICK_STAIRS.get());
+        this.dropSelf(AetherIIBlocks.ICHORITE_BRICK_SLAB.get());
+        this.dropSelf(AetherIIBlocks.ICHORITE_BRICK_WALL.get());
+
+        // Ichorite Decorative Blocks
+        this.dropSelf(AetherIIBlocks.ICHORITE_FLAGSTONES.get());
+        this.dropSelf(AetherIIBlocks.ICHORITE_RUNESTONE.get());
+        this.dropSelf(AetherIIBlocks.ICHORITE_KEYSTONE.get());
+        this.dropSelf(AetherIIBlocks.ICHORITE_BASE_BRICKS.get());
+        this.dropSelf(AetherIIBlocks.ICHORITE_CAPSTONE_BRICKS.get());
+        this.dropSelf(AetherIIBlocks.ICHORITE_BASE_PILLAR.get());
+        this.dropSelf(AetherIIBlocks.ICHORITE_CAPSTONE_PILLAR.get());
+        this.dropSelf(AetherIIBlocks.ICHORITE_PILLAR.get());
+
+        // Marbled Ichorite
+        this.dropSelf(AetherIIBlocks.MARBLED_ICHORITE.get());
+        this.dropSelf(AetherIIBlocks.MARBLED_ICHORITE_STAIRS.get());
+        this.dropSelf(AetherIIBlocks.MARBLED_ICHORITE_SLAB.get());
+        this.dropSelf(AetherIIBlocks.MARBLED_ICHORITE_WALL.get());
+
+        // Marbled Bricks
+        this.dropSelf(AetherIIBlocks.MARBLED_BRICKS.get());
+        this.dropSelf(AetherIIBlocks.MARBLED_BRICK_STAIRS.get());
+        this.dropSelf(AetherIIBlocks.MARBLED_BRICK_SLAB.get());
+        this.dropSelf(AetherIIBlocks.MARBLED_BRICK_WALL.get());
+
+        // Marbled Ichorite Decorative Blocks
+        this.dropSelf(AetherIIBlocks.MARBLED_FLAGSTONES.get());
+        this.dropSelf(AetherIIBlocks.MARBLED_KEYSTONE.get());
+        this.dropSelf(AetherIIBlocks.MARBLED_BASE_BRICKS.get());
+        this.dropSelf(AetherIIBlocks.MARBLED_CAPSTONE_BRICKS.get());
+        this.dropSelf(AetherIIBlocks.MARBLED_BASE_PILLAR.get());
+        this.dropSelf(AetherIIBlocks.MARBLED_CAPSTONE_PILLAR.get());
+        this.dropSelf(AetherIIBlocks.MARBLED_PILLAR.get());
+
         // Agiosite
         this.dropSelf(AetherIIBlocks.AGIOSITE_STAIRS.get());
         this.add(AetherIIBlocks.AGIOSITE_SLAB.get(), this::createSlabItemTable);
@@ -438,8 +489,8 @@ public class AetherIIBlockLoot extends AetherIIBlockLootSubProvider {
 
         // Glass
         this.dropWhenSilkTouch(AetherIIBlocks.QUICKSOIL_GLASS.get());
-        this.dropWhenSilkTouch(AetherIIBlocks.SKYROOT_FRAMED_QUICKSOIL_GLASS.get());
-        this.dropWhenSilkTouch(AetherIIBlocks.ARKENIUM_FRAMED_QUICKSOIL_GLASS.get());
+        this.dropWhenSilkTouch(AetherIIBlocks.TILED_QUICKSOIL_GLASS.get());
+        this.dropWhenSilkTouch(AetherIIBlocks.GRIDDED_QUICKSOIL_GLASS.get());
         this.dropWhenSilkTouch(AetherIIBlocks.SKYROOT_FRAMED_CRUDE_SCATTERGLASS.get());
         this.dropWhenSilkTouch(AetherIIBlocks.ARKENIUM_FRAMED_CRUDE_SCATTERGLASS.get());
         this.dropSelf(AetherIIBlocks.SCATTERGLASS.get());
@@ -448,8 +499,8 @@ public class AetherIIBlockLoot extends AetherIIBlockLootSubProvider {
 
         // Glass Panes
         this.dropWhenSilkTouch(AetherIIBlocks.QUICKSOIL_GLASS_PANE.get());
-        this.dropWhenSilkTouch(AetherIIBlocks.SKYROOT_FRAMED_QUICKSOIL_GLASS_PANE.get());
-        this.dropWhenSilkTouch(AetherIIBlocks.ARKENIUM_FRAMED_QUICKSOIL_GLASS_PANE.get());
+        this.dropWhenSilkTouch(AetherIIBlocks.TILED_QUICKSOIL_GLASS_PANE.get());
+        this.dropWhenSilkTouch(AetherIIBlocks.GRIDDED_QUICKSOIL_GLASS_PANE.get());
         this.dropSelf(AetherIIBlocks.CRUDE_SCATTERGLASS_PANE.get());
         this.dropWhenSilkTouch(AetherIIBlocks.SKYROOT_FRAMED_CRUDE_SCATTERGLASS_PANE.get());
         this.dropWhenSilkTouch(AetherIIBlocks.ARKENIUM_FRAMED_CRUDE_SCATTERGLASS_PANE.get());

@@ -9,14 +9,12 @@ import net.minecraft.tags.BlockTags;
 import net.minecraft.world.level.block.Blocks;
 import net.neoforged.neoforge.common.Tags;
 import net.neoforged.neoforge.common.data.BlockTagsProvider;
-import net.neoforged.neoforge.common.data.ExistingFileHelper;
 
-import javax.annotation.Nullable;
 import java.util.concurrent.CompletableFuture;
 
 public class AetherIIBlockTagData extends BlockTagsProvider {
-    public AetherIIBlockTagData(PackOutput output, CompletableFuture<HolderLookup.Provider> registries, @Nullable ExistingFileHelper helper) {
-        super(output, registries, AetherII.MODID, helper);
+    public AetherIIBlockTagData(PackOutput output, CompletableFuture<HolderLookup.Provider> registries) {
+        super(output, registries, AetherII.MODID);
     }
 
     @SuppressWarnings("unchecked")
@@ -117,7 +115,9 @@ public class AetherIIBlockTagData extends BlockTagsProvider {
         this.tag(AetherIITags.Blocks.WISPROOT_LOGS).add(
                 AetherIIBlocks.WISPROOT_LOG.get(),
                 AetherIIBlocks.MOSSY_WISPROOT_LOG.get(),
+                AetherIIBlocks.MOSSY_WISPROOT_LOG_END.get(),
                 AetherIIBlocks.WISPROOT_WOOD.get(),
+                AetherIIBlocks.MOSSY_WISPROOT_WOOD.get(),
                 AetherIIBlocks.STRIPPED_WISPROOT_LOG.get(),
                 AetherIIBlocks.STRIPPED_WISPROOT_WOOD.get()
         );
@@ -177,6 +177,25 @@ public class AetherIIBlockTagData extends BlockTagsProvider {
                 AetherIIBlocks.FADED_HOLYSTONE_BASE_PILLAR.get(),
                 AetherIIBlocks.FADED_HOLYSTONE_CAPSTONE_PILLAR.get(),
                 AetherIIBlocks.FADED_HOLYSTONE_PILLAR.get()
+        );
+        this.tag(AetherIITags.Blocks.ICHORITE_DECORATIVE_BLOCKS).add(
+                AetherIIBlocks.ICHORITE_FLAGSTONES.get(),
+                AetherIIBlocks.ICHORITE_RUNESTONE.get(),
+                AetherIIBlocks.ICHORITE_KEYSTONE.get(),
+                AetherIIBlocks.ICHORITE_BASE_BRICKS.get(),
+                AetherIIBlocks.ICHORITE_CAPSTONE_BRICKS.get(),
+                AetherIIBlocks.ICHORITE_BASE_PILLAR.get(),
+                AetherIIBlocks.ICHORITE_CAPSTONE_PILLAR.get(),
+                AetherIIBlocks.ICHORITE_PILLAR.get()
+        );
+        this.tag(AetherIITags.Blocks.MARBLED_ICHORITE_DECORATIVE_BLOCKS).add(
+                AetherIIBlocks.MARBLED_FLAGSTONES.get(),
+                AetherIIBlocks.MARBLED_KEYSTONE.get(),
+                AetherIIBlocks.MARBLED_BASE_BRICKS.get(),
+                AetherIIBlocks.MARBLED_CAPSTONE_BRICKS.get(),
+                AetherIIBlocks.MARBLED_BASE_PILLAR.get(),
+                AetherIIBlocks.MARBLED_CAPSTONE_PILLAR.get(),
+                AetherIIBlocks.MARBLED_PILLAR.get()
         );
         this.tag(AetherIITags.Blocks.AGIOSITE_DECORATIVE_BLOCKS).add(
                 AetherIIBlocks.AGIOSITE_FLAGSTONES.get(),
@@ -499,6 +518,7 @@ public class AetherIIBlockTagData extends BlockTagsProvider {
                 AetherIIBlocks.POTTED_BLUEBERRY_BUSH.get(),
                 AetherIIBlocks.POTTED_BLUEBERRY_BUSH_STEM.get(),
                 AetherIIBlocks.POTTED_ORANGE_TREE.get(),
+                AetherIIBlocks.POTTED_MAGNETIC_SHROOM.get(),
                 AetherIIBlocks.POTTED_HIGHLAND_FERN.get(),
                 AetherIIBlocks.POTTED_SHIELD_FERN.get(),
                 AetherIIBlocks.POTTED_HESPEROSE.get(),
@@ -528,8 +548,8 @@ public class AetherIIBlockTagData extends BlockTagsProvider {
         this.tag(BlockTags.VALID_SPAWN).addTag(AetherIITags.Blocks.AETHER_DIRT);
         this.tag(BlockTags.IMPERMEABLE).add(
                 AetherIIBlocks.QUICKSOIL_GLASS.get(),
-                AetherIIBlocks.SKYROOT_FRAMED_QUICKSOIL_GLASS.get(),
-                AetherIIBlocks.ARKENIUM_FRAMED_QUICKSOIL_GLASS.get(),
+                AetherIIBlocks.TILED_QUICKSOIL_GLASS.get(),
+                AetherIIBlocks.GRIDDED_QUICKSOIL_GLASS.get(),
                 AetherIIBlocks.CRUDE_SCATTERGLASS.get(),
                 AetherIIBlocks.SKYROOT_FRAMED_CRUDE_SCATTERGLASS.get(),
                 AetherIIBlocks.ARKENIUM_FRAMED_CRUDE_SCATTERGLASS.get(),
@@ -960,16 +980,16 @@ public class AetherIIBlockTagData extends BlockTagsProvider {
         );
         this.tag(Tags.Blocks.GLASS_BLOCKS_COLORLESS).add(
                 AetherIIBlocks.QUICKSOIL_GLASS.get(),
-                AetherIIBlocks.SKYROOT_FRAMED_QUICKSOIL_GLASS.get(),
-                AetherIIBlocks.ARKENIUM_FRAMED_QUICKSOIL_GLASS.get(),
+                AetherIIBlocks.TILED_QUICKSOIL_GLASS.get(),
+                AetherIIBlocks.GRIDDED_QUICKSOIL_GLASS.get(),
                 AetherIIBlocks.SCATTERGLASS.get(),
                 AetherIIBlocks.SKYROOT_FRAMED_SCATTERGLASS.get(),
                 AetherIIBlocks.ARKENIUM_FRAMED_SCATTERGLASS.get()
         );
         this.tag(Tags.Blocks.GLASS_PANES_COLORLESS).add(
                 AetherIIBlocks.QUICKSOIL_GLASS_PANE.get(),
-                AetherIIBlocks.SKYROOT_FRAMED_QUICKSOIL_GLASS_PANE.get(),
-                AetherIIBlocks.ARKENIUM_FRAMED_QUICKSOIL_GLASS_PANE.get(),
+                AetherIIBlocks.TILED_QUICKSOIL_GLASS_PANE.get(),
+                AetherIIBlocks.GRIDDED_QUICKSOIL_GLASS_PANE.get(),
                 AetherIIBlocks.SCATTERGLASS_PANE.get(),
                 AetherIIBlocks.SKYROOT_FRAMED_SCATTERGLASS_PANE.get(),
                 AetherIIBlocks.ARKENIUM_FRAMED_SCATTERGLASS_PANE.get()

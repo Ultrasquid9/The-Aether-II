@@ -1,6 +1,6 @@
 {
   "model": {
     "type": "minecraft:model",
-    "model": "aether_ii:block/scatterglass_pane"
+    "model": "aether_ii:item/scatterglass_pane"
   }
 }

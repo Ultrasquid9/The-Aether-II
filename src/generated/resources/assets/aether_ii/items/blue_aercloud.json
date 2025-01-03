@@ -1,6 +1,6 @@
 {
   "model": {
     "type": "minecraft:model",
-    "model": "aether_ii:block/blue_aercloud"
+    "model": "aether_ii:item/blue_aercloud"
   }
 }

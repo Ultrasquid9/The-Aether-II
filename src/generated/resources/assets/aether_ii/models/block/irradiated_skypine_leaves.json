@@ -2,7 +2,6 @@
   "parent": "minecraft:block/leaves",
   "render_type": "minecraft:cutout_mipped",
   "textures": {
-    "all": "aether_ii:block/irradiated_skypine_leaves",
-    "particle": "aether_ii:block/irradiated_skypine_leaves"
+    "all": "aether_ii:block/irradiated_skypine_leaves"
   }
 }
