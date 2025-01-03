@@ -41,7 +41,6 @@ public class AetherIIClient {
     public static void clientSetup(FMLClientSetupEvent event) {
         event.enqueueWork(() -> {
             AetherIIAtlases.registerSkyrootChestAtlases();
-            registerItemModelProperties();
             registerTooltipOverrides();
 
             ItemBlockRenderTypes.setRenderLayer(AetherIIFluids.FLOWING_ACID.get(), RenderType.translucent());
@@ -83,15 +82,6 @@ public class AetherIIClient {
     public static void registerDimensionTransitionScreens(RegisterDimensionTransitionScreenEvent event) {
         event.registerIncomingEffect(AetherIIDimensions.AETHER_HIGHLANDS_LEVEL, HighlandsReceivingLevelScreen::new);
         event.registerOutgoingEffect(AetherIIDimensions.AETHER_HIGHLANDS_LEVEL, HighlandsReceivingLevelScreen::new);
-    }
-
-    public static void registerItemModelProperties() {
-        //TODO Properties Support in 1.21.4
-        /*
-        registerGliderProperties(AetherIIItems.COLD_AERCLOUD_GLIDER.get(), false);
-        registerGliderProperties(AetherIIItems.GOLDEN_AERCLOUD_GLIDER.get(), false);
-        registerGliderProperties(AetherIIItems.BLUE_AERCLOUD_GLIDER.get(), true);
-        registerGliderProperties(AetherIIItems.PURPLE_AERCLOUD_GLIDER.get(), true);*/
     }
 
     public static void registerTooltipOverrides() {
