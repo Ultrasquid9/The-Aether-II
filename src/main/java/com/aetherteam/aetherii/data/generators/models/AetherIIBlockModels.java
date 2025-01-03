@@ -43,7 +43,6 @@ public class AetherIIBlockModels extends AetherIIBlockModelSubProvider {
         this.createTrivialCube(AetherIIBlocks.ICHORITE.get());
         this.createSnowyCross(AetherIIBlocks.SKY_ROOTS.get());
         this.createTranslucentCubeInnerFaces(AetherIIBlocks.GAS.get());
-//        this.createTranslucentCube(AetherIIBlocks.ACID.get()); //todo ???? blockstate definition
         this.createPointedStone(AetherIIBlocks.POINTED_HOLYSTONE.get());
         this.createPointedStone(AetherIIBlocks.POINTED_ICHORITE.get());
 
@@ -185,10 +184,6 @@ public class AetherIIBlockModels extends AetherIIBlockModelSubProvider {
         this.createBush(AetherIIBlocks.BLUEBERRY_BUSH.get());
 
         // Orange Tree
-//        this.createCrossBlock(AetherIIBlocks.ORANGE_TREE.get(), BlockModelGenerators.PlantType.NOT_TINTED); //todo custom model
-
-        // Potted Orange Tree
-//        this.createPlantWithDefaultItem(AetherIIBlocks.ORANGE_TREE.get(), AetherIIBlocks.POTTED_ORANGE_TREE.get(), BlockModelGenerators.PlantType.NOT_TINTED); //todo
         this.createOrangeTree(AetherIIBlocks.ORANGE_TREE.get(), AetherIIBlocks.POTTED_ORANGE_TREE.get());
 
         // Surface Vegetation
@@ -338,8 +333,9 @@ public class AetherIIBlockModels extends AetherIIBlockModelSubProvider {
         this.createAltar(AetherIIBlocks.ALTAR.get(), AetherIIBlocks.HOLYSTONE.get());
         this.createArtisansBench(AetherIIBlocks.ARTISANS_BENCH.get(), AetherIIBlocks.SKYROOT_PLANKS.get());
         this.createArkeniumForge(AetherIIBlocks.ARKENIUM_FORGE.get(), AetherIIBlocks.ARKENIUM_BLOCK.get());
-        this.createChest(AetherIIBlocks.SKYROOT_CHEST.get(), AetherIIBlocks.SKYROOT_PLANKS.get(), ResourceLocation.fromNamespaceAndPath(AetherII.MODID, "skyroot"), true); //todo item model rendering texture?
+        this.createChest(AetherIIBlocks.SKYROOT_CHEST.get(), AetherIIBlocks.SKYROOT_PLANKS.get(), ResourceLocation.fromNamespaceAndPath(AetherII.MODID, "skyroot_chest"), true);
         this.createLadder(AetherIIBlocks.SKYROOT_LADDER.get());
+        this.createBed(AetherIIBlocks.SKYROOT_BED.get(), AetherIIBlocks.SKYROOT_PLANKS.get(), ResourceLocation.fromNamespaceAndPath(AetherII.MODID, "skyroot_bed"));
 //        this.createTrivialCube(AetherIIBlocks.SKYROOT_BED.get()); //todo
 
         this.createHangingSign(AetherIIBlocks.STRIPPED_SKYROOT_LOG.get(), AetherIIBlocks.SKYROOT_HANGING_SIGN.get(), AetherIIBlocks.SKYROOT_WALL_HANGING_SIGN.get());

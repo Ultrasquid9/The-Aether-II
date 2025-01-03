@@ -158,15 +158,7 @@ package com.aetherteam.aetherii.data.providers;
 //            }
 //        }
 //    }
-//
-//    public void pottedBush(Block bush, String location) {
-//        this.pottedBush(bush, this.name(bush) + "_stem", location);
-//    }
-//
-//    public void pottedBush(Block bush, Block stem, String location) {
-//        this.pottedBush(bush, this.name(stem), location);
-//    }
-//
+
 //    public void pottedBush(Block bush, String stem, String location) {
 //        ModelFile pot = this.pottedStemModel(bush, stem, location)
 //                .texture("stem", this.modLoc("block/" + location + stem)).texture("bush", this.modLoc("block/" + location + this.name(bush)))
@@ -181,10 +173,6 @@ package com.aetherteam.aetherii.data.providers;
 //        this.getVariantBuilder(bush).partialState().addModels(new ConfiguredModel(pot));
 //    }
 //
-//    public void pottedStem(Block stem, String location) {
-//        ModelFile pot = this.pottedStemModel(stem, this.name(stem), location).renderType(ResourceLocation.withDefaultNamespace("cutout"));
-//        this.getVariantBuilder(stem).partialState().addModels(new ConfiguredModel(pot));
-//    }
 //
 //    public BlockModelBuilder pottedStemModel(Block block, String stem, String location) {
 //        return models().withExistingParent(this.name(block), this.mcLoc("block/block"))
@@ -228,40 +216,6 @@ package com.aetherteam.aetherii.data.providers;
 //                .element().from(8.0F, 6.0F, 1.0F).to(8.0F, 16.0F, 15.0F).rotation().angle(45.0F).axis(Direction.Axis.Y).origin(8.0F, 8.0F, 8.0F).end()
 //                .face(Direction.EAST).uvs(1.0F, 4.0F, 15.0F, 14.0F).texture("#stem").end()
 //                .face(Direction.WEST).uvs(1.0F, 4.0F, 15.0F, 14.0F).texture("#stem").end().end();
-//    }
-//
-//    public void orangeTree(Block block) {
-//        String blockName = this.name(block);
-//        this.getVariantBuilder(block).forAllStates((state) -> {
-//            DoubleBlockHalf halfProperty = state.getValue(OrangeTreeBlock.HALF);
-//            int age = state.getValue(OrangeTreeBlock.AGE);
-//            boolean lower = halfProperty == DoubleBlockHalf.LOWER;
-//            int bottomAge = age == 3 ? 2 : age;
-//            int topAge = Math.max(age, 2);
-//            String halfString = lower ? "_bottom_" : "_top_";
-//            ResourceLocation location = lower ? this.extend(this.texture(blockName, "natural/"), halfString + bottomAge) : this.extend(this.texture(blockName, "natural/"), halfString + topAge);
-//            ModelFile model = this.models().cross(blockName + (lower ? (halfString + bottomAge) : (halfString + topAge)), location).renderType(ResourceLocation.withDefaultNamespace("cutout"));
-//            return ConfiguredModel.builder().modelFile(model).build();
-//        });
-//    }
-//
-//    public void pottedOrangeTree(Block block, Block tree) {
-//        ModelFile pot = this.models().withExistingParent(this.name(block), this.mcLoc("block/flower_pot_cross")).texture("plant", this.modLoc("block/natural/" + this.name(tree) + "_bottom_0")).renderType(ResourceLocation.withDefaultNamespace("cutout"));
-//        this.getVariantBuilder(block).partialState().addModels(new ConfiguredModel(pot));
-//    }
-//
-//    public void brettlPlant(Block block) {
-//        String blockName = this.name(block);
-//        ModelFile normal = this.models().cross(blockName, this.extend(this.texture(this.name(block), "natural/"), "")).renderType(ResourceLocation.withDefaultNamespace("cutout"));
-//        ModelFile grown = this.models().cross(blockName + "_grown", this.extend(this.texture(this.name(block), "natural/"), "_grown")).renderType(ResourceLocation.withDefaultNamespace("cutout"));
-//
-//        this.getVariantBuilder(block).forAllStatesExcept((state) -> {
-//            if (state.getValue(BrettlPlantBlock.GROWN)) {
-//                return ConfiguredModel.builder().modelFile(grown).build();
-//            } else {
-//                return ConfiguredModel.builder().modelFile(normal).build();
-//            }
-//        });
 //    }
 //
 //    public void skyrootChest(Block block) {

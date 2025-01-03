@@ -19,8 +19,10 @@ import net.minecraft.client.data.models.BlockModelGenerators;
 import net.minecraft.client.data.models.ItemModelOutput;
 import net.minecraft.client.data.models.blockstates.*;
 import net.minecraft.client.data.models.model.*;
+import net.minecraft.client.renderer.special.BedSpecialRenderer;
 import net.minecraft.core.Direction;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
@@ -604,6 +606,14 @@ public class AetherIIBlockModelSubProvider extends BlockModelGenerators {
         this.blockStateOutput.accept(MultiVariantGenerator.multiVariant(block, Variant.variant().with(VariantProperties.MODEL, location))
                 .with(BlockModelGenerators.createHorizontalFacingDispatch()));
         this.registerSimpleFlatItemModel(block);
+    }
+
+    public void createBed(Block bed, Block particle, ResourceLocation location) {
+        ResourceLocation modelLocation = AetherIIModelTemplates.decorateBlockModelLocation("skyroot_bed");
+        this.blockStateOutput.accept(createSimpleBlock(bed, modelLocation));
+        Item item = bed.asItem();
+        ResourceLocation inventoryLocation = ModelTemplates.BED_INVENTORY.create(ModelLocationUtils.getModelLocation(item), TextureMapping.particle(particle), this.modelOutput);
+        this.itemModelOutput.accept(item, ItemModelUtils.specialModel(inventoryLocation, new BedSpecialRenderer.Unbaked(location)));
     }
 
     public void createMoaEgg(Block block) {
