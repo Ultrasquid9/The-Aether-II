@@ -10,6 +10,7 @@ import net.minecraft.client.data.models.model.*;
 import net.minecraft.client.renderer.item.ItemModel;
 import net.minecraft.client.renderer.item.SelectItemModel;
 import net.minecraft.client.renderer.item.properties.select.Charge;
+import net.minecraft.client.renderer.special.ShieldSpecialRenderer;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.CrossbowItem;
 import net.minecraft.world.item.Item;
@@ -39,6 +40,12 @@ public class AetherIIItemModelSubProvider extends ItemModelGenerators {
         this.itemModelOutput.accept(item, ItemModelUtils.conditional(ItemModelUtils.isUsingItem(),
                 ItemModelUtils.rangeSelect(new TieredCrossbowPullRange(), pulling0, ItemModelUtils.override(pulling1, 0.58F), ItemModelUtils.override(pulling2, 1.0F)),
                 ItemModelUtils.select(new Charge(), base, ItemModelUtils.when(CrossbowItem.ChargeType.ARROW, arrow))));
+    }
+
+    public void generateModeledShield(Item item) {
+        ItemModel.Unbaked normal = ItemModelUtils.plainModel(ModelLocationUtils.getModelLocation(item));
+        ItemModel.Unbaked blocking = ItemModelUtils.plainModel(ModelLocationUtils.getModelLocation(item, "_blocking"));
+        this.generateBooleanDispatch(item, ItemModelUtils.isUsingItem(), blocking, normal);
     }
 
     public void generateDyedArmorItem(Item item, int defaultColor) {

@@ -241,7 +241,6 @@ public class AetherIIBlockModelSubProvider extends BlockModelGenerators {
         this.registerSimpleFlatItemModel(block);
     }
 
-
     public void createCrystal(Block block, ModelTemplate itemModel) {
         this.blockStateOutput.accept(MultiVariantGenerator.multiVariant(block, Variant.variant().with(VariantProperties.MODEL, AetherIIModelTemplates.TEMPLATE_CUTOUT_CROSS.create(block, TextureMapping.cross(block), this.modelOutput))).with(this.createColumnWithFacing()));
         this.registerSimpleItemModel(block.asItem(), itemModel.create(block.asItem(), TextureMapping.layer0(block), this.modelOutput));
