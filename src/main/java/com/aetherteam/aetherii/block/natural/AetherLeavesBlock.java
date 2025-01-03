@@ -8,6 +8,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.tags.BlockTags;
 import net.minecraft.util.ParticleUtils;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.Entity;
@@ -69,8 +70,8 @@ public class AetherLeavesBlock extends LeavesBlock {
 
     @Override
     protected BlockState updateShape(BlockState state, LevelReader level, ScheduledTickAccess scheduledTickAccess, BlockPos blockPos, Direction direction, BlockPos currentPos, BlockState currentState, RandomSource randomSource) {
-        return direction == Direction.UP && !state.getValue(SNOWY) && (currentState.is(AetherIIBlocks.ARCTIC_SNOW) || currentState.is(AetherIIBlocks.ARCTIC_SNOW_BLOCK))
-                ? state.setValue(SNOWY, true)
+        return direction == Direction.UP
+                ? state.setValue(SNOWY, currentState.is(AetherIIBlocks.ARCTIC_SNOW) || currentState.is(AetherIIBlocks.ARCTIC_SNOW_BLOCK))
                 : super.updateShape(state, level, scheduledTickAccess, blockPos, direction, currentPos, currentState, randomSource);
     }
 
