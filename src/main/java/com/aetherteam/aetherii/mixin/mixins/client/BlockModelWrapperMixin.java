@@ -16,8 +16,6 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public class BlockModelWrapperMixin {
     @Inject(method = "lambda$update$0(Lnet/minecraft/client/renderer/item/ItemStackRenderState;Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/client/renderer/item/ItemStackRenderState$FoilType;[ILnet/minecraft/client/resources/model/BakedModel;)V", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/renderer/item/ItemStackRenderState$LayerRenderState;setupBlockModel(Lnet/minecraft/client/resources/model/BakedModel;Lnet/minecraft/client/renderer/RenderType;)V", shift = At.Shift.AFTER))
     private static void update(ItemStackRenderState renderState, ItemStack stack, ItemStackRenderState.FoilType foilType, int[] tints, BakedModel pass, CallbackInfo ci, @Local ItemStackRenderState.LayerRenderState layerRenderState) {
-        if (!stack.hasFoil() && stack.is(AetherIITags.Items.IRRADIATED_ITEM)) {
-            ((LayerRenderStateWrapper) layerRenderState).aether_ii$setIrradiated(true);
-        }
+        ((LayerRenderStateWrapper) layerRenderState).aether_ii$setIrradiated(!stack.hasFoil() && stack.is(AetherIITags.Items.IRRADIATED_ITEM));
     }
 }
