@@ -16,9 +16,8 @@ public class BlocksLightLeavesBlock extends AetherLeavesBlock {
         return false;
     }
 
-    //TODO
-    /*@Override
+    @Override
     public int getLightBlock(BlockState state) {
-        return getter.getMaxLightLevel();
-    }*/
+        return 15;
+    }
 }

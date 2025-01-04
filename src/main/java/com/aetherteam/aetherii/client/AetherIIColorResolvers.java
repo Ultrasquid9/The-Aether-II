@@ -3,8 +3,6 @@ package com.aetherteam.aetherii.client;
 import com.aetherteam.aetherii.block.AetherIIBlocks;
 import com.aetherteam.aetherii.block.natural.IrradiatedLeavesBlock;
 import net.minecraft.client.renderer.BiomeColors;
-import net.minecraft.core.BlockPos;
-import net.minecraft.world.level.BlockAndTintGetter;
 import net.neoforged.neoforge.client.event.RegisterColorHandlersEvent;
 
 import java.awt.*;
@@ -43,18 +41,6 @@ public class AetherIIColorResolvers {
         event.register(((state, level, pos, tintIndex) ->  level != null && pos != null ? BiomeColors.getAverageGrassColor(level, pos) : AETHER_TALL_GRASS_COLOR),
                 AetherIIBlocks.HIGHLAND_FERN.get(), AetherIIBlocks.POTTED_HIGHLAND_FERN.get());
     }
-
-    //TODO ITEM RENDER
-    /*public static void registerItemColor(RegisterColorHandlersEvent.Item event) {
-        event.register((color, itemProvider) -> itemProvider == 0 ? -1 : DyedItemColor.getOrDefault(color, -3150087),
-                AetherIIItems.TAEGORE_HIDE_HELMET.get(), AetherIIItems.TAEGORE_HIDE_CHESTPLATE.get(), AetherIIItems.TAEGORE_HIDE_LEGGINGS.get(), AetherIIItems.TAEGORE_HIDE_BOOTS.get(), AetherIIItems.TAEGORE_HIDE_GLOVES.get());
-        event.register((color, itemProvider) -> itemProvider == 0 ? -1 : DyedItemColor.getOrDefault(color, -10380096),
-                AetherIIItems.BURRUKAI_PELT_HELMET.get(), AetherIIItems.BURRUKAI_PELT_CHESTPLATE.get(), AetherIIItems.BURRUKAI_PELT_LEGGINGS.get(), AetherIIItems.BURRUKAI_PELT_BOOTS.get(), AetherIIItems.BURRUKAI_PELT_GLOVES.get());
-        event.register((color, itemProvider) -> {
-            BlockState blockstate = ((BlockItem) color.getItem()).getBlock().defaultBlockState();
-            return event.getBlockColors().getColor(blockstate, null, null, itemProvider);
-        }, AetherIIBlocks.AETHER_GRASS_BLOCK.get(), AetherIIBlocks.AETHER_SHORT_GRASS.get(), AetherIIBlocks.AETHER_MEDIUM_GRASS.get(), AetherIIBlocks.AETHER_LONG_GRASS.get(), AetherIIBlocks.HIGHLAND_FERN.get());
-    }*/
 
     public static int createTriTintGrassColor(int tintIndex, int defaultColor, float darkSaturationOffset, float lightSaturationOffset) {
         Color midColor = new Color(defaultColor);
