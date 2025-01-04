@@ -32,7 +32,7 @@ public class SkyrootPineconeItem extends Item implements ThrowableItem {
 
     @Override
     public ItemUseAnimation getUseAnimation(ItemStack pStack) {
-        return ItemUseAnimation.NONE; //todo
+        return ItemUseAnimation.NONE;
     }
 
     @Override

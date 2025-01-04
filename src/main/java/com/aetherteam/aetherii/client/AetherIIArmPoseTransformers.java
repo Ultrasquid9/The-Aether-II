@@ -5,7 +5,7 @@ import net.minecraft.util.Mth;
 import net.neoforged.neoforge.client.IArmPoseTransformer;
 
 public class AetherIIArmPoseTransformers {
-    public static final IArmPoseTransformer GLIDING_TRANSFORMER = (humanoidModel, livingEntity, humanoidArm) -> { 
+    public static final IArmPoseTransformer GLIDING_TRANSFORMER = (humanoidModel, livingEntity, humanoidArm) -> {
         humanoidModel.rightArm.z = 0.0F;
         humanoidModel.rightArm.x = -5.0F;
         humanoidModel.leftArm.z = 0.0F;
