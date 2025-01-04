@@ -28,7 +28,7 @@ public class ItemCooldownsMixin implements ItemCooldownsWrapper {
     @Unique
     public Player player;
 
-    @Inject(at = @At(value = "HEAD"), method = "onCooldownEnded(Lnet/minecraft/resources/ResourceLocation;)V") //todo itemstack?
+    @Inject(at = @At(value = "HEAD"), method = "onCooldownEnded(Lnet/minecraft/resources/ResourceLocation;)V")
     private void onCooldownEnded(ResourceLocation resourceLocation, CallbackInfo ci) {
         List<ResourceLocation> tagContents = StreamSupport.stream(BuiltInRegistries.ITEM.getTagOrEmpty(Tags.Items.TOOLS_SHIELD).spliterator(), false)
                 .map(Holder::unwrapKey).filter(Optional::isPresent).map(optional -> optional.get().location()).toList();
