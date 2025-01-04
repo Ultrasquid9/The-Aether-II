@@ -24,8 +24,7 @@ public class RockItem extends BlockItem implements ThrowableItem {
     public InteractionResult useOn(UseOnContext context) {
         InteractionResult interactionresult = this.place(new BlockPlaceContext(context));
         if (!interactionresult.consumesAction()) {
-            InteractionResult interactionresult1 = this.use(context.getLevel(), context.getPlayer(), context.getHand());
-            return interactionresult1 == InteractionResult.CONSUME ? InteractionResult.CONSUME : interactionresult1;
+            return this.use(context.getLevel(), context.getPlayer(), context.getHand());
         } else {
             return interactionresult;
         }
