@@ -28,15 +28,17 @@
     "common.accessor.ServerGamePacketListenerImplAccessor"
   ],
   "client": [
+    "client.BlockModelWrapperMixin",
     "client.BlockRenderDispatcherMixin",
     "client.ClientLevelMixin",
-    "client.ItemRendererMixin",
+    "client.LayerRenderStateMixin",
     "client.LevelRendererMixin",
     "client.LiquidBlockRendererMixin",
     "client.accessor.DeathScreenAccessor",
     "client.accessor.EditBoxAccessor",
     "client.accessor.GuiAccessor",
     "client.accessor.InventoryScreenAccessor",
+    "client.accessor.ItemRendererAccessor",
     "client.accessor.LevelRendererAccessor",
     "client.accessor.ParticleAccessor",
     "client.accessor.PlayerModelAccessor",

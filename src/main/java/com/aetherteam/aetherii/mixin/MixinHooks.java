@@ -6,13 +6,18 @@ import com.aetherteam.aetherii.client.renderer.AetherIIRenderTypes;
 import com.aetherteam.aetherii.client.renderer.level.HighlandsSpecialEffects;
 import com.aetherteam.aetherii.data.resources.registries.AetherIIDamageTypes;
 import com.aetherteam.aetherii.entity.AetherIIAttributes;
+import com.aetherteam.aetherii.mixin.mixins.client.accessor.ItemRendererAccessor;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.SheetedDecalTextureGenerator;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.mojang.blaze3d.vertex.VertexMultiConsumer;
+import com.mojang.math.MatrixUtil;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
+import net.minecraft.client.renderer.entity.ItemRenderer;
+import net.minecraft.client.renderer.item.ItemStackRenderState;
+import net.minecraft.client.resources.model.BakedModel;
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
@@ -22,6 +27,7 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.decoration.ArmorStand;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.phys.Vec3;
 
 public class MixinHooks {
@@ -151,7 +157,8 @@ public class MixinHooks {
         return particleOptions;
     }
 
-    public static VertexConsumer getRedFoil(MultiBufferSource bufferSource, RenderType renderType) {
-        return VertexMultiConsumer.create(VertexMultiConsumer.create(bufferSource.getBuffer(AetherIIRenderTypes.irradiatedGlint())), bufferSource.getBuffer(renderType));
+    public static void renderIrradiated(PoseStack poseStack, MultiBufferSource bufferSource, int i, int j, int[] tints, BakedModel model, RenderType renderType) {
+        VertexConsumer vertexconsumer = VertexMultiConsumer.create(VertexMultiConsumer.create(bufferSource.getBuffer(AetherIIRenderTypes.irradiatedGlint())), bufferSource.getBuffer(renderType));
+        ItemRendererAccessor.callRenderModelLists(model, tints, i, j, poseStack, vertexconsumer);
     }
 }
