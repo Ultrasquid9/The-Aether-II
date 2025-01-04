@@ -14,6 +14,7 @@ import net.minecraft.world.level.block.LiquidBlockContainer;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.Fluid;
 import net.minecraft.world.level.material.FluidState;
+import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.EntityCollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
@@ -40,10 +41,11 @@ public class AercloudBlock extends HalfTransparentBlock implements LiquidBlockCo
     @Override
     public void entityInside(BlockState state, Level level, BlockPos pos, Entity entity) {
         entity.resetFallDistance();
-        if (entity.getDeltaMovement().y < 0.0 && !(entity instanceof Projectile)) {
-            entity.setDeltaMovement(entity.getDeltaMovement().multiply(1.0, 0.005, 1.0));
+        if (entity.getDeltaMovement().y < -0.0784000015258789 && !(entity instanceof Projectile)) {
+            entity.makeStuckInBlock(state, new Vec3(1.0, 0.25, 1.0));
+        } else {
+            entity.setOnGround(entity instanceof LivingEntity livingEntity && (!(livingEntity instanceof Player player) || !player.getAbilities().flying));
         }
-        entity.setOnGround(entity instanceof LivingEntity livingEntity && (!(livingEntity instanceof Player player) || !player.getAbilities().flying));
     }
 
     /**
