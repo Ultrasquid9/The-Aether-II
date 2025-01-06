@@ -1574,7 +1574,7 @@ public class HighlandsConfiguredFeatures {
 
         register(context, WATER_POND_TUNDRA, AetherIIFeatures.LAKE.get(),
                 new AetherLakeConfiguration(UniformInt.of(2, 5), BlockStateProvider.simple(Blocks.WATER), SimpleStateProvider.simple(AetherIIBlocks.COARSE_AETHER_DIRT.get())));
-        register(context, WATER_SPRING, Feature.SPRING,
+     register(context, WATER_SPRING, Feature.SPRING,
                 new SpringConfiguration(Fluids.WATER.defaultFluidState(), true, 4, 1, HolderSet.direct(Block::builtInRegistryHolder, AetherIIBlocks.UNDERSHALE.get(), AetherIIBlocks.HOLYSTONE.get(), AetherIIBlocks.AETHER_DIRT.get())));
 
         register(context, NOISE_LAKE, AetherIIFeatures.NOISE_LAKE.get(),
@@ -1582,6 +1582,7 @@ public class HighlandsConfiguredFeatures {
                         AetherIIDensityFunctions.getFunction(function, AetherIIDensityFunctions.LAKES_NOISE),
                         AetherIIDensityFunctions.getFunction(function, AetherIIDensityFunctions.LAKES_FLOOR),
                         AetherIIDensityFunctions.getFunction(function, AetherIIDensityFunctions.LAKES_BARRIER),
+                        AetherIIDensityFunctions.getFunction(function, AetherIIDensityFunctions.LAKES_WATERFALLS),
                         0.3,
                         ConstantInt.of(124),
                         new DualNoiseProvider(
@@ -1599,9 +1600,8 @@ public class HighlandsConfiguredFeatures {
                                         AetherIIBlocks.SHIMMERING_SILT.get().defaultBlockState()
                                 )
                         ),
-                        0.29,
+                        0.31,
                         BlockStateProvider.simple(AetherIIBlocks.QUICKSOIL.get()),
-                        BlockStateProvider.simple(AetherIIBlocks.AETHER_GRASS_BLOCK.get()),
                         AetherIIDensityFunctions.getFunction(function, AetherIIDensityFunctions.LAKES_SHORE),
                         false
                 ));
@@ -1610,6 +1610,7 @@ public class HighlandsConfiguredFeatures {
                         AetherIIDensityFunctions.getFunction(function, AetherIIDensityFunctions.LAKES_NOISE),
                         AetherIIDensityFunctions.getFunction(function, AetherIIDensityFunctions.LAKES_FLOOR),
                         AetherIIDensityFunctions.getFunction(function, AetherIIDensityFunctions.LAKES_BARRIER),
+                        AetherIIDensityFunctions.getFunction(function, AetherIIDensityFunctions.LAKES_WATERFALLS),
                         0.3,
                         ConstantInt.of(124),
                         new DualNoiseProvider(
@@ -1627,8 +1628,7 @@ public class HighlandsConfiguredFeatures {
                                         AetherIIBlocks.SHIMMERING_SILT.get().defaultBlockState()
                                 )
                         ),
-                        0.3,
-                        BlockStateProvider.simple(AetherIIBlocks.AETHER_GRASS_BLOCK.get()),
+                        0.31,
                         BlockStateProvider.simple(AetherIIBlocks.AETHER_GRASS_BLOCK.get()),
                         DensityFunctions.zero(),
                         true
@@ -1639,6 +1639,7 @@ public class HighlandsConfiguredFeatures {
                         AetherIIDensityFunctions.getFunction(function, AetherIIDensityFunctions.LAKES_NOISE_SWAMP),
                         AetherIIDensityFunctions.getFunction(function, AetherIIDensityFunctions.LAKES_FLOOR),
                         AetherIIDensityFunctions.getFunction(function, AetherIIDensityFunctions.LAKES_BARRIER),
+                        AetherIIDensityFunctions.getFunction(function, AetherIIDensityFunctions.LAKES_WATERFALLS),
                         0.3,
                         ConstantInt.of(124),
                         new DualNoiseProvider(
@@ -1670,21 +1671,6 @@ public class HighlandsConfiguredFeatures {
                                         AetherIIBlocks.FERROSITE_MUD.get().defaultBlockState(),
                                         AetherIIBlocks.COARSE_AETHER_DIRT.get().defaultBlockState(),
                                         AetherIIBlocks.BRYALINN_MOSS_BLOCK.get().defaultBlockState()
-                                )
-                        ),
-                        new DualNoiseProvider(
-                                new InclusiveRange<>(1, 4),
-                                new NormalNoise.NoiseParameters(-6, 1.25),
-                                1.0F,
-                                2345L,
-                                new NormalNoise.NoiseParameters(-2, 1.0),
-                                1.0F,
-                                List.of(
-                                        AetherIIBlocks.FERROSITE_MUD.get().defaultBlockState(),
-                                        AetherIIBlocks.COARSE_AETHER_DIRT.get().defaultBlockState(),
-                                        AetherIIBlocks.FERROSITE_MUD.get().defaultBlockState(),
-                                        AetherIIBlocks.COARSE_AETHER_DIRT.get().defaultBlockState(),
-                                        AetherIIBlocks.FERROSITE_SAND.get().defaultBlockState()
                                 )
                         ),
                         AetherIIDensityFunctions.getFunction(function, AetherIIDensityFunctions.LAKES_SHORE),
