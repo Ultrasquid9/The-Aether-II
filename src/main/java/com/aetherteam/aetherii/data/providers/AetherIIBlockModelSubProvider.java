@@ -218,7 +218,7 @@ public class AetherIIBlockModelSubProvider extends BlockModelGenerators {
     public Variant createPointedStoneVariant(Block block, Direction direction, DripstoneThickness thickness) {
         String name = "_" + direction.getSerializedName() + "_" + thickness.getSerializedName();
         TextureMapping mapping = TextureMapping.cross(TextureMapping.getBlockTexture(block, name));
-        return Variant.variant().with(VariantProperties.MODEL, AetherIIModelTemplates.TEMPLATE_CUTOUT_CROSS.createWithSuffix(block, name, mapping, this.modelOutput));
+        return Variant.variant().with(VariantProperties.MODEL, AetherIIModelTemplates.POINTED_STONE_BLOCK.createWithSuffix(block, name, mapping, this.modelOutput));
     }
 
     public void createVine(Block block, ModelTemplate template) {

@@ -234,6 +234,7 @@ public class AetherIIModelTemplates {
                     .face(Direction.UP, (faceBuilder) -> faceBuilder.uvs(2.0F, 0.0F, 4.0F, 2.0F).texture(TextureSlot.TEXTURE))
                     .face(Direction.DOWN, (faceBuilder) -> faceBuilder.uvs(2.0F, 3.0F, 4.0F, 5.0F).texture(TextureSlot.TEXTURE))
             ).build();
+    public static final ModelTemplate POINTED_STONE_BLOCK = ModelTemplates.create("pointed_dripstone", TextureSlot.CROSS).extend().renderType(ResourceLocation.withDefaultNamespace("cutout")).build();
 
     public static final ModelTemplate MOSS_VINE = create("moss_vine", AetherIITextureSlots.VINE, TextureSlot.PARTICLE).extend().renderType(ResourceLocation.withDefaultNamespace("cutout")).build();
     public static final ModelTemplate ASYMMETRICAL_CROSS_EVEN = create("asymmetrical_cross_even", TextureSlot.CROSS, AetherIITextureSlots.CROSS_OTHER, TextureSlot.PARTICLE).extend().renderType(ResourceLocation.withDefaultNamespace("cutout")).build();

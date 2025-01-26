@@ -82,7 +82,7 @@
                   "predicate": {
                     "type_specific": {
                       "type": "aether_ii:swet",
-                      "variant": "aether_ii:green"
+                      "variant": "aether_ii:blue"
                     }
                   }
                 }
@@ -107,7 +107,7 @@
                   "function": "minecraft:enchanted_count_increase"
                 }
               ],
-              "name": "aether_ii:green_swet_gel"
+              "name": "aether_ii:blue_swet_gel"
             },
             {
               "type": "minecraft:item",
@@ -154,7 +154,7 @@
                   "predicate": {
                     "type_specific": {
                       "type": "aether_ii:swet",
-                      "variant": "aether_ii:blue"
+                      "variant": "aether_ii:green"
                     }
                   }
                 }
@@ -179,7 +179,7 @@
                   "function": "minecraft:enchanted_count_increase"
                 }
               ],
-              "name": "aether_ii:blue_swet_gel"
+              "name": "aether_ii:green_swet_gel"
             }
           ]
         }
