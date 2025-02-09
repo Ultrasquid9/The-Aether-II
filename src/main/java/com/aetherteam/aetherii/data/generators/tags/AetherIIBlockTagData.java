@@ -360,6 +360,12 @@ public class AetherIIBlockTagData extends BlockTagsProvider {
                 BlockTags.TRAPDOORS,
                 BlockTags.FENCE_GATES
         );
+        this.tag(AetherIITags.Blocks.HOVERING_BLOCK_REPLACE_BLACKLIST).add(
+				AetherIIBlocks.AETHER_PORTAL.get(),
+				Blocks.NETHER_PORTAL,
+                Blocks.END_PORTAL,
+				Blocks.END_GATEWAY
+        );
 
         // Vanilla
         this.tag(BlockTags.WOOL).add(
