@@ -80,8 +80,8 @@ public class GasBlock extends Block implements CanisterPickup {
         for (Vec3i offset : INDIRECT_NEIGHBOR_OFFSETS) {
             mutablePos.setWithOffset(pos, offset);
             if (level.getBlockState(mutablePos).is(this)) {
-				if (shouldExplode(level.getBlockState(mutablePos)) || shouldExplode(state))
-					this.explode(level, pos, true);
+                if (this.shouldExplode(level.getBlockState(mutablePos)) || this.shouldExplode(state))
+                    this.explode(level, pos, true);
             }
         }
     }
@@ -103,8 +103,8 @@ public class GasBlock extends Block implements CanisterPickup {
         for (Direction direction : Direction.values()) {
             BlockPos offsetPos = pos.offset(direction.getUnitVec3i());
 
-			if (shouldExplode(level.getBlockState(offsetPos)))
-				explode(level, pos, true);
+            if (this.shouldExplode(level.getBlockState(offsetPos)))
+                this.explode(level, pos, true);
         }
         super.onPlace(state, level, pos, oldState, movedByPiston);
     }
@@ -119,20 +119,20 @@ public class GasBlock extends Block implements CanisterPickup {
         this.explode(level, pos, true);
     }
 
-	public boolean shouldExplode(BlockState state) {
-		if (!state.is(AetherIITags.Blocks.TRIGGERS_GAS))
-			return false;
+    public boolean shouldExplode(BlockState state) {
+        if (!state.is(AetherIITags.Blocks.TRIGGERS_GAS))
+            return false;
 
-		if (state.hasProperty(BlockStateProperties.LIT)) {
-			if (state.getValue(BlockStateProperties.LIT) == true) {
-				return true;
-			}
-		} else {
-			return true;
-		}
+        if (state.hasProperty(BlockStateProperties.LIT)) {
+            if (state.getValue(BlockStateProperties.LIT) == true) {
+                return true;
+            }
+        } else {
+            return true;
+        }
 
-		return false;
-	}
+        return false;
+    }
 
     public void explode(LevelAccessor level, BlockPos pos, boolean playSound) {
         if (level.removeBlock(pos, false)) {
@@ -148,7 +148,7 @@ public class GasBlock extends Block implements CanisterPickup {
                 BlockPos offsetPos = pos.relative(direction);
                 if (level.getBlockState(offsetPos).getBlock() instanceof GasBlock gasBlock) {
                     gasBlock.explode(level, offsetPos, level.getRandom().nextInt(20) == 0);
-                } else if (shouldExplode(level.getBlockState(offsetPos))) {
+                } else if (this.shouldExplode(level.getBlockState(offsetPos))) {
                     level.destroyBlock(offsetPos, true);
                 }
             }
@@ -158,7 +158,7 @@ public class GasBlock extends Block implements CanisterPickup {
     @Override
     protected BlockState updateShape(BlockState state, LevelReader levelReader, ScheduledTickAccess scheduledTickAccess, BlockPos currentPos, Direction facing, BlockPos facingPos, BlockState facingState, RandomSource randomSource) {
         if (levelReader instanceof Level level) {
-            if (shouldExplode(level.getBlockState(facingPos)) || shouldExplode(state)) {
+            if (this.shouldExplode(level.getBlockState(facingPos)) || this.shouldExplode(state)) {
                 this.explode(level, currentPos, true);
                 return state;
             }
